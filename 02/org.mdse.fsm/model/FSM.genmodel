@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.mdse.fsm/src-gen" editDirectory="/org.mdse.fsm.edit/src-gen"
+    editorDirectory="/org.mdse.fsm.editor/src-gen" modelPluginID="org.mdse.fsm" modelName="FSM"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" testsDirectory="/org.mdse.fsm.tests/src-gen"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>FSM.ecore</foreignModel>
+  <genPackages prefix="FSM" basePackage="org.mdse" disposableProviderFactory="true"
+      ecorePackage="FSM.ecore#/">
+    <genClasses ecoreClass="FSM.ecore#//FSMModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FSM.ecore#//FSMModel/statemachines"/>
+    </genClasses>
+    <genClasses ecoreClass="FSM.ecore#//StateMachine">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FSM.ecore#//StateMachine/initial"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FSM.ecore#//StateMachine/states"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="FSM.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FSM.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="FSM.ecore#//State">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FSM.ecore#//State/isFinal"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FSM.ecore#//State/transitions"/>
+    </genClasses>
+    <genClasses ecoreClass="FSM.ecore#//Transition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FSM.ecore#//Transition/input"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FSM.ecore#//Transition/output"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FSM.ecore#//Transition/target"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FSM.ecore#//Transition/source"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

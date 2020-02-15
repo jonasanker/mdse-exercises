@@ -1,0 +1,1 @@
+INDEX VERSION 1.131+C:\Users\jonas\Documents\ITU\CS\2semSpring2020\mls\excercises\02\.metadata\.plugins\org.eclipse.jdt.core
