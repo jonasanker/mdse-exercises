@@ -83,56 +83,431 @@ ruleSelectQuery returns [EObject current=null]
 		(
 			(
 				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getSelectQueryRule());
-					}
+					newCompositeNode(grammarAccess.getSelectQueryAccess().getWhatClauseWhatClauseParserRuleCall_1_0());
 				}
-				otherlv_1=RULE_ID
+				lv_whatClause_1_0=ruleWhatClause
 				{
-					newLeafNode(otherlv_1, grammarAccess.getSelectQueryAccess().getWhatColumnCrossReference_1_0());
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getSelectQueryRule());
+					}
+					set(
+						$current,
+						"whatClause",
+						lv_whatClause_1_0,
+						"org.mdse.minisql.query.Query.WhatClause");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
 		(
-			otherlv_2=','
+			(
+				{
+					newCompositeNode(grammarAccess.getSelectQueryAccess().getFromClauseFromClauseParserRuleCall_2_0());
+				}
+				lv_fromClause_2_0=ruleFromClause
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getSelectQueryRule());
+					}
+					set(
+						$current,
+						"fromClause",
+						lv_fromClause_2_0,
+						"org.mdse.minisql.query.Query.FromClause");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getSelectQueryAccess().getOrderByClauseOrderByClauseParserRuleCall_3_0());
+				}
+				lv_orderByClause_3_0=ruleOrderByClause
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getSelectQueryRule());
+					}
+					set(
+						$current,
+						"orderByClause",
+						lv_orderByClause_3_0,
+						"org.mdse.minisql.query.Query.OrderByClause");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_4=';'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getSelectQueryAccess().getSemicolonKeyword_4());
+		}
+	)
+;
+
+// Entry rule entryRuleWhatClause
+entryRuleWhatClause returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getWhatClauseRule()); }
+	iv_ruleWhatClause=ruleWhatClause
+	{ $current=$iv_ruleWhatClause.current; }
+	EOF;
+
+// Rule WhatClause
+ruleWhatClause returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getWhatClauseAccess().getWhatDirectivesSingleColumnWhatDirectiveParserRuleCall_0_0());
+				}
+				lv_whatDirectives_0_0=ruleSingleColumnWhatDirective
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getWhatClauseRule());
+					}
+					add(
+						$current,
+						"whatDirectives",
+						lv_whatDirectives_0_0,
+						"org.mdse.minisql.query.Query.SingleColumnWhatDirective");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_1=','
 			{
-				newLeafNode(otherlv_2, grammarAccess.getSelectQueryAccess().getCommaKeyword_2_0());
+				newLeafNode(otherlv_1, grammarAccess.getWhatClauseAccess().getCommaKeyword_1_0());
 			}
 			(
 				(
 					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getSelectQueryRule());
-						}
+						newCompositeNode(grammarAccess.getWhatClauseAccess().getWhatDirectivesWhatDirectiveParserRuleCall_1_1_0());
 					}
-					otherlv_3=RULE_ID
+					lv_whatDirectives_2_0=ruleWhatDirective
 					{
-						newLeafNode(otherlv_3, grammarAccess.getSelectQueryAccess().getWhatColumnCrossReference_2_1_0());
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getWhatClauseRule());
+						}
+						add(
+							$current,
+							"whatDirectives",
+							lv_whatDirectives_2_0,
+							"org.mdse.minisql.query.Query.WhatDirective");
+						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 		)*
-		otherlv_4='FROM'
+	)
+;
+
+// Entry rule entryRuleWhatDirective
+entryRuleWhatDirective returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getWhatDirectiveRule()); }
+	iv_ruleWhatDirective=ruleWhatDirective
+	{ $current=$iv_ruleWhatDirective.current; }
+	EOF;
+
+// Rule WhatDirective
+ruleWhatDirective returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
 		{
-			newLeafNode(otherlv_4, grammarAccess.getSelectQueryAccess().getFROMKeyword_3());
+			newCompositeNode(grammarAccess.getWhatDirectiveAccess().getAllColumnsWhatDirectiveParserRuleCall_0());
+		}
+		this_AllColumnsWhatDirective_0=ruleAllColumnsWhatDirective
+		{
+			$current = $this_AllColumnsWhatDirective_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getWhatDirectiveAccess().getSingleColumnWhatDirectiveParserRuleCall_1());
+		}
+		this_SingleColumnWhatDirective_1=ruleSingleColumnWhatDirective
+		{
+			$current = $this_SingleColumnWhatDirective_1.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRuleAllColumnsWhatDirective
+entryRuleAllColumnsWhatDirective returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAllColumnsWhatDirectiveRule()); }
+	iv_ruleAllColumnsWhatDirective=ruleAllColumnsWhatDirective
+	{ $current=$iv_ruleAllColumnsWhatDirective.current; }
+	EOF;
+
+// Rule AllColumnsWhatDirective
+ruleAllColumnsWhatDirective returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='*'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getAllColumnsWhatDirectiveAccess().getAsteriskKeyword_0());
+		}
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getAllColumnsWhatDirectiveAccess().getAllColumnsWhatDirectiveAction_1(),
+					$current);
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleSingleColumnWhatDirective
+entryRuleSingleColumnWhatDirective returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getSingleColumnWhatDirectiveRule()); }
+	iv_ruleSingleColumnWhatDirective=ruleSingleColumnWhatDirective
+	{ $current=$iv_ruleSingleColumnWhatDirective.current; }
+	EOF;
+
+// Rule SingleColumnWhatDirective
+ruleSingleColumnWhatDirective returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				newCompositeNode(grammarAccess.getSingleColumnWhatDirectiveAccess().getColumnReferenceColumnReferenceParserRuleCall_0());
+			}
+			lv_columnReference_0_0=ruleColumnReference
+			{
+				if ($current==null) {
+					$current = createModelElementForParent(grammarAccess.getSingleColumnWhatDirectiveRule());
+				}
+				set(
+					$current,
+					"columnReference",
+					lv_columnReference_0_0,
+					"org.mdse.minisql.query.Query.ColumnReference");
+				afterParserOrEnumRuleCall();
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleFromClause
+entryRuleFromClause returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getFromClauseRule()); }
+	iv_ruleFromClause=ruleFromClause
+	{ $current=$iv_ruleFromClause.current; }
+	EOF;
+
+// Rule FromClause
+ruleFromClause returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='FROM'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getFromClauseAccess().getFROMKeyword_0());
 		}
 		(
 			(
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getSelectQueryRule());
+						$current = createModelElement(grammarAccess.getFromClauseRule());
 					}
 				}
-				otherlv_5=RULE_ID
+				otherlv_1=RULE_ID
 				{
-					newLeafNode(otherlv_5, grammarAccess.getSelectQueryAccess().getFromTableCrossReference_4_0());
+					newLeafNode(otherlv_1, grammarAccess.getFromClauseAccess().getTableTableCrossReference_1_0());
 				}
 			)
 		)
-		otherlv_6=';'
+	)
+;
+
+// Entry rule entryRuleOrderByClause
+entryRuleOrderByClause returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getOrderByClauseRule()); }
+	iv_ruleOrderByClause=ruleOrderByClause
+	{ $current=$iv_ruleOrderByClause.current; }
+	EOF;
+
+// Rule OrderByClause
+ruleOrderByClause returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='ORDER'
 		{
-			newLeafNode(otherlv_6, grammarAccess.getSelectQueryAccess().getSemicolonKeyword_5());
+			newLeafNode(otherlv_0, grammarAccess.getOrderByClauseAccess().getORDERKeyword_0());
 		}
+		otherlv_1='BY'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getOrderByClauseAccess().getBYKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getOrderByClauseAccess().getOrderByDirectivesOrderByDirectiveParserRuleCall_2_0());
+				}
+				lv_orderByDirectives_2_0=ruleOrderByDirective
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getOrderByClauseRule());
+					}
+					add(
+						$current,
+						"orderByDirectives",
+						lv_orderByDirectives_2_0,
+						"org.mdse.minisql.query.Query.OrderByDirective");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_3=','
+			{
+				newLeafNode(otherlv_3, grammarAccess.getOrderByClauseAccess().getCommaKeyword_3_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getOrderByClauseAccess().getOrderByDirectivesOrderByDirectiveParserRuleCall_3_1_0());
+					}
+					lv_orderByDirectives_4_0=ruleOrderByDirective
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getOrderByClauseRule());
+						}
+						add(
+							$current,
+							"orderByDirectives",
+							lv_orderByDirectives_4_0,
+							"org.mdse.minisql.query.Query.OrderByDirective");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+	)
+;
+
+// Entry rule entryRuleOrderByDirective
+entryRuleOrderByDirective returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getOrderByDirectiveRule()); }
+	iv_ruleOrderByDirective=ruleOrderByDirective
+	{ $current=$iv_ruleOrderByDirective.current; }
+	EOF;
+
+// Rule OrderByDirective
+ruleOrderByDirective returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getOrderByDirectiveAccess().getColumnReferenceColumnReferenceParserRuleCall_0_0());
+				}
+				lv_columnReference_0_0=ruleColumnReference
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getOrderByDirectiveRule());
+					}
+					set(
+						$current,
+						"columnReference",
+						lv_columnReference_0_0,
+						"org.mdse.minisql.query.Query.ColumnReference");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				(
+					lv_ascending_1_1='ASC'
+					{
+						newLeafNode(lv_ascending_1_1, grammarAccess.getOrderByDirectiveAccess().getAscendingASCKeyword_1_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getOrderByDirectiveRule());
+						}
+						setWithLastConsumed($current, "ascending", true, null);
+					}
+					    |
+					lv_ascending_1_2='DESC'
+					{
+						newLeafNode(lv_ascending_1_2, grammarAccess.getOrderByDirectiveAccess().getAscendingDESCKeyword_1_0_1());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getOrderByDirectiveRule());
+						}
+						setWithLastConsumed($current, "ascending", true, null);
+					}
+				)
+			)
+		)?
+	)
+;
+
+// Entry rule entryRuleColumnReference
+entryRuleColumnReference returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getColumnReferenceRule()); }
+	iv_ruleColumnReference=ruleColumnReference
+	{ $current=$iv_ruleColumnReference.current; }
+	EOF;
+
+// Rule ColumnReference
+ruleColumnReference returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				if ($current==null) {
+					$current = createModelElement(grammarAccess.getColumnReferenceRule());
+				}
+			}
+			otherlv_0=RULE_ID
+			{
+				newLeafNode(otherlv_0, grammarAccess.getColumnReferenceAccess().getColumnColumnCrossReference_0());
+			}
+		)
 	)
 ;
 

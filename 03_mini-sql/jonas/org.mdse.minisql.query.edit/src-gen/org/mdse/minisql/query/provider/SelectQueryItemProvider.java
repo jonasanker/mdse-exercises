@@ -10,6 +10,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -19,7 +20,10 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
+import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.mdse.minisql.query.QueryFactory;
 import org.mdse.minisql.query.QueryPackage;
+import org.mdse.minisql.query.SelectQuery;
 
 /**
  * This is the item provider adapter for a {@link org.mdse.minisql.query.SelectQuery} object.
@@ -50,40 +54,88 @@ public class SelectQueryItemProvider extends ItemProviderAdapter implements IEdi
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addFromPropertyDescriptor(object);
-			addWhatPropertyDescriptor(object);
+			addFromClausePropertyDescriptor(object);
+			addWhatClausePropertyDescriptor(object);
+			addOrderByClausePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the From feature.
+	 * This adds a property descriptor for the From Clause feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addFromPropertyDescriptor(Object object) {
+	protected void addFromClausePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_SelectQuery_from_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_SelectQuery_from_feature",
+						getResourceLocator(), getString("_UI_SelectQuery_fromClause_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_SelectQuery_fromClause_feature",
 								"_UI_SelectQuery_type"),
-						QueryPackage.Literals.SELECT_QUERY__FROM, true, false, true, null, null, null));
+						QueryPackage.Literals.SELECT_QUERY__FROM_CLAUSE, true, false, true, null, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the What feature.
+	 * This adds a property descriptor for the What Clause feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addWhatPropertyDescriptor(Object object) {
+	protected void addWhatClausePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_SelectQuery_what_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_SelectQuery_what_feature",
+						getResourceLocator(), getString("_UI_SelectQuery_whatClause_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_SelectQuery_whatClause_feature",
 								"_UI_SelectQuery_type"),
-						QueryPackage.Literals.SELECT_QUERY__WHAT, true, false, true, null, null, null));
+						QueryPackage.Literals.SELECT_QUERY__WHAT_CLAUSE, true, false, true, null, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Order By Clause feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOrderByClausePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_SelectQuery_orderByClause_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_SelectQuery_orderByClause_feature",
+								"_UI_SelectQuery_type"),
+						QueryPackage.Literals.SELECT_QUERY__ORDER_BY_CLAUSE, true, false, true, null, null, null));
+	}
+
+	/**
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(QueryPackage.Literals.SELECT_QUERY__FROM_CLAUSE);
+			childrenFeatures.add(QueryPackage.Literals.SELECT_QUERY__WHAT_CLAUSE);
+			childrenFeatures.add(QueryPackage.Literals.SELECT_QUERY__ORDER_BY_CLAUSE);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -128,6 +180,14 @@ public class SelectQueryItemProvider extends ItemProviderAdapter implements IEdi
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(SelectQuery.class)) {
+		case QueryPackage.SELECT_QUERY__FROM_CLAUSE:
+		case QueryPackage.SELECT_QUERY__WHAT_CLAUSE:
+		case QueryPackage.SELECT_QUERY__ORDER_BY_CLAUSE:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
+		}
 		super.notifyChanged(notification);
 	}
 
@@ -141,6 +201,15 @@ public class SelectQueryItemProvider extends ItemProviderAdapter implements IEdi
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.SELECT_QUERY__FROM_CLAUSE,
+				QueryFactory.eINSTANCE.createFromClause()));
+
+		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.SELECT_QUERY__WHAT_CLAUSE,
+				QueryFactory.eINSTANCE.createWhatClause()));
+
+		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.SELECT_QUERY__ORDER_BY_CLAUSE,
+				QueryFactory.eINSTANCE.createOrderByClause()));
 	}
 
 	/**

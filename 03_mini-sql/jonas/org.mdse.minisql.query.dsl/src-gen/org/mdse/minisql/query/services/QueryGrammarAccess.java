@@ -6,6 +6,8 @@ package org.mdse.minisql.query.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
+import org.eclipse.xtext.Action;
+import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.Grammar;
@@ -26,73 +28,274 @@ public class QueryGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.Query.SelectQuery");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cSELECTKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cWhatAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final CrossReference cWhatColumnCrossReference_1_0 = (CrossReference)cWhatAssignment_1.eContents().get(0);
-		private final RuleCall cWhatColumnIDTerminalRuleCall_1_0_1 = (RuleCall)cWhatColumnCrossReference_1_0.eContents().get(1);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cCommaKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cWhatAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final CrossReference cWhatColumnCrossReference_2_1_0 = (CrossReference)cWhatAssignment_2_1.eContents().get(0);
-		private final RuleCall cWhatColumnIDTerminalRuleCall_2_1_0_1 = (RuleCall)cWhatColumnCrossReference_2_1_0.eContents().get(1);
-		private final Keyword cFROMKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cFromAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final CrossReference cFromTableCrossReference_4_0 = (CrossReference)cFromAssignment_4.eContents().get(0);
-		private final RuleCall cFromTableIDTerminalRuleCall_4_0_1 = (RuleCall)cFromTableCrossReference_4_0.eContents().get(1);
-		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cWhatClauseAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cWhatClauseWhatClauseParserRuleCall_1_0 = (RuleCall)cWhatClauseAssignment_1.eContents().get(0);
+		private final Assignment cFromClauseAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cFromClauseFromClauseParserRuleCall_2_0 = (RuleCall)cFromClauseAssignment_2.eContents().get(0);
+		private final Assignment cOrderByClauseAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cOrderByClauseOrderByClauseParserRuleCall_3_0 = (RuleCall)cOrderByClauseAssignment_3.eContents().get(0);
+		private final Keyword cSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//SelectQuery:
-		//	"SELECT" what+=[schema::Column] ("," what+=[schema::Column])*
-		//	"FROM" from=[schema::Table] ";";
+		//	"SELECT"
+		//	whatClause=WhatClause
+		//	fromClause=FromClause
+		//	orderByClause=OrderByClause
+		//	";";
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"SELECT" what+=[schema::Column] ("," what+=[schema::Column])* "FROM" from=[schema::Table] ";"
+		//"SELECT" whatClause=WhatClause fromClause=FromClause orderByClause=OrderByClause ";"
 		public Group getGroup() { return cGroup; }
 		
 		//"SELECT"
 		public Keyword getSELECTKeyword_0() { return cSELECTKeyword_0; }
 		
-		//what+=[schema::Column]
-		public Assignment getWhatAssignment_1() { return cWhatAssignment_1; }
+		//whatClause=WhatClause
+		public Assignment getWhatClauseAssignment_1() { return cWhatClauseAssignment_1; }
 		
-		//[schema::Column]
-		public CrossReference getWhatColumnCrossReference_1_0() { return cWhatColumnCrossReference_1_0; }
+		//WhatClause
+		public RuleCall getWhatClauseWhatClauseParserRuleCall_1_0() { return cWhatClauseWhatClauseParserRuleCall_1_0; }
 		
-		//ID
-		public RuleCall getWhatColumnIDTerminalRuleCall_1_0_1() { return cWhatColumnIDTerminalRuleCall_1_0_1; }
+		//fromClause=FromClause
+		public Assignment getFromClauseAssignment_2() { return cFromClauseAssignment_2; }
 		
-		//("," what+=[schema::Column])*
-		public Group getGroup_2() { return cGroup_2; }
+		//FromClause
+		public RuleCall getFromClauseFromClauseParserRuleCall_2_0() { return cFromClauseFromClauseParserRuleCall_2_0; }
 		
-		//","
-		public Keyword getCommaKeyword_2_0() { return cCommaKeyword_2_0; }
+		//orderByClause=OrderByClause
+		public Assignment getOrderByClauseAssignment_3() { return cOrderByClauseAssignment_3; }
 		
-		//what+=[schema::Column]
-		public Assignment getWhatAssignment_2_1() { return cWhatAssignment_2_1; }
-		
-		//[schema::Column]
-		public CrossReference getWhatColumnCrossReference_2_1_0() { return cWhatColumnCrossReference_2_1_0; }
-		
-		//ID
-		public RuleCall getWhatColumnIDTerminalRuleCall_2_1_0_1() { return cWhatColumnIDTerminalRuleCall_2_1_0_1; }
-		
-		//"FROM"
-		public Keyword getFROMKeyword_3() { return cFROMKeyword_3; }
-		
-		//from=[schema::Table]
-		public Assignment getFromAssignment_4() { return cFromAssignment_4; }
-		
-		//[schema::Table]
-		public CrossReference getFromTableCrossReference_4_0() { return cFromTableCrossReference_4_0; }
-		
-		//ID
-		public RuleCall getFromTableIDTerminalRuleCall_4_0_1() { return cFromTableIDTerminalRuleCall_4_0_1; }
+		//OrderByClause
+		public RuleCall getOrderByClauseOrderByClauseParserRuleCall_3_0() { return cOrderByClauseOrderByClauseParserRuleCall_3_0; }
 		
 		//";"
-		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
+		public Keyword getSemicolonKeyword_4() { return cSemicolonKeyword_4; }
+	}
+	public class WhatClauseElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.Query.WhatClause");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cWhatDirectivesAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cWhatDirectivesSingleColumnWhatDirectiveParserRuleCall_0_0 = (RuleCall)cWhatDirectivesAssignment_0.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cCommaKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cWhatDirectivesAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cWhatDirectivesWhatDirectiveParserRuleCall_1_1_0 = (RuleCall)cWhatDirectivesAssignment_1_1.eContents().get(0);
+		
+		//WhatClause:
+		//	whatDirectives+=SingleColumnWhatDirective ("," whatDirectives+=WhatDirective)*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//whatDirectives+=SingleColumnWhatDirective ("," whatDirectives+=WhatDirective)*
+		public Group getGroup() { return cGroup; }
+		
+		//whatDirectives+=SingleColumnWhatDirective
+		public Assignment getWhatDirectivesAssignment_0() { return cWhatDirectivesAssignment_0; }
+		
+		//SingleColumnWhatDirective
+		public RuleCall getWhatDirectivesSingleColumnWhatDirectiveParserRuleCall_0_0() { return cWhatDirectivesSingleColumnWhatDirectiveParserRuleCall_0_0; }
+		
+		//("," whatDirectives+=WhatDirective)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//","
+		public Keyword getCommaKeyword_1_0() { return cCommaKeyword_1_0; }
+		
+		//whatDirectives+=WhatDirective
+		public Assignment getWhatDirectivesAssignment_1_1() { return cWhatDirectivesAssignment_1_1; }
+		
+		//WhatDirective
+		public RuleCall getWhatDirectivesWhatDirectiveParserRuleCall_1_1_0() { return cWhatDirectivesWhatDirectiveParserRuleCall_1_1_0; }
+	}
+	public class WhatDirectiveElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.Query.WhatDirective");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cAllColumnsWhatDirectiveParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cSingleColumnWhatDirectiveParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//WhatDirective:
+		//	AllColumnsWhatDirective | SingleColumnWhatDirective;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//AllColumnsWhatDirective | SingleColumnWhatDirective
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//AllColumnsWhatDirective
+		public RuleCall getAllColumnsWhatDirectiveParserRuleCall_0() { return cAllColumnsWhatDirectiveParserRuleCall_0; }
+		
+		//SingleColumnWhatDirective
+		public RuleCall getSingleColumnWhatDirectiveParserRuleCall_1() { return cSingleColumnWhatDirectiveParserRuleCall_1; }
+	}
+	public class AllColumnsWhatDirectiveElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.Query.AllColumnsWhatDirective");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cAsteriskKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Action cAllColumnsWhatDirectiveAction_1 = (Action)cGroup.eContents().get(1);
+		
+		//AllColumnsWhatDirective:
+		//	"*" {AllColumnsWhatDirective};
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"*" {AllColumnsWhatDirective}
+		public Group getGroup() { return cGroup; }
+		
+		//"*"
+		public Keyword getAsteriskKeyword_0() { return cAsteriskKeyword_0; }
+		
+		//{AllColumnsWhatDirective}
+		public Action getAllColumnsWhatDirectiveAction_1() { return cAllColumnsWhatDirectiveAction_1; }
+	}
+	public class SingleColumnWhatDirectiveElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.Query.SingleColumnWhatDirective");
+		private final Assignment cColumnReferenceAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cColumnReferenceColumnReferenceParserRuleCall_0 = (RuleCall)cColumnReferenceAssignment.eContents().get(0);
+		
+		//SingleColumnWhatDirective:
+		//	columnReference=ColumnReference;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//columnReference=ColumnReference
+		public Assignment getColumnReferenceAssignment() { return cColumnReferenceAssignment; }
+		
+		//ColumnReference
+		public RuleCall getColumnReferenceColumnReferenceParserRuleCall_0() { return cColumnReferenceColumnReferenceParserRuleCall_0; }
+	}
+	public class FromClauseElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.Query.FromClause");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cFROMKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cTableAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cTableTableCrossReference_1_0 = (CrossReference)cTableAssignment_1.eContents().get(0);
+		private final RuleCall cTableTableIDTerminalRuleCall_1_0_1 = (RuleCall)cTableTableCrossReference_1_0.eContents().get(1);
+		
+		//FromClause:
+		//	"FROM"
+		//	table=[schema::Table];
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"FROM" table=[schema::Table]
+		public Group getGroup() { return cGroup; }
+		
+		//"FROM"
+		public Keyword getFROMKeyword_0() { return cFROMKeyword_0; }
+		
+		//table=[schema::Table]
+		public Assignment getTableAssignment_1() { return cTableAssignment_1; }
+		
+		//[schema::Table]
+		public CrossReference getTableTableCrossReference_1_0() { return cTableTableCrossReference_1_0; }
+		
+		//ID
+		public RuleCall getTableTableIDTerminalRuleCall_1_0_1() { return cTableTableIDTerminalRuleCall_1_0_1; }
+	}
+	public class OrderByClauseElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.Query.OrderByClause");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cORDERKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cBYKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cOrderByDirectivesAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cOrderByDirectivesOrderByDirectiveParserRuleCall_2_0 = (RuleCall)cOrderByDirectivesAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cCommaKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cOrderByDirectivesAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cOrderByDirectivesOrderByDirectiveParserRuleCall_3_1_0 = (RuleCall)cOrderByDirectivesAssignment_3_1.eContents().get(0);
+		
+		//OrderByClause:
+		//	"ORDER" "BY"
+		//	orderByDirectives+=OrderByDirective ("," orderByDirectives+=OrderByDirective)*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"ORDER" "BY" orderByDirectives+=OrderByDirective ("," orderByDirectives+=OrderByDirective)*
+		public Group getGroup() { return cGroup; }
+		
+		//"ORDER"
+		public Keyword getORDERKeyword_0() { return cORDERKeyword_0; }
+		
+		//"BY"
+		public Keyword getBYKeyword_1() { return cBYKeyword_1; }
+		
+		//orderByDirectives+=OrderByDirective
+		public Assignment getOrderByDirectivesAssignment_2() { return cOrderByDirectivesAssignment_2; }
+		
+		//OrderByDirective
+		public RuleCall getOrderByDirectivesOrderByDirectiveParserRuleCall_2_0() { return cOrderByDirectivesOrderByDirectiveParserRuleCall_2_0; }
+		
+		//("," orderByDirectives+=OrderByDirective)*
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//","
+		public Keyword getCommaKeyword_3_0() { return cCommaKeyword_3_0; }
+		
+		//orderByDirectives+=OrderByDirective
+		public Assignment getOrderByDirectivesAssignment_3_1() { return cOrderByDirectivesAssignment_3_1; }
+		
+		//OrderByDirective
+		public RuleCall getOrderByDirectivesOrderByDirectiveParserRuleCall_3_1_0() { return cOrderByDirectivesOrderByDirectiveParserRuleCall_3_1_0; }
+	}
+	public class OrderByDirectiveElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.Query.OrderByDirective");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cColumnReferenceAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cColumnReferenceColumnReferenceParserRuleCall_0_0 = (RuleCall)cColumnReferenceAssignment_0.eContents().get(0);
+		private final Assignment cAscendingAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Alternatives cAscendingAlternatives_1_0 = (Alternatives)cAscendingAssignment_1.eContents().get(0);
+		private final Keyword cAscendingASCKeyword_1_0_0 = (Keyword)cAscendingAlternatives_1_0.eContents().get(0);
+		private final Keyword cAscendingDESCKeyword_1_0_1 = (Keyword)cAscendingAlternatives_1_0.eContents().get(1);
+		
+		//OrderByDirective:
+		//	columnReference=ColumnReference ascending?=("ASC" | "DESC")?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//columnReference=ColumnReference ascending?=("ASC" | "DESC")?
+		public Group getGroup() { return cGroup; }
+		
+		//columnReference=ColumnReference
+		public Assignment getColumnReferenceAssignment_0() { return cColumnReferenceAssignment_0; }
+		
+		//ColumnReference
+		public RuleCall getColumnReferenceColumnReferenceParserRuleCall_0_0() { return cColumnReferenceColumnReferenceParserRuleCall_0_0; }
+		
+		//ascending?=("ASC" | "DESC")?
+		public Assignment getAscendingAssignment_1() { return cAscendingAssignment_1; }
+		
+		//("ASC" | "DESC")
+		public Alternatives getAscendingAlternatives_1_0() { return cAscendingAlternatives_1_0; }
+		
+		//"ASC"
+		public Keyword getAscendingASCKeyword_1_0_0() { return cAscendingASCKeyword_1_0_0; }
+		
+		//"DESC"
+		public Keyword getAscendingDESCKeyword_1_0_1() { return cAscendingDESCKeyword_1_0_1; }
+	}
+	public class ColumnReferenceElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.Query.ColumnReference");
+		private final Assignment cColumnAssignment = (Assignment)rule.eContents().get(1);
+		private final CrossReference cColumnColumnCrossReference_0 = (CrossReference)cColumnAssignment.eContents().get(0);
+		private final RuleCall cColumnColumnIDTerminalRuleCall_0_1 = (RuleCall)cColumnColumnCrossReference_0.eContents().get(1);
+		
+		//ColumnReference:
+		//	column=[schema::Column];
+		@Override public ParserRule getRule() { return rule; }
+		
+		//column=[schema::Column]
+		public Assignment getColumnAssignment() { return cColumnAssignment; }
+		
+		//[schema::Column]
+		public CrossReference getColumnColumnCrossReference_0() { return cColumnColumnCrossReference_0; }
+		
+		//ID
+		public RuleCall getColumnColumnIDTerminalRuleCall_0_1() { return cColumnColumnIDTerminalRuleCall_0_1; }
 	}
 	
 	
 	private final SelectQueryElements pSelectQuery;
+	private final WhatClauseElements pWhatClause;
+	private final WhatDirectiveElements pWhatDirective;
+	private final AllColumnsWhatDirectiveElements pAllColumnsWhatDirective;
+	private final SingleColumnWhatDirectiveElements pSingleColumnWhatDirective;
+	private final FromClauseElements pFromClause;
+	private final OrderByClauseElements pOrderByClause;
+	private final OrderByDirectiveElements pOrderByDirective;
+	private final ColumnReferenceElements pColumnReference;
 	
 	private final Grammar grammar;
 	
@@ -104,6 +307,14 @@ public class QueryGrammarAccess extends AbstractGrammarElementFinder {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
 		this.pSelectQuery = new SelectQueryElements();
+		this.pWhatClause = new WhatClauseElements();
+		this.pWhatDirective = new WhatDirectiveElements();
+		this.pAllColumnsWhatDirective = new AllColumnsWhatDirectiveElements();
+		this.pSingleColumnWhatDirective = new SingleColumnWhatDirectiveElements();
+		this.pFromClause = new FromClauseElements();
+		this.pOrderByClause = new OrderByClauseElements();
+		this.pOrderByDirective = new OrderByDirectiveElements();
+		this.pColumnReference = new ColumnReferenceElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -134,14 +345,99 @@ public class QueryGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//SelectQuery:
-	//	"SELECT" what+=[schema::Column] ("," what+=[schema::Column])*
-	//	"FROM" from=[schema::Table] ";";
+	//	"SELECT"
+	//	whatClause=WhatClause
+	//	fromClause=FromClause
+	//	orderByClause=OrderByClause
+	//	";";
 	public SelectQueryElements getSelectQueryAccess() {
 		return pSelectQuery;
 	}
 	
 	public ParserRule getSelectQueryRule() {
 		return getSelectQueryAccess().getRule();
+	}
+	
+	//WhatClause:
+	//	whatDirectives+=SingleColumnWhatDirective ("," whatDirectives+=WhatDirective)*;
+	public WhatClauseElements getWhatClauseAccess() {
+		return pWhatClause;
+	}
+	
+	public ParserRule getWhatClauseRule() {
+		return getWhatClauseAccess().getRule();
+	}
+	
+	//WhatDirective:
+	//	AllColumnsWhatDirective | SingleColumnWhatDirective;
+	public WhatDirectiveElements getWhatDirectiveAccess() {
+		return pWhatDirective;
+	}
+	
+	public ParserRule getWhatDirectiveRule() {
+		return getWhatDirectiveAccess().getRule();
+	}
+	
+	//AllColumnsWhatDirective:
+	//	"*" {AllColumnsWhatDirective};
+	public AllColumnsWhatDirectiveElements getAllColumnsWhatDirectiveAccess() {
+		return pAllColumnsWhatDirective;
+	}
+	
+	public ParserRule getAllColumnsWhatDirectiveRule() {
+		return getAllColumnsWhatDirectiveAccess().getRule();
+	}
+	
+	//SingleColumnWhatDirective:
+	//	columnReference=ColumnReference;
+	public SingleColumnWhatDirectiveElements getSingleColumnWhatDirectiveAccess() {
+		return pSingleColumnWhatDirective;
+	}
+	
+	public ParserRule getSingleColumnWhatDirectiveRule() {
+		return getSingleColumnWhatDirectiveAccess().getRule();
+	}
+	
+	//FromClause:
+	//	"FROM"
+	//	table=[schema::Table];
+	public FromClauseElements getFromClauseAccess() {
+		return pFromClause;
+	}
+	
+	public ParserRule getFromClauseRule() {
+		return getFromClauseAccess().getRule();
+	}
+	
+	//OrderByClause:
+	//	"ORDER" "BY"
+	//	orderByDirectives+=OrderByDirective ("," orderByDirectives+=OrderByDirective)*;
+	public OrderByClauseElements getOrderByClauseAccess() {
+		return pOrderByClause;
+	}
+	
+	public ParserRule getOrderByClauseRule() {
+		return getOrderByClauseAccess().getRule();
+	}
+	
+	//OrderByDirective:
+	//	columnReference=ColumnReference ascending?=("ASC" | "DESC")?;
+	public OrderByDirectiveElements getOrderByDirectiveAccess() {
+		return pOrderByDirective;
+	}
+	
+	public ParserRule getOrderByDirectiveRule() {
+		return getOrderByDirectiveAccess().getRule();
+	}
+	
+	//ColumnReference:
+	//	column=[schema::Column];
+	public ColumnReferenceElements getColumnReferenceAccess() {
+		return pColumnReference;
+	}
+	
+	public ParserRule getColumnReferenceRule() {
+		return getColumnReferenceAccess().getRule();
 	}
 	
 	//terminal ID:

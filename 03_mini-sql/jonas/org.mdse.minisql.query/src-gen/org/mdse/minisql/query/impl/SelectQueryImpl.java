@@ -2,25 +2,19 @@
  */
 package org.mdse.minisql.query.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
-
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
+import org.mdse.minisql.query.FromClause;
+import org.mdse.minisql.query.OrderByClause;
 import org.mdse.minisql.query.QueryPackage;
 import org.mdse.minisql.query.SelectQuery;
 
-import schema.Column;
-import schema.Table;
+import org.mdse.minisql.query.WhatClause;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,32 +24,43 @@ import schema.Table;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.mdse.minisql.query.impl.SelectQueryImpl#getFrom <em>From</em>}</li>
- *   <li>{@link org.mdse.minisql.query.impl.SelectQueryImpl#getWhat <em>What</em>}</li>
+ *   <li>{@link org.mdse.minisql.query.impl.SelectQueryImpl#getFromClause <em>From Clause</em>}</li>
+ *   <li>{@link org.mdse.minisql.query.impl.SelectQueryImpl#getWhatClause <em>What Clause</em>}</li>
+ *   <li>{@link org.mdse.minisql.query.impl.SelectQueryImpl#getOrderByClause <em>Order By Clause</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class SelectQueryImpl extends MinimalEObjectImpl.Container implements SelectQuery {
 	/**
-	 * The cached value of the '{@link #getFrom() <em>From</em>}' reference.
+	 * The cached value of the '{@link #getFromClause() <em>From Clause</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFrom()
+	 * @see #getFromClause()
 	 * @generated
 	 * @ordered
 	 */
-	protected Table from;
+	protected FromClause fromClause;
 
 	/**
-	 * The cached value of the '{@link #getWhat() <em>What</em>}' reference list.
+	 * The cached value of the '{@link #getWhatClause() <em>What Clause</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getWhat()
+	 * @see #getWhatClause()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Column> what;
+	protected WhatClause whatClause;
+
+	/**
+	 * The cached value of the '{@link #getOrderByClause() <em>Order By Clause</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOrderByClause()
+	 * @generated
+	 * @ordered
+	 */
+	protected OrderByClause orderByClause;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -82,17 +87,8 @@ public class SelectQueryImpl extends MinimalEObjectImpl.Container implements Sel
 	 * @generated
 	 */
 	@Override
-	public Table getFrom() {
-		if (from != null && from.eIsProxy()) {
-			InternalEObject oldFrom = (InternalEObject) from;
-			from = (Table) eResolveProxy(oldFrom);
-			if (from != oldFrom) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, QueryPackage.SELECT_QUERY__FROM, oldFrom,
-							from));
-			}
-		}
-		return from;
+	public FromClause getFromClause() {
+		return fromClause;
 	}
 
 	/**
@@ -100,8 +96,18 @@ public class SelectQueryImpl extends MinimalEObjectImpl.Container implements Sel
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Table basicGetFrom() {
-		return from;
+	public NotificationChain basicSetFromClause(FromClause newFromClause, NotificationChain msgs) {
+		FromClause oldFromClause = fromClause;
+		fromClause = newFromClause;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					QueryPackage.SELECT_QUERY__FROM_CLAUSE, oldFromClause, newFromClause);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -110,11 +116,21 @@ public class SelectQueryImpl extends MinimalEObjectImpl.Container implements Sel
 	 * @generated
 	 */
 	@Override
-	public void setFrom(Table newFrom) {
-		Table oldFrom = from;
-		from = newFrom;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.SELECT_QUERY__FROM, oldFrom, from));
+	public void setFromClause(FromClause newFromClause) {
+		if (newFromClause != fromClause) {
+			NotificationChain msgs = null;
+			if (fromClause != null)
+				msgs = ((InternalEObject) fromClause).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - QueryPackage.SELECT_QUERY__FROM_CLAUSE, null, msgs);
+			if (newFromClause != null)
+				msgs = ((InternalEObject) newFromClause).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - QueryPackage.SELECT_QUERY__FROM_CLAUSE, null, msgs);
+			msgs = basicSetFromClause(newFromClause, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.SELECT_QUERY__FROM_CLAUSE, newFromClause,
+					newFromClause));
 	}
 
 	/**
@@ -123,11 +139,120 @@ public class SelectQueryImpl extends MinimalEObjectImpl.Container implements Sel
 	 * @generated
 	 */
 	@Override
-	public EList<Column> getWhat() {
-		if (what == null) {
-			what = new EObjectResolvingEList<Column>(Column.class, this, QueryPackage.SELECT_QUERY__WHAT);
+	public WhatClause getWhatClause() {
+		return whatClause;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetWhatClause(WhatClause newWhatClause, NotificationChain msgs) {
+		WhatClause oldWhatClause = whatClause;
+		whatClause = newWhatClause;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					QueryPackage.SELECT_QUERY__WHAT_CLAUSE, oldWhatClause, newWhatClause);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
-		return what;
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setWhatClause(WhatClause newWhatClause) {
+		if (newWhatClause != whatClause) {
+			NotificationChain msgs = null;
+			if (whatClause != null)
+				msgs = ((InternalEObject) whatClause).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - QueryPackage.SELECT_QUERY__WHAT_CLAUSE, null, msgs);
+			if (newWhatClause != null)
+				msgs = ((InternalEObject) newWhatClause).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - QueryPackage.SELECT_QUERY__WHAT_CLAUSE, null, msgs);
+			msgs = basicSetWhatClause(newWhatClause, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.SELECT_QUERY__WHAT_CLAUSE, newWhatClause,
+					newWhatClause));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public OrderByClause getOrderByClause() {
+		return orderByClause;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOrderByClause(OrderByClause newOrderByClause, NotificationChain msgs) {
+		OrderByClause oldOrderByClause = orderByClause;
+		orderByClause = newOrderByClause;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					QueryPackage.SELECT_QUERY__ORDER_BY_CLAUSE, oldOrderByClause, newOrderByClause);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setOrderByClause(OrderByClause newOrderByClause) {
+		if (newOrderByClause != orderByClause) {
+			NotificationChain msgs = null;
+			if (orderByClause != null)
+				msgs = ((InternalEObject) orderByClause).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - QueryPackage.SELECT_QUERY__ORDER_BY_CLAUSE, null, msgs);
+			if (newOrderByClause != null)
+				msgs = ((InternalEObject) newOrderByClause).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - QueryPackage.SELECT_QUERY__ORDER_BY_CLAUSE, null, msgs);
+			msgs = basicSetOrderByClause(newOrderByClause, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.SELECT_QUERY__ORDER_BY_CLAUSE,
+					newOrderByClause, newOrderByClause));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case QueryPackage.SELECT_QUERY__FROM_CLAUSE:
+			return basicSetFromClause(null, msgs);
+		case QueryPackage.SELECT_QUERY__WHAT_CLAUSE:
+			return basicSetWhatClause(null, msgs);
+		case QueryPackage.SELECT_QUERY__ORDER_BY_CLAUSE:
+			return basicSetOrderByClause(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -138,12 +263,12 @@ public class SelectQueryImpl extends MinimalEObjectImpl.Container implements Sel
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QueryPackage.SELECT_QUERY__FROM:
-			if (resolve)
-				return getFrom();
-			return basicGetFrom();
-		case QueryPackage.SELECT_QUERY__WHAT:
-			return getWhat();
+		case QueryPackage.SELECT_QUERY__FROM_CLAUSE:
+			return getFromClause();
+		case QueryPackage.SELECT_QUERY__WHAT_CLAUSE:
+			return getWhatClause();
+		case QueryPackage.SELECT_QUERY__ORDER_BY_CLAUSE:
+			return getOrderByClause();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -157,12 +282,14 @@ public class SelectQueryImpl extends MinimalEObjectImpl.Container implements Sel
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QueryPackage.SELECT_QUERY__FROM:
-			setFrom((Table) newValue);
+		case QueryPackage.SELECT_QUERY__FROM_CLAUSE:
+			setFromClause((FromClause) newValue);
 			return;
-		case QueryPackage.SELECT_QUERY__WHAT:
-			getWhat().clear();
-			getWhat().addAll((Collection<? extends Column>) newValue);
+		case QueryPackage.SELECT_QUERY__WHAT_CLAUSE:
+			setWhatClause((WhatClause) newValue);
+			return;
+		case QueryPackage.SELECT_QUERY__ORDER_BY_CLAUSE:
+			setOrderByClause((OrderByClause) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -176,11 +303,14 @@ public class SelectQueryImpl extends MinimalEObjectImpl.Container implements Sel
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QueryPackage.SELECT_QUERY__FROM:
-			setFrom((Table) null);
+		case QueryPackage.SELECT_QUERY__FROM_CLAUSE:
+			setFromClause((FromClause) null);
 			return;
-		case QueryPackage.SELECT_QUERY__WHAT:
-			getWhat().clear();
+		case QueryPackage.SELECT_QUERY__WHAT_CLAUSE:
+			setWhatClause((WhatClause) null);
+			return;
+		case QueryPackage.SELECT_QUERY__ORDER_BY_CLAUSE:
+			setOrderByClause((OrderByClause) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -194,10 +324,12 @@ public class SelectQueryImpl extends MinimalEObjectImpl.Container implements Sel
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QueryPackage.SELECT_QUERY__FROM:
-			return from != null;
-		case QueryPackage.SELECT_QUERY__WHAT:
-			return what != null && !what.isEmpty();
+		case QueryPackage.SELECT_QUERY__FROM_CLAUSE:
+			return fromClause != null;
+		case QueryPackage.SELECT_QUERY__WHAT_CLAUSE:
+			return whatClause != null;
+		case QueryPackage.SELECT_QUERY__ORDER_BY_CLAUSE:
+			return orderByClause != null;
 		}
 		return super.eIsSet(featureID);
 	}

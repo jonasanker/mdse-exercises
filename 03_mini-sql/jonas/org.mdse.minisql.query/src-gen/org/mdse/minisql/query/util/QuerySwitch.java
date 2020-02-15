@@ -73,6 +73,66 @@ public class QuerySwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case QueryPackage.FROM_CLAUSE: {
+			FromClause fromClause = (FromClause) theEObject;
+			T result = caseFromClause(fromClause);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case QueryPackage.WHAT_CLAUSE: {
+			WhatClause whatClause = (WhatClause) theEObject;
+			T result = caseWhatClause(whatClause);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case QueryPackage.WHAT_DIRECTIVE: {
+			WhatDirective whatDirective = (WhatDirective) theEObject;
+			T result = caseWhatDirective(whatDirective);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case QueryPackage.COLUMN_REFERENCE: {
+			ColumnReference columnReference = (ColumnReference) theEObject;
+			T result = caseColumnReference(columnReference);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case QueryPackage.SINGLE_COLUMN_WHAT_DIRECTIVE: {
+			SingleColumnWhatDirective singleColumnWhatDirective = (SingleColumnWhatDirective) theEObject;
+			T result = caseSingleColumnWhatDirective(singleColumnWhatDirective);
+			if (result == null)
+				result = caseWhatDirective(singleColumnWhatDirective);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case QueryPackage.ALL_COLUMNS_WHAT_DIRECTIVE: {
+			AllColumnsWhatDirective allColumnsWhatDirective = (AllColumnsWhatDirective) theEObject;
+			T result = caseAllColumnsWhatDirective(allColumnsWhatDirective);
+			if (result == null)
+				result = caseWhatDirective(allColumnsWhatDirective);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case QueryPackage.ORDER_BY_CLAUSE: {
+			OrderByClause orderByClause = (OrderByClause) theEObject;
+			T result = caseOrderByClause(orderByClause);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case QueryPackage.ORDER_BY_DIRECTIVE: {
+			OrderByDirective orderByDirective = (OrderByDirective) theEObject;
+			T result = caseOrderByDirective(orderByDirective);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		default:
 			return defaultCase(theEObject);
 		}
@@ -90,6 +150,126 @@ public class QuerySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseSelectQuery(SelectQuery object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>From Clause</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>From Clause</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFromClause(FromClause object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>What Clause</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>What Clause</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWhatClause(WhatClause object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>What Directive</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>What Directive</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWhatDirective(WhatDirective object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Column Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Column Reference</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseColumnReference(ColumnReference object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Single Column What Directive</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Single Column What Directive</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSingleColumnWhatDirective(SingleColumnWhatDirective object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>All Columns What Directive</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>All Columns What Directive</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAllColumnsWhatDirective(AllColumnsWhatDirective object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Order By Clause</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Order By Clause</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOrderByClause(OrderByClause object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Order By Directive</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Order By Directive</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOrderByDirective(OrderByDirective object) {
 		return null;
 	}
 

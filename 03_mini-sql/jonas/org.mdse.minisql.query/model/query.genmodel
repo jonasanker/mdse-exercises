@@ -11,8 +11,30 @@
   <genPackages prefix="Query" basePackage="org.mdse.minisql" disposableProviderFactory="true"
       ecorePackage="query.ecore#/">
     <genClasses ecoreClass="query.ecore#//SelectQuery">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SelectQuery/from"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SelectQuery/what"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SelectQuery/fromClause"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SelectQuery/whatClause"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SelectQuery/orderByClause"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//FromClause">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//FromClause/table"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//WhatClause">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//WhatClause/whatDirectives"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//WhatDirective"/>
+    <genClasses ecoreClass="query.ecore#//ColumnReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//ColumnReference/column"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//SingleColumnWhatDirective">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//SingleColumnWhatDirective/columnReference"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//AllColumnsWhatDirective"/>
+    <genClasses ecoreClass="query.ecore#//OrderByClause">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//OrderByClause/orderByDirectives"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//OrderByDirective">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//OrderByDirective/ascending"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//OrderByDirective/columnReference"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Schema" ecorePackage="../../org.mdse.minisql.schema/model/schema.ecore#/">

@@ -11,9 +11,18 @@ import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Parameter;
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.serializer.ISerializationContext;
+import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
+import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
+import org.mdse.minisql.query.AllColumnsWhatDirective;
+import org.mdse.minisql.query.ColumnReference;
+import org.mdse.minisql.query.FromClause;
+import org.mdse.minisql.query.OrderByClause;
+import org.mdse.minisql.query.OrderByDirective;
 import org.mdse.minisql.query.QueryPackage;
 import org.mdse.minisql.query.SelectQuery;
+import org.mdse.minisql.query.SingleColumnWhatDirective;
+import org.mdse.minisql.query.WhatClause;
 import org.mdse.minisql.query.services.QueryGrammarAccess;
 
 @SuppressWarnings("all")
@@ -30,8 +39,29 @@ public class QuerySemanticSequencer extends AbstractDelegatingSemanticSequencer 
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == QueryPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case QueryPackage.ALL_COLUMNS_WHAT_DIRECTIVE:
+				sequence_AllColumnsWhatDirective(context, (AllColumnsWhatDirective) semanticObject); 
+				return; 
+			case QueryPackage.COLUMN_REFERENCE:
+				sequence_ColumnReference(context, (ColumnReference) semanticObject); 
+				return; 
+			case QueryPackage.FROM_CLAUSE:
+				sequence_FromClause(context, (FromClause) semanticObject); 
+				return; 
+			case QueryPackage.ORDER_BY_CLAUSE:
+				sequence_OrderByClause(context, (OrderByClause) semanticObject); 
+				return; 
+			case QueryPackage.ORDER_BY_DIRECTIVE:
+				sequence_OrderByDirective(context, (OrderByDirective) semanticObject); 
+				return; 
 			case QueryPackage.SELECT_QUERY:
 				sequence_SelectQuery(context, (SelectQuery) semanticObject); 
+				return; 
+			case QueryPackage.SINGLE_COLUMN_WHAT_DIRECTIVE:
+				sequence_SingleColumnWhatDirective(context, (SingleColumnWhatDirective) semanticObject); 
+				return; 
+			case QueryPackage.WHAT_CLAUSE:
+				sequence_WhatClause(context, (WhatClause) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -40,12 +70,128 @@ public class QuerySemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
+	 *     WhatDirective returns AllColumnsWhatDirective
+	 *     AllColumnsWhatDirective returns AllColumnsWhatDirective
+	 *
+	 * Constraint:
+	 *     {AllColumnsWhatDirective}
+	 */
+	protected void sequence_AllColumnsWhatDirective(ISerializationContext context, AllColumnsWhatDirective semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ColumnReference returns ColumnReference
+	 *
+	 * Constraint:
+	 *     column=[Column|ID]
+	 */
+	protected void sequence_ColumnReference(ISerializationContext context, ColumnReference semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, QueryPackage.Literals.COLUMN_REFERENCE__COLUMN) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, QueryPackage.Literals.COLUMN_REFERENCE__COLUMN));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getColumnReferenceAccess().getColumnColumnIDTerminalRuleCall_0_1(), semanticObject.eGet(QueryPackage.Literals.COLUMN_REFERENCE__COLUMN, false));
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     FromClause returns FromClause
+	 *
+	 * Constraint:
+	 *     table=[Table|ID]
+	 */
+	protected void sequence_FromClause(ISerializationContext context, FromClause semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, QueryPackage.Literals.FROM_CLAUSE__TABLE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, QueryPackage.Literals.FROM_CLAUSE__TABLE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFromClauseAccess().getTableTableIDTerminalRuleCall_1_0_1(), semanticObject.eGet(QueryPackage.Literals.FROM_CLAUSE__TABLE, false));
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     OrderByClause returns OrderByClause
+	 *
+	 * Constraint:
+	 *     (orderByDirectives+=OrderByDirective orderByDirectives+=OrderByDirective*)
+	 */
+	protected void sequence_OrderByClause(ISerializationContext context, OrderByClause semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     OrderByDirective returns OrderByDirective
+	 *
+	 * Constraint:
+	 *     (columnReference=ColumnReference (ascending?='ASC' | ascending?='DESC')?)
+	 */
+	protected void sequence_OrderByDirective(ISerializationContext context, OrderByDirective semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     SelectQuery returns SelectQuery
 	 *
 	 * Constraint:
-	 *     (what+=[Column|ID] what+=[Column|ID]* from=[Table|ID])
+	 *     (whatClause=WhatClause fromClause=FromClause orderByClause=OrderByClause)
 	 */
 	protected void sequence_SelectQuery(ISerializationContext context, SelectQuery semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, QueryPackage.Literals.SELECT_QUERY__WHAT_CLAUSE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, QueryPackage.Literals.SELECT_QUERY__WHAT_CLAUSE));
+			if (transientValues.isValueTransient(semanticObject, QueryPackage.Literals.SELECT_QUERY__FROM_CLAUSE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, QueryPackage.Literals.SELECT_QUERY__FROM_CLAUSE));
+			if (transientValues.isValueTransient(semanticObject, QueryPackage.Literals.SELECT_QUERY__ORDER_BY_CLAUSE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, QueryPackage.Literals.SELECT_QUERY__ORDER_BY_CLAUSE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getSelectQueryAccess().getWhatClauseWhatClauseParserRuleCall_1_0(), semanticObject.getWhatClause());
+		feeder.accept(grammarAccess.getSelectQueryAccess().getFromClauseFromClauseParserRuleCall_2_0(), semanticObject.getFromClause());
+		feeder.accept(grammarAccess.getSelectQueryAccess().getOrderByClauseOrderByClauseParserRuleCall_3_0(), semanticObject.getOrderByClause());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     WhatDirective returns SingleColumnWhatDirective
+	 *     SingleColumnWhatDirective returns SingleColumnWhatDirective
+	 *
+	 * Constraint:
+	 *     columnReference=ColumnReference
+	 */
+	protected void sequence_SingleColumnWhatDirective(ISerializationContext context, SingleColumnWhatDirective semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, QueryPackage.Literals.SINGLE_COLUMN_WHAT_DIRECTIVE__COLUMN_REFERENCE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, QueryPackage.Literals.SINGLE_COLUMN_WHAT_DIRECTIVE__COLUMN_REFERENCE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getSingleColumnWhatDirectiveAccess().getColumnReferenceColumnReferenceParserRuleCall_0(), semanticObject.getColumnReference());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     WhatClause returns WhatClause
+	 *
+	 * Constraint:
+	 *     (whatDirectives+=SingleColumnWhatDirective whatDirectives+=WhatDirective*)
+	 */
+	protected void sequence_WhatClause(ISerializationContext context, WhatClause semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
