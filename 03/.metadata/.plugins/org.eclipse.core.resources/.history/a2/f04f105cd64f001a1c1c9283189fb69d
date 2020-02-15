@@ -1,8 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: org.mdse.minisql.query
-Bundle-SymbolicName: org.mdse.minisql.query; singleton:=true
-Bundle-Version: 0.1.0.qualifier
-Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
- org.eclipse.core.runtime,
- org.mdse.minisql.schema;bundle-version="0.1.0";visibility:=reexport
