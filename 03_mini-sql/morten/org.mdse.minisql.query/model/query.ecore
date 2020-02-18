@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="query" nsURI="http://mdse.org/minisql/query" nsPrefix="minisqlquery">
+  <eClassifiers xsi:type="ecore:EClass" name="SelectQuery">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="from" lowerBound="1" upperBound="-1"
+        eType="ecore:EClass ../../org.mdse.minisql.schema/model/schema.ecore#//Table"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="what" lowerBound="1" upperBound="-1"
+        eType="ecore:EClass ../../org.mdse.minisql.schema/model/schema.ecore#//Column"/>
+  </eClassifiers>
+</ecore:EPackage>
