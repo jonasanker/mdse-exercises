@@ -3,7 +3,6 @@
   <viewpoint:DAnalysis uid="_Kk1wgFDxEeqD-LvCF22JEQ" selectedViews="_KmgkcFDxEeqD-LvCF22JEQ" version="14.3.0.201909031200">
     <semanticResources>query.ecore</semanticResources>
     <semanticResources>query.genmodel</semanticResources>
-    <semanticResources>platform:/resource/org.mdse.minisql.schema/model/schema.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_KmgkcFDxEeqD-LvCF22JEQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_KnO9MVDxEeqD-LvCF22JEQ" name="query" repPath="#_Km93cFDxEeqD-LvCF22JEQ" changeId="1b0daf3d-83e0-4d73-bfe9-017adc9957ac">

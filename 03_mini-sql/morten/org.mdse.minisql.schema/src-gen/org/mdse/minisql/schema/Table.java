@@ -28,7 +28,7 @@ public interface Table extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Column</em>' containment reference list.
 	 * @see org.mdse.minisql.schema.SchemaPackage#getTable_Column()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	EList<Column> getColumn();
