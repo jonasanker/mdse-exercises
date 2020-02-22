@@ -4,10 +4,13 @@ package org.mdse.minisql.query.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
@@ -34,14 +37,14 @@ import schema.Table;
  */
 public class SelectQueryImpl extends MinimalEObjectImpl.Container implements SelectQuery {
 	/**
-	 * The cached value of the '{@link #getFrom() <em>From</em>}' reference list.
+	 * The cached value of the '{@link #getFrom() <em>From</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getFrom()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Table> from;
+	protected Table from;
 
 	/**
 	 * The cached value of the '{@link #getWhat() <em>What</em>}' reference list.
@@ -78,11 +81,39 @@ public class SelectQueryImpl extends MinimalEObjectImpl.Container implements Sel
 	 * @generated
 	 */
 	@Override
-	public EList<Table> getFrom() {
-		if (from == null) {
-			from = new EObjectResolvingEList<Table>(Table.class, this, QueryPackage.SELECT_QUERY__FROM);
+	public Table getFrom() {
+		if (from != null && from.eIsProxy()) {
+			InternalEObject oldFrom = (InternalEObject) from;
+			from = (Table) eResolveProxy(oldFrom);
+			if (from != oldFrom) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, QueryPackage.SELECT_QUERY__FROM, oldFrom,
+							from));
+			}
 		}
 		return from;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Table basicGetFrom() {
+		return from;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setFrom(Table newFrom) {
+		Table oldFrom = from;
+		from = newFrom;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.SELECT_QUERY__FROM, oldFrom, from));
 	}
 
 	/**
@@ -107,7 +138,9 @@ public class SelectQueryImpl extends MinimalEObjectImpl.Container implements Sel
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case QueryPackage.SELECT_QUERY__FROM:
-			return getFrom();
+			if (resolve)
+				return getFrom();
+			return basicGetFrom();
 		case QueryPackage.SELECT_QUERY__WHAT:
 			return getWhat();
 		}
@@ -124,8 +157,7 @@ public class SelectQueryImpl extends MinimalEObjectImpl.Container implements Sel
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case QueryPackage.SELECT_QUERY__FROM:
-			getFrom().clear();
-			getFrom().addAll((Collection<? extends Table>) newValue);
+			setFrom((Table) newValue);
 			return;
 		case QueryPackage.SELECT_QUERY__WHAT:
 			getWhat().clear();
@@ -144,7 +176,7 @@ public class SelectQueryImpl extends MinimalEObjectImpl.Container implements Sel
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case QueryPackage.SELECT_QUERY__FROM:
-			getFrom().clear();
+			setFrom((Table) null);
 			return;
 		case QueryPackage.SELECT_QUERY__WHAT:
 			getWhat().clear();
@@ -162,7 +194,7 @@ public class SelectQueryImpl extends MinimalEObjectImpl.Container implements Sel
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case QueryPackage.SELECT_QUERY__FROM:
-			return from != null && !from.isEmpty();
+			return from != null;
 		case QueryPackage.SELECT_QUERY__WHAT:
 			return what != null && !what.isEmpty();
 		}

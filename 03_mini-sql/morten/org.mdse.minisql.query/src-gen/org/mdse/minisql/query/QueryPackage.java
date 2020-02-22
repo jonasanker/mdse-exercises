@@ -66,7 +66,7 @@ public interface QueryPackage extends EPackage {
 	int SELECT_QUERY = 0;
 
 	/**
-	 * The feature id for the '<em><b>From</b></em>' reference list.
+	 * The feature id for the '<em><b>From</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -112,10 +112,10 @@ public interface QueryPackage extends EPackage {
 	EClass getSelectQuery();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.mdse.minisql.query.SelectQuery#getFrom <em>From</em>}'.
+	 * Returns the meta object for the reference '{@link org.mdse.minisql.query.SelectQuery#getFrom <em>From</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>From</em>'.
+	 * @return the meta object for the reference '<em>From</em>'.
 	 * @see org.mdse.minisql.query.SelectQuery#getFrom()
 	 * @see #getSelectQuery()
 	 * @generated
@@ -167,7 +167,7 @@ public interface QueryPackage extends EPackage {
 		EClass SELECT_QUERY = eINSTANCE.getSelectQuery();
 
 		/**
-		 * The meta object literal for the '<em><b>From</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>From</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

@@ -28,16 +28,26 @@ import schema.Table;
  */
 public interface SelectQuery extends EObject {
 	/**
-	 * Returns the value of the '<em><b>From</b></em>' reference list.
-	 * The list contents are of type {@link schema.Table}.
+	 * Returns the value of the '<em><b>From</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>From</em>' reference list.
+	 * @return the value of the '<em>From</em>' reference.
+	 * @see #setFrom(Table)
 	 * @see org.mdse.minisql.query.QueryPackage#getSelectQuery_From()
 	 * @model required="true"
 	 * @generated
 	 */
-	EList<Table> getFrom();
+	Table getFrom();
+
+	/**
+	 * Sets the value of the '{@link org.mdse.minisql.query.SelectQuery#getFrom <em>From</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>From</em>' reference.
+	 * @see #getFrom()
+	 * @generated
+	 */
+	void setFrom(Table value);
 
 	/**
 	 * Returns the value of the '<em><b>What</b></em>' reference list.

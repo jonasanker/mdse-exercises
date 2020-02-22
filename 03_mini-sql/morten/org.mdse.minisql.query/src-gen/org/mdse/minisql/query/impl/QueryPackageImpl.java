@@ -203,7 +203,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		// Initialize classes, features, and operations; add parameters
 		initEClass(selectQueryEClass, SelectQuery.class, "SelectQuery", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSelectQuery_From(), theSchemaPackage.getTable(), null, "from", null, 1, -1, SelectQuery.class,
+		initEReference(getSelectQuery_From(), theSchemaPackage.getTable(), null, "from", null, 1, 1, SelectQuery.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSelectQuery_What(), theSchemaPackage.getColumn(), null, "what", null, 1, -1,
