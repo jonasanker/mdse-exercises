@@ -32,10 +32,16 @@ public class MSQLQueryParser extends AbstractContentAssistParser {
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, MSQLQueryGrammarAccess grammarAccess) {
 			builder.put(grammarAccess.getSelectQueryAccess().getGroup(), "rule__SelectQuery__Group__0");
-			builder.put(grammarAccess.getSelectQueryAccess().getGroup_2(), "rule__SelectQuery__Group_2__0");
-			builder.put(grammarAccess.getSelectQueryAccess().getWhatAssignment_1(), "rule__SelectQuery__WhatAssignment_1");
-			builder.put(grammarAccess.getSelectQueryAccess().getWhatAssignment_2_1(), "rule__SelectQuery__WhatAssignment_2_1");
-			builder.put(grammarAccess.getSelectQueryAccess().getFromAssignment_4(), "rule__SelectQuery__FromAssignment_4");
+			builder.put(grammarAccess.getWhatClauseAccess().getGroup(), "rule__WhatClause__Group__0");
+			builder.put(grammarAccess.getWhatClauseAccess().getGroup_1(), "rule__WhatClause__Group_1__0");
+			builder.put(grammarAccess.getFromClauseAccess().getGroup(), "rule__FromClause__Group__0");
+			builder.put(grammarAccess.getSelectQueryAccess().getWhatClauseAssignment_1(), "rule__SelectQuery__WhatClauseAssignment_1");
+			builder.put(grammarAccess.getSelectQueryAccess().getFromClauseAssignment_2(), "rule__SelectQuery__FromClauseAssignment_2");
+			builder.put(grammarAccess.getWhatClauseAccess().getWhatDirectiveAssignment_0(), "rule__WhatClause__WhatDirectiveAssignment_0");
+			builder.put(grammarAccess.getWhatClauseAccess().getWhatDirectiveAssignment_1_1(), "rule__WhatClause__WhatDirectiveAssignment_1_1");
+			builder.put(grammarAccess.getFromClauseAccess().getTableAssignment_1(), "rule__FromClause__TableAssignment_1");
+			builder.put(grammarAccess.getSingleColumnWhatDirectiveAccess().getColumnReferenceAssignment(), "rule__SingleColumnWhatDirective__ColumnReferenceAssignment");
+			builder.put(grammarAccess.getColumnReferenceAccess().getColumnAssignment(), "rule__ColumnReference__ColumnAssignment");
 		}
 	}
 	

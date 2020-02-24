@@ -76,55 +76,209 @@ ruleSelectQuery returns [EObject current=null]
 		(
 			(
 				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getSelectQueryRule());
-					}
+					newCompositeNode(grammarAccess.getSelectQueryAccess().getWhatClauseWhatClauseParserRuleCall_1_0());
 				}
-				otherlv_1=RULE_ID
+				lv_whatClause_1_0=ruleWhatClause
 				{
-					newLeafNode(otherlv_1, grammarAccess.getSelectQueryAccess().getWhatColumnCrossReference_1_0());
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getSelectQueryRule());
+					}
+					add(
+						$current,
+						"whatClause",
+						lv_whatClause_1_0,
+						"org.mdse.minisql.query.MSQLQuery.WhatClause");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
 		(
-			otherlv_2=Comma
+			(
+				{
+					newCompositeNode(grammarAccess.getSelectQueryAccess().getFromClauseFromClauseParserRuleCall_2_0());
+				}
+				lv_fromClause_2_0=ruleFromClause
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getSelectQueryRule());
+					}
+					set(
+						$current,
+						"fromClause",
+						lv_fromClause_2_0,
+						"org.mdse.minisql.query.MSQLQuery.FromClause");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_3=Semicolon
+		{
+			newLeafNode(otherlv_3, grammarAccess.getSelectQueryAccess().getSemicolonKeyword_3());
+		}
+	)
+;
+
+// Entry rule entryRuleWhatClause
+entryRuleWhatClause returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getWhatClauseRule()); }
+	iv_ruleWhatClause=ruleWhatClause
+	{ $current=$iv_ruleWhatClause.current; }
+	EOF;
+
+// Rule WhatClause
+ruleWhatClause returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getWhatClauseAccess().getWhatDirectiveSingleColumnWhatDirectiveParserRuleCall_0_0());
+				}
+				lv_whatDirective_0_0=ruleSingleColumnWhatDirective
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getWhatClauseRule());
+					}
+					add(
+						$current,
+						"whatDirective",
+						lv_whatDirective_0_0,
+						"org.mdse.minisql.query.MSQLQuery.SingleColumnWhatDirective");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_1=Comma
 			{
-				newLeafNode(otherlv_2, grammarAccess.getSelectQueryAccess().getCommaKeyword_2_0());
+				newLeafNode(otherlv_1, grammarAccess.getWhatClauseAccess().getCommaKeyword_1_0());
 			}
 			(
 				(
 					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getSelectQueryRule());
-						}
+						newCompositeNode(grammarAccess.getWhatClauseAccess().getWhatDirectiveSingleColumnWhatDirectiveParserRuleCall_1_1_0());
 					}
-					otherlv_3=RULE_ID
+					lv_whatDirective_2_0=ruleSingleColumnWhatDirective
 					{
-						newLeafNode(otherlv_3, grammarAccess.getSelectQueryAccess().getWhatColumnCrossReference_2_1_0());
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getWhatClauseRule());
+						}
+						add(
+							$current,
+							"whatDirective",
+							lv_whatDirective_2_0,
+							"org.mdse.minisql.query.MSQLQuery.SingleColumnWhatDirective");
+						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 		)*
-		otherlv_4=FROM
+	)
+;
+
+// Entry rule entryRuleFromClause
+entryRuleFromClause returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getFromClauseRule()); }
+	iv_ruleFromClause=ruleFromClause
+	{ $current=$iv_ruleFromClause.current; }
+	EOF;
+
+// Rule FromClause
+ruleFromClause returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0=FROM
 		{
-			newLeafNode(otherlv_4, grammarAccess.getSelectQueryAccess().getFROMKeyword_3());
+			newLeafNode(otherlv_0, grammarAccess.getFromClauseAccess().getFROMKeyword_0());
 		}
 		(
 			(
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getSelectQueryRule());
+						$current = createModelElement(grammarAccess.getFromClauseRule());
 					}
 				}
-				otherlv_5=RULE_ID
+				otherlv_1=RULE_ID
 				{
-					newLeafNode(otherlv_5, grammarAccess.getSelectQueryAccess().getFromTableCrossReference_4_0());
+					newLeafNode(otherlv_1, grammarAccess.getFromClauseAccess().getTableTableCrossReference_1_0());
 				}
 			)
 		)
-		otherlv_6=Semicolon
-		{
-			newLeafNode(otherlv_6, grammarAccess.getSelectQueryAccess().getSemicolonKeyword_5());
-		}
+	)
+;
+
+// Entry rule entryRuleSingleColumnWhatDirective
+entryRuleSingleColumnWhatDirective returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getSingleColumnWhatDirectiveRule()); }
+	iv_ruleSingleColumnWhatDirective=ruleSingleColumnWhatDirective
+	{ $current=$iv_ruleSingleColumnWhatDirective.current; }
+	EOF;
+
+// Rule SingleColumnWhatDirective
+ruleSingleColumnWhatDirective returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				newCompositeNode(grammarAccess.getSingleColumnWhatDirectiveAccess().getColumnReferenceColumnReferenceParserRuleCall_0());
+			}
+			lv_columnReference_0_0=ruleColumnReference
+			{
+				if ($current==null) {
+					$current = createModelElementForParent(grammarAccess.getSingleColumnWhatDirectiveRule());
+				}
+				set(
+					$current,
+					"columnReference",
+					lv_columnReference_0_0,
+					"org.mdse.minisql.query.MSQLQuery.ColumnReference");
+				afterParserOrEnumRuleCall();
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleColumnReference
+entryRuleColumnReference returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getColumnReferenceRule()); }
+	iv_ruleColumnReference=ruleColumnReference
+	{ $current=$iv_ruleColumnReference.current; }
+	EOF;
+
+// Rule ColumnReference
+ruleColumnReference returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				if ($current==null) {
+					$current = createModelElement(grammarAccess.getColumnReferenceRule());
+				}
+			}
+			otherlv_0=RULE_ID
+			{
+				newLeafNode(otherlv_0, grammarAccess.getColumnReferenceAccess().getColumnColumnCrossReference_0());
+			}
+		)
 	)
 ;

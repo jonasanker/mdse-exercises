@@ -3,13 +3,20 @@
  */
 package org.mdse.minisql.query.scoping;
 
+import java.util.List;
+import java.util.PrimitiveIterator.OfDouble;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
+import org.mdse.minisql.query.ColumnReference;
+import org.mdse.minisql.query.FromClause;
 import org.mdse.minisql.query.SelectQuery;
-import schema.Column;
+import org.mdse.minisql.schema.Table;
+import org.mdse.minisql.schema.Column;
 
 /**
  * This class contains custom scoping description.
@@ -22,20 +29,31 @@ public class MSQLQueryScopeProvider extends AbstractMSQLQueryScopeProvider {
 	@Override
 	public IScope getScope(EObject context, EReference reference) {
 
-		// If 'what' reference of the SelectQuery
-		if (context instanceof SelectQuery && reference.getName().contentEquals("what")) {
+		// If column reference
+		if (context instanceof ColumnReference) {
 
 			// Provide custom scope
-			SelectQuery selectQuery = (SelectQuery)context;
-			return getScope(selectQuery);
+			ColumnReference columnReference = (ColumnReference)context;
+			return getScope(columnReference);
 		}
 
 		return super.delegateGetScope(context, reference);
 	}
 	
-	protected IScope getScope(SelectQuery selectQuery) {
-		schema.Table table = selectQuery.getFrom();
-		EList<Column> columns = table.getColumn();
-		return Scopes.scopeFor(columns);
+	protected IScope getScope(ColumnReference columnReference) {
+		// Get the root model element via reflection on the model
+		EObject rootModelElement = EcoreUtil.getRootContainer(columnReference);
+		
+		if (rootModelElement instanceof SelectQuery) {
+			SelectQuery selectQuery = (SelectQuery) rootModelElement;
+			FromClause fromClause = selectQuery.getFromClause();
+			
+			schema.Table table = fromClause.getTable();
+			List<Column> columns = ((Table)table).getColumn();
+
+			return Scopes.scopeFor(columns);
+		}
+
+		return null;
 	}
 }
