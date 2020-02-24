@@ -38,7 +38,9 @@
     </genClasses>
   </genPackages>
   <genPackages prefix="Schema" ecorePackage="../../org.mdse.minisql.schema/model/schema.ecore#/">
-    <genClasses ecoreClass="../../org.mdse.minisql.schema/model/schema.ecore#//Table"/>
+    <genClasses ecoreClass="../../org.mdse.minisql.schema/model/schema.ecore#//Table">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.mdse.minisql.schema/model/schema.ecore#//Table/column"/>
+    </genClasses>
     <genClasses ecoreClass="../../org.mdse.minisql.schema/model/schema.ecore#//Column"/>
     <genClasses image="false" ecoreClass="../../org.mdse.minisql.schema/model/schema.ecore#//NamedElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.mdse.minisql.schema/model/schema.ecore#//NamedElement/name"/>

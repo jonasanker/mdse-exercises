@@ -6,7 +6,7 @@
     <semanticResources>platform:/resource/org.mdse.minisql.schema/model/schema.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_KmgkcFDxEeqD-LvCF22JEQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_KnO9MVDxEeqD-LvCF22JEQ" name="query" repPath="#_Km93cFDxEeqD-LvCF22JEQ" changeId="f52dc9d0-355c-4a55-8e19-cbeb4644765e">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_KnO9MVDxEeqD-LvCF22JEQ" name="query" repPath="#_Km93cFDxEeqD-LvCF22JEQ" changeId="e84e0cc5-b118-4b47-ba9a-351510f0c086">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="query.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -328,6 +328,22 @@
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_NlFCIFb2EeqkAqNxHIrLAA" id="(0.3813559322033898,1.0)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_NlFCIVb2EeqkAqNxHIrLAA" id="(0.4067796610169492,0.0)"/>
         </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_ShCXEFb8EeqkAqNxHIrLAA" type="4001" element="_SgxRU1b8EeqkAqNxHIrLAA" source="_1kI2gFDzEeqNaPvomlHocA" target="_yLAXgFDzEeqNaPvomlHocA">
+          <children xmi:type="notation:Node" xmi:id="_ShCXFFb8EeqkAqNxHIrLAA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ShCXFVb8EeqkAqNxHIrLAA" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_ShCXFlb8EeqkAqNxHIrLAA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ShCXF1b8EeqkAqNxHIrLAA" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_ShC-IFb8EeqkAqNxHIrLAA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ShC-IVb8EeqkAqNxHIrLAA" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_ShCXEVb8EeqkAqNxHIrLAA" routing="Rectilinear"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_ShCXElb8EeqkAqNxHIrLAA" fontColor="7490599" fontName="Cantarell" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ShCXE1b8EeqkAqNxHIrLAA" points="[0, 0, -192, 0]$[192, 0, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ShH2oFb8EeqkAqNxHIrLAA" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ShH2oVb8EeqkAqNxHIrLAA" id="(0.5,0.5)"/>
+        </edges>
       </data>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_6SyzcFDyEeqNaPvomlHocA" name="SelectQuery" tooltipText="" outgoingEdges="_PCX9AFbqEeqkAqNxHIrLAA _MsAFFlb2EeqkAqNxHIrLAA _Nko9Rlb2EeqkAqNxHIrLAA" width="12" height="10">
@@ -341,7 +357,7 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_yKyVEFDzEeqNaPvomlHocA" name="Column" tooltipText="" incomingEdges="_VWUAQFbqEeqkAqNxHIrLAA" width="12" height="10">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_yKyVEFDzEeqNaPvomlHocA" name="Column" tooltipText="" incomingEdges="_VWUAQFbqEeqkAqNxHIrLAA _SgxRU1b8EeqkAqNxHIrLAA" width="12" height="10">
       <target xmi:type="ecore:EClass" href="platform:/resource/org.mdse.minisql.schema/model/schema.ecore#//Column"/>
       <semanticElements xmi:type="ecore:EClass" href="platform:/resource/org.mdse.minisql.schema/model/schema.ecore#//Column"/>
       <decorations xmi:type="viewpoint:Decoration" uid="_yK2mgFDzEeqNaPvomlHocA">
@@ -355,7 +371,7 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_1jtYsFDzEeqNaPvomlHocA" name="Table" tooltipText="" incomingEdges="_RqFmLFbqEeqkAqNxHIrLAA" width="12" height="10">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_1jtYsFDzEeqNaPvomlHocA" name="Table" tooltipText="" outgoingEdges="_SgxRU1b8EeqkAqNxHIrLAA" incomingEdges="_RqFmLFbqEeqkAqNxHIrLAA" width="12" height="10">
       <target xmi:type="ecore:EClass" href="platform:/resource/org.mdse.minisql.schema/model/schema.ecore#//Table"/>
       <semanticElements xmi:type="ecore:EClass" href="platform:/resource/org.mdse.minisql.schema/model/schema.ecore#//Table"/>
       <decorations xmi:type="viewpoint:Decoration" uid="_1jvN4FDzEeqNaPvomlHocA">
@@ -593,6 +609,19 @@
           <labelFormat>bold</labelFormat>
         </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_Qzmzp1b2EeqkAqNxHIrLAA" labelSize="6" showIcon="false" labelColor="39,76,114"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_SgxRU1b8EeqkAqNxHIrLAA" name="[0..*] column" sourceNode="_1jtYsFDzEeqNaPvomlHocA" targetNode="_yKyVEFDzEeqNaPvomlHocA">
+      <target xmi:type="ecore:EReference" href="platform:/resource/org.mdse.minisql.schema/model/schema.ecore#//Table/column"/>
+      <semanticElements xmi:type="ecore:EReference" href="platform:/resource/org.mdse.minisql.schema/model/schema.ecore#//Table/column"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Sgx4YFb8EeqkAqNxHIrLAA" description="_l4jDgFbqEeqkAqNxHIrLAA" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_Sgx4Ylb8EeqkAqNxHIrLAA" showIcon="false">
+          <customFeatures>labelSize</customFeatures>
+        </centerLabelStyle>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_Sgx4YVb8EeqkAqNxHIrLAA" showIcon="false" labelColor="39,76,114">
+          <customFeatures>labelSize</customFeatures>
+        </endLabelStyle>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>

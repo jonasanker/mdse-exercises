@@ -67,31 +67,31 @@ public interface QueryPackage extends EPackage {
 	int SELECT_QUERY = 0;
 
 	/**
-	 * The feature id for the '<em><b>From Clause</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SELECT_QUERY__FROM_CLAUSE = 0;
-
-	/**
 	 * The feature id for the '<em><b>Order By Clause</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SELECT_QUERY__ORDER_BY_CLAUSE = 1;
+	int SELECT_QUERY__ORDER_BY_CLAUSE = 0;
 
 	/**
-	 * The feature id for the '<em><b>What Clause</b></em>' reference list.
+	 * The feature id for the '<em><b>What Clause</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SELECT_QUERY__WHAT_CLAUSE = 2;
+	int SELECT_QUERY__WHAT_CLAUSE = 1;
+
+	/**
+	 * The feature id for the '<em><b>From Clause</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELECT_QUERY__FROM_CLAUSE = 2;
 
 	/**
 	 * The number of structural features of the '<em>Select Query</em>' class.
@@ -409,10 +409,10 @@ public interface QueryPackage extends EPackage {
 	EClass getSelectQuery();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.mdse.minisql.query.SelectQuery#getFromClause <em>From Clause</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.mdse.minisql.query.SelectQuery#getFromClause <em>From Clause</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>From Clause</em>'.
+	 * @return the meta object for the containment reference '<em>From Clause</em>'.
 	 * @see org.mdse.minisql.query.SelectQuery#getFromClause()
 	 * @see #getSelectQuery()
 	 * @generated
@@ -431,10 +431,10 @@ public interface QueryPackage extends EPackage {
 	EReference getSelectQuery_OrderByClause();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.mdse.minisql.query.SelectQuery#getWhatClause <em>What Clause</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.mdse.minisql.query.SelectQuery#getWhatClause <em>What Clause</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>What Clause</em>'.
+	 * @return the meta object for the containment reference list '<em>What Clause</em>'.
 	 * @see org.mdse.minisql.query.SelectQuery#getWhatClause()
 	 * @see #getSelectQuery()
 	 * @generated
@@ -632,7 +632,7 @@ public interface QueryPackage extends EPackage {
 		EClass SELECT_QUERY = eINSTANCE.getSelectQuery();
 
 		/**
-		 * The meta object literal for the '<em><b>From Clause</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>From Clause</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -648,7 +648,7 @@ public interface QueryPackage extends EPackage {
 		EReference SELECT_QUERY__ORDER_BY_CLAUSE = eINSTANCE.getSelectQuery_OrderByClause();
 
 		/**
-		 * The meta object literal for the '<em><b>What Clause</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>What Clause</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

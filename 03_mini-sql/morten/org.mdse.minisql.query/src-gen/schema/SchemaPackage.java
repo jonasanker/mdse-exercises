@@ -5,6 +5,7 @@ package schema;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -112,13 +113,22 @@ public interface SchemaPackage extends EPackage {
 	int TABLE__NAME = NAMED_ELEMENT__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Column</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE__COLUMN = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Table</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TABLE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int TABLE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Table</em>' class.
@@ -175,6 +185,17 @@ public interface SchemaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getTable();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link schema.Table#getColumn <em>Column</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Column</em>'.
+	 * @see schema.Table#getColumn()
+	 * @see #getTable()
+	 * @generated
+	 */
+	EReference getTable_Column();
 
 	/**
 	 * Returns the meta object for class '{@link schema.Column <em>Column</em>}'.
@@ -239,6 +260,14 @@ public interface SchemaPackage extends EPackage {
 		 * @generated
 		 */
 		EClass TABLE = eINSTANCE.getTable();
+
+		/**
+		 * The meta object literal for the '<em><b>Column</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TABLE__COLUMN = eINSTANCE.getTable_Column();
 
 		/**
 		 * The meta object literal for the '{@link schema.impl.ColumnImpl <em>Column</em>}' class.

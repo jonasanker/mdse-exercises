@@ -14,9 +14,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.mdse.minisql.query.SelectQuery#getFromClause <em>From Clause</em>}</li>
  *   <li>{@link org.mdse.minisql.query.SelectQuery#getOrderByClause <em>Order By Clause</em>}</li>
  *   <li>{@link org.mdse.minisql.query.SelectQuery#getWhatClause <em>What Clause</em>}</li>
+ *   <li>{@link org.mdse.minisql.query.SelectQuery#getFromClause <em>From Clause</em>}</li>
  * </ul>
  *
  * @see org.mdse.minisql.query.QueryPackage#getSelectQuery()
@@ -25,22 +25,22 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface SelectQuery extends EObject {
 	/**
-	 * Returns the value of the '<em><b>From Clause</b></em>' reference.
+	 * Returns the value of the '<em><b>From Clause</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>From Clause</em>' reference.
+	 * @return the value of the '<em>From Clause</em>' containment reference.
 	 * @see #setFromClause(FromClause)
 	 * @see org.mdse.minisql.query.QueryPackage#getSelectQuery_FromClause()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	FromClause getFromClause();
 
 	/**
-	 * Sets the value of the '{@link org.mdse.minisql.query.SelectQuery#getFromClause <em>From Clause</em>}' reference.
+	 * Sets the value of the '{@link org.mdse.minisql.query.SelectQuery#getFromClause <em>From Clause</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>From Clause</em>' reference.
+	 * @param value the new value of the '<em>From Clause</em>' containment reference.
 	 * @see #getFromClause()
 	 * @generated
 	 */
@@ -69,13 +69,13 @@ public interface SelectQuery extends EObject {
 	void setOrderByClause(OrderByClause value);
 
 	/**
-	 * Returns the value of the '<em><b>What Clause</b></em>' reference list.
+	 * Returns the value of the '<em><b>What Clause</b></em>' containment reference list.
 	 * The list contents are of type {@link org.mdse.minisql.query.WhatClause}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>What Clause</em>' reference list.
+	 * @return the value of the '<em>What Clause</em>' containment reference list.
 	 * @see org.mdse.minisql.query.QueryPackage#getSelectQuery_WhatClause()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	EList<WhatClause> getWhatClause();

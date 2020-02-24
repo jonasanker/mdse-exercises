@@ -177,7 +177,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 */
 	@Override
 	public EReference getSelectQuery_FromClause() {
-		return (EReference) selectQueryEClass.getEStructuralFeatures().get(0);
+		return (EReference) selectQueryEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -187,7 +187,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 */
 	@Override
 	public EReference getSelectQuery_OrderByClause() {
-		return (EReference) selectQueryEClass.getEStructuralFeatures().get(1);
+		return (EReference) selectQueryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -197,7 +197,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 */
 	@Override
 	public EReference getSelectQuery_WhatClause() {
-		return (EReference) selectQueryEClass.getEStructuralFeatures().get(2);
+		return (EReference) selectQueryEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -381,9 +381,9 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 
 		// Create classes and their features
 		selectQueryEClass = createEClass(SELECT_QUERY);
-		createEReference(selectQueryEClass, SELECT_QUERY__FROM_CLAUSE);
 		createEReference(selectQueryEClass, SELECT_QUERY__ORDER_BY_CLAUSE);
 		createEReference(selectQueryEClass, SELECT_QUERY__WHAT_CLAUSE);
+		createEReference(selectQueryEClass, SELECT_QUERY__FROM_CLAUSE);
 
 		orderByClauseEClass = createEClass(ORDER_BY_CLAUSE);
 		createEReference(orderByClauseEClass, ORDER_BY_CLAUSE__ORDER_BY_DIRECTIVE);
@@ -447,14 +447,14 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		// Initialize classes, features, and operations; add parameters
 		initEClass(selectQueryEClass, SelectQuery.class, "SelectQuery", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSelectQuery_FromClause(), this.getFromClause(), null, "fromClause", null, 1, 1,
-				SelectQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSelectQuery_OrderByClause(), this.getOrderByClause(), null, "orderByClause", null, 0, 1,
 				SelectQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSelectQuery_WhatClause(), this.getWhatClause(), null, "whatClause", null, 1, -1,
-				SelectQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				SelectQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSelectQuery_FromClause(), this.getFromClause(), null, "fromClause", null, 1, 1,
+				SelectQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(orderByClauseEClass, OrderByClause.class, "OrderByClause", !IS_ABSTRACT, !IS_INTERFACE,

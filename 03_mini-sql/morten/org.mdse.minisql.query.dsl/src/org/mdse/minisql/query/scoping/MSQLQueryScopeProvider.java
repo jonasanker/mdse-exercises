@@ -4,9 +4,7 @@
 package org.mdse.minisql.query.scoping;
 
 import java.util.List;
-import java.util.PrimitiveIterator.OfDouble;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -15,8 +13,9 @@ import org.eclipse.xtext.scoping.Scopes;
 import org.mdse.minisql.query.ColumnReference;
 import org.mdse.minisql.query.FromClause;
 import org.mdse.minisql.query.SelectQuery;
-import org.mdse.minisql.schema.Table;
-import org.mdse.minisql.schema.Column;
+
+import schema.Column;
+import schema.Table;
 
 /**
  * This class contains custom scoping description.
@@ -48,9 +47,9 @@ public class MSQLQueryScopeProvider extends AbstractMSQLQueryScopeProvider {
 			SelectQuery selectQuery = (SelectQuery) rootModelElement;
 			FromClause fromClause = selectQuery.getFromClause();
 			
-			schema.Table table = fromClause.getTable();
-			List<Column> columns = ((Table)table).getColumn();
-
+			Table table = fromClause.getTable();
+			List<Column> columns = table.getColumn();
+			
 			return Scopes.scopeFor(columns);
 		}
 
