@@ -17,7 +17,7 @@ import org.eclipse.xtext.ide.refactoring.IRenameStrategy2;
 import org.eclipse.xtext.ide.server.rename.IRenameService2;
 import org.eclipse.xtext.ide.server.rename.RenameService2;
 import org.mdse.minisql.query.ide.contentassist.antlr.MSQLQueryParser;
-import org.mdse.minisql.query.ide.contentassist.antlr.internal.InternalMSQLQueryLexer;
+import org.mdse.minisql.query.ide.contentassist.antlr.lexer.InternalMSQLQueryLexer;
 
 /**
  * Manual modifications go to {@link MSQLQueryIdeModule}.

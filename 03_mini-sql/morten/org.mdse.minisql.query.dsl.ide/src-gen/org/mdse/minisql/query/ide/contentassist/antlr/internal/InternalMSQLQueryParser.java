@@ -1,4 +1,6 @@
 package org.mdse.minisql.query.ide.contentassist.antlr.internal;
+import java.util.Map;
+import java.util.HashMap;
 
 import java.io.InputStream;
 import org.eclipse.xtext.*;
@@ -22,19 +24,19 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'SELECT'", "'FROM'", "';'", "','"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "SELECT", "FROM", "Comma", "Semicolon", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER"
     };
-    public static final int RULE_ID=4;
-    public static final int RULE_WS=9;
-    public static final int RULE_STRING=6;
-    public static final int RULE_ANY_OTHER=10;
-    public static final int RULE_SL_COMMENT=8;
-    public static final int RULE_INT=5;
-    public static final int T__11=11;
-    public static final int RULE_ML_COMMENT=7;
-    public static final int T__12=12;
-    public static final int T__13=13;
-    public static final int T__14=14;
+    public static final int RULE_ID=8;
+    public static final int RULE_WS=13;
+    public static final int RULE_STRING=10;
+    public static final int FROM=5;
+    public static final int RULE_ANY_OTHER=14;
+    public static final int SELECT=4;
+    public static final int RULE_SL_COMMENT=12;
+    public static final int Semicolon=7;
+    public static final int Comma=6;
+    public static final int RULE_INT=9;
+    public static final int RULE_ML_COMMENT=11;
     public static final int EOF=-1;
 
     // delegates
@@ -51,10 +53,18 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
         
 
     public String[] getTokenNames() { return InternalMSQLQueryParser.tokenNames; }
-    public String getGrammarFileName() { return "InternalMSQLQuery.g"; }
+    public String getGrammarFileName() { return "InternalMSQLQueryParser.g"; }
 
 
     	private MSQLQueryGrammarAccess grammarAccess;
+    	private final Map<String, String> tokenNameToValue = new HashMap<String, String>();
+    	
+    	{
+    		tokenNameToValue.put("Comma", "','");
+    		tokenNameToValue.put("Semicolon", "';'");
+    		tokenNameToValue.put("FROM", "'FROM'");
+    		tokenNameToValue.put("SELECT", "'SELECT'");
+    	}
 
     	public void setGrammarAccess(MSQLQueryGrammarAccess grammarAccess) {
     		this.grammarAccess = grammarAccess;
@@ -67,17 +77,20 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
     	@Override
     	protected String getValueForTokenName(String tokenName) {
-    		return tokenName;
+    		String result = tokenNameToValue.get(tokenName);
+    		if (result == null)
+    			result = tokenName;
+    		return result;
     	}
 
 
 
     // $ANTLR start "entryRuleSelectQuery"
-    // InternalMSQLQuery.g:53:1: entryRuleSelectQuery : ruleSelectQuery EOF ;
+    // InternalMSQLQueryParser.g:59:1: entryRuleSelectQuery : ruleSelectQuery EOF ;
     public final void entryRuleSelectQuery() throws RecognitionException {
         try {
-            // InternalMSQLQuery.g:54:1: ( ruleSelectQuery EOF )
-            // InternalMSQLQuery.g:55:1: ruleSelectQuery EOF
+            // InternalMSQLQueryParser.g:60:1: ( ruleSelectQuery EOF )
+            // InternalMSQLQueryParser.g:61:1: ruleSelectQuery EOF
             {
              before(grammarAccess.getSelectQueryRule()); 
             pushFollow(FOLLOW_1);
@@ -103,21 +116,21 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "ruleSelectQuery"
-    // InternalMSQLQuery.g:62:1: ruleSelectQuery : ( ( rule__SelectQuery__Group__0 ) ) ;
+    // InternalMSQLQueryParser.g:68:1: ruleSelectQuery : ( ( rule__SelectQuery__Group__0 ) ) ;
     public final void ruleSelectQuery() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQuery.g:66:2: ( ( ( rule__SelectQuery__Group__0 ) ) )
-            // InternalMSQLQuery.g:67:2: ( ( rule__SelectQuery__Group__0 ) )
+            // InternalMSQLQueryParser.g:72:2: ( ( ( rule__SelectQuery__Group__0 ) ) )
+            // InternalMSQLQueryParser.g:73:2: ( ( rule__SelectQuery__Group__0 ) )
             {
-            // InternalMSQLQuery.g:67:2: ( ( rule__SelectQuery__Group__0 ) )
-            // InternalMSQLQuery.g:68:3: ( rule__SelectQuery__Group__0 )
+            // InternalMSQLQueryParser.g:73:2: ( ( rule__SelectQuery__Group__0 ) )
+            // InternalMSQLQueryParser.g:74:3: ( rule__SelectQuery__Group__0 )
             {
              before(grammarAccess.getSelectQueryAccess().getGroup()); 
-            // InternalMSQLQuery.g:69:3: ( rule__SelectQuery__Group__0 )
-            // InternalMSQLQuery.g:69:4: rule__SelectQuery__Group__0
+            // InternalMSQLQueryParser.g:75:3: ( rule__SelectQuery__Group__0 )
+            // InternalMSQLQueryParser.g:75:4: rule__SelectQuery__Group__0
             {
             pushFollow(FOLLOW_2);
             rule__SelectQuery__Group__0();
@@ -150,14 +163,14 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__Group__0"
-    // InternalMSQLQuery.g:77:1: rule__SelectQuery__Group__0 : rule__SelectQuery__Group__0__Impl rule__SelectQuery__Group__1 ;
+    // InternalMSQLQueryParser.g:83:1: rule__SelectQuery__Group__0 : rule__SelectQuery__Group__0__Impl rule__SelectQuery__Group__1 ;
     public final void rule__SelectQuery__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQuery.g:81:1: ( rule__SelectQuery__Group__0__Impl rule__SelectQuery__Group__1 )
-            // InternalMSQLQuery.g:82:2: rule__SelectQuery__Group__0__Impl rule__SelectQuery__Group__1
+            // InternalMSQLQueryParser.g:87:1: ( rule__SelectQuery__Group__0__Impl rule__SelectQuery__Group__1 )
+            // InternalMSQLQueryParser.g:88:2: rule__SelectQuery__Group__0__Impl rule__SelectQuery__Group__1
             {
             pushFollow(FOLLOW_3);
             rule__SelectQuery__Group__0__Impl();
@@ -188,20 +201,20 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__Group__0__Impl"
-    // InternalMSQLQuery.g:89:1: rule__SelectQuery__Group__0__Impl : ( 'SELECT' ) ;
+    // InternalMSQLQueryParser.g:95:1: rule__SelectQuery__Group__0__Impl : ( SELECT ) ;
     public final void rule__SelectQuery__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQuery.g:93:1: ( ( 'SELECT' ) )
-            // InternalMSQLQuery.g:94:1: ( 'SELECT' )
+            // InternalMSQLQueryParser.g:99:1: ( ( SELECT ) )
+            // InternalMSQLQueryParser.g:100:1: ( SELECT )
             {
-            // InternalMSQLQuery.g:94:1: ( 'SELECT' )
-            // InternalMSQLQuery.g:95:2: 'SELECT'
+            // InternalMSQLQueryParser.g:100:1: ( SELECT )
+            // InternalMSQLQueryParser.g:101:2: SELECT
             {
              before(grammarAccess.getSelectQueryAccess().getSELECTKeyword_0()); 
-            match(input,11,FOLLOW_2); 
+            match(input,SELECT,FOLLOW_2); 
              after(grammarAccess.getSelectQueryAccess().getSELECTKeyword_0()); 
 
             }
@@ -225,14 +238,14 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__Group__1"
-    // InternalMSQLQuery.g:104:1: rule__SelectQuery__Group__1 : rule__SelectQuery__Group__1__Impl rule__SelectQuery__Group__2 ;
+    // InternalMSQLQueryParser.g:110:1: rule__SelectQuery__Group__1 : rule__SelectQuery__Group__1__Impl rule__SelectQuery__Group__2 ;
     public final void rule__SelectQuery__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQuery.g:108:1: ( rule__SelectQuery__Group__1__Impl rule__SelectQuery__Group__2 )
-            // InternalMSQLQuery.g:109:2: rule__SelectQuery__Group__1__Impl rule__SelectQuery__Group__2
+            // InternalMSQLQueryParser.g:114:1: ( rule__SelectQuery__Group__1__Impl rule__SelectQuery__Group__2 )
+            // InternalMSQLQueryParser.g:115:2: rule__SelectQuery__Group__1__Impl rule__SelectQuery__Group__2
             {
             pushFollow(FOLLOW_4);
             rule__SelectQuery__Group__1__Impl();
@@ -263,21 +276,21 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__Group__1__Impl"
-    // InternalMSQLQuery.g:116:1: rule__SelectQuery__Group__1__Impl : ( ( rule__SelectQuery__WhatAssignment_1 ) ) ;
+    // InternalMSQLQueryParser.g:122:1: rule__SelectQuery__Group__1__Impl : ( ( rule__SelectQuery__WhatAssignment_1 ) ) ;
     public final void rule__SelectQuery__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQuery.g:120:1: ( ( ( rule__SelectQuery__WhatAssignment_1 ) ) )
-            // InternalMSQLQuery.g:121:1: ( ( rule__SelectQuery__WhatAssignment_1 ) )
+            // InternalMSQLQueryParser.g:126:1: ( ( ( rule__SelectQuery__WhatAssignment_1 ) ) )
+            // InternalMSQLQueryParser.g:127:1: ( ( rule__SelectQuery__WhatAssignment_1 ) )
             {
-            // InternalMSQLQuery.g:121:1: ( ( rule__SelectQuery__WhatAssignment_1 ) )
-            // InternalMSQLQuery.g:122:2: ( rule__SelectQuery__WhatAssignment_1 )
+            // InternalMSQLQueryParser.g:127:1: ( ( rule__SelectQuery__WhatAssignment_1 ) )
+            // InternalMSQLQueryParser.g:128:2: ( rule__SelectQuery__WhatAssignment_1 )
             {
              before(grammarAccess.getSelectQueryAccess().getWhatAssignment_1()); 
-            // InternalMSQLQuery.g:123:2: ( rule__SelectQuery__WhatAssignment_1 )
-            // InternalMSQLQuery.g:123:3: rule__SelectQuery__WhatAssignment_1
+            // InternalMSQLQueryParser.g:129:2: ( rule__SelectQuery__WhatAssignment_1 )
+            // InternalMSQLQueryParser.g:129:3: rule__SelectQuery__WhatAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__SelectQuery__WhatAssignment_1();
@@ -310,14 +323,14 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__Group__2"
-    // InternalMSQLQuery.g:131:1: rule__SelectQuery__Group__2 : rule__SelectQuery__Group__2__Impl rule__SelectQuery__Group__3 ;
+    // InternalMSQLQueryParser.g:137:1: rule__SelectQuery__Group__2 : rule__SelectQuery__Group__2__Impl rule__SelectQuery__Group__3 ;
     public final void rule__SelectQuery__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQuery.g:135:1: ( rule__SelectQuery__Group__2__Impl rule__SelectQuery__Group__3 )
-            // InternalMSQLQuery.g:136:2: rule__SelectQuery__Group__2__Impl rule__SelectQuery__Group__3
+            // InternalMSQLQueryParser.g:141:1: ( rule__SelectQuery__Group__2__Impl rule__SelectQuery__Group__3 )
+            // InternalMSQLQueryParser.g:142:2: rule__SelectQuery__Group__2__Impl rule__SelectQuery__Group__3
             {
             pushFollow(FOLLOW_4);
             rule__SelectQuery__Group__2__Impl();
@@ -348,33 +361,33 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__Group__2__Impl"
-    // InternalMSQLQuery.g:143:1: rule__SelectQuery__Group__2__Impl : ( ( rule__SelectQuery__Group_2__0 )* ) ;
+    // InternalMSQLQueryParser.g:149:1: rule__SelectQuery__Group__2__Impl : ( ( rule__SelectQuery__Group_2__0 )* ) ;
     public final void rule__SelectQuery__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQuery.g:147:1: ( ( ( rule__SelectQuery__Group_2__0 )* ) )
-            // InternalMSQLQuery.g:148:1: ( ( rule__SelectQuery__Group_2__0 )* )
+            // InternalMSQLQueryParser.g:153:1: ( ( ( rule__SelectQuery__Group_2__0 )* ) )
+            // InternalMSQLQueryParser.g:154:1: ( ( rule__SelectQuery__Group_2__0 )* )
             {
-            // InternalMSQLQuery.g:148:1: ( ( rule__SelectQuery__Group_2__0 )* )
-            // InternalMSQLQuery.g:149:2: ( rule__SelectQuery__Group_2__0 )*
+            // InternalMSQLQueryParser.g:154:1: ( ( rule__SelectQuery__Group_2__0 )* )
+            // InternalMSQLQueryParser.g:155:2: ( rule__SelectQuery__Group_2__0 )*
             {
              before(grammarAccess.getSelectQueryAccess().getGroup_2()); 
-            // InternalMSQLQuery.g:150:2: ( rule__SelectQuery__Group_2__0 )*
+            // InternalMSQLQueryParser.g:156:2: ( rule__SelectQuery__Group_2__0 )*
             loop1:
             do {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==14) ) {
+                if ( (LA1_0==Comma) ) {
                     alt1=1;
                 }
 
 
                 switch (alt1) {
             	case 1 :
-            	    // InternalMSQLQuery.g:150:3: rule__SelectQuery__Group_2__0
+            	    // InternalMSQLQueryParser.g:156:3: rule__SelectQuery__Group_2__0
             	    {
             	    pushFollow(FOLLOW_5);
             	    rule__SelectQuery__Group_2__0();
@@ -413,14 +426,14 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__Group__3"
-    // InternalMSQLQuery.g:158:1: rule__SelectQuery__Group__3 : rule__SelectQuery__Group__3__Impl rule__SelectQuery__Group__4 ;
+    // InternalMSQLQueryParser.g:164:1: rule__SelectQuery__Group__3 : rule__SelectQuery__Group__3__Impl rule__SelectQuery__Group__4 ;
     public final void rule__SelectQuery__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQuery.g:162:1: ( rule__SelectQuery__Group__3__Impl rule__SelectQuery__Group__4 )
-            // InternalMSQLQuery.g:163:2: rule__SelectQuery__Group__3__Impl rule__SelectQuery__Group__4
+            // InternalMSQLQueryParser.g:168:1: ( rule__SelectQuery__Group__3__Impl rule__SelectQuery__Group__4 )
+            // InternalMSQLQueryParser.g:169:2: rule__SelectQuery__Group__3__Impl rule__SelectQuery__Group__4
             {
             pushFollow(FOLLOW_3);
             rule__SelectQuery__Group__3__Impl();
@@ -451,20 +464,20 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__Group__3__Impl"
-    // InternalMSQLQuery.g:170:1: rule__SelectQuery__Group__3__Impl : ( 'FROM' ) ;
+    // InternalMSQLQueryParser.g:176:1: rule__SelectQuery__Group__3__Impl : ( FROM ) ;
     public final void rule__SelectQuery__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQuery.g:174:1: ( ( 'FROM' ) )
-            // InternalMSQLQuery.g:175:1: ( 'FROM' )
+            // InternalMSQLQueryParser.g:180:1: ( ( FROM ) )
+            // InternalMSQLQueryParser.g:181:1: ( FROM )
             {
-            // InternalMSQLQuery.g:175:1: ( 'FROM' )
-            // InternalMSQLQuery.g:176:2: 'FROM'
+            // InternalMSQLQueryParser.g:181:1: ( FROM )
+            // InternalMSQLQueryParser.g:182:2: FROM
             {
              before(grammarAccess.getSelectQueryAccess().getFROMKeyword_3()); 
-            match(input,12,FOLLOW_2); 
+            match(input,FROM,FOLLOW_2); 
              after(grammarAccess.getSelectQueryAccess().getFROMKeyword_3()); 
 
             }
@@ -488,14 +501,14 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__Group__4"
-    // InternalMSQLQuery.g:185:1: rule__SelectQuery__Group__4 : rule__SelectQuery__Group__4__Impl rule__SelectQuery__Group__5 ;
+    // InternalMSQLQueryParser.g:191:1: rule__SelectQuery__Group__4 : rule__SelectQuery__Group__4__Impl rule__SelectQuery__Group__5 ;
     public final void rule__SelectQuery__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQuery.g:189:1: ( rule__SelectQuery__Group__4__Impl rule__SelectQuery__Group__5 )
-            // InternalMSQLQuery.g:190:2: rule__SelectQuery__Group__4__Impl rule__SelectQuery__Group__5
+            // InternalMSQLQueryParser.g:195:1: ( rule__SelectQuery__Group__4__Impl rule__SelectQuery__Group__5 )
+            // InternalMSQLQueryParser.g:196:2: rule__SelectQuery__Group__4__Impl rule__SelectQuery__Group__5
             {
             pushFollow(FOLLOW_6);
             rule__SelectQuery__Group__4__Impl();
@@ -526,21 +539,21 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__Group__4__Impl"
-    // InternalMSQLQuery.g:197:1: rule__SelectQuery__Group__4__Impl : ( ( rule__SelectQuery__FromAssignment_4 ) ) ;
+    // InternalMSQLQueryParser.g:203:1: rule__SelectQuery__Group__4__Impl : ( ( rule__SelectQuery__FromAssignment_4 ) ) ;
     public final void rule__SelectQuery__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQuery.g:201:1: ( ( ( rule__SelectQuery__FromAssignment_4 ) ) )
-            // InternalMSQLQuery.g:202:1: ( ( rule__SelectQuery__FromAssignment_4 ) )
+            // InternalMSQLQueryParser.g:207:1: ( ( ( rule__SelectQuery__FromAssignment_4 ) ) )
+            // InternalMSQLQueryParser.g:208:1: ( ( rule__SelectQuery__FromAssignment_4 ) )
             {
-            // InternalMSQLQuery.g:202:1: ( ( rule__SelectQuery__FromAssignment_4 ) )
-            // InternalMSQLQuery.g:203:2: ( rule__SelectQuery__FromAssignment_4 )
+            // InternalMSQLQueryParser.g:208:1: ( ( rule__SelectQuery__FromAssignment_4 ) )
+            // InternalMSQLQueryParser.g:209:2: ( rule__SelectQuery__FromAssignment_4 )
             {
              before(grammarAccess.getSelectQueryAccess().getFromAssignment_4()); 
-            // InternalMSQLQuery.g:204:2: ( rule__SelectQuery__FromAssignment_4 )
-            // InternalMSQLQuery.g:204:3: rule__SelectQuery__FromAssignment_4
+            // InternalMSQLQueryParser.g:210:2: ( rule__SelectQuery__FromAssignment_4 )
+            // InternalMSQLQueryParser.g:210:3: rule__SelectQuery__FromAssignment_4
             {
             pushFollow(FOLLOW_2);
             rule__SelectQuery__FromAssignment_4();
@@ -573,14 +586,14 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__Group__5"
-    // InternalMSQLQuery.g:212:1: rule__SelectQuery__Group__5 : rule__SelectQuery__Group__5__Impl ;
+    // InternalMSQLQueryParser.g:218:1: rule__SelectQuery__Group__5 : rule__SelectQuery__Group__5__Impl ;
     public final void rule__SelectQuery__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQuery.g:216:1: ( rule__SelectQuery__Group__5__Impl )
-            // InternalMSQLQuery.g:217:2: rule__SelectQuery__Group__5__Impl
+            // InternalMSQLQueryParser.g:222:1: ( rule__SelectQuery__Group__5__Impl )
+            // InternalMSQLQueryParser.g:223:2: rule__SelectQuery__Group__5__Impl
             {
             pushFollow(FOLLOW_2);
             rule__SelectQuery__Group__5__Impl();
@@ -606,20 +619,20 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__Group__5__Impl"
-    // InternalMSQLQuery.g:223:1: rule__SelectQuery__Group__5__Impl : ( ';' ) ;
+    // InternalMSQLQueryParser.g:229:1: rule__SelectQuery__Group__5__Impl : ( Semicolon ) ;
     public final void rule__SelectQuery__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQuery.g:227:1: ( ( ';' ) )
-            // InternalMSQLQuery.g:228:1: ( ';' )
+            // InternalMSQLQueryParser.g:233:1: ( ( Semicolon ) )
+            // InternalMSQLQueryParser.g:234:1: ( Semicolon )
             {
-            // InternalMSQLQuery.g:228:1: ( ';' )
-            // InternalMSQLQuery.g:229:2: ';'
+            // InternalMSQLQueryParser.g:234:1: ( Semicolon )
+            // InternalMSQLQueryParser.g:235:2: Semicolon
             {
              before(grammarAccess.getSelectQueryAccess().getSemicolonKeyword_5()); 
-            match(input,13,FOLLOW_2); 
+            match(input,Semicolon,FOLLOW_2); 
              after(grammarAccess.getSelectQueryAccess().getSemicolonKeyword_5()); 
 
             }
@@ -643,14 +656,14 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__Group_2__0"
-    // InternalMSQLQuery.g:239:1: rule__SelectQuery__Group_2__0 : rule__SelectQuery__Group_2__0__Impl rule__SelectQuery__Group_2__1 ;
+    // InternalMSQLQueryParser.g:245:1: rule__SelectQuery__Group_2__0 : rule__SelectQuery__Group_2__0__Impl rule__SelectQuery__Group_2__1 ;
     public final void rule__SelectQuery__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQuery.g:243:1: ( rule__SelectQuery__Group_2__0__Impl rule__SelectQuery__Group_2__1 )
-            // InternalMSQLQuery.g:244:2: rule__SelectQuery__Group_2__0__Impl rule__SelectQuery__Group_2__1
+            // InternalMSQLQueryParser.g:249:1: ( rule__SelectQuery__Group_2__0__Impl rule__SelectQuery__Group_2__1 )
+            // InternalMSQLQueryParser.g:250:2: rule__SelectQuery__Group_2__0__Impl rule__SelectQuery__Group_2__1
             {
             pushFollow(FOLLOW_3);
             rule__SelectQuery__Group_2__0__Impl();
@@ -681,20 +694,20 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__Group_2__0__Impl"
-    // InternalMSQLQuery.g:251:1: rule__SelectQuery__Group_2__0__Impl : ( ',' ) ;
+    // InternalMSQLQueryParser.g:257:1: rule__SelectQuery__Group_2__0__Impl : ( Comma ) ;
     public final void rule__SelectQuery__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQuery.g:255:1: ( ( ',' ) )
-            // InternalMSQLQuery.g:256:1: ( ',' )
+            // InternalMSQLQueryParser.g:261:1: ( ( Comma ) )
+            // InternalMSQLQueryParser.g:262:1: ( Comma )
             {
-            // InternalMSQLQuery.g:256:1: ( ',' )
-            // InternalMSQLQuery.g:257:2: ','
+            // InternalMSQLQueryParser.g:262:1: ( Comma )
+            // InternalMSQLQueryParser.g:263:2: Comma
             {
              before(grammarAccess.getSelectQueryAccess().getCommaKeyword_2_0()); 
-            match(input,14,FOLLOW_2); 
+            match(input,Comma,FOLLOW_2); 
              after(grammarAccess.getSelectQueryAccess().getCommaKeyword_2_0()); 
 
             }
@@ -718,14 +731,14 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__Group_2__1"
-    // InternalMSQLQuery.g:266:1: rule__SelectQuery__Group_2__1 : rule__SelectQuery__Group_2__1__Impl ;
+    // InternalMSQLQueryParser.g:272:1: rule__SelectQuery__Group_2__1 : rule__SelectQuery__Group_2__1__Impl ;
     public final void rule__SelectQuery__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQuery.g:270:1: ( rule__SelectQuery__Group_2__1__Impl )
-            // InternalMSQLQuery.g:271:2: rule__SelectQuery__Group_2__1__Impl
+            // InternalMSQLQueryParser.g:276:1: ( rule__SelectQuery__Group_2__1__Impl )
+            // InternalMSQLQueryParser.g:277:2: rule__SelectQuery__Group_2__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__SelectQuery__Group_2__1__Impl();
@@ -751,21 +764,21 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__Group_2__1__Impl"
-    // InternalMSQLQuery.g:277:1: rule__SelectQuery__Group_2__1__Impl : ( ( rule__SelectQuery__WhatAssignment_2_1 ) ) ;
+    // InternalMSQLQueryParser.g:283:1: rule__SelectQuery__Group_2__1__Impl : ( ( rule__SelectQuery__WhatAssignment_2_1 ) ) ;
     public final void rule__SelectQuery__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQuery.g:281:1: ( ( ( rule__SelectQuery__WhatAssignment_2_1 ) ) )
-            // InternalMSQLQuery.g:282:1: ( ( rule__SelectQuery__WhatAssignment_2_1 ) )
+            // InternalMSQLQueryParser.g:287:1: ( ( ( rule__SelectQuery__WhatAssignment_2_1 ) ) )
+            // InternalMSQLQueryParser.g:288:1: ( ( rule__SelectQuery__WhatAssignment_2_1 ) )
             {
-            // InternalMSQLQuery.g:282:1: ( ( rule__SelectQuery__WhatAssignment_2_1 ) )
-            // InternalMSQLQuery.g:283:2: ( rule__SelectQuery__WhatAssignment_2_1 )
+            // InternalMSQLQueryParser.g:288:1: ( ( rule__SelectQuery__WhatAssignment_2_1 ) )
+            // InternalMSQLQueryParser.g:289:2: ( rule__SelectQuery__WhatAssignment_2_1 )
             {
              before(grammarAccess.getSelectQueryAccess().getWhatAssignment_2_1()); 
-            // InternalMSQLQuery.g:284:2: ( rule__SelectQuery__WhatAssignment_2_1 )
-            // InternalMSQLQuery.g:284:3: rule__SelectQuery__WhatAssignment_2_1
+            // InternalMSQLQueryParser.g:290:2: ( rule__SelectQuery__WhatAssignment_2_1 )
+            // InternalMSQLQueryParser.g:290:3: rule__SelectQuery__WhatAssignment_2_1
             {
             pushFollow(FOLLOW_2);
             rule__SelectQuery__WhatAssignment_2_1();
@@ -798,21 +811,21 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__WhatAssignment_1"
-    // InternalMSQLQuery.g:293:1: rule__SelectQuery__WhatAssignment_1 : ( ( RULE_ID ) ) ;
+    // InternalMSQLQueryParser.g:299:1: rule__SelectQuery__WhatAssignment_1 : ( ( RULE_ID ) ) ;
     public final void rule__SelectQuery__WhatAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQuery.g:297:1: ( ( ( RULE_ID ) ) )
-            // InternalMSQLQuery.g:298:2: ( ( RULE_ID ) )
+            // InternalMSQLQueryParser.g:303:1: ( ( ( RULE_ID ) ) )
+            // InternalMSQLQueryParser.g:304:2: ( ( RULE_ID ) )
             {
-            // InternalMSQLQuery.g:298:2: ( ( RULE_ID ) )
-            // InternalMSQLQuery.g:299:3: ( RULE_ID )
+            // InternalMSQLQueryParser.g:304:2: ( ( RULE_ID ) )
+            // InternalMSQLQueryParser.g:305:3: ( RULE_ID )
             {
              before(grammarAccess.getSelectQueryAccess().getWhatColumnCrossReference_1_0()); 
-            // InternalMSQLQuery.g:300:3: ( RULE_ID )
-            // InternalMSQLQuery.g:301:4: RULE_ID
+            // InternalMSQLQueryParser.g:306:3: ( RULE_ID )
+            // InternalMSQLQueryParser.g:307:4: RULE_ID
             {
              before(grammarAccess.getSelectQueryAccess().getWhatColumnIDTerminalRuleCall_1_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -843,21 +856,21 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__WhatAssignment_2_1"
-    // InternalMSQLQuery.g:312:1: rule__SelectQuery__WhatAssignment_2_1 : ( ( RULE_ID ) ) ;
+    // InternalMSQLQueryParser.g:318:1: rule__SelectQuery__WhatAssignment_2_1 : ( ( RULE_ID ) ) ;
     public final void rule__SelectQuery__WhatAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQuery.g:316:1: ( ( ( RULE_ID ) ) )
-            // InternalMSQLQuery.g:317:2: ( ( RULE_ID ) )
+            // InternalMSQLQueryParser.g:322:1: ( ( ( RULE_ID ) ) )
+            // InternalMSQLQueryParser.g:323:2: ( ( RULE_ID ) )
             {
-            // InternalMSQLQuery.g:317:2: ( ( RULE_ID ) )
-            // InternalMSQLQuery.g:318:3: ( RULE_ID )
+            // InternalMSQLQueryParser.g:323:2: ( ( RULE_ID ) )
+            // InternalMSQLQueryParser.g:324:3: ( RULE_ID )
             {
              before(grammarAccess.getSelectQueryAccess().getWhatColumnCrossReference_2_1_0()); 
-            // InternalMSQLQuery.g:319:3: ( RULE_ID )
-            // InternalMSQLQuery.g:320:4: RULE_ID
+            // InternalMSQLQueryParser.g:325:3: ( RULE_ID )
+            // InternalMSQLQueryParser.g:326:4: RULE_ID
             {
              before(grammarAccess.getSelectQueryAccess().getWhatColumnIDTerminalRuleCall_2_1_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -888,21 +901,21 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__FromAssignment_4"
-    // InternalMSQLQuery.g:331:1: rule__SelectQuery__FromAssignment_4 : ( ( RULE_ID ) ) ;
+    // InternalMSQLQueryParser.g:337:1: rule__SelectQuery__FromAssignment_4 : ( ( RULE_ID ) ) ;
     public final void rule__SelectQuery__FromAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQuery.g:335:1: ( ( ( RULE_ID ) ) )
-            // InternalMSQLQuery.g:336:2: ( ( RULE_ID ) )
+            // InternalMSQLQueryParser.g:341:1: ( ( ( RULE_ID ) ) )
+            // InternalMSQLQueryParser.g:342:2: ( ( RULE_ID ) )
             {
-            // InternalMSQLQuery.g:336:2: ( ( RULE_ID ) )
-            // InternalMSQLQuery.g:337:3: ( RULE_ID )
+            // InternalMSQLQueryParser.g:342:2: ( ( RULE_ID ) )
+            // InternalMSQLQueryParser.g:343:3: ( RULE_ID )
             {
              before(grammarAccess.getSelectQueryAccess().getFromTableCrossReference_4_0()); 
-            // InternalMSQLQuery.g:338:3: ( RULE_ID )
-            // InternalMSQLQuery.g:339:4: RULE_ID
+            // InternalMSQLQueryParser.g:344:3: ( RULE_ID )
+            // InternalMSQLQueryParser.g:345:4: RULE_ID
             {
              before(grammarAccess.getSelectQueryAccess().getFromTableIDTerminalRuleCall_4_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -938,9 +951,9 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000005000L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000004002L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000060L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000000042L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000000080L});
 
 }

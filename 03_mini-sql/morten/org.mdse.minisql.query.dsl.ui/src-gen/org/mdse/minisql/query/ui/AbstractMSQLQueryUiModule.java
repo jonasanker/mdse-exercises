@@ -71,7 +71,7 @@ import org.eclipse.xtext.ui.shared.Access;
 import org.eclipse.xtext.ui.validation.AbstractValidatorConfigurationBlock;
 import org.mdse.minisql.query.ide.contentassist.antlr.MSQLQueryParser;
 import org.mdse.minisql.query.ide.contentassist.antlr.PartialMSQLQueryContentAssistParser;
-import org.mdse.minisql.query.ide.contentassist.antlr.internal.InternalMSQLQueryLexer;
+import org.mdse.minisql.query.ide.contentassist.antlr.lexer.InternalMSQLQueryLexer;
 import org.mdse.minisql.query.ui.contentassist.MSQLQueryProposalProvider;
 import org.mdse.minisql.query.ui.labeling.MSQLQueryDescriptionLabelProvider;
 import org.mdse.minisql.query.ui.labeling.MSQLQueryLabelProvider;
@@ -110,7 +110,7 @@ public abstract class AbstractMSQLQueryUiModule extends DefaultUiModule {
 	public void configureHighlightingLexer(Binder binder) {
 		binder.bind(org.eclipse.xtext.parser.antlr.Lexer.class)
 			.annotatedWith(Names.named(LexerIdeBindings.HIGHLIGHTING))
-			.to(org.mdse.minisql.query.parser.antlr.internal.InternalMSQLQueryLexer.class);
+			.to(org.mdse.minisql.query.parser.antlr.lexer.InternalMSQLQueryLexer.class);
 	}
 	
 	// contributed by org.eclipse.xtext.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment2

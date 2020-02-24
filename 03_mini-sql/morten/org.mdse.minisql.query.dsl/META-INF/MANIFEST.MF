@@ -21,5 +21,6 @@ Export-Package: org.mdse.minisql.query.validation,
  org.mdse.minisql.query,
  org.mdse.minisql.query.services,
  org.mdse.minisql.query.serializer,
- org.mdse.minisql.query.generator
+ org.mdse.minisql.query.generator,
+ org.mdse.minisql.query.parser.antlr.lexer
 Import-Package: org.apache.log4j

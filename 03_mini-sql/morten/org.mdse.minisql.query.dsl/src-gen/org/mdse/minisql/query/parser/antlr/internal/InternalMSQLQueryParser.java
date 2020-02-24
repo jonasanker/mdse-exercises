@@ -21,19 +21,19 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'SELECT'", "','", "'FROM'", "';'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "SELECT", "FROM", "Comma", "Semicolon", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER"
     };
-    public static final int RULE_ID=4;
-    public static final int RULE_WS=9;
-    public static final int RULE_STRING=6;
-    public static final int RULE_ANY_OTHER=10;
-    public static final int RULE_SL_COMMENT=8;
-    public static final int RULE_INT=5;
-    public static final int T__11=11;
-    public static final int RULE_ML_COMMENT=7;
-    public static final int T__12=12;
-    public static final int T__13=13;
-    public static final int T__14=14;
+    public static final int RULE_ID=8;
+    public static final int RULE_WS=13;
+    public static final int RULE_STRING=10;
+    public static final int FROM=5;
+    public static final int RULE_ANY_OTHER=14;
+    public static final int SELECT=4;
+    public static final int RULE_SL_COMMENT=12;
+    public static final int Semicolon=7;
+    public static final int Comma=6;
+    public static final int RULE_INT=9;
+    public static final int RULE_ML_COMMENT=11;
     public static final int EOF=-1;
 
     // delegates
@@ -50,7 +50,7 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
         
 
     public String[] getTokenNames() { return InternalMSQLQueryParser.tokenNames; }
-    public String getGrammarFileName() { return "InternalMSQLQuery.g"; }
+    public String getGrammarFileName() { return "InternalMSQLQueryParser.g"; }
 
 
 
@@ -76,7 +76,7 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSelectQuery"
-    // InternalMSQLQuery.g:64:1: entryRuleSelectQuery returns [EObject current=null] : iv_ruleSelectQuery= ruleSelectQuery EOF ;
+    // InternalMSQLQueryParser.g:57:1: entryRuleSelectQuery returns [EObject current=null] : iv_ruleSelectQuery= ruleSelectQuery EOF ;
     public final EObject entryRuleSelectQuery() throws RecognitionException {
         EObject current = null;
 
@@ -84,8 +84,8 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalMSQLQuery.g:64:52: (iv_ruleSelectQuery= ruleSelectQuery EOF )
-            // InternalMSQLQuery.g:65:2: iv_ruleSelectQuery= ruleSelectQuery EOF
+            // InternalMSQLQueryParser.g:57:52: (iv_ruleSelectQuery= ruleSelectQuery EOF )
+            // InternalMSQLQueryParser.g:58:2: iv_ruleSelectQuery= ruleSelectQuery EOF
             {
              newCompositeNode(grammarAccess.getSelectQueryRule()); 
             pushFollow(FOLLOW_1);
@@ -112,7 +112,7 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSelectQuery"
-    // InternalMSQLQuery.g:71:1: ruleSelectQuery returns [EObject current=null] : (otherlv_0= 'SELECT' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'FROM' ( (otherlv_5= RULE_ID ) ) otherlv_6= ';' ) ;
+    // InternalMSQLQueryParser.g:64:1: ruleSelectQuery returns [EObject current=null] : (otherlv_0= SELECT ( (otherlv_1= RULE_ID ) ) (otherlv_2= Comma ( (otherlv_3= RULE_ID ) ) )* otherlv_4= FROM ( (otherlv_5= RULE_ID ) ) otherlv_6= Semicolon ) ;
     public final EObject ruleSelectQuery() throws RecognitionException {
         EObject current = null;
 
@@ -128,21 +128,21 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalMSQLQuery.g:77:2: ( (otherlv_0= 'SELECT' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'FROM' ( (otherlv_5= RULE_ID ) ) otherlv_6= ';' ) )
-            // InternalMSQLQuery.g:78:2: (otherlv_0= 'SELECT' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'FROM' ( (otherlv_5= RULE_ID ) ) otherlv_6= ';' )
+            // InternalMSQLQueryParser.g:70:2: ( (otherlv_0= SELECT ( (otherlv_1= RULE_ID ) ) (otherlv_2= Comma ( (otherlv_3= RULE_ID ) ) )* otherlv_4= FROM ( (otherlv_5= RULE_ID ) ) otherlv_6= Semicolon ) )
+            // InternalMSQLQueryParser.g:71:2: (otherlv_0= SELECT ( (otherlv_1= RULE_ID ) ) (otherlv_2= Comma ( (otherlv_3= RULE_ID ) ) )* otherlv_4= FROM ( (otherlv_5= RULE_ID ) ) otherlv_6= Semicolon )
             {
-            // InternalMSQLQuery.g:78:2: (otherlv_0= 'SELECT' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'FROM' ( (otherlv_5= RULE_ID ) ) otherlv_6= ';' )
-            // InternalMSQLQuery.g:79:3: otherlv_0= 'SELECT' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'FROM' ( (otherlv_5= RULE_ID ) ) otherlv_6= ';'
+            // InternalMSQLQueryParser.g:71:2: (otherlv_0= SELECT ( (otherlv_1= RULE_ID ) ) (otherlv_2= Comma ( (otherlv_3= RULE_ID ) ) )* otherlv_4= FROM ( (otherlv_5= RULE_ID ) ) otherlv_6= Semicolon )
+            // InternalMSQLQueryParser.g:72:3: otherlv_0= SELECT ( (otherlv_1= RULE_ID ) ) (otherlv_2= Comma ( (otherlv_3= RULE_ID ) ) )* otherlv_4= FROM ( (otherlv_5= RULE_ID ) ) otherlv_6= Semicolon
             {
-            otherlv_0=(Token)match(input,11,FOLLOW_3); 
+            otherlv_0=(Token)match(input,SELECT,FOLLOW_3); 
 
             			newLeafNode(otherlv_0, grammarAccess.getSelectQueryAccess().getSELECTKeyword_0());
             		
-            // InternalMSQLQuery.g:83:3: ( (otherlv_1= RULE_ID ) )
-            // InternalMSQLQuery.g:84:4: (otherlv_1= RULE_ID )
+            // InternalMSQLQueryParser.g:76:3: ( (otherlv_1= RULE_ID ) )
+            // InternalMSQLQueryParser.g:77:4: (otherlv_1= RULE_ID )
             {
-            // InternalMSQLQuery.g:84:4: (otherlv_1= RULE_ID )
-            // InternalMSQLQuery.g:85:5: otherlv_1= RULE_ID
+            // InternalMSQLQueryParser.g:77:4: (otherlv_1= RULE_ID )
+            // InternalMSQLQueryParser.g:78:5: otherlv_1= RULE_ID
             {
 
             					if (current==null) {
@@ -159,30 +159,30 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalMSQLQuery.g:96:3: (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )*
+            // InternalMSQLQueryParser.g:89:3: (otherlv_2= Comma ( (otherlv_3= RULE_ID ) ) )*
             loop1:
             do {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==12) ) {
+                if ( (LA1_0==Comma) ) {
                     alt1=1;
                 }
 
 
                 switch (alt1) {
             	case 1 :
-            	    // InternalMSQLQuery.g:97:4: otherlv_2= ',' ( (otherlv_3= RULE_ID ) )
+            	    // InternalMSQLQueryParser.g:90:4: otherlv_2= Comma ( (otherlv_3= RULE_ID ) )
             	    {
-            	    otherlv_2=(Token)match(input,12,FOLLOW_3); 
+            	    otherlv_2=(Token)match(input,Comma,FOLLOW_3); 
 
             	    				newLeafNode(otherlv_2, grammarAccess.getSelectQueryAccess().getCommaKeyword_2_0());
             	    			
-            	    // InternalMSQLQuery.g:101:4: ( (otherlv_3= RULE_ID ) )
-            	    // InternalMSQLQuery.g:102:5: (otherlv_3= RULE_ID )
+            	    // InternalMSQLQueryParser.g:94:4: ( (otherlv_3= RULE_ID ) )
+            	    // InternalMSQLQueryParser.g:95:5: (otherlv_3= RULE_ID )
             	    {
-            	    // InternalMSQLQuery.g:102:5: (otherlv_3= RULE_ID )
-            	    // InternalMSQLQuery.g:103:6: otherlv_3= RULE_ID
+            	    // InternalMSQLQueryParser.g:95:5: (otherlv_3= RULE_ID )
+            	    // InternalMSQLQueryParser.g:96:6: otherlv_3= RULE_ID
             	    {
 
             	    						if (current==null) {
@@ -208,15 +208,15 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_4=(Token)match(input,13,FOLLOW_3); 
+            otherlv_4=(Token)match(input,FROM,FOLLOW_3); 
 
             			newLeafNode(otherlv_4, grammarAccess.getSelectQueryAccess().getFROMKeyword_3());
             		
-            // InternalMSQLQuery.g:119:3: ( (otherlv_5= RULE_ID ) )
-            // InternalMSQLQuery.g:120:4: (otherlv_5= RULE_ID )
+            // InternalMSQLQueryParser.g:112:3: ( (otherlv_5= RULE_ID ) )
+            // InternalMSQLQueryParser.g:113:4: (otherlv_5= RULE_ID )
             {
-            // InternalMSQLQuery.g:120:4: (otherlv_5= RULE_ID )
-            // InternalMSQLQuery.g:121:5: otherlv_5= RULE_ID
+            // InternalMSQLQueryParser.g:113:4: (otherlv_5= RULE_ID )
+            // InternalMSQLQueryParser.g:114:5: otherlv_5= RULE_ID
             {
 
             					if (current==null) {
@@ -233,7 +233,7 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,14,FOLLOW_2); 
+            otherlv_6=(Token)match(input,Semicolon,FOLLOW_2); 
 
             			newLeafNode(otherlv_6, grammarAccess.getSelectQueryAccess().getSemicolonKeyword_5());
             		
@@ -265,8 +265,8 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000003000L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000060L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000000080L});
 
 }

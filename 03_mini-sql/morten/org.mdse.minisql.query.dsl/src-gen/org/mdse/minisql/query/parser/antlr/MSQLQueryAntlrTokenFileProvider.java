@@ -11,6 +11,6 @@ public class MSQLQueryAntlrTokenFileProvider implements IAntlrTokenFileProvider 
 	@Override
 	public InputStream getAntlrTokenFile() {
 		ClassLoader classLoader = getClass().getClassLoader();
-		return classLoader.getResourceAsStream("org/mdse/minisql/query/parser/antlr/internal/InternalMSQLQuery.tokens");
+		return classLoader.getResourceAsStream("org/mdse/minisql/query/parser/antlr/internal/InternalMSQLQueryParser.tokens");
 	}
 }
