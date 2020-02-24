@@ -3,11 +3,7 @@
 package org.mdse.minisql.query;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
-
-import schema.Column;
-import schema.Table;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,8 +14,9 @@ import schema.Table;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.mdse.minisql.query.SelectQuery#getFrom <em>From</em>}</li>
- *   <li>{@link org.mdse.minisql.query.SelectQuery#getWhat <em>What</em>}</li>
+ *   <li>{@link org.mdse.minisql.query.SelectQuery#getFromClause <em>From Clause</em>}</li>
+ *   <li>{@link org.mdse.minisql.query.SelectQuery#getOrderByClause <em>Order By Clause</em>}</li>
+ *   <li>{@link org.mdse.minisql.query.SelectQuery#getWhatClause <em>What Clause</em>}</li>
  * </ul>
  *
  * @see org.mdse.minisql.query.QueryPackage#getSelectQuery()
@@ -28,37 +25,59 @@ import schema.Table;
  */
 public interface SelectQuery extends EObject {
 	/**
-	 * Returns the value of the '<em><b>From</b></em>' reference.
+	 * Returns the value of the '<em><b>From Clause</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>From</em>' reference.
-	 * @see #setFrom(Table)
-	 * @see org.mdse.minisql.query.QueryPackage#getSelectQuery_From()
+	 * @return the value of the '<em>From Clause</em>' reference.
+	 * @see #setFromClause(FromClause)
+	 * @see org.mdse.minisql.query.QueryPackage#getSelectQuery_FromClause()
 	 * @model required="true"
 	 * @generated
 	 */
-	Table getFrom();
+	FromClause getFromClause();
 
 	/**
-	 * Sets the value of the '{@link org.mdse.minisql.query.SelectQuery#getFrom <em>From</em>}' reference.
+	 * Sets the value of the '{@link org.mdse.minisql.query.SelectQuery#getFromClause <em>From Clause</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>From</em>' reference.
-	 * @see #getFrom()
+	 * @param value the new value of the '<em>From Clause</em>' reference.
+	 * @see #getFromClause()
 	 * @generated
 	 */
-	void setFrom(Table value);
+	void setFromClause(FromClause value);
 
 	/**
-	 * Returns the value of the '<em><b>What</b></em>' reference list.
-	 * The list contents are of type {@link schema.Column}.
+	 * Returns the value of the '<em><b>Order By Clause</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>What</em>' reference list.
-	 * @see org.mdse.minisql.query.QueryPackage#getSelectQuery_What()
+	 * @return the value of the '<em>Order By Clause</em>' reference.
+	 * @see #setOrderByClause(OrderByClause)
+	 * @see org.mdse.minisql.query.QueryPackage#getSelectQuery_OrderByClause()
+	 * @model
+	 * @generated
+	 */
+	OrderByClause getOrderByClause();
+
+	/**
+	 * Sets the value of the '{@link org.mdse.minisql.query.SelectQuery#getOrderByClause <em>Order By Clause</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Order By Clause</em>' reference.
+	 * @see #getOrderByClause()
+	 * @generated
+	 */
+	void setOrderByClause(OrderByClause value);
+
+	/**
+	 * Returns the value of the '<em><b>What Clause</b></em>' reference list.
+	 * The list contents are of type {@link org.mdse.minisql.query.WhatClause}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>What Clause</em>' reference list.
+	 * @see org.mdse.minisql.query.QueryPackage#getSelectQuery_WhatClause()
 	 * @model required="true"
 	 * @generated
 	 */
-	EList<Column> getWhat();
+	EList<WhatClause> getWhatClause();
 
 } // SelectQuery

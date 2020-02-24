@@ -72,6 +72,46 @@ public class QueryAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseOrderByClause(OrderByClause object) {
+			return createOrderByClauseAdapter();
+		}
+
+		@Override
+		public Adapter caseOrderByDirective(OrderByDirective object) {
+			return createOrderByDirectiveAdapter();
+		}
+
+		@Override
+		public Adapter caseColumnReference(ColumnReference object) {
+			return createColumnReferenceAdapter();
+		}
+
+		@Override
+		public Adapter caseAllColumnsWhatDirective(AllColumnsWhatDirective object) {
+			return createAllColumnsWhatDirectiveAdapter();
+		}
+
+		@Override
+		public Adapter caseSingleColumnWhatDirective(SingleColumnWhatDirective object) {
+			return createSingleColumnWhatDirectiveAdapter();
+		}
+
+		@Override
+		public Adapter caseWhatDirective(WhatDirective object) {
+			return createWhatDirectiveAdapter();
+		}
+
+		@Override
+		public Adapter caseWhatClause(WhatClause object) {
+			return createWhatClauseAdapter();
+		}
+
+		@Override
+		public Adapter caseFromClause(FromClause object) {
+			return createFromClauseAdapter();
+		}
+
+		@Override
 		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
@@ -101,6 +141,118 @@ public class QueryAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSelectQueryAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.mdse.minisql.query.OrderByClause <em>Order By Clause</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.mdse.minisql.query.OrderByClause
+	 * @generated
+	 */
+	public Adapter createOrderByClauseAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.mdse.minisql.query.OrderByDirective <em>Order By Directive</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.mdse.minisql.query.OrderByDirective
+	 * @generated
+	 */
+	public Adapter createOrderByDirectiveAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.mdse.minisql.query.ColumnReference <em>Column Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.mdse.minisql.query.ColumnReference
+	 * @generated
+	 */
+	public Adapter createColumnReferenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.mdse.minisql.query.AllColumnsWhatDirective <em>All Columns What Directive</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.mdse.minisql.query.AllColumnsWhatDirective
+	 * @generated
+	 */
+	public Adapter createAllColumnsWhatDirectiveAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.mdse.minisql.query.SingleColumnWhatDirective <em>Single Column What Directive</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.mdse.minisql.query.SingleColumnWhatDirective
+	 * @generated
+	 */
+	public Adapter createSingleColumnWhatDirectiveAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.mdse.minisql.query.WhatDirective <em>What Directive</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.mdse.minisql.query.WhatDirective
+	 * @generated
+	 */
+	public Adapter createWhatDirectiveAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.mdse.minisql.query.WhatClause <em>What Clause</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.mdse.minisql.query.WhatClause
+	 * @generated
+	 */
+	public Adapter createWhatClauseAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.mdse.minisql.query.FromClause <em>From Clause</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.mdse.minisql.query.FromClause
+	 * @generated
+	 */
+	public Adapter createFromClauseAdapter() {
 		return null;
 	}
 

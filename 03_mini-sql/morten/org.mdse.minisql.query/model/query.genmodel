@@ -11,15 +11,15 @@
   <genPackages prefix="Query" basePackage="org.mdse.minisql" disposableProviderFactory="true"
       ecorePackage="query.ecore#/">
     <genClasses ecoreClass="query.ecore#//SelectQuery">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SelectQuery/fromclause"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SelectQuery/orderbyclause"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SelectQuery/whatclause"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SelectQuery/fromClause"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SelectQuery/orderByClause"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SelectQuery/whatClause"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//OrderByClause">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//OrderByClause/orderbydirective"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//OrderByClause/orderByDirective"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//OrderByDirective">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//OrderByDirective/columnreference"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//OrderByDirective/columnReference"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//OrderByDirective/ascending"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//ColumnReference">
@@ -27,11 +27,11 @@
     </genClasses>
     <genClasses ecoreClass="query.ecore#//AllColumnsWhatDirective"/>
     <genClasses ecoreClass="query.ecore#//SingleColumnWhatDirective">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//SingleColumnWhatDirective/columnreference"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//SingleColumnWhatDirective/columnReference"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//WhatDirective"/>
     <genClasses ecoreClass="query.ecore#//WhatClause">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//WhatClause/whatdirective"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//WhatClause/whatDirective"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//FromClause">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//FromClause/table"/>

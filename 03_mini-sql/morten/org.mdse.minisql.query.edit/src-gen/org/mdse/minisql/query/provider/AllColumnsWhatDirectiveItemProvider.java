@@ -1,29 +1,29 @@
 /**
  */
-package schema.provider;
+package org.mdse.minisql.query.provider;
 
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import schema.Table;
 
 /**
- * This is the item provider adapter for a {@link schema.Table} object.
+ * This is the item provider adapter for a {@link org.mdse.minisql.query.AllColumnsWhatDirective} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class TableItemProvider extends NamedElementItemProvider {
+public class AllColumnsWhatDirectiveItemProvider extends WhatDirectiveItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TableItemProvider(AdapterFactory adapterFactory) {
+	public AllColumnsWhatDirectiveItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -43,14 +43,14 @@ public class TableItemProvider extends NamedElementItemProvider {
 	}
 
 	/**
-	 * This returns Table.gif.
+	 * This returns AllColumnsWhatDirective.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Table"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/AllColumnsWhatDirective"));
 	}
 
 	/**
@@ -71,9 +71,7 @@ public class TableItemProvider extends NamedElementItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Table) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_Table_type")
-				: getString("_UI_Table_type") + " " + label;
+		return getString("_UI_AllColumnsWhatDirective_type");
 	}
 
 	/**

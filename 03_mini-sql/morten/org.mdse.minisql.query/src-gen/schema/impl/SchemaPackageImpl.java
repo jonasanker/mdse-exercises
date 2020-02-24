@@ -5,8 +5,6 @@ package schema.impl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.mdse.minisql.query.QueryPackage;
@@ -135,16 +133,6 @@ public class SchemaPackageImpl extends EPackageImpl implements SchemaPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getTable_Column() {
-		return (EReference) tableEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getColumn() {
 		return columnEClass;
 	}
@@ -200,7 +188,6 @@ public class SchemaPackageImpl extends EPackageImpl implements SchemaPackage {
 
 		// Create classes and their features
 		tableEClass = createEClass(TABLE);
-		createEReference(tableEClass, TABLE__COLUMN);
 
 		columnEClass = createEClass(COLUMN);
 
@@ -242,9 +229,6 @@ public class SchemaPackageImpl extends EPackageImpl implements SchemaPackage {
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(tableEClass, Table.class, "Table", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTable_Column(), this.getColumn(), null, "column", null, 1, -1, Table.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
 
 		initEClass(columnEClass, Column.class, "Column", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

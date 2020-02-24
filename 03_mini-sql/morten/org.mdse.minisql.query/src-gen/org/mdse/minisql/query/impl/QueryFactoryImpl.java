@@ -57,6 +57,22 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 		switch (eClass.getClassifierID()) {
 		case QueryPackage.SELECT_QUERY:
 			return createSelectQuery();
+		case QueryPackage.ORDER_BY_CLAUSE:
+			return createOrderByClause();
+		case QueryPackage.ORDER_BY_DIRECTIVE:
+			return createOrderByDirective();
+		case QueryPackage.COLUMN_REFERENCE:
+			return createColumnReference();
+		case QueryPackage.ALL_COLUMNS_WHAT_DIRECTIVE:
+			return createAllColumnsWhatDirective();
+		case QueryPackage.SINGLE_COLUMN_WHAT_DIRECTIVE:
+			return createSingleColumnWhatDirective();
+		case QueryPackage.WHAT_DIRECTIVE:
+			return createWhatDirective();
+		case QueryPackage.WHAT_CLAUSE:
+			return createWhatClause();
+		case QueryPackage.FROM_CLAUSE:
+			return createFromClause();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -71,6 +87,94 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 	public SelectQuery createSelectQuery() {
 		SelectQueryImpl selectQuery = new SelectQueryImpl();
 		return selectQuery;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public OrderByClause createOrderByClause() {
+		OrderByClauseImpl orderByClause = new OrderByClauseImpl();
+		return orderByClause;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public OrderByDirective createOrderByDirective() {
+		OrderByDirectiveImpl orderByDirective = new OrderByDirectiveImpl();
+		return orderByDirective;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ColumnReference createColumnReference() {
+		ColumnReferenceImpl columnReference = new ColumnReferenceImpl();
+		return columnReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public AllColumnsWhatDirective createAllColumnsWhatDirective() {
+		AllColumnsWhatDirectiveImpl allColumnsWhatDirective = new AllColumnsWhatDirectiveImpl();
+		return allColumnsWhatDirective;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public SingleColumnWhatDirective createSingleColumnWhatDirective() {
+		SingleColumnWhatDirectiveImpl singleColumnWhatDirective = new SingleColumnWhatDirectiveImpl();
+		return singleColumnWhatDirective;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public WhatDirective createWhatDirective() {
+		WhatDirectiveImpl whatDirective = new WhatDirectiveImpl();
+		return whatDirective;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public WhatClause createWhatClause() {
+		WhatClauseImpl whatClause = new WhatClauseImpl();
+		return whatClause;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public FromClause createFromClause() {
+		FromClauseImpl fromClause = new FromClauseImpl();
+		return fromClause;
 	}
 
 	/**

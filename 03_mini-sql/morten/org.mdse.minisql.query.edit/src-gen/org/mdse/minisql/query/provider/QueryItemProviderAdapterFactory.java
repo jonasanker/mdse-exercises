@@ -96,6 +96,190 @@ public class QueryItemProviderAdapterFactory extends QueryAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.mdse.minisql.query.OrderByClause} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OrderByClauseItemProvider orderByClauseItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.mdse.minisql.query.OrderByClause}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOrderByClauseAdapter() {
+		if (orderByClauseItemProvider == null) {
+			orderByClauseItemProvider = new OrderByClauseItemProvider(this);
+		}
+
+		return orderByClauseItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.mdse.minisql.query.OrderByDirective} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OrderByDirectiveItemProvider orderByDirectiveItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.mdse.minisql.query.OrderByDirective}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOrderByDirectiveAdapter() {
+		if (orderByDirectiveItemProvider == null) {
+			orderByDirectiveItemProvider = new OrderByDirectiveItemProvider(this);
+		}
+
+		return orderByDirectiveItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.mdse.minisql.query.ColumnReference} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ColumnReferenceItemProvider columnReferenceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.mdse.minisql.query.ColumnReference}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createColumnReferenceAdapter() {
+		if (columnReferenceItemProvider == null) {
+			columnReferenceItemProvider = new ColumnReferenceItemProvider(this);
+		}
+
+		return columnReferenceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.mdse.minisql.query.AllColumnsWhatDirective} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AllColumnsWhatDirectiveItemProvider allColumnsWhatDirectiveItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.mdse.minisql.query.AllColumnsWhatDirective}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAllColumnsWhatDirectiveAdapter() {
+		if (allColumnsWhatDirectiveItemProvider == null) {
+			allColumnsWhatDirectiveItemProvider = new AllColumnsWhatDirectiveItemProvider(this);
+		}
+
+		return allColumnsWhatDirectiveItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.mdse.minisql.query.SingleColumnWhatDirective} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SingleColumnWhatDirectiveItemProvider singleColumnWhatDirectiveItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.mdse.minisql.query.SingleColumnWhatDirective}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSingleColumnWhatDirectiveAdapter() {
+		if (singleColumnWhatDirectiveItemProvider == null) {
+			singleColumnWhatDirectiveItemProvider = new SingleColumnWhatDirectiveItemProvider(this);
+		}
+
+		return singleColumnWhatDirectiveItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.mdse.minisql.query.WhatDirective} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WhatDirectiveItemProvider whatDirectiveItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.mdse.minisql.query.WhatDirective}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWhatDirectiveAdapter() {
+		if (whatDirectiveItemProvider == null) {
+			whatDirectiveItemProvider = new WhatDirectiveItemProvider(this);
+		}
+
+		return whatDirectiveItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.mdse.minisql.query.WhatClause} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WhatClauseItemProvider whatClauseItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.mdse.minisql.query.WhatClause}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWhatClauseAdapter() {
+		if (whatClauseItemProvider == null) {
+			whatClauseItemProvider = new WhatClauseItemProvider(this);
+		}
+
+		return whatClauseItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.mdse.minisql.query.FromClause} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FromClauseItemProvider fromClauseItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.mdse.minisql.query.FromClause}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFromClauseAdapter() {
+		if (fromClauseItemProvider == null) {
+			fromClauseItemProvider = new FromClauseItemProvider(this);
+		}
+
+		return fromClauseItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -202,6 +386,22 @@ public class QueryItemProviderAdapterFactory extends QueryAdapterFactory
 	public void dispose() {
 		if (selectQueryItemProvider != null)
 			selectQueryItemProvider.dispose();
+		if (orderByClauseItemProvider != null)
+			orderByClauseItemProvider.dispose();
+		if (orderByDirectiveItemProvider != null)
+			orderByDirectiveItemProvider.dispose();
+		if (columnReferenceItemProvider != null)
+			columnReferenceItemProvider.dispose();
+		if (allColumnsWhatDirectiveItemProvider != null)
+			allColumnsWhatDirectiveItemProvider.dispose();
+		if (singleColumnWhatDirectiveItemProvider != null)
+			singleColumnWhatDirectiveItemProvider.dispose();
+		if (whatDirectiveItemProvider != null)
+			whatDirectiveItemProvider.dispose();
+		if (whatClauseItemProvider != null)
+			whatClauseItemProvider.dispose();
+		if (fromClauseItemProvider != null)
+			fromClauseItemProvider.dispose();
 	}
 
 }

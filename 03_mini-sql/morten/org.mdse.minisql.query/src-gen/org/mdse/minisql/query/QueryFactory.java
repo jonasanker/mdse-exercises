@@ -31,6 +31,78 @@ public interface QueryFactory extends EFactory {
 	SelectQuery createSelectQuery();
 
 	/**
+	 * Returns a new object of class '<em>Order By Clause</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Order By Clause</em>'.
+	 * @generated
+	 */
+	OrderByClause createOrderByClause();
+
+	/**
+	 * Returns a new object of class '<em>Order By Directive</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Order By Directive</em>'.
+	 * @generated
+	 */
+	OrderByDirective createOrderByDirective();
+
+	/**
+	 * Returns a new object of class '<em>Column Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Column Reference</em>'.
+	 * @generated
+	 */
+	ColumnReference createColumnReference();
+
+	/**
+	 * Returns a new object of class '<em>All Columns What Directive</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>All Columns What Directive</em>'.
+	 * @generated
+	 */
+	AllColumnsWhatDirective createAllColumnsWhatDirective();
+
+	/**
+	 * Returns a new object of class '<em>Single Column What Directive</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Single Column What Directive</em>'.
+	 * @generated
+	 */
+	SingleColumnWhatDirective createSingleColumnWhatDirective();
+
+	/**
+	 * Returns a new object of class '<em>What Directive</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>What Directive</em>'.
+	 * @generated
+	 */
+	WhatDirective createWhatDirective();
+
+	/**
+	 * Returns a new object of class '<em>What Clause</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>What Clause</em>'.
+	 * @generated
+	 */
+	WhatClause createWhatClause();
+
+	/**
+	 * Returns a new object of class '<em>From Clause</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>From Clause</em>'.
+	 * @generated
+	 */
+	FromClause createFromClause();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

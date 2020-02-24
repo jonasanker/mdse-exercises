@@ -10,7 +10,6 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -19,15 +18,13 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
-import org.mdse.minisql.query.QueryPackage;
-
 /**
- * This is the item provider adapter for a {@link org.mdse.minisql.query.SelectQuery} object.
+ * This is the item provider adapter for a {@link org.mdse.minisql.query.WhatDirective} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class SelectQueryItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+public class WhatDirectiveItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
 		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -35,7 +32,7 @@ public class SelectQueryItemProvider extends ItemProviderAdapter implements IEdi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SelectQueryItemProvider(AdapterFactory adapterFactory) {
+	public WhatDirectiveItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -50,67 +47,19 @@ public class SelectQueryItemProvider extends ItemProviderAdapter implements IEdi
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addFromClausePropertyDescriptor(object);
-			addOrderByClausePropertyDescriptor(object);
-			addWhatClausePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the From Clause feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addFromClausePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_SelectQuery_fromClause_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_SelectQuery_fromClause_feature",
-								"_UI_SelectQuery_type"),
-						QueryPackage.Literals.SELECT_QUERY__FROM_CLAUSE, true, false, true, null, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Order By Clause feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOrderByClausePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_SelectQuery_orderByClause_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_SelectQuery_orderByClause_feature",
-								"_UI_SelectQuery_type"),
-						QueryPackage.Literals.SELECT_QUERY__ORDER_BY_CLAUSE, true, false, true, null, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the What Clause feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addWhatClausePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_SelectQuery_whatClause_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_SelectQuery_whatClause_feature",
-								"_UI_SelectQuery_type"),
-						QueryPackage.Literals.SELECT_QUERY__WHAT_CLAUSE, true, false, true, null, null, null));
-	}
-
-	/**
-	 * This returns SelectQuery.gif.
+	 * This returns WhatDirective.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/SelectQuery"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/WhatDirective"));
 	}
 
 	/**
@@ -131,7 +80,7 @@ public class SelectQueryItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_SelectQuery_type");
+		return getString("_UI_WhatDirective_type");
 	}
 
 	/**
