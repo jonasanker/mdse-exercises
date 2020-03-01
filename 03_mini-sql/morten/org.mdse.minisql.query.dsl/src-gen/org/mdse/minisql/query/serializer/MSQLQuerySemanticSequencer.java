@@ -14,8 +14,11 @@ import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
+import org.mdse.minisql.query.AllColumnsWhatDirective;
 import org.mdse.minisql.query.ColumnReference;
 import org.mdse.minisql.query.FromClause;
+import org.mdse.minisql.query.OrderByClause;
+import org.mdse.minisql.query.OrderByDirective;
 import org.mdse.minisql.query.QueryPackage;
 import org.mdse.minisql.query.SelectQuery;
 import org.mdse.minisql.query.SingleColumnWhatDirective;
@@ -36,11 +39,20 @@ public class MSQLQuerySemanticSequencer extends AbstractDelegatingSemanticSequen
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == QueryPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case QueryPackage.ALL_COLUMNS_WHAT_DIRECTIVE:
+				sequence_AllColumnsWhatDirective(context, (AllColumnsWhatDirective) semanticObject); 
+				return; 
 			case QueryPackage.COLUMN_REFERENCE:
 				sequence_ColumnReference(context, (ColumnReference) semanticObject); 
 				return; 
 			case QueryPackage.FROM_CLAUSE:
 				sequence_FromClause(context, (FromClause) semanticObject); 
+				return; 
+			case QueryPackage.ORDER_BY_CLAUSE:
+				sequence_OrderByClause(context, (OrderByClause) semanticObject); 
+				return; 
+			case QueryPackage.ORDER_BY_DIRECTIVE:
+				sequence_OrderByDirective(context, (OrderByDirective) semanticObject); 
 				return; 
 			case QueryPackage.SELECT_QUERY:
 				sequence_SelectQuery(context, (SelectQuery) semanticObject); 
@@ -55,6 +67,19 @@ public class MSQLQuerySemanticSequencer extends AbstractDelegatingSemanticSequen
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
+	
+	/**
+	 * Contexts:
+	 *     WhatDirective returns AllColumnsWhatDirective
+	 *     AllColumnsWhatDirective returns AllColumnsWhatDirective
+	 *
+	 * Constraint:
+	 *     {AllColumnsWhatDirective}
+	 */
+	protected void sequence_AllColumnsWhatDirective(ISerializationContext context, AllColumnsWhatDirective semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
 	
 	/**
 	 * Contexts:
@@ -94,10 +119,34 @@ public class MSQLQuerySemanticSequencer extends AbstractDelegatingSemanticSequen
 	
 	/**
 	 * Contexts:
+	 *     OrderByClause returns OrderByClause
+	 *
+	 * Constraint:
+	 *     (orderDirectives+=OrderByDirective orderDirectives+=OrderByDirective*)
+	 */
+	protected void sequence_OrderByClause(ISerializationContext context, OrderByClause semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     OrderByDirective returns OrderByDirective
+	 *
+	 * Constraint:
+	 *     (columnReference+=ColumnReference (ascending?='ASC' | ascending?='DESC')?)
+	 */
+	protected void sequence_OrderByDirective(ISerializationContext context, OrderByDirective semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     SelectQuery returns SelectQuery
 	 *
 	 * Constraint:
-	 *     (whatClause+=WhatClause fromClause=FromClause)
+	 *     (whatClause+=WhatClause fromClause=FromClause orderByClause=OrderByClause?)
 	 */
 	protected void sequence_SelectQuery(ISerializationContext context, SelectQuery semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -106,6 +155,7 @@ public class MSQLQuerySemanticSequencer extends AbstractDelegatingSemanticSequen
 	
 	/**
 	 * Contexts:
+	 *     WhatDirective returns SingleColumnWhatDirective
 	 *     SingleColumnWhatDirective returns SingleColumnWhatDirective
 	 *
 	 * Constraint:
@@ -127,7 +177,7 @@ public class MSQLQuerySemanticSequencer extends AbstractDelegatingSemanticSequen
 	 *     WhatClause returns WhatClause
 	 *
 	 * Constraint:
-	 *     (whatDirective+=SingleColumnWhatDirective whatDirective+=SingleColumnWhatDirective*)
+	 *     (whatDirective+=WhatDirective whatDirective+=WhatDirective*)
 	 */
 	protected void sequence_WhatClause(ISerializationContext context, WhatClause semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

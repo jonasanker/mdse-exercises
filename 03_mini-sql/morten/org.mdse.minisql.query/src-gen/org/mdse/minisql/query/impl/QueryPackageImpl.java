@@ -51,6 +51,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	private EClass orderByDirectiveEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -216,7 +217,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getOrderByClause_OrderByDirective() {
+	public EReference getOrderByClause_OrderDirectives() {
 		return (EReference) orderByClauseEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -386,7 +387,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		createEReference(selectQueryEClass, SELECT_QUERY__FROM_CLAUSE);
 
 		orderByClauseEClass = createEClass(ORDER_BY_CLAUSE);
-		createEReference(orderByClauseEClass, ORDER_BY_CLAUSE__ORDER_BY_DIRECTIVE);
+		createEReference(orderByClauseEClass, ORDER_BY_CLAUSE__ORDER_DIRECTIVES);
 
 		orderByDirectiveEClass = createEClass(ORDER_BY_DIRECTIVE);
 		createEReference(orderByDirectiveEClass, ORDER_BY_DIRECTIVE__COLUMN_REFERENCE);
@@ -448,7 +449,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		initEClass(selectQueryEClass, SelectQuery.class, "SelectQuery", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSelectQuery_OrderByClause(), this.getOrderByClause(), null, "orderByClause", null, 0, 1,
-				SelectQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				SelectQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSelectQuery_WhatClause(), this.getWhatClause(), null, "whatClause", null, 1, -1,
 				SelectQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
@@ -459,9 +460,9 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 
 		initEClass(orderByClauseEClass, OrderByClause.class, "OrderByClause", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOrderByClause_OrderByDirective(), this.getOrderByDirective(), null, "orderByDirective", null,
-				1, -1, OrderByClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOrderByClause_OrderDirectives(), this.getOrderByDirective(), null, "orderDirectives", null, 1,
+				-1, OrderByClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(orderByDirectiveEClass, OrderByDirective.class, "OrderByDirective", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);

@@ -5,22 +5,29 @@ import "http://mdse.org/minisql/query"
 import "http://mdse.org/minisql/schema" as schema
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
-//SelectQuery:
-//	"SELECT" what+=[schema::Column] ("," what+=[schema::Column])*
-//	"FROM" from=[schema::Table] ";"
-//;
-
-// New revisioned metamodel
 SelectQuery:
 	"SELECT"
 		whatClause+=WhatClause
 		fromClause=FromClause
+		orderByClause=OrderByClause?
 		";"
 ;
 
-
 WhatClause:
-	whatDirective+=SingleColumnWhatDirective ("," whatDirective+=SingleColumnWhatDirective)*
+	whatDirective+=WhatDirective ("," whatDirective+=WhatDirective)*
+;
+
+WhatDirective:
+	AllColumnsWhatDirective | SingleColumnWhatDirective	
+;
+
+// Possibly missing reference in metamodel from AllColumnsWhatDirective->ColumnReference
+AllColumnsWhatDirective: 
+	"*" {AllColumnsWhatDirective}	// Instantiate model element
+;
+
+SingleColumnWhatDirective:
+	columnReference=ColumnReference
 ;
 
 FromClause:
@@ -28,8 +35,13 @@ FromClause:
 		table=[schema::Table]
 ;
 
-SingleColumnWhatDirective:
-	columnReference=ColumnReference
+OrderByClause:
+	"ORDER" "BY"	
+		orderDirectives+=OrderByDirective ("," orderDirectives+=OrderByDirective)*
+;
+
+OrderByDirective:
+	columnReference+=ColumnReference (ascending?=("ASC" | "DESC"))?		// Boolean syntax
 ;
 
 ColumnReference:

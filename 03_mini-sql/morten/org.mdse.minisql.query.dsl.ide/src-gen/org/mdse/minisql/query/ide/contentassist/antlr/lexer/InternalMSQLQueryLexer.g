@@ -13,7 +13,17 @@ import org.eclipse.xtext.ide.editor.contentassist.antlr.internal.Lexer;
 
 SELECT : ('S'|'s')('E'|'e')('L'|'l')('E'|'e')('C'|'c')('T'|'t');
 
+ORDER : ('O'|'o')('R'|'r')('D'|'d')('E'|'e')('R'|'r');
+
+DESC : ('D'|'d')('E'|'e')('S'|'s')('C'|'c');
+
 FROM : ('F'|'f')('R'|'r')('O'|'o')('M'|'m');
+
+ASC : ('A'|'a')('S'|'s')('C'|'c');
+
+BY : ('B'|'b')('Y'|'y');
+
+Asterisk : '*';
 
 Comma : ',';
 

@@ -37,7 +37,7 @@ import org.mdse.minisql.query.WhatClause;
  */
 public class SelectQueryImpl extends MinimalEObjectImpl.Container implements SelectQuery {
 	/**
-	 * The cached value of the '{@link #getOrderByClause() <em>Order By Clause</em>}' reference.
+	 * The cached value of the '{@link #getOrderByClause() <em>Order By Clause</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getOrderByClause()
@@ -145,6 +145,8 @@ public class SelectQueryImpl extends MinimalEObjectImpl.Container implements Sel
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+		case QueryPackage.SELECT_QUERY__ORDER_BY_CLAUSE:
+			return basicSetOrderByClause(null, msgs);
 		case QueryPackage.SELECT_QUERY__WHAT_CLAUSE:
 			return ((InternalEList<?>) getWhatClause()).basicRemove(otherEnd, msgs);
 		case QueryPackage.SELECT_QUERY__FROM_CLAUSE:
@@ -160,15 +162,6 @@ public class SelectQueryImpl extends MinimalEObjectImpl.Container implements Sel
 	 */
 	@Override
 	public OrderByClause getOrderByClause() {
-		if (orderByClause != null && orderByClause.eIsProxy()) {
-			InternalEObject oldOrderByClause = (InternalEObject) orderByClause;
-			orderByClause = (OrderByClause) eResolveProxy(oldOrderByClause);
-			if (orderByClause != oldOrderByClause) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							QueryPackage.SELECT_QUERY__ORDER_BY_CLAUSE, oldOrderByClause, orderByClause));
-			}
-		}
 		return orderByClause;
 	}
 
@@ -177,8 +170,18 @@ public class SelectQueryImpl extends MinimalEObjectImpl.Container implements Sel
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OrderByClause basicGetOrderByClause() {
-		return orderByClause;
+	public NotificationChain basicSetOrderByClause(OrderByClause newOrderByClause, NotificationChain msgs) {
+		OrderByClause oldOrderByClause = orderByClause;
+		orderByClause = newOrderByClause;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					QueryPackage.SELECT_QUERY__ORDER_BY_CLAUSE, oldOrderByClause, newOrderByClause);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -188,11 +191,20 @@ public class SelectQueryImpl extends MinimalEObjectImpl.Container implements Sel
 	 */
 	@Override
 	public void setOrderByClause(OrderByClause newOrderByClause) {
-		OrderByClause oldOrderByClause = orderByClause;
-		orderByClause = newOrderByClause;
-		if (eNotificationRequired())
+		if (newOrderByClause != orderByClause) {
+			NotificationChain msgs = null;
+			if (orderByClause != null)
+				msgs = ((InternalEObject) orderByClause).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - QueryPackage.SELECT_QUERY__ORDER_BY_CLAUSE, null, msgs);
+			if (newOrderByClause != null)
+				msgs = ((InternalEObject) newOrderByClause).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - QueryPackage.SELECT_QUERY__ORDER_BY_CLAUSE, null, msgs);
+			msgs = basicSetOrderByClause(newOrderByClause, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.SELECT_QUERY__ORDER_BY_CLAUSE,
-					oldOrderByClause, orderByClause));
+					newOrderByClause, newOrderByClause));
 	}
 
 	/**
@@ -218,9 +230,7 @@ public class SelectQueryImpl extends MinimalEObjectImpl.Container implements Sel
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case QueryPackage.SELECT_QUERY__ORDER_BY_CLAUSE:
-			if (resolve)
-				return getOrderByClause();
-			return basicGetOrderByClause();
+			return getOrderByClause();
 		case QueryPackage.SELECT_QUERY__WHAT_CLAUSE:
 			return getWhatClause();
 		case QueryPackage.SELECT_QUERY__FROM_CLAUSE:

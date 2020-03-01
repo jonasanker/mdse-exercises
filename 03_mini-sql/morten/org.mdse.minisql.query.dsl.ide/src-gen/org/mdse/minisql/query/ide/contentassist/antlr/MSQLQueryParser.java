@@ -31,16 +31,27 @@ public class MSQLQueryParser extends AbstractContentAssistParser {
 		}
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, MSQLQueryGrammarAccess grammarAccess) {
+			builder.put(grammarAccess.getWhatDirectiveAccess().getAlternatives(), "rule__WhatDirective__Alternatives");
+			builder.put(grammarAccess.getOrderByDirectiveAccess().getAscendingAlternatives_1_0(), "rule__OrderByDirective__AscendingAlternatives_1_0");
 			builder.put(grammarAccess.getSelectQueryAccess().getGroup(), "rule__SelectQuery__Group__0");
 			builder.put(grammarAccess.getWhatClauseAccess().getGroup(), "rule__WhatClause__Group__0");
 			builder.put(grammarAccess.getWhatClauseAccess().getGroup_1(), "rule__WhatClause__Group_1__0");
+			builder.put(grammarAccess.getAllColumnsWhatDirectiveAccess().getGroup(), "rule__AllColumnsWhatDirective__Group__0");
 			builder.put(grammarAccess.getFromClauseAccess().getGroup(), "rule__FromClause__Group__0");
+			builder.put(grammarAccess.getOrderByClauseAccess().getGroup(), "rule__OrderByClause__Group__0");
+			builder.put(grammarAccess.getOrderByClauseAccess().getGroup_3(), "rule__OrderByClause__Group_3__0");
+			builder.put(grammarAccess.getOrderByDirectiveAccess().getGroup(), "rule__OrderByDirective__Group__0");
 			builder.put(grammarAccess.getSelectQueryAccess().getWhatClauseAssignment_1(), "rule__SelectQuery__WhatClauseAssignment_1");
 			builder.put(grammarAccess.getSelectQueryAccess().getFromClauseAssignment_2(), "rule__SelectQuery__FromClauseAssignment_2");
+			builder.put(grammarAccess.getSelectQueryAccess().getOrderByClauseAssignment_3(), "rule__SelectQuery__OrderByClauseAssignment_3");
 			builder.put(grammarAccess.getWhatClauseAccess().getWhatDirectiveAssignment_0(), "rule__WhatClause__WhatDirectiveAssignment_0");
 			builder.put(grammarAccess.getWhatClauseAccess().getWhatDirectiveAssignment_1_1(), "rule__WhatClause__WhatDirectiveAssignment_1_1");
-			builder.put(grammarAccess.getFromClauseAccess().getTableAssignment_1(), "rule__FromClause__TableAssignment_1");
 			builder.put(grammarAccess.getSingleColumnWhatDirectiveAccess().getColumnReferenceAssignment(), "rule__SingleColumnWhatDirective__ColumnReferenceAssignment");
+			builder.put(grammarAccess.getFromClauseAccess().getTableAssignment_1(), "rule__FromClause__TableAssignment_1");
+			builder.put(grammarAccess.getOrderByClauseAccess().getOrderDirectivesAssignment_2(), "rule__OrderByClause__OrderDirectivesAssignment_2");
+			builder.put(grammarAccess.getOrderByClauseAccess().getOrderDirectivesAssignment_3_1(), "rule__OrderByClause__OrderDirectivesAssignment_3_1");
+			builder.put(grammarAccess.getOrderByDirectiveAccess().getColumnReferenceAssignment_0(), "rule__OrderByDirective__ColumnReferenceAssignment_0");
+			builder.put(grammarAccess.getOrderByDirectiveAccess().getAscendingAssignment_1(), "rule__OrderByDirective__AscendingAssignment_1");
 			builder.put(grammarAccess.getColumnReferenceAccess().getColumnAssignment(), "rule__ColumnReference__ColumnAssignment");
 		}
 	}

@@ -24,20 +24,25 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "SELECT", "FROM", "Comma", "Semicolon", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "SELECT", "ORDER", "DESC", "FROM", "ASC", "BY", "Asterisk", "Comma", "Semicolon", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER"
     };
-    public static final int RULE_ID=8;
-    public static final int RULE_WS=13;
-    public static final int RULE_STRING=10;
-    public static final int FROM=5;
-    public static final int RULE_ANY_OTHER=14;
-    public static final int SELECT=4;
-    public static final int RULE_SL_COMMENT=12;
-    public static final int Semicolon=7;
-    public static final int Comma=6;
-    public static final int RULE_INT=9;
-    public static final int RULE_ML_COMMENT=11;
+    public static final int RULE_STRING=15;
+    public static final int FROM=7;
+    public static final int DESC=6;
+    public static final int RULE_SL_COMMENT=17;
+    public static final int ORDER=5;
+    public static final int ASC=8;
+    public static final int Comma=11;
+    public static final int BY=9;
     public static final int EOF=-1;
+    public static final int Asterisk=10;
+    public static final int RULE_ID=13;
+    public static final int RULE_WS=18;
+    public static final int RULE_ANY_OTHER=19;
+    public static final int SELECT=4;
+    public static final int Semicolon=12;
+    public static final int RULE_INT=14;
+    public static final int RULE_ML_COMMENT=16;
 
     // delegates
     // delegators
@@ -60,9 +65,14 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
     	private final Map<String, String> tokenNameToValue = new HashMap<String, String>();
     	
     	{
+    		tokenNameToValue.put("Asterisk", "'*'");
     		tokenNameToValue.put("Comma", "','");
     		tokenNameToValue.put("Semicolon", "';'");
+    		tokenNameToValue.put("BY", "'BY'");
+    		tokenNameToValue.put("ASC", "'ASC'");
+    		tokenNameToValue.put("DESC", "'DESC'");
     		tokenNameToValue.put("FROM", "'FROM'");
+    		tokenNameToValue.put("ORDER", "'ORDER'");
     		tokenNameToValue.put("SELECT", "'SELECT'");
     	}
 
@@ -86,11 +96,11 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "entryRuleSelectQuery"
-    // InternalMSQLQueryParser.g:59:1: entryRuleSelectQuery : ruleSelectQuery EOF ;
+    // InternalMSQLQueryParser.g:64:1: entryRuleSelectQuery : ruleSelectQuery EOF ;
     public final void entryRuleSelectQuery() throws RecognitionException {
         try {
-            // InternalMSQLQueryParser.g:60:1: ( ruleSelectQuery EOF )
-            // InternalMSQLQueryParser.g:61:1: ruleSelectQuery EOF
+            // InternalMSQLQueryParser.g:65:1: ( ruleSelectQuery EOF )
+            // InternalMSQLQueryParser.g:66:1: ruleSelectQuery EOF
             {
              before(grammarAccess.getSelectQueryRule()); 
             pushFollow(FOLLOW_1);
@@ -116,21 +126,21 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "ruleSelectQuery"
-    // InternalMSQLQueryParser.g:68:1: ruleSelectQuery : ( ( rule__SelectQuery__Group__0 ) ) ;
+    // InternalMSQLQueryParser.g:73:1: ruleSelectQuery : ( ( rule__SelectQuery__Group__0 ) ) ;
     public final void ruleSelectQuery() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:72:2: ( ( ( rule__SelectQuery__Group__0 ) ) )
-            // InternalMSQLQueryParser.g:73:2: ( ( rule__SelectQuery__Group__0 ) )
+            // InternalMSQLQueryParser.g:77:2: ( ( ( rule__SelectQuery__Group__0 ) ) )
+            // InternalMSQLQueryParser.g:78:2: ( ( rule__SelectQuery__Group__0 ) )
             {
-            // InternalMSQLQueryParser.g:73:2: ( ( rule__SelectQuery__Group__0 ) )
-            // InternalMSQLQueryParser.g:74:3: ( rule__SelectQuery__Group__0 )
+            // InternalMSQLQueryParser.g:78:2: ( ( rule__SelectQuery__Group__0 ) )
+            // InternalMSQLQueryParser.g:79:3: ( rule__SelectQuery__Group__0 )
             {
              before(grammarAccess.getSelectQueryAccess().getGroup()); 
-            // InternalMSQLQueryParser.g:75:3: ( rule__SelectQuery__Group__0 )
-            // InternalMSQLQueryParser.g:75:4: rule__SelectQuery__Group__0
+            // InternalMSQLQueryParser.g:80:3: ( rule__SelectQuery__Group__0 )
+            // InternalMSQLQueryParser.g:80:4: rule__SelectQuery__Group__0
             {
             pushFollow(FOLLOW_2);
             rule__SelectQuery__Group__0();
@@ -163,11 +173,11 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "entryRuleWhatClause"
-    // InternalMSQLQueryParser.g:84:1: entryRuleWhatClause : ruleWhatClause EOF ;
+    // InternalMSQLQueryParser.g:89:1: entryRuleWhatClause : ruleWhatClause EOF ;
     public final void entryRuleWhatClause() throws RecognitionException {
         try {
-            // InternalMSQLQueryParser.g:85:1: ( ruleWhatClause EOF )
-            // InternalMSQLQueryParser.g:86:1: ruleWhatClause EOF
+            // InternalMSQLQueryParser.g:90:1: ( ruleWhatClause EOF )
+            // InternalMSQLQueryParser.g:91:1: ruleWhatClause EOF
             {
              before(grammarAccess.getWhatClauseRule()); 
             pushFollow(FOLLOW_1);
@@ -193,21 +203,21 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "ruleWhatClause"
-    // InternalMSQLQueryParser.g:93:1: ruleWhatClause : ( ( rule__WhatClause__Group__0 ) ) ;
+    // InternalMSQLQueryParser.g:98:1: ruleWhatClause : ( ( rule__WhatClause__Group__0 ) ) ;
     public final void ruleWhatClause() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:97:2: ( ( ( rule__WhatClause__Group__0 ) ) )
-            // InternalMSQLQueryParser.g:98:2: ( ( rule__WhatClause__Group__0 ) )
+            // InternalMSQLQueryParser.g:102:2: ( ( ( rule__WhatClause__Group__0 ) ) )
+            // InternalMSQLQueryParser.g:103:2: ( ( rule__WhatClause__Group__0 ) )
             {
-            // InternalMSQLQueryParser.g:98:2: ( ( rule__WhatClause__Group__0 ) )
-            // InternalMSQLQueryParser.g:99:3: ( rule__WhatClause__Group__0 )
+            // InternalMSQLQueryParser.g:103:2: ( ( rule__WhatClause__Group__0 ) )
+            // InternalMSQLQueryParser.g:104:3: ( rule__WhatClause__Group__0 )
             {
              before(grammarAccess.getWhatClauseAccess().getGroup()); 
-            // InternalMSQLQueryParser.g:100:3: ( rule__WhatClause__Group__0 )
-            // InternalMSQLQueryParser.g:100:4: rule__WhatClause__Group__0
+            // InternalMSQLQueryParser.g:105:3: ( rule__WhatClause__Group__0 )
+            // InternalMSQLQueryParser.g:105:4: rule__WhatClause__Group__0
             {
             pushFollow(FOLLOW_2);
             rule__WhatClause__Group__0();
@@ -239,20 +249,20 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
     // $ANTLR end "ruleWhatClause"
 
 
-    // $ANTLR start "entryRuleFromClause"
-    // InternalMSQLQueryParser.g:109:1: entryRuleFromClause : ruleFromClause EOF ;
-    public final void entryRuleFromClause() throws RecognitionException {
+    // $ANTLR start "entryRuleWhatDirective"
+    // InternalMSQLQueryParser.g:114:1: entryRuleWhatDirective : ruleWhatDirective EOF ;
+    public final void entryRuleWhatDirective() throws RecognitionException {
         try {
-            // InternalMSQLQueryParser.g:110:1: ( ruleFromClause EOF )
-            // InternalMSQLQueryParser.g:111:1: ruleFromClause EOF
+            // InternalMSQLQueryParser.g:115:1: ( ruleWhatDirective EOF )
+            // InternalMSQLQueryParser.g:116:1: ruleWhatDirective EOF
             {
-             before(grammarAccess.getFromClauseRule()); 
+             before(grammarAccess.getWhatDirectiveRule()); 
             pushFollow(FOLLOW_1);
-            ruleFromClause();
+            ruleWhatDirective();
 
             state._fsp--;
 
-             after(grammarAccess.getFromClauseRule()); 
+             after(grammarAccess.getWhatDirectiveRule()); 
             match(input,EOF,FOLLOW_2); 
 
             }
@@ -266,35 +276,35 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
         }
         return ;
     }
-    // $ANTLR end "entryRuleFromClause"
+    // $ANTLR end "entryRuleWhatDirective"
 
 
-    // $ANTLR start "ruleFromClause"
-    // InternalMSQLQueryParser.g:118:1: ruleFromClause : ( ( rule__FromClause__Group__0 ) ) ;
-    public final void ruleFromClause() throws RecognitionException {
+    // $ANTLR start "ruleWhatDirective"
+    // InternalMSQLQueryParser.g:123:1: ruleWhatDirective : ( ( rule__WhatDirective__Alternatives ) ) ;
+    public final void ruleWhatDirective() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:122:2: ( ( ( rule__FromClause__Group__0 ) ) )
-            // InternalMSQLQueryParser.g:123:2: ( ( rule__FromClause__Group__0 ) )
+            // InternalMSQLQueryParser.g:127:2: ( ( ( rule__WhatDirective__Alternatives ) ) )
+            // InternalMSQLQueryParser.g:128:2: ( ( rule__WhatDirective__Alternatives ) )
             {
-            // InternalMSQLQueryParser.g:123:2: ( ( rule__FromClause__Group__0 ) )
-            // InternalMSQLQueryParser.g:124:3: ( rule__FromClause__Group__0 )
+            // InternalMSQLQueryParser.g:128:2: ( ( rule__WhatDirective__Alternatives ) )
+            // InternalMSQLQueryParser.g:129:3: ( rule__WhatDirective__Alternatives )
             {
-             before(grammarAccess.getFromClauseAccess().getGroup()); 
-            // InternalMSQLQueryParser.g:125:3: ( rule__FromClause__Group__0 )
-            // InternalMSQLQueryParser.g:125:4: rule__FromClause__Group__0
+             before(grammarAccess.getWhatDirectiveAccess().getAlternatives()); 
+            // InternalMSQLQueryParser.g:130:3: ( rule__WhatDirective__Alternatives )
+            // InternalMSQLQueryParser.g:130:4: rule__WhatDirective__Alternatives
             {
             pushFollow(FOLLOW_2);
-            rule__FromClause__Group__0();
+            rule__WhatDirective__Alternatives();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getFromClauseAccess().getGroup()); 
+             after(grammarAccess.getWhatDirectiveAccess().getAlternatives()); 
 
             }
 
@@ -313,15 +323,92 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
         }
         return ;
     }
-    // $ANTLR end "ruleFromClause"
+    // $ANTLR end "ruleWhatDirective"
+
+
+    // $ANTLR start "entryRuleAllColumnsWhatDirective"
+    // InternalMSQLQueryParser.g:139:1: entryRuleAllColumnsWhatDirective : ruleAllColumnsWhatDirective EOF ;
+    public final void entryRuleAllColumnsWhatDirective() throws RecognitionException {
+        try {
+            // InternalMSQLQueryParser.g:140:1: ( ruleAllColumnsWhatDirective EOF )
+            // InternalMSQLQueryParser.g:141:1: ruleAllColumnsWhatDirective EOF
+            {
+             before(grammarAccess.getAllColumnsWhatDirectiveRule()); 
+            pushFollow(FOLLOW_1);
+            ruleAllColumnsWhatDirective();
+
+            state._fsp--;
+
+             after(grammarAccess.getAllColumnsWhatDirectiveRule()); 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return ;
+    }
+    // $ANTLR end "entryRuleAllColumnsWhatDirective"
+
+
+    // $ANTLR start "ruleAllColumnsWhatDirective"
+    // InternalMSQLQueryParser.g:148:1: ruleAllColumnsWhatDirective : ( ( rule__AllColumnsWhatDirective__Group__0 ) ) ;
+    public final void ruleAllColumnsWhatDirective() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:152:2: ( ( ( rule__AllColumnsWhatDirective__Group__0 ) ) )
+            // InternalMSQLQueryParser.g:153:2: ( ( rule__AllColumnsWhatDirective__Group__0 ) )
+            {
+            // InternalMSQLQueryParser.g:153:2: ( ( rule__AllColumnsWhatDirective__Group__0 ) )
+            // InternalMSQLQueryParser.g:154:3: ( rule__AllColumnsWhatDirective__Group__0 )
+            {
+             before(grammarAccess.getAllColumnsWhatDirectiveAccess().getGroup()); 
+            // InternalMSQLQueryParser.g:155:3: ( rule__AllColumnsWhatDirective__Group__0 )
+            // InternalMSQLQueryParser.g:155:4: rule__AllColumnsWhatDirective__Group__0
+            {
+            pushFollow(FOLLOW_2);
+            rule__AllColumnsWhatDirective__Group__0();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getAllColumnsWhatDirectiveAccess().getGroup()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "ruleAllColumnsWhatDirective"
 
 
     // $ANTLR start "entryRuleSingleColumnWhatDirective"
-    // InternalMSQLQueryParser.g:134:1: entryRuleSingleColumnWhatDirective : ruleSingleColumnWhatDirective EOF ;
+    // InternalMSQLQueryParser.g:164:1: entryRuleSingleColumnWhatDirective : ruleSingleColumnWhatDirective EOF ;
     public final void entryRuleSingleColumnWhatDirective() throws RecognitionException {
         try {
-            // InternalMSQLQueryParser.g:135:1: ( ruleSingleColumnWhatDirective EOF )
-            // InternalMSQLQueryParser.g:136:1: ruleSingleColumnWhatDirective EOF
+            // InternalMSQLQueryParser.g:165:1: ( ruleSingleColumnWhatDirective EOF )
+            // InternalMSQLQueryParser.g:166:1: ruleSingleColumnWhatDirective EOF
             {
              before(grammarAccess.getSingleColumnWhatDirectiveRule()); 
             pushFollow(FOLLOW_1);
@@ -347,21 +434,21 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "ruleSingleColumnWhatDirective"
-    // InternalMSQLQueryParser.g:143:1: ruleSingleColumnWhatDirective : ( ( rule__SingleColumnWhatDirective__ColumnReferenceAssignment ) ) ;
+    // InternalMSQLQueryParser.g:173:1: ruleSingleColumnWhatDirective : ( ( rule__SingleColumnWhatDirective__ColumnReferenceAssignment ) ) ;
     public final void ruleSingleColumnWhatDirective() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:147:2: ( ( ( rule__SingleColumnWhatDirective__ColumnReferenceAssignment ) ) )
-            // InternalMSQLQueryParser.g:148:2: ( ( rule__SingleColumnWhatDirective__ColumnReferenceAssignment ) )
+            // InternalMSQLQueryParser.g:177:2: ( ( ( rule__SingleColumnWhatDirective__ColumnReferenceAssignment ) ) )
+            // InternalMSQLQueryParser.g:178:2: ( ( rule__SingleColumnWhatDirective__ColumnReferenceAssignment ) )
             {
-            // InternalMSQLQueryParser.g:148:2: ( ( rule__SingleColumnWhatDirective__ColumnReferenceAssignment ) )
-            // InternalMSQLQueryParser.g:149:3: ( rule__SingleColumnWhatDirective__ColumnReferenceAssignment )
+            // InternalMSQLQueryParser.g:178:2: ( ( rule__SingleColumnWhatDirective__ColumnReferenceAssignment ) )
+            // InternalMSQLQueryParser.g:179:3: ( rule__SingleColumnWhatDirective__ColumnReferenceAssignment )
             {
              before(grammarAccess.getSingleColumnWhatDirectiveAccess().getColumnReferenceAssignment()); 
-            // InternalMSQLQueryParser.g:150:3: ( rule__SingleColumnWhatDirective__ColumnReferenceAssignment )
-            // InternalMSQLQueryParser.g:150:4: rule__SingleColumnWhatDirective__ColumnReferenceAssignment
+            // InternalMSQLQueryParser.g:180:3: ( rule__SingleColumnWhatDirective__ColumnReferenceAssignment )
+            // InternalMSQLQueryParser.g:180:4: rule__SingleColumnWhatDirective__ColumnReferenceAssignment
             {
             pushFollow(FOLLOW_2);
             rule__SingleColumnWhatDirective__ColumnReferenceAssignment();
@@ -393,12 +480,243 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
     // $ANTLR end "ruleSingleColumnWhatDirective"
 
 
+    // $ANTLR start "entryRuleFromClause"
+    // InternalMSQLQueryParser.g:189:1: entryRuleFromClause : ruleFromClause EOF ;
+    public final void entryRuleFromClause() throws RecognitionException {
+        try {
+            // InternalMSQLQueryParser.g:190:1: ( ruleFromClause EOF )
+            // InternalMSQLQueryParser.g:191:1: ruleFromClause EOF
+            {
+             before(grammarAccess.getFromClauseRule()); 
+            pushFollow(FOLLOW_1);
+            ruleFromClause();
+
+            state._fsp--;
+
+             after(grammarAccess.getFromClauseRule()); 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return ;
+    }
+    // $ANTLR end "entryRuleFromClause"
+
+
+    // $ANTLR start "ruleFromClause"
+    // InternalMSQLQueryParser.g:198:1: ruleFromClause : ( ( rule__FromClause__Group__0 ) ) ;
+    public final void ruleFromClause() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:202:2: ( ( ( rule__FromClause__Group__0 ) ) )
+            // InternalMSQLQueryParser.g:203:2: ( ( rule__FromClause__Group__0 ) )
+            {
+            // InternalMSQLQueryParser.g:203:2: ( ( rule__FromClause__Group__0 ) )
+            // InternalMSQLQueryParser.g:204:3: ( rule__FromClause__Group__0 )
+            {
+             before(grammarAccess.getFromClauseAccess().getGroup()); 
+            // InternalMSQLQueryParser.g:205:3: ( rule__FromClause__Group__0 )
+            // InternalMSQLQueryParser.g:205:4: rule__FromClause__Group__0
+            {
+            pushFollow(FOLLOW_2);
+            rule__FromClause__Group__0();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getFromClauseAccess().getGroup()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "ruleFromClause"
+
+
+    // $ANTLR start "entryRuleOrderByClause"
+    // InternalMSQLQueryParser.g:214:1: entryRuleOrderByClause : ruleOrderByClause EOF ;
+    public final void entryRuleOrderByClause() throws RecognitionException {
+        try {
+            // InternalMSQLQueryParser.g:215:1: ( ruleOrderByClause EOF )
+            // InternalMSQLQueryParser.g:216:1: ruleOrderByClause EOF
+            {
+             before(grammarAccess.getOrderByClauseRule()); 
+            pushFollow(FOLLOW_1);
+            ruleOrderByClause();
+
+            state._fsp--;
+
+             after(grammarAccess.getOrderByClauseRule()); 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return ;
+    }
+    // $ANTLR end "entryRuleOrderByClause"
+
+
+    // $ANTLR start "ruleOrderByClause"
+    // InternalMSQLQueryParser.g:223:1: ruleOrderByClause : ( ( rule__OrderByClause__Group__0 ) ) ;
+    public final void ruleOrderByClause() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:227:2: ( ( ( rule__OrderByClause__Group__0 ) ) )
+            // InternalMSQLQueryParser.g:228:2: ( ( rule__OrderByClause__Group__0 ) )
+            {
+            // InternalMSQLQueryParser.g:228:2: ( ( rule__OrderByClause__Group__0 ) )
+            // InternalMSQLQueryParser.g:229:3: ( rule__OrderByClause__Group__0 )
+            {
+             before(grammarAccess.getOrderByClauseAccess().getGroup()); 
+            // InternalMSQLQueryParser.g:230:3: ( rule__OrderByClause__Group__0 )
+            // InternalMSQLQueryParser.g:230:4: rule__OrderByClause__Group__0
+            {
+            pushFollow(FOLLOW_2);
+            rule__OrderByClause__Group__0();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getOrderByClauseAccess().getGroup()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "ruleOrderByClause"
+
+
+    // $ANTLR start "entryRuleOrderByDirective"
+    // InternalMSQLQueryParser.g:239:1: entryRuleOrderByDirective : ruleOrderByDirective EOF ;
+    public final void entryRuleOrderByDirective() throws RecognitionException {
+        try {
+            // InternalMSQLQueryParser.g:240:1: ( ruleOrderByDirective EOF )
+            // InternalMSQLQueryParser.g:241:1: ruleOrderByDirective EOF
+            {
+             before(grammarAccess.getOrderByDirectiveRule()); 
+            pushFollow(FOLLOW_1);
+            ruleOrderByDirective();
+
+            state._fsp--;
+
+             after(grammarAccess.getOrderByDirectiveRule()); 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return ;
+    }
+    // $ANTLR end "entryRuleOrderByDirective"
+
+
+    // $ANTLR start "ruleOrderByDirective"
+    // InternalMSQLQueryParser.g:248:1: ruleOrderByDirective : ( ( rule__OrderByDirective__Group__0 ) ) ;
+    public final void ruleOrderByDirective() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:252:2: ( ( ( rule__OrderByDirective__Group__0 ) ) )
+            // InternalMSQLQueryParser.g:253:2: ( ( rule__OrderByDirective__Group__0 ) )
+            {
+            // InternalMSQLQueryParser.g:253:2: ( ( rule__OrderByDirective__Group__0 ) )
+            // InternalMSQLQueryParser.g:254:3: ( rule__OrderByDirective__Group__0 )
+            {
+             before(grammarAccess.getOrderByDirectiveAccess().getGroup()); 
+            // InternalMSQLQueryParser.g:255:3: ( rule__OrderByDirective__Group__0 )
+            // InternalMSQLQueryParser.g:255:4: rule__OrderByDirective__Group__0
+            {
+            pushFollow(FOLLOW_2);
+            rule__OrderByDirective__Group__0();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getOrderByDirectiveAccess().getGroup()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "ruleOrderByDirective"
+
+
     // $ANTLR start "entryRuleColumnReference"
-    // InternalMSQLQueryParser.g:159:1: entryRuleColumnReference : ruleColumnReference EOF ;
+    // InternalMSQLQueryParser.g:264:1: entryRuleColumnReference : ruleColumnReference EOF ;
     public final void entryRuleColumnReference() throws RecognitionException {
         try {
-            // InternalMSQLQueryParser.g:160:1: ( ruleColumnReference EOF )
-            // InternalMSQLQueryParser.g:161:1: ruleColumnReference EOF
+            // InternalMSQLQueryParser.g:265:1: ( ruleColumnReference EOF )
+            // InternalMSQLQueryParser.g:266:1: ruleColumnReference EOF
             {
              before(grammarAccess.getColumnReferenceRule()); 
             pushFollow(FOLLOW_1);
@@ -424,21 +742,21 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "ruleColumnReference"
-    // InternalMSQLQueryParser.g:168:1: ruleColumnReference : ( ( rule__ColumnReference__ColumnAssignment ) ) ;
+    // InternalMSQLQueryParser.g:273:1: ruleColumnReference : ( ( rule__ColumnReference__ColumnAssignment ) ) ;
     public final void ruleColumnReference() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:172:2: ( ( ( rule__ColumnReference__ColumnAssignment ) ) )
-            // InternalMSQLQueryParser.g:173:2: ( ( rule__ColumnReference__ColumnAssignment ) )
+            // InternalMSQLQueryParser.g:277:2: ( ( ( rule__ColumnReference__ColumnAssignment ) ) )
+            // InternalMSQLQueryParser.g:278:2: ( ( rule__ColumnReference__ColumnAssignment ) )
             {
-            // InternalMSQLQueryParser.g:173:2: ( ( rule__ColumnReference__ColumnAssignment ) )
-            // InternalMSQLQueryParser.g:174:3: ( rule__ColumnReference__ColumnAssignment )
+            // InternalMSQLQueryParser.g:278:2: ( ( rule__ColumnReference__ColumnAssignment ) )
+            // InternalMSQLQueryParser.g:279:3: ( rule__ColumnReference__ColumnAssignment )
             {
              before(grammarAccess.getColumnReferenceAccess().getColumnAssignment()); 
-            // InternalMSQLQueryParser.g:175:3: ( rule__ColumnReference__ColumnAssignment )
-            // InternalMSQLQueryParser.g:175:4: rule__ColumnReference__ColumnAssignment
+            // InternalMSQLQueryParser.g:280:3: ( rule__ColumnReference__ColumnAssignment )
+            // InternalMSQLQueryParser.g:280:4: rule__ColumnReference__ColumnAssignment
             {
             pushFollow(FOLLOW_2);
             rule__ColumnReference__ColumnAssignment();
@@ -470,15 +788,165 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
     // $ANTLR end "ruleColumnReference"
 
 
+    // $ANTLR start "rule__WhatDirective__Alternatives"
+    // InternalMSQLQueryParser.g:288:1: rule__WhatDirective__Alternatives : ( ( ruleAllColumnsWhatDirective ) | ( ruleSingleColumnWhatDirective ) );
+    public final void rule__WhatDirective__Alternatives() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:292:1: ( ( ruleAllColumnsWhatDirective ) | ( ruleSingleColumnWhatDirective ) )
+            int alt1=2;
+            int LA1_0 = input.LA(1);
+
+            if ( (LA1_0==Asterisk) ) {
+                alt1=1;
+            }
+            else if ( (LA1_0==RULE_ID) ) {
+                alt1=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 1, 0, input);
+
+                throw nvae;
+            }
+            switch (alt1) {
+                case 1 :
+                    // InternalMSQLQueryParser.g:293:2: ( ruleAllColumnsWhatDirective )
+                    {
+                    // InternalMSQLQueryParser.g:293:2: ( ruleAllColumnsWhatDirective )
+                    // InternalMSQLQueryParser.g:294:3: ruleAllColumnsWhatDirective
+                    {
+                     before(grammarAccess.getWhatDirectiveAccess().getAllColumnsWhatDirectiveParserRuleCall_0()); 
+                    pushFollow(FOLLOW_2);
+                    ruleAllColumnsWhatDirective();
+
+                    state._fsp--;
+
+                     after(grammarAccess.getWhatDirectiveAccess().getAllColumnsWhatDirectiveParserRuleCall_0()); 
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // InternalMSQLQueryParser.g:299:2: ( ruleSingleColumnWhatDirective )
+                    {
+                    // InternalMSQLQueryParser.g:299:2: ( ruleSingleColumnWhatDirective )
+                    // InternalMSQLQueryParser.g:300:3: ruleSingleColumnWhatDirective
+                    {
+                     before(grammarAccess.getWhatDirectiveAccess().getSingleColumnWhatDirectiveParserRuleCall_1()); 
+                    pushFollow(FOLLOW_2);
+                    ruleSingleColumnWhatDirective();
+
+                    state._fsp--;
+
+                     after(grammarAccess.getWhatDirectiveAccess().getSingleColumnWhatDirectiveParserRuleCall_1()); 
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__WhatDirective__Alternatives"
+
+
+    // $ANTLR start "rule__OrderByDirective__AscendingAlternatives_1_0"
+    // InternalMSQLQueryParser.g:309:1: rule__OrderByDirective__AscendingAlternatives_1_0 : ( ( ASC ) | ( DESC ) );
+    public final void rule__OrderByDirective__AscendingAlternatives_1_0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:313:1: ( ( ASC ) | ( DESC ) )
+            int alt2=2;
+            int LA2_0 = input.LA(1);
+
+            if ( (LA2_0==ASC) ) {
+                alt2=1;
+            }
+            else if ( (LA2_0==DESC) ) {
+                alt2=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 2, 0, input);
+
+                throw nvae;
+            }
+            switch (alt2) {
+                case 1 :
+                    // InternalMSQLQueryParser.g:314:2: ( ASC )
+                    {
+                    // InternalMSQLQueryParser.g:314:2: ( ASC )
+                    // InternalMSQLQueryParser.g:315:3: ASC
+                    {
+                     before(grammarAccess.getOrderByDirectiveAccess().getAscendingASCKeyword_1_0_0()); 
+                    match(input,ASC,FOLLOW_2); 
+                     after(grammarAccess.getOrderByDirectiveAccess().getAscendingASCKeyword_1_0_0()); 
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // InternalMSQLQueryParser.g:320:2: ( DESC )
+                    {
+                    // InternalMSQLQueryParser.g:320:2: ( DESC )
+                    // InternalMSQLQueryParser.g:321:3: DESC
+                    {
+                     before(grammarAccess.getOrderByDirectiveAccess().getAscendingDESCKeyword_1_0_1()); 
+                    match(input,DESC,FOLLOW_2); 
+                     after(grammarAccess.getOrderByDirectiveAccess().getAscendingDESCKeyword_1_0_1()); 
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__OrderByDirective__AscendingAlternatives_1_0"
+
+
     // $ANTLR start "rule__SelectQuery__Group__0"
-    // InternalMSQLQueryParser.g:183:1: rule__SelectQuery__Group__0 : rule__SelectQuery__Group__0__Impl rule__SelectQuery__Group__1 ;
+    // InternalMSQLQueryParser.g:330:1: rule__SelectQuery__Group__0 : rule__SelectQuery__Group__0__Impl rule__SelectQuery__Group__1 ;
     public final void rule__SelectQuery__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:187:1: ( rule__SelectQuery__Group__0__Impl rule__SelectQuery__Group__1 )
-            // InternalMSQLQueryParser.g:188:2: rule__SelectQuery__Group__0__Impl rule__SelectQuery__Group__1
+            // InternalMSQLQueryParser.g:334:1: ( rule__SelectQuery__Group__0__Impl rule__SelectQuery__Group__1 )
+            // InternalMSQLQueryParser.g:335:2: rule__SelectQuery__Group__0__Impl rule__SelectQuery__Group__1
             {
             pushFollow(FOLLOW_3);
             rule__SelectQuery__Group__0__Impl();
@@ -509,17 +977,17 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__Group__0__Impl"
-    // InternalMSQLQueryParser.g:195:1: rule__SelectQuery__Group__0__Impl : ( SELECT ) ;
+    // InternalMSQLQueryParser.g:342:1: rule__SelectQuery__Group__0__Impl : ( SELECT ) ;
     public final void rule__SelectQuery__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:199:1: ( ( SELECT ) )
-            // InternalMSQLQueryParser.g:200:1: ( SELECT )
+            // InternalMSQLQueryParser.g:346:1: ( ( SELECT ) )
+            // InternalMSQLQueryParser.g:347:1: ( SELECT )
             {
-            // InternalMSQLQueryParser.g:200:1: ( SELECT )
-            // InternalMSQLQueryParser.g:201:2: SELECT
+            // InternalMSQLQueryParser.g:347:1: ( SELECT )
+            // InternalMSQLQueryParser.g:348:2: SELECT
             {
              before(grammarAccess.getSelectQueryAccess().getSELECTKeyword_0()); 
             match(input,SELECT,FOLLOW_2); 
@@ -546,14 +1014,14 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__Group__1"
-    // InternalMSQLQueryParser.g:210:1: rule__SelectQuery__Group__1 : rule__SelectQuery__Group__1__Impl rule__SelectQuery__Group__2 ;
+    // InternalMSQLQueryParser.g:357:1: rule__SelectQuery__Group__1 : rule__SelectQuery__Group__1__Impl rule__SelectQuery__Group__2 ;
     public final void rule__SelectQuery__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:214:1: ( rule__SelectQuery__Group__1__Impl rule__SelectQuery__Group__2 )
-            // InternalMSQLQueryParser.g:215:2: rule__SelectQuery__Group__1__Impl rule__SelectQuery__Group__2
+            // InternalMSQLQueryParser.g:361:1: ( rule__SelectQuery__Group__1__Impl rule__SelectQuery__Group__2 )
+            // InternalMSQLQueryParser.g:362:2: rule__SelectQuery__Group__1__Impl rule__SelectQuery__Group__2
             {
             pushFollow(FOLLOW_4);
             rule__SelectQuery__Group__1__Impl();
@@ -584,21 +1052,21 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__Group__1__Impl"
-    // InternalMSQLQueryParser.g:222:1: rule__SelectQuery__Group__1__Impl : ( ( rule__SelectQuery__WhatClauseAssignment_1 ) ) ;
+    // InternalMSQLQueryParser.g:369:1: rule__SelectQuery__Group__1__Impl : ( ( rule__SelectQuery__WhatClauseAssignment_1 ) ) ;
     public final void rule__SelectQuery__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:226:1: ( ( ( rule__SelectQuery__WhatClauseAssignment_1 ) ) )
-            // InternalMSQLQueryParser.g:227:1: ( ( rule__SelectQuery__WhatClauseAssignment_1 ) )
+            // InternalMSQLQueryParser.g:373:1: ( ( ( rule__SelectQuery__WhatClauseAssignment_1 ) ) )
+            // InternalMSQLQueryParser.g:374:1: ( ( rule__SelectQuery__WhatClauseAssignment_1 ) )
             {
-            // InternalMSQLQueryParser.g:227:1: ( ( rule__SelectQuery__WhatClauseAssignment_1 ) )
-            // InternalMSQLQueryParser.g:228:2: ( rule__SelectQuery__WhatClauseAssignment_1 )
+            // InternalMSQLQueryParser.g:374:1: ( ( rule__SelectQuery__WhatClauseAssignment_1 ) )
+            // InternalMSQLQueryParser.g:375:2: ( rule__SelectQuery__WhatClauseAssignment_1 )
             {
              before(grammarAccess.getSelectQueryAccess().getWhatClauseAssignment_1()); 
-            // InternalMSQLQueryParser.g:229:2: ( rule__SelectQuery__WhatClauseAssignment_1 )
-            // InternalMSQLQueryParser.g:229:3: rule__SelectQuery__WhatClauseAssignment_1
+            // InternalMSQLQueryParser.g:376:2: ( rule__SelectQuery__WhatClauseAssignment_1 )
+            // InternalMSQLQueryParser.g:376:3: rule__SelectQuery__WhatClauseAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__SelectQuery__WhatClauseAssignment_1();
@@ -631,14 +1099,14 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__Group__2"
-    // InternalMSQLQueryParser.g:237:1: rule__SelectQuery__Group__2 : rule__SelectQuery__Group__2__Impl rule__SelectQuery__Group__3 ;
+    // InternalMSQLQueryParser.g:384:1: rule__SelectQuery__Group__2 : rule__SelectQuery__Group__2__Impl rule__SelectQuery__Group__3 ;
     public final void rule__SelectQuery__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:241:1: ( rule__SelectQuery__Group__2__Impl rule__SelectQuery__Group__3 )
-            // InternalMSQLQueryParser.g:242:2: rule__SelectQuery__Group__2__Impl rule__SelectQuery__Group__3
+            // InternalMSQLQueryParser.g:388:1: ( rule__SelectQuery__Group__2__Impl rule__SelectQuery__Group__3 )
+            // InternalMSQLQueryParser.g:389:2: rule__SelectQuery__Group__2__Impl rule__SelectQuery__Group__3
             {
             pushFollow(FOLLOW_5);
             rule__SelectQuery__Group__2__Impl();
@@ -669,21 +1137,21 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__Group__2__Impl"
-    // InternalMSQLQueryParser.g:249:1: rule__SelectQuery__Group__2__Impl : ( ( rule__SelectQuery__FromClauseAssignment_2 ) ) ;
+    // InternalMSQLQueryParser.g:396:1: rule__SelectQuery__Group__2__Impl : ( ( rule__SelectQuery__FromClauseAssignment_2 ) ) ;
     public final void rule__SelectQuery__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:253:1: ( ( ( rule__SelectQuery__FromClauseAssignment_2 ) ) )
-            // InternalMSQLQueryParser.g:254:1: ( ( rule__SelectQuery__FromClauseAssignment_2 ) )
+            // InternalMSQLQueryParser.g:400:1: ( ( ( rule__SelectQuery__FromClauseAssignment_2 ) ) )
+            // InternalMSQLQueryParser.g:401:1: ( ( rule__SelectQuery__FromClauseAssignment_2 ) )
             {
-            // InternalMSQLQueryParser.g:254:1: ( ( rule__SelectQuery__FromClauseAssignment_2 ) )
-            // InternalMSQLQueryParser.g:255:2: ( rule__SelectQuery__FromClauseAssignment_2 )
+            // InternalMSQLQueryParser.g:401:1: ( ( rule__SelectQuery__FromClauseAssignment_2 ) )
+            // InternalMSQLQueryParser.g:402:2: ( rule__SelectQuery__FromClauseAssignment_2 )
             {
              before(grammarAccess.getSelectQueryAccess().getFromClauseAssignment_2()); 
-            // InternalMSQLQueryParser.g:256:2: ( rule__SelectQuery__FromClauseAssignment_2 )
-            // InternalMSQLQueryParser.g:256:3: rule__SelectQuery__FromClauseAssignment_2
+            // InternalMSQLQueryParser.g:403:2: ( rule__SelectQuery__FromClauseAssignment_2 )
+            // InternalMSQLQueryParser.g:403:3: rule__SelectQuery__FromClauseAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__SelectQuery__FromClauseAssignment_2();
@@ -716,17 +1184,22 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__Group__3"
-    // InternalMSQLQueryParser.g:264:1: rule__SelectQuery__Group__3 : rule__SelectQuery__Group__3__Impl ;
+    // InternalMSQLQueryParser.g:411:1: rule__SelectQuery__Group__3 : rule__SelectQuery__Group__3__Impl rule__SelectQuery__Group__4 ;
     public final void rule__SelectQuery__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:268:1: ( rule__SelectQuery__Group__3__Impl )
-            // InternalMSQLQueryParser.g:269:2: rule__SelectQuery__Group__3__Impl
+            // InternalMSQLQueryParser.g:415:1: ( rule__SelectQuery__Group__3__Impl rule__SelectQuery__Group__4 )
+            // InternalMSQLQueryParser.g:416:2: rule__SelectQuery__Group__3__Impl rule__SelectQuery__Group__4
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_5);
             rule__SelectQuery__Group__3__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__SelectQuery__Group__4();
 
             state._fsp--;
 
@@ -749,21 +1222,42 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__Group__3__Impl"
-    // InternalMSQLQueryParser.g:275:1: rule__SelectQuery__Group__3__Impl : ( Semicolon ) ;
+    // InternalMSQLQueryParser.g:423:1: rule__SelectQuery__Group__3__Impl : ( ( rule__SelectQuery__OrderByClauseAssignment_3 )? ) ;
     public final void rule__SelectQuery__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:279:1: ( ( Semicolon ) )
-            // InternalMSQLQueryParser.g:280:1: ( Semicolon )
+            // InternalMSQLQueryParser.g:427:1: ( ( ( rule__SelectQuery__OrderByClauseAssignment_3 )? ) )
+            // InternalMSQLQueryParser.g:428:1: ( ( rule__SelectQuery__OrderByClauseAssignment_3 )? )
             {
-            // InternalMSQLQueryParser.g:280:1: ( Semicolon )
-            // InternalMSQLQueryParser.g:281:2: Semicolon
+            // InternalMSQLQueryParser.g:428:1: ( ( rule__SelectQuery__OrderByClauseAssignment_3 )? )
+            // InternalMSQLQueryParser.g:429:2: ( rule__SelectQuery__OrderByClauseAssignment_3 )?
             {
-             before(grammarAccess.getSelectQueryAccess().getSemicolonKeyword_3()); 
-            match(input,Semicolon,FOLLOW_2); 
-             after(grammarAccess.getSelectQueryAccess().getSemicolonKeyword_3()); 
+             before(grammarAccess.getSelectQueryAccess().getOrderByClauseAssignment_3()); 
+            // InternalMSQLQueryParser.g:430:2: ( rule__SelectQuery__OrderByClauseAssignment_3 )?
+            int alt3=2;
+            int LA3_0 = input.LA(1);
+
+            if ( (LA3_0==ORDER) ) {
+                alt3=1;
+            }
+            switch (alt3) {
+                case 1 :
+                    // InternalMSQLQueryParser.g:430:3: rule__SelectQuery__OrderByClauseAssignment_3
+                    {
+                    pushFollow(FOLLOW_2);
+                    rule__SelectQuery__OrderByClauseAssignment_3();
+
+                    state._fsp--;
+
+
+                    }
+                    break;
+
+            }
+
+             after(grammarAccess.getSelectQueryAccess().getOrderByClauseAssignment_3()); 
 
             }
 
@@ -785,15 +1279,85 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
     // $ANTLR end "rule__SelectQuery__Group__3__Impl"
 
 
+    // $ANTLR start "rule__SelectQuery__Group__4"
+    // InternalMSQLQueryParser.g:438:1: rule__SelectQuery__Group__4 : rule__SelectQuery__Group__4__Impl ;
+    public final void rule__SelectQuery__Group__4() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:442:1: ( rule__SelectQuery__Group__4__Impl )
+            // InternalMSQLQueryParser.g:443:2: rule__SelectQuery__Group__4__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__SelectQuery__Group__4__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__SelectQuery__Group__4"
+
+
+    // $ANTLR start "rule__SelectQuery__Group__4__Impl"
+    // InternalMSQLQueryParser.g:449:1: rule__SelectQuery__Group__4__Impl : ( Semicolon ) ;
+    public final void rule__SelectQuery__Group__4__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:453:1: ( ( Semicolon ) )
+            // InternalMSQLQueryParser.g:454:1: ( Semicolon )
+            {
+            // InternalMSQLQueryParser.g:454:1: ( Semicolon )
+            // InternalMSQLQueryParser.g:455:2: Semicolon
+            {
+             before(grammarAccess.getSelectQueryAccess().getSemicolonKeyword_4()); 
+            match(input,Semicolon,FOLLOW_2); 
+             after(grammarAccess.getSelectQueryAccess().getSemicolonKeyword_4()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__SelectQuery__Group__4__Impl"
+
+
     // $ANTLR start "rule__WhatClause__Group__0"
-    // InternalMSQLQueryParser.g:291:1: rule__WhatClause__Group__0 : rule__WhatClause__Group__0__Impl rule__WhatClause__Group__1 ;
+    // InternalMSQLQueryParser.g:465:1: rule__WhatClause__Group__0 : rule__WhatClause__Group__0__Impl rule__WhatClause__Group__1 ;
     public final void rule__WhatClause__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:295:1: ( rule__WhatClause__Group__0__Impl rule__WhatClause__Group__1 )
-            // InternalMSQLQueryParser.g:296:2: rule__WhatClause__Group__0__Impl rule__WhatClause__Group__1
+            // InternalMSQLQueryParser.g:469:1: ( rule__WhatClause__Group__0__Impl rule__WhatClause__Group__1 )
+            // InternalMSQLQueryParser.g:470:2: rule__WhatClause__Group__0__Impl rule__WhatClause__Group__1
             {
             pushFollow(FOLLOW_6);
             rule__WhatClause__Group__0__Impl();
@@ -824,21 +1388,21 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__WhatClause__Group__0__Impl"
-    // InternalMSQLQueryParser.g:303:1: rule__WhatClause__Group__0__Impl : ( ( rule__WhatClause__WhatDirectiveAssignment_0 ) ) ;
+    // InternalMSQLQueryParser.g:477:1: rule__WhatClause__Group__0__Impl : ( ( rule__WhatClause__WhatDirectiveAssignment_0 ) ) ;
     public final void rule__WhatClause__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:307:1: ( ( ( rule__WhatClause__WhatDirectiveAssignment_0 ) ) )
-            // InternalMSQLQueryParser.g:308:1: ( ( rule__WhatClause__WhatDirectiveAssignment_0 ) )
+            // InternalMSQLQueryParser.g:481:1: ( ( ( rule__WhatClause__WhatDirectiveAssignment_0 ) ) )
+            // InternalMSQLQueryParser.g:482:1: ( ( rule__WhatClause__WhatDirectiveAssignment_0 ) )
             {
-            // InternalMSQLQueryParser.g:308:1: ( ( rule__WhatClause__WhatDirectiveAssignment_0 ) )
-            // InternalMSQLQueryParser.g:309:2: ( rule__WhatClause__WhatDirectiveAssignment_0 )
+            // InternalMSQLQueryParser.g:482:1: ( ( rule__WhatClause__WhatDirectiveAssignment_0 ) )
+            // InternalMSQLQueryParser.g:483:2: ( rule__WhatClause__WhatDirectiveAssignment_0 )
             {
              before(grammarAccess.getWhatClauseAccess().getWhatDirectiveAssignment_0()); 
-            // InternalMSQLQueryParser.g:310:2: ( rule__WhatClause__WhatDirectiveAssignment_0 )
-            // InternalMSQLQueryParser.g:310:3: rule__WhatClause__WhatDirectiveAssignment_0
+            // InternalMSQLQueryParser.g:484:2: ( rule__WhatClause__WhatDirectiveAssignment_0 )
+            // InternalMSQLQueryParser.g:484:3: rule__WhatClause__WhatDirectiveAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__WhatClause__WhatDirectiveAssignment_0();
@@ -871,14 +1435,14 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__WhatClause__Group__1"
-    // InternalMSQLQueryParser.g:318:1: rule__WhatClause__Group__1 : rule__WhatClause__Group__1__Impl ;
+    // InternalMSQLQueryParser.g:492:1: rule__WhatClause__Group__1 : rule__WhatClause__Group__1__Impl ;
     public final void rule__WhatClause__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:322:1: ( rule__WhatClause__Group__1__Impl )
-            // InternalMSQLQueryParser.g:323:2: rule__WhatClause__Group__1__Impl
+            // InternalMSQLQueryParser.g:496:1: ( rule__WhatClause__Group__1__Impl )
+            // InternalMSQLQueryParser.g:497:2: rule__WhatClause__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__WhatClause__Group__1__Impl();
@@ -904,33 +1468,33 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__WhatClause__Group__1__Impl"
-    // InternalMSQLQueryParser.g:329:1: rule__WhatClause__Group__1__Impl : ( ( rule__WhatClause__Group_1__0 )* ) ;
+    // InternalMSQLQueryParser.g:503:1: rule__WhatClause__Group__1__Impl : ( ( rule__WhatClause__Group_1__0 )* ) ;
     public final void rule__WhatClause__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:333:1: ( ( ( rule__WhatClause__Group_1__0 )* ) )
-            // InternalMSQLQueryParser.g:334:1: ( ( rule__WhatClause__Group_1__0 )* )
+            // InternalMSQLQueryParser.g:507:1: ( ( ( rule__WhatClause__Group_1__0 )* ) )
+            // InternalMSQLQueryParser.g:508:1: ( ( rule__WhatClause__Group_1__0 )* )
             {
-            // InternalMSQLQueryParser.g:334:1: ( ( rule__WhatClause__Group_1__0 )* )
-            // InternalMSQLQueryParser.g:335:2: ( rule__WhatClause__Group_1__0 )*
+            // InternalMSQLQueryParser.g:508:1: ( ( rule__WhatClause__Group_1__0 )* )
+            // InternalMSQLQueryParser.g:509:2: ( rule__WhatClause__Group_1__0 )*
             {
              before(grammarAccess.getWhatClauseAccess().getGroup_1()); 
-            // InternalMSQLQueryParser.g:336:2: ( rule__WhatClause__Group_1__0 )*
-            loop1:
+            // InternalMSQLQueryParser.g:510:2: ( rule__WhatClause__Group_1__0 )*
+            loop4:
             do {
-                int alt1=2;
-                int LA1_0 = input.LA(1);
+                int alt4=2;
+                int LA4_0 = input.LA(1);
 
-                if ( (LA1_0==Comma) ) {
-                    alt1=1;
+                if ( (LA4_0==Comma) ) {
+                    alt4=1;
                 }
 
 
-                switch (alt1) {
+                switch (alt4) {
             	case 1 :
-            	    // InternalMSQLQueryParser.g:336:3: rule__WhatClause__Group_1__0
+            	    // InternalMSQLQueryParser.g:510:3: rule__WhatClause__Group_1__0
             	    {
             	    pushFollow(FOLLOW_7);
             	    rule__WhatClause__Group_1__0();
@@ -942,7 +1506,7 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
             	    break;
 
             	default :
-            	    break loop1;
+            	    break loop4;
                 }
             } while (true);
 
@@ -969,14 +1533,14 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__WhatClause__Group_1__0"
-    // InternalMSQLQueryParser.g:345:1: rule__WhatClause__Group_1__0 : rule__WhatClause__Group_1__0__Impl rule__WhatClause__Group_1__1 ;
+    // InternalMSQLQueryParser.g:519:1: rule__WhatClause__Group_1__0 : rule__WhatClause__Group_1__0__Impl rule__WhatClause__Group_1__1 ;
     public final void rule__WhatClause__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:349:1: ( rule__WhatClause__Group_1__0__Impl rule__WhatClause__Group_1__1 )
-            // InternalMSQLQueryParser.g:350:2: rule__WhatClause__Group_1__0__Impl rule__WhatClause__Group_1__1
+            // InternalMSQLQueryParser.g:523:1: ( rule__WhatClause__Group_1__0__Impl rule__WhatClause__Group_1__1 )
+            // InternalMSQLQueryParser.g:524:2: rule__WhatClause__Group_1__0__Impl rule__WhatClause__Group_1__1
             {
             pushFollow(FOLLOW_3);
             rule__WhatClause__Group_1__0__Impl();
@@ -1007,17 +1571,17 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__WhatClause__Group_1__0__Impl"
-    // InternalMSQLQueryParser.g:357:1: rule__WhatClause__Group_1__0__Impl : ( Comma ) ;
+    // InternalMSQLQueryParser.g:531:1: rule__WhatClause__Group_1__0__Impl : ( Comma ) ;
     public final void rule__WhatClause__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:361:1: ( ( Comma ) )
-            // InternalMSQLQueryParser.g:362:1: ( Comma )
+            // InternalMSQLQueryParser.g:535:1: ( ( Comma ) )
+            // InternalMSQLQueryParser.g:536:1: ( Comma )
             {
-            // InternalMSQLQueryParser.g:362:1: ( Comma )
-            // InternalMSQLQueryParser.g:363:2: Comma
+            // InternalMSQLQueryParser.g:536:1: ( Comma )
+            // InternalMSQLQueryParser.g:537:2: Comma
             {
              before(grammarAccess.getWhatClauseAccess().getCommaKeyword_1_0()); 
             match(input,Comma,FOLLOW_2); 
@@ -1044,14 +1608,14 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__WhatClause__Group_1__1"
-    // InternalMSQLQueryParser.g:372:1: rule__WhatClause__Group_1__1 : rule__WhatClause__Group_1__1__Impl ;
+    // InternalMSQLQueryParser.g:546:1: rule__WhatClause__Group_1__1 : rule__WhatClause__Group_1__1__Impl ;
     public final void rule__WhatClause__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:376:1: ( rule__WhatClause__Group_1__1__Impl )
-            // InternalMSQLQueryParser.g:377:2: rule__WhatClause__Group_1__1__Impl
+            // InternalMSQLQueryParser.g:550:1: ( rule__WhatClause__Group_1__1__Impl )
+            // InternalMSQLQueryParser.g:551:2: rule__WhatClause__Group_1__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__WhatClause__Group_1__1__Impl();
@@ -1077,21 +1641,21 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__WhatClause__Group_1__1__Impl"
-    // InternalMSQLQueryParser.g:383:1: rule__WhatClause__Group_1__1__Impl : ( ( rule__WhatClause__WhatDirectiveAssignment_1_1 ) ) ;
+    // InternalMSQLQueryParser.g:557:1: rule__WhatClause__Group_1__1__Impl : ( ( rule__WhatClause__WhatDirectiveAssignment_1_1 ) ) ;
     public final void rule__WhatClause__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:387:1: ( ( ( rule__WhatClause__WhatDirectiveAssignment_1_1 ) ) )
-            // InternalMSQLQueryParser.g:388:1: ( ( rule__WhatClause__WhatDirectiveAssignment_1_1 ) )
+            // InternalMSQLQueryParser.g:561:1: ( ( ( rule__WhatClause__WhatDirectiveAssignment_1_1 ) ) )
+            // InternalMSQLQueryParser.g:562:1: ( ( rule__WhatClause__WhatDirectiveAssignment_1_1 ) )
             {
-            // InternalMSQLQueryParser.g:388:1: ( ( rule__WhatClause__WhatDirectiveAssignment_1_1 ) )
-            // InternalMSQLQueryParser.g:389:2: ( rule__WhatClause__WhatDirectiveAssignment_1_1 )
+            // InternalMSQLQueryParser.g:562:1: ( ( rule__WhatClause__WhatDirectiveAssignment_1_1 ) )
+            // InternalMSQLQueryParser.g:563:2: ( rule__WhatClause__WhatDirectiveAssignment_1_1 )
             {
              before(grammarAccess.getWhatClauseAccess().getWhatDirectiveAssignment_1_1()); 
-            // InternalMSQLQueryParser.g:390:2: ( rule__WhatClause__WhatDirectiveAssignment_1_1 )
-            // InternalMSQLQueryParser.g:390:3: rule__WhatClause__WhatDirectiveAssignment_1_1
+            // InternalMSQLQueryParser.g:564:2: ( rule__WhatClause__WhatDirectiveAssignment_1_1 )
+            // InternalMSQLQueryParser.g:564:3: rule__WhatClause__WhatDirectiveAssignment_1_1
             {
             pushFollow(FOLLOW_2);
             rule__WhatClause__WhatDirectiveAssignment_1_1();
@@ -1123,17 +1687,162 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
     // $ANTLR end "rule__WhatClause__Group_1__1__Impl"
 
 
+    // $ANTLR start "rule__AllColumnsWhatDirective__Group__0"
+    // InternalMSQLQueryParser.g:573:1: rule__AllColumnsWhatDirective__Group__0 : rule__AllColumnsWhatDirective__Group__0__Impl rule__AllColumnsWhatDirective__Group__1 ;
+    public final void rule__AllColumnsWhatDirective__Group__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:577:1: ( rule__AllColumnsWhatDirective__Group__0__Impl rule__AllColumnsWhatDirective__Group__1 )
+            // InternalMSQLQueryParser.g:578:2: rule__AllColumnsWhatDirective__Group__0__Impl rule__AllColumnsWhatDirective__Group__1
+            {
+            pushFollow(FOLLOW_1);
+            rule__AllColumnsWhatDirective__Group__0__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__AllColumnsWhatDirective__Group__1();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__AllColumnsWhatDirective__Group__0"
+
+
+    // $ANTLR start "rule__AllColumnsWhatDirective__Group__0__Impl"
+    // InternalMSQLQueryParser.g:585:1: rule__AllColumnsWhatDirective__Group__0__Impl : ( Asterisk ) ;
+    public final void rule__AllColumnsWhatDirective__Group__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:589:1: ( ( Asterisk ) )
+            // InternalMSQLQueryParser.g:590:1: ( Asterisk )
+            {
+            // InternalMSQLQueryParser.g:590:1: ( Asterisk )
+            // InternalMSQLQueryParser.g:591:2: Asterisk
+            {
+             before(grammarAccess.getAllColumnsWhatDirectiveAccess().getAsteriskKeyword_0()); 
+            match(input,Asterisk,FOLLOW_2); 
+             after(grammarAccess.getAllColumnsWhatDirectiveAccess().getAsteriskKeyword_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__AllColumnsWhatDirective__Group__0__Impl"
+
+
+    // $ANTLR start "rule__AllColumnsWhatDirective__Group__1"
+    // InternalMSQLQueryParser.g:600:1: rule__AllColumnsWhatDirective__Group__1 : rule__AllColumnsWhatDirective__Group__1__Impl ;
+    public final void rule__AllColumnsWhatDirective__Group__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:604:1: ( rule__AllColumnsWhatDirective__Group__1__Impl )
+            // InternalMSQLQueryParser.g:605:2: rule__AllColumnsWhatDirective__Group__1__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__AllColumnsWhatDirective__Group__1__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__AllColumnsWhatDirective__Group__1"
+
+
+    // $ANTLR start "rule__AllColumnsWhatDirective__Group__1__Impl"
+    // InternalMSQLQueryParser.g:611:1: rule__AllColumnsWhatDirective__Group__1__Impl : ( () ) ;
+    public final void rule__AllColumnsWhatDirective__Group__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:615:1: ( ( () ) )
+            // InternalMSQLQueryParser.g:616:1: ( () )
+            {
+            // InternalMSQLQueryParser.g:616:1: ( () )
+            // InternalMSQLQueryParser.g:617:2: ()
+            {
+             before(grammarAccess.getAllColumnsWhatDirectiveAccess().getAllColumnsWhatDirectiveAction_1()); 
+            // InternalMSQLQueryParser.g:618:2: ()
+            // InternalMSQLQueryParser.g:618:3: 
+            {
+            }
+
+             after(grammarAccess.getAllColumnsWhatDirectiveAccess().getAllColumnsWhatDirectiveAction_1()); 
+
+            }
+
+
+            }
+
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__AllColumnsWhatDirective__Group__1__Impl"
+
+
     // $ANTLR start "rule__FromClause__Group__0"
-    // InternalMSQLQueryParser.g:399:1: rule__FromClause__Group__0 : rule__FromClause__Group__0__Impl rule__FromClause__Group__1 ;
+    // InternalMSQLQueryParser.g:627:1: rule__FromClause__Group__0 : rule__FromClause__Group__0__Impl rule__FromClause__Group__1 ;
     public final void rule__FromClause__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:403:1: ( rule__FromClause__Group__0__Impl rule__FromClause__Group__1 )
-            // InternalMSQLQueryParser.g:404:2: rule__FromClause__Group__0__Impl rule__FromClause__Group__1
+            // InternalMSQLQueryParser.g:631:1: ( rule__FromClause__Group__0__Impl rule__FromClause__Group__1 )
+            // InternalMSQLQueryParser.g:632:2: rule__FromClause__Group__0__Impl rule__FromClause__Group__1
             {
-            pushFollow(FOLLOW_3);
+            pushFollow(FOLLOW_8);
             rule__FromClause__Group__0__Impl();
 
             state._fsp--;
@@ -1162,17 +1871,17 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__FromClause__Group__0__Impl"
-    // InternalMSQLQueryParser.g:411:1: rule__FromClause__Group__0__Impl : ( FROM ) ;
+    // InternalMSQLQueryParser.g:639:1: rule__FromClause__Group__0__Impl : ( FROM ) ;
     public final void rule__FromClause__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:415:1: ( ( FROM ) )
-            // InternalMSQLQueryParser.g:416:1: ( FROM )
+            // InternalMSQLQueryParser.g:643:1: ( ( FROM ) )
+            // InternalMSQLQueryParser.g:644:1: ( FROM )
             {
-            // InternalMSQLQueryParser.g:416:1: ( FROM )
-            // InternalMSQLQueryParser.g:417:2: FROM
+            // InternalMSQLQueryParser.g:644:1: ( FROM )
+            // InternalMSQLQueryParser.g:645:2: FROM
             {
              before(grammarAccess.getFromClauseAccess().getFROMKeyword_0()); 
             match(input,FROM,FOLLOW_2); 
@@ -1199,14 +1908,14 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__FromClause__Group__1"
-    // InternalMSQLQueryParser.g:426:1: rule__FromClause__Group__1 : rule__FromClause__Group__1__Impl ;
+    // InternalMSQLQueryParser.g:654:1: rule__FromClause__Group__1 : rule__FromClause__Group__1__Impl ;
     public final void rule__FromClause__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:430:1: ( rule__FromClause__Group__1__Impl )
-            // InternalMSQLQueryParser.g:431:2: rule__FromClause__Group__1__Impl
+            // InternalMSQLQueryParser.g:658:1: ( rule__FromClause__Group__1__Impl )
+            // InternalMSQLQueryParser.g:659:2: rule__FromClause__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__FromClause__Group__1__Impl();
@@ -1232,21 +1941,21 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__FromClause__Group__1__Impl"
-    // InternalMSQLQueryParser.g:437:1: rule__FromClause__Group__1__Impl : ( ( rule__FromClause__TableAssignment_1 ) ) ;
+    // InternalMSQLQueryParser.g:665:1: rule__FromClause__Group__1__Impl : ( ( rule__FromClause__TableAssignment_1 ) ) ;
     public final void rule__FromClause__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:441:1: ( ( ( rule__FromClause__TableAssignment_1 ) ) )
-            // InternalMSQLQueryParser.g:442:1: ( ( rule__FromClause__TableAssignment_1 ) )
+            // InternalMSQLQueryParser.g:669:1: ( ( ( rule__FromClause__TableAssignment_1 ) ) )
+            // InternalMSQLQueryParser.g:670:1: ( ( rule__FromClause__TableAssignment_1 ) )
             {
-            // InternalMSQLQueryParser.g:442:1: ( ( rule__FromClause__TableAssignment_1 ) )
-            // InternalMSQLQueryParser.g:443:2: ( rule__FromClause__TableAssignment_1 )
+            // InternalMSQLQueryParser.g:670:1: ( ( rule__FromClause__TableAssignment_1 ) )
+            // InternalMSQLQueryParser.g:671:2: ( rule__FromClause__TableAssignment_1 )
             {
              before(grammarAccess.getFromClauseAccess().getTableAssignment_1()); 
-            // InternalMSQLQueryParser.g:444:2: ( rule__FromClause__TableAssignment_1 )
-            // InternalMSQLQueryParser.g:444:3: rule__FromClause__TableAssignment_1
+            // InternalMSQLQueryParser.g:672:2: ( rule__FromClause__TableAssignment_1 )
+            // InternalMSQLQueryParser.g:672:3: rule__FromClause__TableAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__FromClause__TableAssignment_1();
@@ -1278,18 +1987,682 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
     // $ANTLR end "rule__FromClause__Group__1__Impl"
 
 
+    // $ANTLR start "rule__OrderByClause__Group__0"
+    // InternalMSQLQueryParser.g:681:1: rule__OrderByClause__Group__0 : rule__OrderByClause__Group__0__Impl rule__OrderByClause__Group__1 ;
+    public final void rule__OrderByClause__Group__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:685:1: ( rule__OrderByClause__Group__0__Impl rule__OrderByClause__Group__1 )
+            // InternalMSQLQueryParser.g:686:2: rule__OrderByClause__Group__0__Impl rule__OrderByClause__Group__1
+            {
+            pushFollow(FOLLOW_9);
+            rule__OrderByClause__Group__0__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__OrderByClause__Group__1();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__OrderByClause__Group__0"
+
+
+    // $ANTLR start "rule__OrderByClause__Group__0__Impl"
+    // InternalMSQLQueryParser.g:693:1: rule__OrderByClause__Group__0__Impl : ( ORDER ) ;
+    public final void rule__OrderByClause__Group__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:697:1: ( ( ORDER ) )
+            // InternalMSQLQueryParser.g:698:1: ( ORDER )
+            {
+            // InternalMSQLQueryParser.g:698:1: ( ORDER )
+            // InternalMSQLQueryParser.g:699:2: ORDER
+            {
+             before(grammarAccess.getOrderByClauseAccess().getORDERKeyword_0()); 
+            match(input,ORDER,FOLLOW_2); 
+             after(grammarAccess.getOrderByClauseAccess().getORDERKeyword_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__OrderByClause__Group__0__Impl"
+
+
+    // $ANTLR start "rule__OrderByClause__Group__1"
+    // InternalMSQLQueryParser.g:708:1: rule__OrderByClause__Group__1 : rule__OrderByClause__Group__1__Impl rule__OrderByClause__Group__2 ;
+    public final void rule__OrderByClause__Group__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:712:1: ( rule__OrderByClause__Group__1__Impl rule__OrderByClause__Group__2 )
+            // InternalMSQLQueryParser.g:713:2: rule__OrderByClause__Group__1__Impl rule__OrderByClause__Group__2
+            {
+            pushFollow(FOLLOW_3);
+            rule__OrderByClause__Group__1__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__OrderByClause__Group__2();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__OrderByClause__Group__1"
+
+
+    // $ANTLR start "rule__OrderByClause__Group__1__Impl"
+    // InternalMSQLQueryParser.g:720:1: rule__OrderByClause__Group__1__Impl : ( BY ) ;
+    public final void rule__OrderByClause__Group__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:724:1: ( ( BY ) )
+            // InternalMSQLQueryParser.g:725:1: ( BY )
+            {
+            // InternalMSQLQueryParser.g:725:1: ( BY )
+            // InternalMSQLQueryParser.g:726:2: BY
+            {
+             before(grammarAccess.getOrderByClauseAccess().getBYKeyword_1()); 
+            match(input,BY,FOLLOW_2); 
+             after(grammarAccess.getOrderByClauseAccess().getBYKeyword_1()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__OrderByClause__Group__1__Impl"
+
+
+    // $ANTLR start "rule__OrderByClause__Group__2"
+    // InternalMSQLQueryParser.g:735:1: rule__OrderByClause__Group__2 : rule__OrderByClause__Group__2__Impl rule__OrderByClause__Group__3 ;
+    public final void rule__OrderByClause__Group__2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:739:1: ( rule__OrderByClause__Group__2__Impl rule__OrderByClause__Group__3 )
+            // InternalMSQLQueryParser.g:740:2: rule__OrderByClause__Group__2__Impl rule__OrderByClause__Group__3
+            {
+            pushFollow(FOLLOW_6);
+            rule__OrderByClause__Group__2__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__OrderByClause__Group__3();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__OrderByClause__Group__2"
+
+
+    // $ANTLR start "rule__OrderByClause__Group__2__Impl"
+    // InternalMSQLQueryParser.g:747:1: rule__OrderByClause__Group__2__Impl : ( ( rule__OrderByClause__OrderDirectivesAssignment_2 ) ) ;
+    public final void rule__OrderByClause__Group__2__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:751:1: ( ( ( rule__OrderByClause__OrderDirectivesAssignment_2 ) ) )
+            // InternalMSQLQueryParser.g:752:1: ( ( rule__OrderByClause__OrderDirectivesAssignment_2 ) )
+            {
+            // InternalMSQLQueryParser.g:752:1: ( ( rule__OrderByClause__OrderDirectivesAssignment_2 ) )
+            // InternalMSQLQueryParser.g:753:2: ( rule__OrderByClause__OrderDirectivesAssignment_2 )
+            {
+             before(grammarAccess.getOrderByClauseAccess().getOrderDirectivesAssignment_2()); 
+            // InternalMSQLQueryParser.g:754:2: ( rule__OrderByClause__OrderDirectivesAssignment_2 )
+            // InternalMSQLQueryParser.g:754:3: rule__OrderByClause__OrderDirectivesAssignment_2
+            {
+            pushFollow(FOLLOW_2);
+            rule__OrderByClause__OrderDirectivesAssignment_2();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getOrderByClauseAccess().getOrderDirectivesAssignment_2()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__OrderByClause__Group__2__Impl"
+
+
+    // $ANTLR start "rule__OrderByClause__Group__3"
+    // InternalMSQLQueryParser.g:762:1: rule__OrderByClause__Group__3 : rule__OrderByClause__Group__3__Impl ;
+    public final void rule__OrderByClause__Group__3() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:766:1: ( rule__OrderByClause__Group__3__Impl )
+            // InternalMSQLQueryParser.g:767:2: rule__OrderByClause__Group__3__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__OrderByClause__Group__3__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__OrderByClause__Group__3"
+
+
+    // $ANTLR start "rule__OrderByClause__Group__3__Impl"
+    // InternalMSQLQueryParser.g:773:1: rule__OrderByClause__Group__3__Impl : ( ( rule__OrderByClause__Group_3__0 )* ) ;
+    public final void rule__OrderByClause__Group__3__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:777:1: ( ( ( rule__OrderByClause__Group_3__0 )* ) )
+            // InternalMSQLQueryParser.g:778:1: ( ( rule__OrderByClause__Group_3__0 )* )
+            {
+            // InternalMSQLQueryParser.g:778:1: ( ( rule__OrderByClause__Group_3__0 )* )
+            // InternalMSQLQueryParser.g:779:2: ( rule__OrderByClause__Group_3__0 )*
+            {
+             before(grammarAccess.getOrderByClauseAccess().getGroup_3()); 
+            // InternalMSQLQueryParser.g:780:2: ( rule__OrderByClause__Group_3__0 )*
+            loop5:
+            do {
+                int alt5=2;
+                int LA5_0 = input.LA(1);
+
+                if ( (LA5_0==Comma) ) {
+                    alt5=1;
+                }
+
+
+                switch (alt5) {
+            	case 1 :
+            	    // InternalMSQLQueryParser.g:780:3: rule__OrderByClause__Group_3__0
+            	    {
+            	    pushFollow(FOLLOW_7);
+            	    rule__OrderByClause__Group_3__0();
+
+            	    state._fsp--;
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop5;
+                }
+            } while (true);
+
+             after(grammarAccess.getOrderByClauseAccess().getGroup_3()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__OrderByClause__Group__3__Impl"
+
+
+    // $ANTLR start "rule__OrderByClause__Group_3__0"
+    // InternalMSQLQueryParser.g:789:1: rule__OrderByClause__Group_3__0 : rule__OrderByClause__Group_3__0__Impl rule__OrderByClause__Group_3__1 ;
+    public final void rule__OrderByClause__Group_3__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:793:1: ( rule__OrderByClause__Group_3__0__Impl rule__OrderByClause__Group_3__1 )
+            // InternalMSQLQueryParser.g:794:2: rule__OrderByClause__Group_3__0__Impl rule__OrderByClause__Group_3__1
+            {
+            pushFollow(FOLLOW_3);
+            rule__OrderByClause__Group_3__0__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__OrderByClause__Group_3__1();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__OrderByClause__Group_3__0"
+
+
+    // $ANTLR start "rule__OrderByClause__Group_3__0__Impl"
+    // InternalMSQLQueryParser.g:801:1: rule__OrderByClause__Group_3__0__Impl : ( Comma ) ;
+    public final void rule__OrderByClause__Group_3__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:805:1: ( ( Comma ) )
+            // InternalMSQLQueryParser.g:806:1: ( Comma )
+            {
+            // InternalMSQLQueryParser.g:806:1: ( Comma )
+            // InternalMSQLQueryParser.g:807:2: Comma
+            {
+             before(grammarAccess.getOrderByClauseAccess().getCommaKeyword_3_0()); 
+            match(input,Comma,FOLLOW_2); 
+             after(grammarAccess.getOrderByClauseAccess().getCommaKeyword_3_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__OrderByClause__Group_3__0__Impl"
+
+
+    // $ANTLR start "rule__OrderByClause__Group_3__1"
+    // InternalMSQLQueryParser.g:816:1: rule__OrderByClause__Group_3__1 : rule__OrderByClause__Group_3__1__Impl ;
+    public final void rule__OrderByClause__Group_3__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:820:1: ( rule__OrderByClause__Group_3__1__Impl )
+            // InternalMSQLQueryParser.g:821:2: rule__OrderByClause__Group_3__1__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__OrderByClause__Group_3__1__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__OrderByClause__Group_3__1"
+
+
+    // $ANTLR start "rule__OrderByClause__Group_3__1__Impl"
+    // InternalMSQLQueryParser.g:827:1: rule__OrderByClause__Group_3__1__Impl : ( ( rule__OrderByClause__OrderDirectivesAssignment_3_1 ) ) ;
+    public final void rule__OrderByClause__Group_3__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:831:1: ( ( ( rule__OrderByClause__OrderDirectivesAssignment_3_1 ) ) )
+            // InternalMSQLQueryParser.g:832:1: ( ( rule__OrderByClause__OrderDirectivesAssignment_3_1 ) )
+            {
+            // InternalMSQLQueryParser.g:832:1: ( ( rule__OrderByClause__OrderDirectivesAssignment_3_1 ) )
+            // InternalMSQLQueryParser.g:833:2: ( rule__OrderByClause__OrderDirectivesAssignment_3_1 )
+            {
+             before(grammarAccess.getOrderByClauseAccess().getOrderDirectivesAssignment_3_1()); 
+            // InternalMSQLQueryParser.g:834:2: ( rule__OrderByClause__OrderDirectivesAssignment_3_1 )
+            // InternalMSQLQueryParser.g:834:3: rule__OrderByClause__OrderDirectivesAssignment_3_1
+            {
+            pushFollow(FOLLOW_2);
+            rule__OrderByClause__OrderDirectivesAssignment_3_1();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getOrderByClauseAccess().getOrderDirectivesAssignment_3_1()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__OrderByClause__Group_3__1__Impl"
+
+
+    // $ANTLR start "rule__OrderByDirective__Group__0"
+    // InternalMSQLQueryParser.g:843:1: rule__OrderByDirective__Group__0 : rule__OrderByDirective__Group__0__Impl rule__OrderByDirective__Group__1 ;
+    public final void rule__OrderByDirective__Group__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:847:1: ( rule__OrderByDirective__Group__0__Impl rule__OrderByDirective__Group__1 )
+            // InternalMSQLQueryParser.g:848:2: rule__OrderByDirective__Group__0__Impl rule__OrderByDirective__Group__1
+            {
+            pushFollow(FOLLOW_10);
+            rule__OrderByDirective__Group__0__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__OrderByDirective__Group__1();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__OrderByDirective__Group__0"
+
+
+    // $ANTLR start "rule__OrderByDirective__Group__0__Impl"
+    // InternalMSQLQueryParser.g:855:1: rule__OrderByDirective__Group__0__Impl : ( ( rule__OrderByDirective__ColumnReferenceAssignment_0 ) ) ;
+    public final void rule__OrderByDirective__Group__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:859:1: ( ( ( rule__OrderByDirective__ColumnReferenceAssignment_0 ) ) )
+            // InternalMSQLQueryParser.g:860:1: ( ( rule__OrderByDirective__ColumnReferenceAssignment_0 ) )
+            {
+            // InternalMSQLQueryParser.g:860:1: ( ( rule__OrderByDirective__ColumnReferenceAssignment_0 ) )
+            // InternalMSQLQueryParser.g:861:2: ( rule__OrderByDirective__ColumnReferenceAssignment_0 )
+            {
+             before(grammarAccess.getOrderByDirectiveAccess().getColumnReferenceAssignment_0()); 
+            // InternalMSQLQueryParser.g:862:2: ( rule__OrderByDirective__ColumnReferenceAssignment_0 )
+            // InternalMSQLQueryParser.g:862:3: rule__OrderByDirective__ColumnReferenceAssignment_0
+            {
+            pushFollow(FOLLOW_2);
+            rule__OrderByDirective__ColumnReferenceAssignment_0();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getOrderByDirectiveAccess().getColumnReferenceAssignment_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__OrderByDirective__Group__0__Impl"
+
+
+    // $ANTLR start "rule__OrderByDirective__Group__1"
+    // InternalMSQLQueryParser.g:870:1: rule__OrderByDirective__Group__1 : rule__OrderByDirective__Group__1__Impl ;
+    public final void rule__OrderByDirective__Group__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:874:1: ( rule__OrderByDirective__Group__1__Impl )
+            // InternalMSQLQueryParser.g:875:2: rule__OrderByDirective__Group__1__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__OrderByDirective__Group__1__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__OrderByDirective__Group__1"
+
+
+    // $ANTLR start "rule__OrderByDirective__Group__1__Impl"
+    // InternalMSQLQueryParser.g:881:1: rule__OrderByDirective__Group__1__Impl : ( ( rule__OrderByDirective__AscendingAssignment_1 )? ) ;
+    public final void rule__OrderByDirective__Group__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:885:1: ( ( ( rule__OrderByDirective__AscendingAssignment_1 )? ) )
+            // InternalMSQLQueryParser.g:886:1: ( ( rule__OrderByDirective__AscendingAssignment_1 )? )
+            {
+            // InternalMSQLQueryParser.g:886:1: ( ( rule__OrderByDirective__AscendingAssignment_1 )? )
+            // InternalMSQLQueryParser.g:887:2: ( rule__OrderByDirective__AscendingAssignment_1 )?
+            {
+             before(grammarAccess.getOrderByDirectiveAccess().getAscendingAssignment_1()); 
+            // InternalMSQLQueryParser.g:888:2: ( rule__OrderByDirective__AscendingAssignment_1 )?
+            int alt6=2;
+            int LA6_0 = input.LA(1);
+
+            if ( (LA6_0==DESC||LA6_0==ASC) ) {
+                alt6=1;
+            }
+            switch (alt6) {
+                case 1 :
+                    // InternalMSQLQueryParser.g:888:3: rule__OrderByDirective__AscendingAssignment_1
+                    {
+                    pushFollow(FOLLOW_2);
+                    rule__OrderByDirective__AscendingAssignment_1();
+
+                    state._fsp--;
+
+
+                    }
+                    break;
+
+            }
+
+             after(grammarAccess.getOrderByDirectiveAccess().getAscendingAssignment_1()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__OrderByDirective__Group__1__Impl"
+
+
     // $ANTLR start "rule__SelectQuery__WhatClauseAssignment_1"
-    // InternalMSQLQueryParser.g:453:1: rule__SelectQuery__WhatClauseAssignment_1 : ( ruleWhatClause ) ;
+    // InternalMSQLQueryParser.g:897:1: rule__SelectQuery__WhatClauseAssignment_1 : ( ruleWhatClause ) ;
     public final void rule__SelectQuery__WhatClauseAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:457:1: ( ( ruleWhatClause ) )
-            // InternalMSQLQueryParser.g:458:2: ( ruleWhatClause )
+            // InternalMSQLQueryParser.g:901:1: ( ( ruleWhatClause ) )
+            // InternalMSQLQueryParser.g:902:2: ( ruleWhatClause )
             {
-            // InternalMSQLQueryParser.g:458:2: ( ruleWhatClause )
-            // InternalMSQLQueryParser.g:459:3: ruleWhatClause
+            // InternalMSQLQueryParser.g:902:2: ( ruleWhatClause )
+            // InternalMSQLQueryParser.g:903:3: ruleWhatClause
             {
              before(grammarAccess.getSelectQueryAccess().getWhatClauseWhatClauseParserRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
@@ -1320,17 +2693,17 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SelectQuery__FromClauseAssignment_2"
-    // InternalMSQLQueryParser.g:468:1: rule__SelectQuery__FromClauseAssignment_2 : ( ruleFromClause ) ;
+    // InternalMSQLQueryParser.g:912:1: rule__SelectQuery__FromClauseAssignment_2 : ( ruleFromClause ) ;
     public final void rule__SelectQuery__FromClauseAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:472:1: ( ( ruleFromClause ) )
-            // InternalMSQLQueryParser.g:473:2: ( ruleFromClause )
+            // InternalMSQLQueryParser.g:916:1: ( ( ruleFromClause ) )
+            // InternalMSQLQueryParser.g:917:2: ( ruleFromClause )
             {
-            // InternalMSQLQueryParser.g:473:2: ( ruleFromClause )
-            // InternalMSQLQueryParser.g:474:3: ruleFromClause
+            // InternalMSQLQueryParser.g:917:2: ( ruleFromClause )
+            // InternalMSQLQueryParser.g:918:3: ruleFromClause
             {
              before(grammarAccess.getSelectQueryAccess().getFromClauseFromClauseParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -1360,26 +2733,67 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
     // $ANTLR end "rule__SelectQuery__FromClauseAssignment_2"
 
 
+    // $ANTLR start "rule__SelectQuery__OrderByClauseAssignment_3"
+    // InternalMSQLQueryParser.g:927:1: rule__SelectQuery__OrderByClauseAssignment_3 : ( ruleOrderByClause ) ;
+    public final void rule__SelectQuery__OrderByClauseAssignment_3() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:931:1: ( ( ruleOrderByClause ) )
+            // InternalMSQLQueryParser.g:932:2: ( ruleOrderByClause )
+            {
+            // InternalMSQLQueryParser.g:932:2: ( ruleOrderByClause )
+            // InternalMSQLQueryParser.g:933:3: ruleOrderByClause
+            {
+             before(grammarAccess.getSelectQueryAccess().getOrderByClauseOrderByClauseParserRuleCall_3_0()); 
+            pushFollow(FOLLOW_2);
+            ruleOrderByClause();
+
+            state._fsp--;
+
+             after(grammarAccess.getSelectQueryAccess().getOrderByClauseOrderByClauseParserRuleCall_3_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__SelectQuery__OrderByClauseAssignment_3"
+
+
     // $ANTLR start "rule__WhatClause__WhatDirectiveAssignment_0"
-    // InternalMSQLQueryParser.g:483:1: rule__WhatClause__WhatDirectiveAssignment_0 : ( ruleSingleColumnWhatDirective ) ;
+    // InternalMSQLQueryParser.g:942:1: rule__WhatClause__WhatDirectiveAssignment_0 : ( ruleWhatDirective ) ;
     public final void rule__WhatClause__WhatDirectiveAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:487:1: ( ( ruleSingleColumnWhatDirective ) )
-            // InternalMSQLQueryParser.g:488:2: ( ruleSingleColumnWhatDirective )
+            // InternalMSQLQueryParser.g:946:1: ( ( ruleWhatDirective ) )
+            // InternalMSQLQueryParser.g:947:2: ( ruleWhatDirective )
             {
-            // InternalMSQLQueryParser.g:488:2: ( ruleSingleColumnWhatDirective )
-            // InternalMSQLQueryParser.g:489:3: ruleSingleColumnWhatDirective
+            // InternalMSQLQueryParser.g:947:2: ( ruleWhatDirective )
+            // InternalMSQLQueryParser.g:948:3: ruleWhatDirective
             {
-             before(grammarAccess.getWhatClauseAccess().getWhatDirectiveSingleColumnWhatDirectiveParserRuleCall_0_0()); 
+             before(grammarAccess.getWhatClauseAccess().getWhatDirectiveWhatDirectiveParserRuleCall_0_0()); 
             pushFollow(FOLLOW_2);
-            ruleSingleColumnWhatDirective();
+            ruleWhatDirective();
 
             state._fsp--;
 
-             after(grammarAccess.getWhatClauseAccess().getWhatDirectiveSingleColumnWhatDirectiveParserRuleCall_0_0()); 
+             after(grammarAccess.getWhatClauseAccess().getWhatDirectiveWhatDirectiveParserRuleCall_0_0()); 
 
             }
 
@@ -1402,25 +2816,25 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__WhatClause__WhatDirectiveAssignment_1_1"
-    // InternalMSQLQueryParser.g:498:1: rule__WhatClause__WhatDirectiveAssignment_1_1 : ( ruleSingleColumnWhatDirective ) ;
+    // InternalMSQLQueryParser.g:957:1: rule__WhatClause__WhatDirectiveAssignment_1_1 : ( ruleWhatDirective ) ;
     public final void rule__WhatClause__WhatDirectiveAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:502:1: ( ( ruleSingleColumnWhatDirective ) )
-            // InternalMSQLQueryParser.g:503:2: ( ruleSingleColumnWhatDirective )
+            // InternalMSQLQueryParser.g:961:1: ( ( ruleWhatDirective ) )
+            // InternalMSQLQueryParser.g:962:2: ( ruleWhatDirective )
             {
-            // InternalMSQLQueryParser.g:503:2: ( ruleSingleColumnWhatDirective )
-            // InternalMSQLQueryParser.g:504:3: ruleSingleColumnWhatDirective
+            // InternalMSQLQueryParser.g:962:2: ( ruleWhatDirective )
+            // InternalMSQLQueryParser.g:963:3: ruleWhatDirective
             {
-             before(grammarAccess.getWhatClauseAccess().getWhatDirectiveSingleColumnWhatDirectiveParserRuleCall_1_1_0()); 
+             before(grammarAccess.getWhatClauseAccess().getWhatDirectiveWhatDirectiveParserRuleCall_1_1_0()); 
             pushFollow(FOLLOW_2);
-            ruleSingleColumnWhatDirective();
+            ruleWhatDirective();
 
             state._fsp--;
 
-             after(grammarAccess.getWhatClauseAccess().getWhatDirectiveSingleColumnWhatDirectiveParserRuleCall_1_1_0()); 
+             after(grammarAccess.getWhatClauseAccess().getWhatDirectiveWhatDirectiveParserRuleCall_1_1_0()); 
 
             }
 
@@ -1442,63 +2856,18 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
     // $ANTLR end "rule__WhatClause__WhatDirectiveAssignment_1_1"
 
 
-    // $ANTLR start "rule__FromClause__TableAssignment_1"
-    // InternalMSQLQueryParser.g:513:1: rule__FromClause__TableAssignment_1 : ( ( RULE_ID ) ) ;
-    public final void rule__FromClause__TableAssignment_1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalMSQLQueryParser.g:517:1: ( ( ( RULE_ID ) ) )
-            // InternalMSQLQueryParser.g:518:2: ( ( RULE_ID ) )
-            {
-            // InternalMSQLQueryParser.g:518:2: ( ( RULE_ID ) )
-            // InternalMSQLQueryParser.g:519:3: ( RULE_ID )
-            {
-             before(grammarAccess.getFromClauseAccess().getTableTableCrossReference_1_0()); 
-            // InternalMSQLQueryParser.g:520:3: ( RULE_ID )
-            // InternalMSQLQueryParser.g:521:4: RULE_ID
-            {
-             before(grammarAccess.getFromClauseAccess().getTableTableIDTerminalRuleCall_1_0_1()); 
-            match(input,RULE_ID,FOLLOW_2); 
-             after(grammarAccess.getFromClauseAccess().getTableTableIDTerminalRuleCall_1_0_1()); 
-
-            }
-
-             after(grammarAccess.getFromClauseAccess().getTableTableCrossReference_1_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__FromClause__TableAssignment_1"
-
-
     // $ANTLR start "rule__SingleColumnWhatDirective__ColumnReferenceAssignment"
-    // InternalMSQLQueryParser.g:532:1: rule__SingleColumnWhatDirective__ColumnReferenceAssignment : ( ruleColumnReference ) ;
+    // InternalMSQLQueryParser.g:972:1: rule__SingleColumnWhatDirective__ColumnReferenceAssignment : ( ruleColumnReference ) ;
     public final void rule__SingleColumnWhatDirective__ColumnReferenceAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:536:1: ( ( ruleColumnReference ) )
-            // InternalMSQLQueryParser.g:537:2: ( ruleColumnReference )
+            // InternalMSQLQueryParser.g:976:1: ( ( ruleColumnReference ) )
+            // InternalMSQLQueryParser.g:977:2: ( ruleColumnReference )
             {
-            // InternalMSQLQueryParser.g:537:2: ( ruleColumnReference )
-            // InternalMSQLQueryParser.g:538:3: ruleColumnReference
+            // InternalMSQLQueryParser.g:977:2: ( ruleColumnReference )
+            // InternalMSQLQueryParser.g:978:3: ruleColumnReference
             {
              before(grammarAccess.getSingleColumnWhatDirectiveAccess().getColumnReferenceColumnReferenceParserRuleCall_0()); 
             pushFollow(FOLLOW_2);
@@ -1528,22 +2897,237 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
     // $ANTLR end "rule__SingleColumnWhatDirective__ColumnReferenceAssignment"
 
 
+    // $ANTLR start "rule__FromClause__TableAssignment_1"
+    // InternalMSQLQueryParser.g:987:1: rule__FromClause__TableAssignment_1 : ( ( RULE_ID ) ) ;
+    public final void rule__FromClause__TableAssignment_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:991:1: ( ( ( RULE_ID ) ) )
+            // InternalMSQLQueryParser.g:992:2: ( ( RULE_ID ) )
+            {
+            // InternalMSQLQueryParser.g:992:2: ( ( RULE_ID ) )
+            // InternalMSQLQueryParser.g:993:3: ( RULE_ID )
+            {
+             before(grammarAccess.getFromClauseAccess().getTableTableCrossReference_1_0()); 
+            // InternalMSQLQueryParser.g:994:3: ( RULE_ID )
+            // InternalMSQLQueryParser.g:995:4: RULE_ID
+            {
+             before(grammarAccess.getFromClauseAccess().getTableTableIDTerminalRuleCall_1_0_1()); 
+            match(input,RULE_ID,FOLLOW_2); 
+             after(grammarAccess.getFromClauseAccess().getTableTableIDTerminalRuleCall_1_0_1()); 
+
+            }
+
+             after(grammarAccess.getFromClauseAccess().getTableTableCrossReference_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__FromClause__TableAssignment_1"
+
+
+    // $ANTLR start "rule__OrderByClause__OrderDirectivesAssignment_2"
+    // InternalMSQLQueryParser.g:1006:1: rule__OrderByClause__OrderDirectivesAssignment_2 : ( ruleOrderByDirective ) ;
+    public final void rule__OrderByClause__OrderDirectivesAssignment_2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:1010:1: ( ( ruleOrderByDirective ) )
+            // InternalMSQLQueryParser.g:1011:2: ( ruleOrderByDirective )
+            {
+            // InternalMSQLQueryParser.g:1011:2: ( ruleOrderByDirective )
+            // InternalMSQLQueryParser.g:1012:3: ruleOrderByDirective
+            {
+             before(grammarAccess.getOrderByClauseAccess().getOrderDirectivesOrderByDirectiveParserRuleCall_2_0()); 
+            pushFollow(FOLLOW_2);
+            ruleOrderByDirective();
+
+            state._fsp--;
+
+             after(grammarAccess.getOrderByClauseAccess().getOrderDirectivesOrderByDirectiveParserRuleCall_2_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__OrderByClause__OrderDirectivesAssignment_2"
+
+
+    // $ANTLR start "rule__OrderByClause__OrderDirectivesAssignment_3_1"
+    // InternalMSQLQueryParser.g:1021:1: rule__OrderByClause__OrderDirectivesAssignment_3_1 : ( ruleOrderByDirective ) ;
+    public final void rule__OrderByClause__OrderDirectivesAssignment_3_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:1025:1: ( ( ruleOrderByDirective ) )
+            // InternalMSQLQueryParser.g:1026:2: ( ruleOrderByDirective )
+            {
+            // InternalMSQLQueryParser.g:1026:2: ( ruleOrderByDirective )
+            // InternalMSQLQueryParser.g:1027:3: ruleOrderByDirective
+            {
+             before(grammarAccess.getOrderByClauseAccess().getOrderDirectivesOrderByDirectiveParserRuleCall_3_1_0()); 
+            pushFollow(FOLLOW_2);
+            ruleOrderByDirective();
+
+            state._fsp--;
+
+             after(grammarAccess.getOrderByClauseAccess().getOrderDirectivesOrderByDirectiveParserRuleCall_3_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__OrderByClause__OrderDirectivesAssignment_3_1"
+
+
+    // $ANTLR start "rule__OrderByDirective__ColumnReferenceAssignment_0"
+    // InternalMSQLQueryParser.g:1036:1: rule__OrderByDirective__ColumnReferenceAssignment_0 : ( ruleColumnReference ) ;
+    public final void rule__OrderByDirective__ColumnReferenceAssignment_0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:1040:1: ( ( ruleColumnReference ) )
+            // InternalMSQLQueryParser.g:1041:2: ( ruleColumnReference )
+            {
+            // InternalMSQLQueryParser.g:1041:2: ( ruleColumnReference )
+            // InternalMSQLQueryParser.g:1042:3: ruleColumnReference
+            {
+             before(grammarAccess.getOrderByDirectiveAccess().getColumnReferenceColumnReferenceParserRuleCall_0_0()); 
+            pushFollow(FOLLOW_2);
+            ruleColumnReference();
+
+            state._fsp--;
+
+             after(grammarAccess.getOrderByDirectiveAccess().getColumnReferenceColumnReferenceParserRuleCall_0_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__OrderByDirective__ColumnReferenceAssignment_0"
+
+
+    // $ANTLR start "rule__OrderByDirective__AscendingAssignment_1"
+    // InternalMSQLQueryParser.g:1051:1: rule__OrderByDirective__AscendingAssignment_1 : ( ( rule__OrderByDirective__AscendingAlternatives_1_0 ) ) ;
+    public final void rule__OrderByDirective__AscendingAssignment_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalMSQLQueryParser.g:1055:1: ( ( ( rule__OrderByDirective__AscendingAlternatives_1_0 ) ) )
+            // InternalMSQLQueryParser.g:1056:2: ( ( rule__OrderByDirective__AscendingAlternatives_1_0 ) )
+            {
+            // InternalMSQLQueryParser.g:1056:2: ( ( rule__OrderByDirective__AscendingAlternatives_1_0 ) )
+            // InternalMSQLQueryParser.g:1057:3: ( rule__OrderByDirective__AscendingAlternatives_1_0 )
+            {
+             before(grammarAccess.getOrderByDirectiveAccess().getAscendingAlternatives_1_0()); 
+            // InternalMSQLQueryParser.g:1058:3: ( rule__OrderByDirective__AscendingAlternatives_1_0 )
+            // InternalMSQLQueryParser.g:1058:4: rule__OrderByDirective__AscendingAlternatives_1_0
+            {
+            pushFollow(FOLLOW_2);
+            rule__OrderByDirective__AscendingAlternatives_1_0();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getOrderByDirectiveAccess().getAscendingAlternatives_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__OrderByDirective__AscendingAssignment_1"
+
+
     // $ANTLR start "rule__ColumnReference__ColumnAssignment"
-    // InternalMSQLQueryParser.g:547:1: rule__ColumnReference__ColumnAssignment : ( ( RULE_ID ) ) ;
+    // InternalMSQLQueryParser.g:1066:1: rule__ColumnReference__ColumnAssignment : ( ( RULE_ID ) ) ;
     public final void rule__ColumnReference__ColumnAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMSQLQueryParser.g:551:1: ( ( ( RULE_ID ) ) )
-            // InternalMSQLQueryParser.g:552:2: ( ( RULE_ID ) )
+            // InternalMSQLQueryParser.g:1070:1: ( ( ( RULE_ID ) ) )
+            // InternalMSQLQueryParser.g:1071:2: ( ( RULE_ID ) )
             {
-            // InternalMSQLQueryParser.g:552:2: ( ( RULE_ID ) )
-            // InternalMSQLQueryParser.g:553:3: ( RULE_ID )
+            // InternalMSQLQueryParser.g:1071:2: ( ( RULE_ID ) )
+            // InternalMSQLQueryParser.g:1072:3: ( RULE_ID )
             {
              before(grammarAccess.getColumnReferenceAccess().getColumnColumnCrossReference_0()); 
-            // InternalMSQLQueryParser.g:554:3: ( RULE_ID )
-            // InternalMSQLQueryParser.g:555:4: RULE_ID
+            // InternalMSQLQueryParser.g:1073:3: ( RULE_ID )
+            // InternalMSQLQueryParser.g:1074:4: RULE_ID
             {
              before(grammarAccess.getColumnReferenceAccess().getColumnColumnIDTerminalRuleCall_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -1579,10 +3163,13 @@ public class InternalMSQLQueryParser extends AbstractInternalContentAssistParser
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000000042L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000002400L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000001020L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000000802L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000000140L});
 
 }

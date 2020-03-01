@@ -86,6 +86,7 @@ public class SelectQueryItemProvider extends ItemProviderAdapter implements IEdi
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(QueryPackage.Literals.SELECT_QUERY__ORDER_BY_CLAUSE);
 			childrenFeatures.add(QueryPackage.Literals.SELECT_QUERY__WHAT_CLAUSE);
 			childrenFeatures.add(QueryPackage.Literals.SELECT_QUERY__FROM_CLAUSE);
 		}
@@ -149,6 +150,7 @@ public class SelectQueryItemProvider extends ItemProviderAdapter implements IEdi
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SelectQuery.class)) {
+		case QueryPackage.SELECT_QUERY__ORDER_BY_CLAUSE:
 		case QueryPackage.SELECT_QUERY__WHAT_CLAUSE:
 		case QueryPackage.SELECT_QUERY__FROM_CLAUSE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -167,6 +169,9 @@ public class SelectQueryItemProvider extends ItemProviderAdapter implements IEdi
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.SELECT_QUERY__ORDER_BY_CLAUSE,
+				QueryFactory.eINSTANCE.createOrderByClause()));
 
 		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.SELECT_QUERY__WHAT_CLAUSE,
 				QueryFactory.eINSTANCE.createWhatClause()));

@@ -12,18 +12,23 @@ import java.util.ArrayList;
 
 @SuppressWarnings("all")
 public class InternalMSQLQueryLexer extends Lexer {
-    public static final int RULE_ID=8;
-    public static final int RULE_WS=13;
-    public static final int RULE_STRING=10;
-    public static final int FROM=5;
-    public static final int RULE_ANY_OTHER=14;
-    public static final int SELECT=4;
-    public static final int RULE_SL_COMMENT=12;
-    public static final int Semicolon=7;
-    public static final int Comma=6;
-    public static final int RULE_INT=9;
-    public static final int RULE_ML_COMMENT=11;
+    public static final int RULE_STRING=15;
+    public static final int FROM=7;
+    public static final int DESC=6;
+    public static final int RULE_SL_COMMENT=17;
+    public static final int ORDER=5;
+    public static final int ASC=8;
+    public static final int Comma=11;
+    public static final int BY=9;
     public static final int EOF=-1;
+    public static final int Asterisk=10;
+    public static final int RULE_ID=13;
+    public static final int RULE_WS=18;
+    public static final int RULE_ANY_OTHER=19;
+    public static final int SELECT=4;
+    public static final int Semicolon=12;
+    public static final int RULE_INT=14;
+    public static final int RULE_ML_COMMENT=16;
 
     // delegates
     // delegators
@@ -111,13 +116,132 @@ public class InternalMSQLQueryLexer extends Lexer {
     }
     // $ANTLR end "SELECT"
 
+    // $ANTLR start "ORDER"
+    public final void mORDER() throws RecognitionException {
+        try {
+            int _type = ORDER;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalMSQLQueryLexer.g:16:7: ( ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'R' | 'r' ) )
+            // InternalMSQLQueryLexer.g:16:9: ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'R' | 'r' )
+            {
+            if ( input.LA(1)=='O'||input.LA(1)=='o' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            if ( input.LA(1)=='R'||input.LA(1)=='r' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            if ( input.LA(1)=='D'||input.LA(1)=='d' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            if ( input.LA(1)=='R'||input.LA(1)=='r' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "ORDER"
+
+    // $ANTLR start "DESC"
+    public final void mDESC() throws RecognitionException {
+        try {
+            int _type = DESC;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalMSQLQueryLexer.g:18:6: ( ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'C' | 'c' ) )
+            // InternalMSQLQueryLexer.g:18:8: ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'C' | 'c' )
+            {
+            if ( input.LA(1)=='D'||input.LA(1)=='d' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "DESC"
+
     // $ANTLR start "FROM"
     public final void mFROM() throws RecognitionException {
         try {
             int _type = FROM;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMSQLQueryLexer.g:16:6: ( ( 'F' | 'f' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'M' | 'm' ) )
-            // InternalMSQLQueryLexer.g:16:8: ( 'F' | 'f' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'M' | 'm' )
+            // InternalMSQLQueryLexer.g:20:6: ( ( 'F' | 'f' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'M' | 'm' ) )
+            // InternalMSQLQueryLexer.g:20:8: ( 'F' | 'f' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'M' | 'm' )
             {
             if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                 input.consume();
@@ -166,13 +290,116 @@ public class InternalMSQLQueryLexer extends Lexer {
     }
     // $ANTLR end "FROM"
 
+    // $ANTLR start "ASC"
+    public final void mASC() throws RecognitionException {
+        try {
+            int _type = ASC;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalMSQLQueryLexer.g:22:5: ( ( 'A' | 'a' ) ( 'S' | 's' ) ( 'C' | 'c' ) )
+            // InternalMSQLQueryLexer.g:22:7: ( 'A' | 'a' ) ( 'S' | 's' ) ( 'C' | 'c' )
+            {
+            if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "ASC"
+
+    // $ANTLR start "BY"
+    public final void mBY() throws RecognitionException {
+        try {
+            int _type = BY;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalMSQLQueryLexer.g:24:4: ( ( 'B' | 'b' ) ( 'Y' | 'y' ) )
+            // InternalMSQLQueryLexer.g:24:6: ( 'B' | 'b' ) ( 'Y' | 'y' )
+            {
+            if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            if ( input.LA(1)=='Y'||input.LA(1)=='y' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "BY"
+
+    // $ANTLR start "Asterisk"
+    public final void mAsterisk() throws RecognitionException {
+        try {
+            int _type = Asterisk;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalMSQLQueryLexer.g:26:10: ( '*' )
+            // InternalMSQLQueryLexer.g:26:12: '*'
+            {
+            match('*'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "Asterisk"
+
     // $ANTLR start "Comma"
     public final void mComma() throws RecognitionException {
         try {
             int _type = Comma;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMSQLQueryLexer.g:18:7: ( ',' )
-            // InternalMSQLQueryLexer.g:18:9: ','
+            // InternalMSQLQueryLexer.g:28:7: ( ',' )
+            // InternalMSQLQueryLexer.g:28:9: ','
             {
             match(','); 
 
@@ -191,8 +418,8 @@ public class InternalMSQLQueryLexer extends Lexer {
         try {
             int _type = Semicolon;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMSQLQueryLexer.g:20:11: ( ';' )
-            // InternalMSQLQueryLexer.g:20:13: ';'
+            // InternalMSQLQueryLexer.g:30:11: ( ';' )
+            // InternalMSQLQueryLexer.g:30:13: ';'
             {
             match(';'); 
 
@@ -211,10 +438,10 @@ public class InternalMSQLQueryLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMSQLQueryLexer.g:22:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // InternalMSQLQueryLexer.g:22:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalMSQLQueryLexer.g:32:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalMSQLQueryLexer.g:32:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // InternalMSQLQueryLexer.g:22:11: ( '^' )?
+            // InternalMSQLQueryLexer.g:32:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -223,7 +450,7 @@ public class InternalMSQLQueryLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // InternalMSQLQueryLexer.g:22:11: '^'
+                    // InternalMSQLQueryLexer.g:32:11: '^'
                     {
                     match('^'); 
 
@@ -241,7 +468,7 @@ public class InternalMSQLQueryLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalMSQLQueryLexer.g:22:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalMSQLQueryLexer.g:32:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -290,10 +517,10 @@ public class InternalMSQLQueryLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMSQLQueryLexer.g:24:10: ( ( '0' .. '9' )+ )
-            // InternalMSQLQueryLexer.g:24:12: ( '0' .. '9' )+
+            // InternalMSQLQueryLexer.g:34:10: ( ( '0' .. '9' )+ )
+            // InternalMSQLQueryLexer.g:34:12: ( '0' .. '9' )+
             {
-            // InternalMSQLQueryLexer.g:24:12: ( '0' .. '9' )+
+            // InternalMSQLQueryLexer.g:34:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -307,7 +534,7 @@ public class InternalMSQLQueryLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // InternalMSQLQueryLexer.g:24:13: '0' .. '9'
+            	    // InternalMSQLQueryLexer.g:34:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -339,10 +566,10 @@ public class InternalMSQLQueryLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMSQLQueryLexer.g:26:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // InternalMSQLQueryLexer.g:26:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalMSQLQueryLexer.g:36:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalMSQLQueryLexer.g:36:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // InternalMSQLQueryLexer.g:26:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalMSQLQueryLexer.g:36:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -360,10 +587,10 @@ public class InternalMSQLQueryLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // InternalMSQLQueryLexer.g:26:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalMSQLQueryLexer.g:36:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // InternalMSQLQueryLexer.g:26:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalMSQLQueryLexer.g:36:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -379,7 +606,7 @@ public class InternalMSQLQueryLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // InternalMSQLQueryLexer.g:26:21: '\\\\' .
+                    	    // InternalMSQLQueryLexer.g:36:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -387,7 +614,7 @@ public class InternalMSQLQueryLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalMSQLQueryLexer.g:26:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalMSQLQueryLexer.g:36:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -412,10 +639,10 @@ public class InternalMSQLQueryLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalMSQLQueryLexer.g:26:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalMSQLQueryLexer.g:36:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // InternalMSQLQueryLexer.g:26:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalMSQLQueryLexer.g:36:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -431,7 +658,7 @@ public class InternalMSQLQueryLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // InternalMSQLQueryLexer.g:26:54: '\\\\' .
+                    	    // InternalMSQLQueryLexer.g:36:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -439,7 +666,7 @@ public class InternalMSQLQueryLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalMSQLQueryLexer.g:26:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalMSQLQueryLexer.g:36:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -482,12 +709,12 @@ public class InternalMSQLQueryLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMSQLQueryLexer.g:28:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalMSQLQueryLexer.g:28:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalMSQLQueryLexer.g:38:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalMSQLQueryLexer.g:38:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalMSQLQueryLexer.g:28:24: ( options {greedy=false; } : . )*
+            // InternalMSQLQueryLexer.g:38:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -512,7 +739,7 @@ public class InternalMSQLQueryLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // InternalMSQLQueryLexer.g:28:52: .
+            	    // InternalMSQLQueryLexer.g:38:52: .
             	    {
             	    matchAny(); 
 
@@ -542,12 +769,12 @@ public class InternalMSQLQueryLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMSQLQueryLexer.g:30:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalMSQLQueryLexer.g:30:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalMSQLQueryLexer.g:40:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalMSQLQueryLexer.g:40:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalMSQLQueryLexer.g:30:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalMSQLQueryLexer.g:40:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -560,7 +787,7 @@ public class InternalMSQLQueryLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // InternalMSQLQueryLexer.g:30:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalMSQLQueryLexer.g:40:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -580,7 +807,7 @@ public class InternalMSQLQueryLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalMSQLQueryLexer.g:30:40: ( ( '\\r' )? '\\n' )?
+            // InternalMSQLQueryLexer.g:40:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -589,9 +816,9 @@ public class InternalMSQLQueryLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // InternalMSQLQueryLexer.g:30:41: ( '\\r' )? '\\n'
+                    // InternalMSQLQueryLexer.g:40:41: ( '\\r' )? '\\n'
                     {
-                    // InternalMSQLQueryLexer.g:30:41: ( '\\r' )?
+                    // InternalMSQLQueryLexer.g:40:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -600,7 +827,7 @@ public class InternalMSQLQueryLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // InternalMSQLQueryLexer.g:30:41: '\\r'
+                            // InternalMSQLQueryLexer.g:40:41: '\\r'
                             {
                             match('\r'); 
 
@@ -632,10 +859,10 @@ public class InternalMSQLQueryLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMSQLQueryLexer.g:32:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalMSQLQueryLexer.g:32:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalMSQLQueryLexer.g:42:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalMSQLQueryLexer.g:42:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalMSQLQueryLexer.g:32:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalMSQLQueryLexer.g:42:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -689,8 +916,8 @@ public class InternalMSQLQueryLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMSQLQueryLexer.g:34:16: ( . )
-            // InternalMSQLQueryLexer.g:34:18: .
+            // InternalMSQLQueryLexer.g:44:16: ( . )
+            // InternalMSQLQueryLexer.g:44:18: .
             {
             matchAny(); 
 
@@ -705,8 +932,8 @@ public class InternalMSQLQueryLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // InternalMSQLQueryLexer.g:1:8: ( SELECT | FROM | Comma | Semicolon | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt12=11;
+        // InternalMSQLQueryLexer.g:1:8: ( SELECT | ORDER | DESC | FROM | ASC | BY | Asterisk | Comma | Semicolon | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt12=16;
         alt12 = dfa12.predict(input);
         switch (alt12) {
             case 1 :
@@ -717,70 +944,105 @@ public class InternalMSQLQueryLexer extends Lexer {
                 }
                 break;
             case 2 :
-                // InternalMSQLQueryLexer.g:1:17: FROM
+                // InternalMSQLQueryLexer.g:1:17: ORDER
+                {
+                mORDER(); 
+
+                }
+                break;
+            case 3 :
+                // InternalMSQLQueryLexer.g:1:23: DESC
+                {
+                mDESC(); 
+
+                }
+                break;
+            case 4 :
+                // InternalMSQLQueryLexer.g:1:28: FROM
                 {
                 mFROM(); 
 
                 }
                 break;
-            case 3 :
-                // InternalMSQLQueryLexer.g:1:22: Comma
+            case 5 :
+                // InternalMSQLQueryLexer.g:1:33: ASC
+                {
+                mASC(); 
+
+                }
+                break;
+            case 6 :
+                // InternalMSQLQueryLexer.g:1:37: BY
+                {
+                mBY(); 
+
+                }
+                break;
+            case 7 :
+                // InternalMSQLQueryLexer.g:1:40: Asterisk
+                {
+                mAsterisk(); 
+
+                }
+                break;
+            case 8 :
+                // InternalMSQLQueryLexer.g:1:49: Comma
                 {
                 mComma(); 
 
                 }
                 break;
-            case 4 :
-                // InternalMSQLQueryLexer.g:1:28: Semicolon
+            case 9 :
+                // InternalMSQLQueryLexer.g:1:55: Semicolon
                 {
                 mSemicolon(); 
 
                 }
                 break;
-            case 5 :
-                // InternalMSQLQueryLexer.g:1:38: RULE_ID
+            case 10 :
+                // InternalMSQLQueryLexer.g:1:65: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 6 :
-                // InternalMSQLQueryLexer.g:1:46: RULE_INT
+            case 11 :
+                // InternalMSQLQueryLexer.g:1:73: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
-            case 7 :
-                // InternalMSQLQueryLexer.g:1:55: RULE_STRING
+            case 12 :
+                // InternalMSQLQueryLexer.g:1:82: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 8 :
-                // InternalMSQLQueryLexer.g:1:67: RULE_ML_COMMENT
+            case 13 :
+                // InternalMSQLQueryLexer.g:1:94: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
-            case 9 :
-                // InternalMSQLQueryLexer.g:1:83: RULE_SL_COMMENT
+            case 14 :
+                // InternalMSQLQueryLexer.g:1:110: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
-            case 10 :
-                // InternalMSQLQueryLexer.g:1:99: RULE_WS
+            case 15 :
+                // InternalMSQLQueryLexer.g:1:126: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 11 :
-                // InternalMSQLQueryLexer.g:1:107: RULE_ANY_OTHER
+            case 16 :
+                // InternalMSQLQueryLexer.g:1:134: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -794,48 +1056,68 @@ public class InternalMSQLQueryLexer extends Lexer {
 
     protected DFA12 dfa12 = new DFA12(this);
     static final String DFA12_eotS =
-        "\1\uffff\2\16\2\uffff\1\14\2\uffff\3\14\2\uffff\1\16\1\uffff\1\16\7\uffff\3\16\1\34\1\16\1\uffff\1\36\1\uffff";
+        "\1\uffff\6\23\3\uffff\1\21\2\uffff\3\21\2\uffff\1\23\1\uffff\4\23\1\46\10\uffff\4\23\1\53\1\uffff\2\23\1\56\1\57\1\uffff\1\23\1\61\2\uffff\1\62\2\uffff";
     static final String DFA12_eofS =
-        "\37\uffff";
+        "\63\uffff";
     static final String DFA12_minS =
-        "\1\0\1\105\1\122\2\uffff\1\101\2\uffff\2\0\1\52\2\uffff\1\114\1\uffff\1\117\7\uffff\1\105\1\115\1\103\1\60\1\124\1\uffff\1\60\1\uffff";
+        "\1\0\1\105\1\122\1\105\1\122\1\123\1\131\3\uffff\1\101\2\uffff\2\0\1\52\2\uffff\1\114\1\uffff\1\104\1\123\1\117\1\103\1\60\10\uffff\2\105\1\103\1\115\1\60\1\uffff\1\103\1\122\2\60\1\uffff\1\124\1\60\2\uffff\1\60\2\uffff";
     static final String DFA12_maxS =
-        "\1\uffff\1\145\1\162\2\uffff\1\172\2\uffff\2\uffff\1\57\2\uffff\1\154\1\uffff\1\157\7\uffff\1\145\1\155\1\143\1\172\1\164\1\uffff\1\172\1\uffff";
+        "\1\uffff\1\145\1\162\1\145\1\162\1\163\1\171\3\uffff\1\172\2\uffff\2\uffff\1\57\2\uffff\1\154\1\uffff\1\144\1\163\1\157\1\143\1\172\10\uffff\2\145\1\143\1\155\1\172\1\uffff\1\143\1\162\2\172\1\uffff\1\164\1\172\2\uffff\1\172\2\uffff";
     static final String DFA12_acceptS =
-        "\3\uffff\1\3\1\4\1\uffff\1\5\1\6\3\uffff\1\12\1\13\1\uffff\1\5\1\uffff\1\3\1\4\1\6\1\7\1\10\1\11\1\12\5\uffff\1\2\1\uffff\1\1";
+        "\7\uffff\1\7\1\10\1\11\1\uffff\1\12\1\13\3\uffff\1\17\1\20\1\uffff\1\12\5\uffff\1\7\1\10\1\11\1\13\1\14\1\15\1\16\1\17\5\uffff\1\6\4\uffff\1\5\2\uffff\1\3\1\4\1\uffff\1\2\1\1";
     static final String DFA12_specialS =
-        "\1\1\7\uffff\1\0\1\2\25\uffff}>";
+        "\1\1\14\uffff\1\0\1\2\44\uffff}>";
     static final String[] DFA12_transitionS = {
-            "\11\14\2\13\2\14\1\13\22\14\1\13\1\14\1\10\4\14\1\11\4\14\1\3\2\14\1\12\12\7\1\14\1\4\5\14\5\6\1\2\14\6\1\1\7\6\3\14\1\5\1\6\1\14\5\6\1\2\14\6\1\1\7\6\uff85\14",
-            "\1\15\37\uffff\1\15",
-            "\1\17\37\uffff\1\17",
-            "",
-            "",
-            "\32\16\4\uffff\1\16\1\uffff\32\16",
-            "",
-            "",
-            "\0\23",
-            "\0\23",
-            "\1\24\4\uffff\1\25",
-            "",
-            "",
+            "\11\21\2\20\2\21\1\20\22\21\1\20\1\21\1\15\4\21\1\16\2\21\1\7\1\21\1\10\2\21\1\17\12\14\1\21\1\11\5\21\1\5\1\6\1\13\1\3\1\13\1\4\10\13\1\2\3\13\1\1\7\13\3\21\1\12\1\13\1\21\1\5\1\6\1\13\1\3\1\13\1\4\10\13\1\2\3\13\1\1\7\13\uff85\21",
+            "\1\22\37\uffff\1\22",
+            "\1\24\37\uffff\1\24",
+            "\1\25\37\uffff\1\25",
+            "\1\26\37\uffff\1\26",
             "\1\27\37\uffff\1\27",
-            "",
             "\1\30\37\uffff\1\30",
             "",
             "",
             "",
+            "\32\23\4\uffff\1\23\1\uffff\32\23",
+            "",
+            "",
+            "\0\35",
+            "\0\35",
+            "\1\36\4\uffff\1\37",
+            "",
+            "",
+            "\1\41\37\uffff\1\41",
+            "",
+            "\1\42\37\uffff\1\42",
+            "\1\43\37\uffff\1\43",
+            "\1\44\37\uffff\1\44",
+            "\1\45\37\uffff\1\45",
+            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
             "",
             "",
             "",
             "",
-            "\1\31\37\uffff\1\31",
-            "\1\32\37\uffff\1\32",
-            "\1\33\37\uffff\1\33",
-            "\12\16\7\uffff\32\16\4\uffff\1\16\1\uffff\32\16",
-            "\1\35\37\uffff\1\35",
             "",
-            "\12\16\7\uffff\32\16\4\uffff\1\16\1\uffff\32\16",
+            "",
+            "",
+            "",
+            "\1\47\37\uffff\1\47",
+            "\1\50\37\uffff\1\50",
+            "\1\51\37\uffff\1\51",
+            "\1\52\37\uffff\1\52",
+            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
+            "",
+            "\1\54\37\uffff\1\54",
+            "\1\55\37\uffff\1\55",
+            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
+            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
+            "",
+            "\1\60\37\uffff\1\60",
+            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
+            "",
+            "",
+            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
+            "",
             ""
     };
 
@@ -869,19 +1151,19 @@ public class InternalMSQLQueryLexer extends Lexer {
             this.transition = DFA12_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( SELECT | FROM | Comma | Semicolon | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( SELECT | ORDER | DESC | FROM | ASC | BY | Asterisk | Comma | Semicolon | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA12_8 = input.LA(1);
+                        int LA12_13 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA12_8>='\u0000' && LA12_8<='\uFFFF')) ) {s = 19;}
+                        if ( ((LA12_13>='\u0000' && LA12_13<='\uFFFF')) ) {s = 29;}
 
-                        else s = 12;
+                        else s = 17;
 
                         if ( s>=0 ) return s;
                         break;
@@ -891,37 +1173,47 @@ public class InternalMSQLQueryLexer extends Lexer {
                         s = -1;
                         if ( (LA12_0=='S'||LA12_0=='s') ) {s = 1;}
 
-                        else if ( (LA12_0=='F'||LA12_0=='f') ) {s = 2;}
+                        else if ( (LA12_0=='O'||LA12_0=='o') ) {s = 2;}
 
-                        else if ( (LA12_0==',') ) {s = 3;}
+                        else if ( (LA12_0=='D'||LA12_0=='d') ) {s = 3;}
 
-                        else if ( (LA12_0==';') ) {s = 4;}
+                        else if ( (LA12_0=='F'||LA12_0=='f') ) {s = 4;}
 
-                        else if ( (LA12_0=='^') ) {s = 5;}
+                        else if ( (LA12_0=='A'||LA12_0=='a') ) {s = 5;}
 
-                        else if ( ((LA12_0>='A' && LA12_0<='E')||(LA12_0>='G' && LA12_0<='R')||(LA12_0>='T' && LA12_0<='Z')||LA12_0=='_'||(LA12_0>='a' && LA12_0<='e')||(LA12_0>='g' && LA12_0<='r')||(LA12_0>='t' && LA12_0<='z')) ) {s = 6;}
+                        else if ( (LA12_0=='B'||LA12_0=='b') ) {s = 6;}
 
-                        else if ( ((LA12_0>='0' && LA12_0<='9')) ) {s = 7;}
+                        else if ( (LA12_0=='*') ) {s = 7;}
 
-                        else if ( (LA12_0=='\"') ) {s = 8;}
+                        else if ( (LA12_0==',') ) {s = 8;}
 
-                        else if ( (LA12_0=='\'') ) {s = 9;}
+                        else if ( (LA12_0==';') ) {s = 9;}
 
-                        else if ( (LA12_0=='/') ) {s = 10;}
+                        else if ( (LA12_0=='^') ) {s = 10;}
 
-                        else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r'||LA12_0==' ') ) {s = 11;}
+                        else if ( (LA12_0=='C'||LA12_0=='E'||(LA12_0>='G' && LA12_0<='N')||(LA12_0>='P' && LA12_0<='R')||(LA12_0>='T' && LA12_0<='Z')||LA12_0=='_'||LA12_0=='c'||LA12_0=='e'||(LA12_0>='g' && LA12_0<='n')||(LA12_0>='p' && LA12_0<='r')||(LA12_0>='t' && LA12_0<='z')) ) {s = 11;}
 
-                        else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||LA12_0=='!'||(LA12_0>='#' && LA12_0<='&')||(LA12_0>='(' && LA12_0<='+')||(LA12_0>='-' && LA12_0<='.')||LA12_0==':'||(LA12_0>='<' && LA12_0<='@')||(LA12_0>='[' && LA12_0<=']')||LA12_0=='`'||(LA12_0>='{' && LA12_0<='\uFFFF')) ) {s = 12;}
+                        else if ( ((LA12_0>='0' && LA12_0<='9')) ) {s = 12;}
+
+                        else if ( (LA12_0=='\"') ) {s = 13;}
+
+                        else if ( (LA12_0=='\'') ) {s = 14;}
+
+                        else if ( (LA12_0=='/') ) {s = 15;}
+
+                        else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r'||LA12_0==' ') ) {s = 16;}
+
+                        else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||LA12_0=='!'||(LA12_0>='#' && LA12_0<='&')||(LA12_0>='(' && LA12_0<=')')||LA12_0=='+'||(LA12_0>='-' && LA12_0<='.')||LA12_0==':'||(LA12_0>='<' && LA12_0<='@')||(LA12_0>='[' && LA12_0<=']')||LA12_0=='`'||(LA12_0>='{' && LA12_0<='\uFFFF')) ) {s = 17;}
 
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA12_9 = input.LA(1);
+                        int LA12_14 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA12_9>='\u0000' && LA12_9<='\uFFFF')) ) {s = 19;}
+                        if ( ((LA12_14>='\u0000' && LA12_14<='\uFFFF')) ) {s = 29;}
 
-                        else s = 12;
+                        else s = 17;
 
                         if ( s>=0 ) return s;
                         break;

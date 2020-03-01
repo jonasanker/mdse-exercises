@@ -33,20 +33,19 @@ public class MSQLQueryScopeProvider extends AbstractMSQLQueryScopeProvider {
 
 			// Provide custom scope
 			ColumnReference columnReference = (ColumnReference)context;
-			return getScope(columnReference);
+			return getColumnReferenceScope(columnReference);
 		}
 
 		return super.delegateGetScope(context, reference);
 	}
 	
-	protected IScope getScope(ColumnReference columnReference) {
+	protected IScope getColumnReferenceScope(ColumnReference columnReference) {
 		// Get the root model element via reflection on the model
 		EObject rootModelElement = EcoreUtil.getRootContainer(columnReference);
 		
 		if (rootModelElement instanceof SelectQuery) {
 			SelectQuery selectQuery = (SelectQuery) rootModelElement;
 			FromClause fromClause = selectQuery.getFromClause();
-			
 			Table table = fromClause.getTable();
 			List<Column> columns = table.getColumn();
 			

@@ -67,7 +67,7 @@ public interface QueryPackage extends EPackage {
 	int SELECT_QUERY = 0;
 
 	/**
-	 * The feature id for the '<em><b>Order By Clause</b></em>' reference.
+	 * The feature id for the '<em><b>Order By Clause</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -122,13 +122,13 @@ public interface QueryPackage extends EPackage {
 	int ORDER_BY_CLAUSE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Order By Directive</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Order Directives</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER_BY_CLAUSE__ORDER_BY_DIRECTIVE = 0;
+	int ORDER_BY_CLAUSE__ORDER_DIRECTIVES = 0;
 
 	/**
 	 * The number of structural features of the '<em>Order By Clause</em>' class.
@@ -420,10 +420,10 @@ public interface QueryPackage extends EPackage {
 	EReference getSelectQuery_FromClause();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.mdse.minisql.query.SelectQuery#getOrderByClause <em>Order By Clause</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.mdse.minisql.query.SelectQuery#getOrderByClause <em>Order By Clause</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Order By Clause</em>'.
+	 * @return the meta object for the containment reference '<em>Order By Clause</em>'.
 	 * @see org.mdse.minisql.query.SelectQuery#getOrderByClause()
 	 * @see #getSelectQuery()
 	 * @generated
@@ -452,15 +452,15 @@ public interface QueryPackage extends EPackage {
 	EClass getOrderByClause();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.mdse.minisql.query.OrderByClause#getOrderByDirective <em>Order By Directive</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.mdse.minisql.query.OrderByClause#getOrderDirectives <em>Order Directives</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Order By Directive</em>'.
-	 * @see org.mdse.minisql.query.OrderByClause#getOrderByDirective()
+	 * @return the meta object for the containment reference list '<em>Order Directives</em>'.
+	 * @see org.mdse.minisql.query.OrderByClause#getOrderDirectives()
 	 * @see #getOrderByClause()
 	 * @generated
 	 */
-	EReference getOrderByClause_OrderByDirective();
+	EReference getOrderByClause_OrderDirectives();
 
 	/**
 	 * Returns the meta object for class '{@link org.mdse.minisql.query.OrderByDirective <em>Order By Directive</em>}'.
@@ -640,7 +640,7 @@ public interface QueryPackage extends EPackage {
 		EReference SELECT_QUERY__FROM_CLAUSE = eINSTANCE.getSelectQuery_FromClause();
 
 		/**
-		 * The meta object literal for the '<em><b>Order By Clause</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Order By Clause</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -666,12 +666,12 @@ public interface QueryPackage extends EPackage {
 		EClass ORDER_BY_CLAUSE = eINSTANCE.getOrderByClause();
 
 		/**
-		 * The meta object literal for the '<em><b>Order By Directive</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Order Directives</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ORDER_BY_CLAUSE__ORDER_BY_DIRECTIVE = eINSTANCE.getOrderByClause_OrderByDirective();
+		EReference ORDER_BY_CLAUSE__ORDER_DIRECTIVES = eINSTANCE.getOrderByClause_OrderDirectives();
 
 		/**
 		 * The meta object literal for the '{@link org.mdse.minisql.query.impl.OrderByDirectiveImpl <em>Order By Directive</em>}' class.

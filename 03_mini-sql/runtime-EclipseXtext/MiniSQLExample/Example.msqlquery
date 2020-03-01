@@ -1,1 +1,5 @@
-SELECT Name, Salary from Employees;
+//SELECT Name, Salary from Employees;
+
+//SELECT * FROM Employees;
+
+SELECT * FROM Employees ORDER BY Salary;

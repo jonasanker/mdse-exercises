@@ -47,22 +47,22 @@ public interface SelectQuery extends EObject {
 	void setFromClause(FromClause value);
 
 	/**
-	 * Returns the value of the '<em><b>Order By Clause</b></em>' reference.
+	 * Returns the value of the '<em><b>Order By Clause</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Order By Clause</em>' reference.
+	 * @return the value of the '<em>Order By Clause</em>' containment reference.
 	 * @see #setOrderByClause(OrderByClause)
 	 * @see org.mdse.minisql.query.QueryPackage#getSelectQuery_OrderByClause()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	OrderByClause getOrderByClause();
 
 	/**
-	 * Sets the value of the '{@link org.mdse.minisql.query.SelectQuery#getOrderByClause <em>Order By Clause</em>}' reference.
+	 * Sets the value of the '{@link org.mdse.minisql.query.SelectQuery#getOrderByClause <em>Order By Clause</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Order By Clause</em>' reference.
+	 * @param value the new value of the '<em>Order By Clause</em>' containment reference.
 	 * @see #getOrderByClause()
 	 * @generated
 	 */

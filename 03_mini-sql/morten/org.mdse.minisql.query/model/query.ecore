@@ -2,14 +2,15 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="query" nsURI="http://mdse.org/minisql/query" nsPrefix="minisqlquery">
   <eClassifiers xsi:type="ecore:EClass" name="SelectQuery">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="orderByClause" eType="#//OrderByClause"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="orderByClause" eType="#//OrderByClause"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="whatClause" lowerBound="1"
         upperBound="-1" eType="#//WhatClause" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fromClause" lowerBound="1"
         eType="#//FromClause" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OrderByClause">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="orderByDirective" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="orderDirectives" lowerBound="1"
         upperBound="-1" eType="#//OrderByDirective" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OrderByDirective">

@@ -70,7 +70,7 @@ public class OrderByClauseItemProvider extends ItemProviderAdapter implements IE
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(QueryPackage.Literals.ORDER_BY_CLAUSE__ORDER_BY_DIRECTIVE);
+			childrenFeatures.add(QueryPackage.Literals.ORDER_BY_CLAUSE__ORDER_DIRECTIVES);
 		}
 		return childrenFeatures;
 	}
@@ -132,7 +132,7 @@ public class OrderByClauseItemProvider extends ItemProviderAdapter implements IE
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(OrderByClause.class)) {
-		case QueryPackage.ORDER_BY_CLAUSE__ORDER_BY_DIRECTIVE:
+		case QueryPackage.ORDER_BY_CLAUSE__ORDER_DIRECTIVES:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -150,7 +150,7 @@ public class OrderByClauseItemProvider extends ItemProviderAdapter implements IE
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.ORDER_BY_CLAUSE__ORDER_BY_DIRECTIVE,
+		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.ORDER_BY_CLAUSE__ORDER_DIRECTIVES,
 				QueryFactory.eINSTANCE.createOrderByDirective()));
 	}
 

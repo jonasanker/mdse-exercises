@@ -28,21 +28,21 @@ import org.mdse.minisql.query.QueryPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.mdse.minisql.query.impl.OrderByClauseImpl#getOrderByDirective <em>Order By Directive</em>}</li>
+ *   <li>{@link org.mdse.minisql.query.impl.OrderByClauseImpl#getOrderDirectives <em>Order Directives</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class OrderByClauseImpl extends MinimalEObjectImpl.Container implements OrderByClause {
 	/**
-	 * The cached value of the '{@link #getOrderByDirective() <em>Order By Directive</em>}' containment reference list.
+	 * The cached value of the '{@link #getOrderDirectives() <em>Order Directives</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOrderByDirective()
+	 * @see #getOrderDirectives()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<OrderByDirective> orderByDirective;
+	protected EList<OrderByDirective> orderDirectives;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -69,12 +69,12 @@ public class OrderByClauseImpl extends MinimalEObjectImpl.Container implements O
 	 * @generated
 	 */
 	@Override
-	public EList<OrderByDirective> getOrderByDirective() {
-		if (orderByDirective == null) {
-			orderByDirective = new EObjectContainmentEList<OrderByDirective>(OrderByDirective.class, this,
-					QueryPackage.ORDER_BY_CLAUSE__ORDER_BY_DIRECTIVE);
+	public EList<OrderByDirective> getOrderDirectives() {
+		if (orderDirectives == null) {
+			orderDirectives = new EObjectContainmentEList<OrderByDirective>(OrderByDirective.class, this,
+					QueryPackage.ORDER_BY_CLAUSE__ORDER_DIRECTIVES);
 		}
-		return orderByDirective;
+		return orderDirectives;
 	}
 
 	/**
@@ -85,8 +85,8 @@ public class OrderByClauseImpl extends MinimalEObjectImpl.Container implements O
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case QueryPackage.ORDER_BY_CLAUSE__ORDER_BY_DIRECTIVE:
-			return ((InternalEList<?>) getOrderByDirective()).basicRemove(otherEnd, msgs);
+		case QueryPackage.ORDER_BY_CLAUSE__ORDER_DIRECTIVES:
+			return ((InternalEList<?>) getOrderDirectives()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -99,8 +99,8 @@ public class OrderByClauseImpl extends MinimalEObjectImpl.Container implements O
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QueryPackage.ORDER_BY_CLAUSE__ORDER_BY_DIRECTIVE:
-			return getOrderByDirective();
+		case QueryPackage.ORDER_BY_CLAUSE__ORDER_DIRECTIVES:
+			return getOrderDirectives();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -114,9 +114,9 @@ public class OrderByClauseImpl extends MinimalEObjectImpl.Container implements O
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QueryPackage.ORDER_BY_CLAUSE__ORDER_BY_DIRECTIVE:
-			getOrderByDirective().clear();
-			getOrderByDirective().addAll((Collection<? extends OrderByDirective>) newValue);
+		case QueryPackage.ORDER_BY_CLAUSE__ORDER_DIRECTIVES:
+			getOrderDirectives().clear();
+			getOrderDirectives().addAll((Collection<? extends OrderByDirective>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -130,8 +130,8 @@ public class OrderByClauseImpl extends MinimalEObjectImpl.Container implements O
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QueryPackage.ORDER_BY_CLAUSE__ORDER_BY_DIRECTIVE:
-			getOrderByDirective().clear();
+		case QueryPackage.ORDER_BY_CLAUSE__ORDER_DIRECTIVES:
+			getOrderDirectives().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -145,8 +145,8 @@ public class OrderByClauseImpl extends MinimalEObjectImpl.Container implements O
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QueryPackage.ORDER_BY_CLAUSE__ORDER_BY_DIRECTIVE:
-			return orderByDirective != null && !orderByDirective.isEmpty();
+		case QueryPackage.ORDER_BY_CLAUSE__ORDER_DIRECTIVES:
+			return orderDirectives != null && !orderDirectives.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
