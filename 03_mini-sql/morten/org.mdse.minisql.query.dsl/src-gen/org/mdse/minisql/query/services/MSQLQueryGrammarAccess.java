@@ -10,6 +10,8 @@ import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.CrossReference;
+import org.eclipse.xtext.EnumLiteralDeclaration;
+import org.eclipse.xtext.EnumRule;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.Group;
@@ -18,6 +20,7 @@ import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.TerminalRule;
 import org.eclipse.xtext.common.services.TerminalsGrammarAccess;
+import org.eclipse.xtext.service.AbstractElementFinder.AbstractEnumRuleElementFinder;
 import org.eclipse.xtext.service.AbstractElementFinder.AbstractGrammarElementFinder;
 import org.eclipse.xtext.service.GrammarProvider;
 
@@ -32,19 +35,22 @@ public class MSQLQueryGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cWhatClauseWhatClauseParserRuleCall_1_0 = (RuleCall)cWhatClauseAssignment_1.eContents().get(0);
 		private final Assignment cFromClauseAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cFromClauseFromClauseParserRuleCall_2_0 = (RuleCall)cFromClauseAssignment_2.eContents().get(0);
-		private final Assignment cOrderByClauseAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cOrderByClauseOrderByClauseParserRuleCall_3_0 = (RuleCall)cOrderByClauseAssignment_3.eContents().get(0);
-		private final Keyword cSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cWhereClauseAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cWhereClauseWhereClauseParserRuleCall_3_0 = (RuleCall)cWhereClauseAssignment_3.eContents().get(0);
+		private final Assignment cOrderByClauseAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cOrderByClauseOrderByClauseParserRuleCall_4_0 = (RuleCall)cOrderByClauseAssignment_4.eContents().get(0);
+		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//SelectQuery:
 		//	"SELECT"
 		//	whatClause+=WhatClause
 		//	fromClause=FromClause
+		//	whereClause=WhereClause?
 		//	orderByClause=OrderByClause?
 		//	";";
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"SELECT" whatClause+=WhatClause fromClause=FromClause orderByClause=OrderByClause? ";"
+		//"SELECT" whatClause+=WhatClause fromClause=FromClause whereClause=WhereClause? orderByClause=OrderByClause? ";"
 		public Group getGroup() { return cGroup; }
 		
 		//"SELECT"
@@ -62,14 +68,20 @@ public class MSQLQueryGrammarAccess extends AbstractGrammarElementFinder {
 		//FromClause
 		public RuleCall getFromClauseFromClauseParserRuleCall_2_0() { return cFromClauseFromClauseParserRuleCall_2_0; }
 		
+		//whereClause=WhereClause?
+		public Assignment getWhereClauseAssignment_3() { return cWhereClauseAssignment_3; }
+		
+		//WhereClause
+		public RuleCall getWhereClauseWhereClauseParserRuleCall_3_0() { return cWhereClauseWhereClauseParserRuleCall_3_0; }
+		
 		//orderByClause=OrderByClause?
-		public Assignment getOrderByClauseAssignment_3() { return cOrderByClauseAssignment_3; }
+		public Assignment getOrderByClauseAssignment_4() { return cOrderByClauseAssignment_4; }
 		
 		//OrderByClause
-		public RuleCall getOrderByClauseOrderByClauseParserRuleCall_3_0() { return cOrderByClauseOrderByClauseParserRuleCall_3_0; }
+		public RuleCall getOrderByClauseOrderByClauseParserRuleCall_4_0() { return cOrderByClauseOrderByClauseParserRuleCall_4_0; }
 		
 		//";"
-		public Keyword getSemicolonKeyword_4() { return cSemicolonKeyword_4; }
+		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
 	}
 	public class WhatClauseElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.MSQLQuery.WhatClause");
@@ -188,6 +200,121 @@ public class MSQLQueryGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getTableTableIDTerminalRuleCall_1_0_1() { return cTableTableIDTerminalRuleCall_1_0_1; }
 	}
+	public class WhereClauseElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.MSQLQuery.WhereClause");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cWHEREKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cExpressionAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cExpressionExpressionParserRuleCall_1_0 = (RuleCall)cExpressionAssignment_1.eContents().get(0);
+		
+		//WhereClause:
+		//	"WHERE" expression+=Expression;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"WHERE" expression+=Expression
+		public Group getGroup() { return cGroup; }
+		
+		//"WHERE"
+		public Keyword getWHEREKeyword_0() { return cWHEREKeyword_0; }
+		
+		//expression+=Expression
+		public Assignment getExpressionAssignment_1() { return cExpressionAssignment_1; }
+		
+		//Expression
+		public RuleCall getExpressionExpressionParserRuleCall_1_0() { return cExpressionExpressionParserRuleCall_1_0; }
+	}
+	public class ExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.MSQLQuery.Expression");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cColumnReferenceParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cIntegerLiteralParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cComparativeExpressionParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//Expression:
+		//	ColumnReference | IntegerLiteral | ComparativeExpression;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//ColumnReference | IntegerLiteral | ComparativeExpression
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//ColumnReference
+		public RuleCall getColumnReferenceParserRuleCall_0() { return cColumnReferenceParserRuleCall_0; }
+		
+		//IntegerLiteral
+		public RuleCall getIntegerLiteralParserRuleCall_1() { return cIntegerLiteralParserRuleCall_1; }
+		
+		//ComparativeExpression
+		public RuleCall getComparativeExpressionParserRuleCall_2() { return cComparativeExpressionParserRuleCall_2; }
+	}
+	public class ComparativeExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.MSQLQuery.ComparativeExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cExpression1Assignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cExpression1AtomicExpressionParserRuleCall_0_0 = (RuleCall)cExpression1Assignment_0.eContents().get(0);
+		private final Assignment cOperatorAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cOperatorComparativeOperatorEnumRuleCall_1_0 = (RuleCall)cOperatorAssignment_1.eContents().get(0);
+		private final Assignment cExpression2Assignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cExpression2AtomicExpressionParserRuleCall_2_0 = (RuleCall)cExpression2Assignment_2.eContents().get(0);
+		
+		//ComparativeExpression:
+		//	expression1=AtomicExpression operator=ComparativeOperator expression2=AtomicExpression;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//expression1=AtomicExpression operator=ComparativeOperator expression2=AtomicExpression
+		public Group getGroup() { return cGroup; }
+		
+		//expression1=AtomicExpression
+		public Assignment getExpression1Assignment_0() { return cExpression1Assignment_0; }
+		
+		//AtomicExpression
+		public RuleCall getExpression1AtomicExpressionParserRuleCall_0_0() { return cExpression1AtomicExpressionParserRuleCall_0_0; }
+		
+		//operator=ComparativeOperator
+		public Assignment getOperatorAssignment_1() { return cOperatorAssignment_1; }
+		
+		//ComparativeOperator
+		public RuleCall getOperatorComparativeOperatorEnumRuleCall_1_0() { return cOperatorComparativeOperatorEnumRuleCall_1_0; }
+		
+		//expression2=AtomicExpression
+		public Assignment getExpression2Assignment_2() { return cExpression2Assignment_2; }
+		
+		//AtomicExpression
+		public RuleCall getExpression2AtomicExpressionParserRuleCall_2_0() { return cExpression2AtomicExpressionParserRuleCall_2_0; }
+	}
+	public class AtomicExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.MSQLQuery.AtomicExpression");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cIntegerLiteralParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cColumnReferenceParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//AtomicExpression Expression:
+		//	IntegerLiteral | ColumnReference;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//IntegerLiteral | ColumnReference
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//IntegerLiteral
+		public RuleCall getIntegerLiteralParserRuleCall_0() { return cIntegerLiteralParserRuleCall_0; }
+		
+		//ColumnReference
+		public RuleCall getColumnReferenceParserRuleCall_1() { return cColumnReferenceParserRuleCall_1; }
+	}
+	public class IntegerLiteralElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.MSQLQuery.IntegerLiteral");
+		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cValueINTTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
+		
+		//IntegerLiteral:
+		//	value=INT;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//value=INT
+		public Assignment getValueAssignment() { return cValueAssignment; }
+		
+		//INT
+		public RuleCall getValueINTTerminalRuleCall_0() { return cValueINTTerminalRuleCall_0; }
+	}
 	public class OrderByClauseElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.MSQLQuery.OrderByClause");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -243,7 +370,8 @@ public class MSQLQueryGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cAscendingDESCKeyword_1_0_1 = (Keyword)cAscendingAlternatives_1_0.eContents().get(1);
 		
 		//OrderByDirective:
-		//	columnReference+=ColumnReference ascending?=("ASC" | "DESC")?;
+		//	columnReference+=ColumnReference ascending?=("ASC" | "DESC")? // Boolean syntax
+		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//columnReference+=ColumnReference ascending?=("ASC" | "DESC")?
@@ -287,6 +415,65 @@ public class MSQLQueryGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getColumnColumnIDTerminalRuleCall_0_1() { return cColumnColumnIDTerminalRuleCall_0_1; }
 	}
 	
+	public class ComparativeOperatorElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.MSQLQuery.ComparativeOperator");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cLESS_THANEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cLESS_THANLessThanSignKeyword_0_0 = (Keyword)cLESS_THANEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cLESS_THAN_OR_EQUALEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cLESS_THAN_OR_EQUALLessThanSignEqualsSignKeyword_1_0 = (Keyword)cLESS_THAN_OR_EQUALEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cEQUALEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cEQUALEqualsSignKeyword_2_0 = (Keyword)cEQUALEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cNOT_EQUALEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cNOT_EQUALExclamationMarkEqualsSignKeyword_3_0 = (Keyword)cNOT_EQUALEnumLiteralDeclaration_3.eContents().get(0);
+		private final EnumLiteralDeclaration cGREATER_THANEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
+		private final Keyword cGREATER_THANGreaterThanSignKeyword_4_0 = (Keyword)cGREATER_THANEnumLiteralDeclaration_4.eContents().get(0);
+		private final EnumLiteralDeclaration cGREATER_THAN_OR_EQUALEnumLiteralDeclaration_5 = (EnumLiteralDeclaration)cAlternatives.eContents().get(5);
+		private final Keyword cGREATER_THAN_OR_EQUALGreaterThanSignEqualsSignKeyword_5_0 = (Keyword)cGREATER_THAN_OR_EQUALEnumLiteralDeclaration_5.eContents().get(0);
+		
+		//enum ComparativeOperator:
+		//	LESS_THAN="<" | LESS_THAN_OR_EQUAL="<=" | EQUAL="=" | NOT_EQUAL="!=" | GREATER_THAN=">" | GREATER_THAN_OR_EQUAL=">=";
+		public EnumRule getRule() { return rule; }
+		
+		//LESS_THAN="<" | LESS_THAN_OR_EQUAL="<=" | EQUAL="=" | NOT_EQUAL="!=" | GREATER_THAN=">" | GREATER_THAN_OR_EQUAL=">="
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//LESS_THAN="<"
+		public EnumLiteralDeclaration getLESS_THANEnumLiteralDeclaration_0() { return cLESS_THANEnumLiteralDeclaration_0; }
+		
+		//"<"
+		public Keyword getLESS_THANLessThanSignKeyword_0_0() { return cLESS_THANLessThanSignKeyword_0_0; }
+		
+		//LESS_THAN_OR_EQUAL="<="
+		public EnumLiteralDeclaration getLESS_THAN_OR_EQUALEnumLiteralDeclaration_1() { return cLESS_THAN_OR_EQUALEnumLiteralDeclaration_1; }
+		
+		//"<="
+		public Keyword getLESS_THAN_OR_EQUALLessThanSignEqualsSignKeyword_1_0() { return cLESS_THAN_OR_EQUALLessThanSignEqualsSignKeyword_1_0; }
+		
+		//EQUAL="="
+		public EnumLiteralDeclaration getEQUALEnumLiteralDeclaration_2() { return cEQUALEnumLiteralDeclaration_2; }
+		
+		//"="
+		public Keyword getEQUALEqualsSignKeyword_2_0() { return cEQUALEqualsSignKeyword_2_0; }
+		
+		//NOT_EQUAL="!="
+		public EnumLiteralDeclaration getNOT_EQUALEnumLiteralDeclaration_3() { return cNOT_EQUALEnumLiteralDeclaration_3; }
+		
+		//"!="
+		public Keyword getNOT_EQUALExclamationMarkEqualsSignKeyword_3_0() { return cNOT_EQUALExclamationMarkEqualsSignKeyword_3_0; }
+		
+		//GREATER_THAN=">"
+		public EnumLiteralDeclaration getGREATER_THANEnumLiteralDeclaration_4() { return cGREATER_THANEnumLiteralDeclaration_4; }
+		
+		//">"
+		public Keyword getGREATER_THANGreaterThanSignKeyword_4_0() { return cGREATER_THANGreaterThanSignKeyword_4_0; }
+		
+		//GREATER_THAN_OR_EQUAL=">="
+		public EnumLiteralDeclaration getGREATER_THAN_OR_EQUALEnumLiteralDeclaration_5() { return cGREATER_THAN_OR_EQUALEnumLiteralDeclaration_5; }
+		
+		//">="
+		public Keyword getGREATER_THAN_OR_EQUALGreaterThanSignEqualsSignKeyword_5_0() { return cGREATER_THAN_OR_EQUALGreaterThanSignEqualsSignKeyword_5_0; }
+	}
 	
 	private final SelectQueryElements pSelectQuery;
 	private final WhatClauseElements pWhatClause;
@@ -294,6 +481,12 @@ public class MSQLQueryGrammarAccess extends AbstractGrammarElementFinder {
 	private final AllColumnsWhatDirectiveElements pAllColumnsWhatDirective;
 	private final SingleColumnWhatDirectiveElements pSingleColumnWhatDirective;
 	private final FromClauseElements pFromClause;
+	private final WhereClauseElements pWhereClause;
+	private final ExpressionElements pExpression;
+	private final ComparativeExpressionElements pComparativeExpression;
+	private final AtomicExpressionElements pAtomicExpression;
+	private final ComparativeOperatorElements eComparativeOperator;
+	private final IntegerLiteralElements pIntegerLiteral;
 	private final OrderByClauseElements pOrderByClause;
 	private final OrderByDirectiveElements pOrderByDirective;
 	private final ColumnReferenceElements pColumnReference;
@@ -313,6 +506,12 @@ public class MSQLQueryGrammarAccess extends AbstractGrammarElementFinder {
 		this.pAllColumnsWhatDirective = new AllColumnsWhatDirectiveElements();
 		this.pSingleColumnWhatDirective = new SingleColumnWhatDirectiveElements();
 		this.pFromClause = new FromClauseElements();
+		this.pWhereClause = new WhereClauseElements();
+		this.pExpression = new ExpressionElements();
+		this.pComparativeExpression = new ComparativeExpressionElements();
+		this.pAtomicExpression = new AtomicExpressionElements();
+		this.eComparativeOperator = new ComparativeOperatorElements();
+		this.pIntegerLiteral = new IntegerLiteralElements();
 		this.pOrderByClause = new OrderByClauseElements();
 		this.pOrderByDirective = new OrderByDirectiveElements();
 		this.pColumnReference = new ColumnReferenceElements();
@@ -349,6 +548,7 @@ public class MSQLQueryGrammarAccess extends AbstractGrammarElementFinder {
 	//	"SELECT"
 	//	whatClause+=WhatClause
 	//	fromClause=FromClause
+	//	whereClause=WhereClause?
 	//	orderByClause=OrderByClause?
 	//	";";
 	public SelectQueryElements getSelectQueryAccess() {
@@ -411,6 +611,66 @@ public class MSQLQueryGrammarAccess extends AbstractGrammarElementFinder {
 		return getFromClauseAccess().getRule();
 	}
 	
+	//WhereClause:
+	//	"WHERE" expression+=Expression;
+	public WhereClauseElements getWhereClauseAccess() {
+		return pWhereClause;
+	}
+	
+	public ParserRule getWhereClauseRule() {
+		return getWhereClauseAccess().getRule();
+	}
+	
+	//Expression:
+	//	ColumnReference | IntegerLiteral | ComparativeExpression;
+	public ExpressionElements getExpressionAccess() {
+		return pExpression;
+	}
+	
+	public ParserRule getExpressionRule() {
+		return getExpressionAccess().getRule();
+	}
+	
+	//ComparativeExpression:
+	//	expression1=AtomicExpression operator=ComparativeOperator expression2=AtomicExpression;
+	public ComparativeExpressionElements getComparativeExpressionAccess() {
+		return pComparativeExpression;
+	}
+	
+	public ParserRule getComparativeExpressionRule() {
+		return getComparativeExpressionAccess().getRule();
+	}
+	
+	//AtomicExpression Expression:
+	//	IntegerLiteral | ColumnReference;
+	public AtomicExpressionElements getAtomicExpressionAccess() {
+		return pAtomicExpression;
+	}
+	
+	public ParserRule getAtomicExpressionRule() {
+		return getAtomicExpressionAccess().getRule();
+	}
+	
+	//enum ComparativeOperator:
+	//	LESS_THAN="<" | LESS_THAN_OR_EQUAL="<=" | EQUAL="=" | NOT_EQUAL="!=" | GREATER_THAN=">" | GREATER_THAN_OR_EQUAL=">=";
+	public ComparativeOperatorElements getComparativeOperatorAccess() {
+		return eComparativeOperator;
+	}
+	
+	public EnumRule getComparativeOperatorRule() {
+		return getComparativeOperatorAccess().getRule();
+	}
+	
+	//IntegerLiteral:
+	//	value=INT;
+	public IntegerLiteralElements getIntegerLiteralAccess() {
+		return pIntegerLiteral;
+	}
+	
+	public ParserRule getIntegerLiteralRule() {
+		return getIntegerLiteralAccess().getRule();
+	}
+	
 	//OrderByClause:
 	//	"ORDER" "BY"
 	//	orderDirectives+=OrderByDirective ("," orderDirectives+=OrderByDirective)*;
@@ -423,7 +683,8 @@ public class MSQLQueryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//OrderByDirective:
-	//	columnReference+=ColumnReference ascending?=("ASC" | "DESC")?;
+	//	columnReference+=ColumnReference ascending?=("ASC" | "DESC")? // Boolean syntax
+	//;
 	public OrderByDirectiveElements getOrderByDirectiveAccess() {
 		return pOrderByDirective;
 	}

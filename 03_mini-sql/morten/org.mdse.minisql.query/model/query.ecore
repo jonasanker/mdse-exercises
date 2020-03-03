@@ -8,6 +8,8 @@
         upperBound="-1" eType="#//WhatClause" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fromClause" lowerBound="1"
         eType="#//FromClause" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="whereClause" eType="#//WhereClause"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OrderByClause">
     <eStructuralFeatures xsi:type="ecore:EReference" name="orderDirectives" lowerBound="1"
@@ -18,7 +20,7 @@
         eType="#//ColumnReference" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ascending" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ColumnReference">
+  <eClassifiers xsi:type="ecore:EClass" name="ColumnReference" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="column" eType="ecore:EClass ../../org.mdse.minisql.schema/model/schema.ecore#//Column"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AllColumnsWhatDirective" eSuperTypes="#//WhatDirective"/>
@@ -33,5 +35,29 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FromClause">
     <eStructuralFeatures xsi:type="ecore:EReference" name="table" lowerBound="1" eType="ecore:EClass ../../org.mdse.minisql.schema/model/schema.ecore#//Table"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WhereClause">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1"
+        upperBound="-1" eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Expression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IntegerLiteral" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ComparativeOperator">
+    <eLiterals name="LESS_THAN" literal="LESS_THAN"/>
+    <eLiterals name="LESS_THAN_OR_EQUAL" value="1" literal="LESS_THAN_OR_EQUAL"/>
+    <eLiterals name="EQUAL" value="2" literal="EQUAL"/>
+    <eLiterals name="NOT_EQUAL" value="3"/>
+    <eLiterals name="GREATER_THAN" value="4"/>
+    <eLiterals name="GREATER_THAN_OR_EQUAL" value="5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComparativeExpression" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" lowerBound="1"
+        eType="#//ComparativeOperator" defaultValueLiteral="LESS_THAN"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression1" lowerBound="1"
+        eType="#//Expression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression2" lowerBound="1"
+        eType="#//Expression" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

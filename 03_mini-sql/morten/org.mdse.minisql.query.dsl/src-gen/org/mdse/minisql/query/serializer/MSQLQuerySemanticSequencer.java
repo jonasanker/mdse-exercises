@@ -16,13 +16,16 @@ import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequence
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import org.mdse.minisql.query.AllColumnsWhatDirective;
 import org.mdse.minisql.query.ColumnReference;
+import org.mdse.minisql.query.ComparativeExpression;
 import org.mdse.minisql.query.FromClause;
+import org.mdse.minisql.query.IntegerLiteral;
 import org.mdse.minisql.query.OrderByClause;
 import org.mdse.minisql.query.OrderByDirective;
 import org.mdse.minisql.query.QueryPackage;
 import org.mdse.minisql.query.SelectQuery;
 import org.mdse.minisql.query.SingleColumnWhatDirective;
 import org.mdse.minisql.query.WhatClause;
+import org.mdse.minisql.query.WhereClause;
 import org.mdse.minisql.query.services.MSQLQueryGrammarAccess;
 
 @SuppressWarnings("all")
@@ -45,8 +48,14 @@ public class MSQLQuerySemanticSequencer extends AbstractDelegatingSemanticSequen
 			case QueryPackage.COLUMN_REFERENCE:
 				sequence_ColumnReference(context, (ColumnReference) semanticObject); 
 				return; 
+			case QueryPackage.COMPARATIVE_EXPRESSION:
+				sequence_ComparativeExpression(context, (ComparativeExpression) semanticObject); 
+				return; 
 			case QueryPackage.FROM_CLAUSE:
 				sequence_FromClause(context, (FromClause) semanticObject); 
+				return; 
+			case QueryPackage.INTEGER_LITERAL:
+				sequence_IntegerLiteral(context, (IntegerLiteral) semanticObject); 
 				return; 
 			case QueryPackage.ORDER_BY_CLAUSE:
 				sequence_OrderByClause(context, (OrderByClause) semanticObject); 
@@ -62,6 +71,9 @@ public class MSQLQuerySemanticSequencer extends AbstractDelegatingSemanticSequen
 				return; 
 			case QueryPackage.WHAT_CLAUSE:
 				sequence_WhatClause(context, (WhatClause) semanticObject); 
+				return; 
+			case QueryPackage.WHERE_CLAUSE:
+				sequence_WhereClause(context, (WhereClause) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -83,6 +95,8 @@ public class MSQLQuerySemanticSequencer extends AbstractDelegatingSemanticSequen
 	
 	/**
 	 * Contexts:
+	 *     Expression returns ColumnReference
+	 *     AtomicExpression returns ColumnReference
 	 *     ColumnReference returns ColumnReference
 	 *
 	 * Constraint:
@@ -101,6 +115,31 @@ public class MSQLQuerySemanticSequencer extends AbstractDelegatingSemanticSequen
 	
 	/**
 	 * Contexts:
+	 *     Expression returns ComparativeExpression
+	 *     ComparativeExpression returns ComparativeExpression
+	 *
+	 * Constraint:
+	 *     (expression1=AtomicExpression operator=ComparativeOperator expression2=AtomicExpression)
+	 */
+	protected void sequence_ComparativeExpression(ISerializationContext context, ComparativeExpression semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, QueryPackage.Literals.COMPARATIVE_EXPRESSION__EXPRESSION1) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, QueryPackage.Literals.COMPARATIVE_EXPRESSION__EXPRESSION1));
+			if (transientValues.isValueTransient(semanticObject, QueryPackage.Literals.COMPARATIVE_EXPRESSION__OPERATOR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, QueryPackage.Literals.COMPARATIVE_EXPRESSION__OPERATOR));
+			if (transientValues.isValueTransient(semanticObject, QueryPackage.Literals.COMPARATIVE_EXPRESSION__EXPRESSION2) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, QueryPackage.Literals.COMPARATIVE_EXPRESSION__EXPRESSION2));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getComparativeExpressionAccess().getExpression1AtomicExpressionParserRuleCall_0_0(), semanticObject.getExpression1());
+		feeder.accept(grammarAccess.getComparativeExpressionAccess().getOperatorComparativeOperatorEnumRuleCall_1_0(), semanticObject.getOperator());
+		feeder.accept(grammarAccess.getComparativeExpressionAccess().getExpression2AtomicExpressionParserRuleCall_2_0(), semanticObject.getExpression2());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     FromClause returns FromClause
 	 *
 	 * Constraint:
@@ -113,6 +152,26 @@ public class MSQLQuerySemanticSequencer extends AbstractDelegatingSemanticSequen
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getFromClauseAccess().getTableTableIDTerminalRuleCall_1_0_1(), semanticObject.eGet(QueryPackage.Literals.FROM_CLAUSE__TABLE, false));
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expression returns IntegerLiteral
+	 *     AtomicExpression returns IntegerLiteral
+	 *     IntegerLiteral returns IntegerLiteral
+	 *
+	 * Constraint:
+	 *     value=INT
+	 */
+	protected void sequence_IntegerLiteral(ISerializationContext context, IntegerLiteral semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, QueryPackage.Literals.INTEGER_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, QueryPackage.Literals.INTEGER_LITERAL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getIntegerLiteralAccess().getValueINTTerminalRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -146,7 +205,7 @@ public class MSQLQuerySemanticSequencer extends AbstractDelegatingSemanticSequen
 	 *     SelectQuery returns SelectQuery
 	 *
 	 * Constraint:
-	 *     (whatClause+=WhatClause fromClause=FromClause orderByClause=OrderByClause?)
+	 *     (whatClause+=WhatClause fromClause=FromClause whereClause=WhereClause? orderByClause=OrderByClause?)
 	 */
 	protected void sequence_SelectQuery(ISerializationContext context, SelectQuery semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -180,6 +239,18 @@ public class MSQLQuerySemanticSequencer extends AbstractDelegatingSemanticSequen
 	 *     (whatDirective+=WhatDirective whatDirective+=WhatDirective*)
 	 */
 	protected void sequence_WhatClause(ISerializationContext context, WhatClause semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     WhereClause returns WhereClause
+	 *
+	 * Constraint:
+	 *     expression+=Expression
+	 */
+	protected void sequence_WhereClause(ISerializationContext context, WhereClause semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

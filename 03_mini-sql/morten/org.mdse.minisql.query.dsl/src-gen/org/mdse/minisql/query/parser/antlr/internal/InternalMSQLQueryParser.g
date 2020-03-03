@@ -16,6 +16,7 @@ import org.eclipse.xtext.parser.*;
 import org.eclipse.xtext.parser.impl.*;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
@@ -114,9 +115,28 @@ ruleSelectQuery returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getSelectQueryAccess().getOrderByClauseOrderByClauseParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getSelectQueryAccess().getWhereClauseWhereClauseParserRuleCall_3_0());
 				}
-				lv_orderByClause_3_0=ruleOrderByClause
+				lv_whereClause_3_0=ruleWhereClause
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getSelectQueryRule());
+					}
+					set(
+						$current,
+						"whereClause",
+						lv_whereClause_3_0,
+						"org.mdse.minisql.query.MSQLQuery.WhereClause");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getSelectQueryAccess().getOrderByClauseOrderByClauseParserRuleCall_4_0());
+				}
+				lv_orderByClause_4_0=ruleOrderByClause
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getSelectQueryRule());
@@ -124,15 +144,15 @@ ruleSelectQuery returns [EObject current=null]
 					set(
 						$current,
 						"orderByClause",
-						lv_orderByClause_3_0,
+						lv_orderByClause_4_0,
 						"org.mdse.minisql.query.MSQLQuery.OrderByClause");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)?
-		otherlv_4=Semicolon
+		otherlv_5=Semicolon
 		{
-			newLeafNode(otherlv_4, grammarAccess.getSelectQueryAccess().getSemicolonKeyword_4());
+			newLeafNode(otherlv_5, grammarAccess.getSelectQueryAccess().getSemicolonKeyword_5());
 		}
 	)
 ;
@@ -338,6 +358,240 @@ ruleFromClause returns [EObject current=null]
 	)
 ;
 
+// Entry rule entryRuleWhereClause
+entryRuleWhereClause returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getWhereClauseRule()); }
+	iv_ruleWhereClause=ruleWhereClause
+	{ $current=$iv_ruleWhereClause.current; }
+	EOF;
+
+// Rule WhereClause
+ruleWhereClause returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0=WHERE
+		{
+			newLeafNode(otherlv_0, grammarAccess.getWhereClauseAccess().getWHEREKeyword_0());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getWhereClauseAccess().getExpressionExpressionParserRuleCall_1_0());
+				}
+				lv_expression_1_0=ruleExpression
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getWhereClauseRule());
+					}
+					add(
+						$current,
+						"expression",
+						lv_expression_1_0,
+						"org.mdse.minisql.query.MSQLQuery.Expression");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleExpression
+entryRuleExpression returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getExpressionRule()); }
+	iv_ruleExpression=ruleExpression
+	{ $current=$iv_ruleExpression.current; }
+	EOF;
+
+// Rule Expression
+ruleExpression returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getExpressionAccess().getColumnReferenceParserRuleCall_0());
+		}
+		this_ColumnReference_0=ruleColumnReference
+		{
+			$current = $this_ColumnReference_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getExpressionAccess().getIntegerLiteralParserRuleCall_1());
+		}
+		this_IntegerLiteral_1=ruleIntegerLiteral
+		{
+			$current = $this_IntegerLiteral_1.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getExpressionAccess().getComparativeExpressionParserRuleCall_2());
+		}
+		this_ComparativeExpression_2=ruleComparativeExpression
+		{
+			$current = $this_ComparativeExpression_2.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRuleComparativeExpression
+entryRuleComparativeExpression returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getComparativeExpressionRule()); }
+	iv_ruleComparativeExpression=ruleComparativeExpression
+	{ $current=$iv_ruleComparativeExpression.current; }
+	EOF;
+
+// Rule ComparativeExpression
+ruleComparativeExpression returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getComparativeExpressionAccess().getExpression1AtomicExpressionParserRuleCall_0_0());
+				}
+				lv_expression1_0_0=ruleAtomicExpression
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getComparativeExpressionRule());
+					}
+					set(
+						$current,
+						"expression1",
+						lv_expression1_0_0,
+						"org.mdse.minisql.query.MSQLQuery.AtomicExpression");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getComparativeExpressionAccess().getOperatorComparativeOperatorEnumRuleCall_1_0());
+				}
+				lv_operator_1_0=ruleComparativeOperator
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getComparativeExpressionRule());
+					}
+					set(
+						$current,
+						"operator",
+						lv_operator_1_0,
+						"org.mdse.minisql.query.MSQLQuery.ComparativeOperator");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getComparativeExpressionAccess().getExpression2AtomicExpressionParserRuleCall_2_0());
+				}
+				lv_expression2_2_0=ruleAtomicExpression
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getComparativeExpressionRule());
+					}
+					set(
+						$current,
+						"expression2",
+						lv_expression2_2_0,
+						"org.mdse.minisql.query.MSQLQuery.AtomicExpression");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleAtomicExpression
+entryRuleAtomicExpression returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAtomicExpressionRule()); }
+	iv_ruleAtomicExpression=ruleAtomicExpression
+	{ $current=$iv_ruleAtomicExpression.current; }
+	EOF;
+
+// Rule AtomicExpression
+ruleAtomicExpression returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getAtomicExpressionAccess().getIntegerLiteralParserRuleCall_0());
+		}
+		this_IntegerLiteral_0=ruleIntegerLiteral
+		{
+			$current = $this_IntegerLiteral_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getAtomicExpressionAccess().getColumnReferenceParserRuleCall_1());
+		}
+		this_ColumnReference_1=ruleColumnReference
+		{
+			$current = $this_ColumnReference_1.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRuleIntegerLiteral
+entryRuleIntegerLiteral returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getIntegerLiteralRule()); }
+	iv_ruleIntegerLiteral=ruleIntegerLiteral
+	{ $current=$iv_ruleIntegerLiteral.current; }
+	EOF;
+
+// Rule IntegerLiteral
+ruleIntegerLiteral returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			lv_value_0_0=RULE_INT
+			{
+				newLeafNode(lv_value_0_0, grammarAccess.getIntegerLiteralAccess().getValueINTTerminalRuleCall_0());
+			}
+			{
+				if ($current==null) {
+					$current = createModelElement(grammarAccess.getIntegerLiteralRule());
+				}
+				setWithLastConsumed(
+					$current,
+					"value",
+					lv_value_0_0,
+					"org.eclipse.xtext.common.Terminals.INT");
+			}
+		)
+	)
+;
+
 // Entry rule entryRuleOrderByClause
 entryRuleOrderByClause returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getOrderByClauseRule()); }
@@ -499,6 +753,65 @@ ruleColumnReference returns [EObject current=null]
 			otherlv_0=RULE_ID
 			{
 				newLeafNode(otherlv_0, grammarAccess.getColumnReferenceAccess().getColumnColumnCrossReference_0());
+			}
+		)
+	)
+;
+
+// Rule ComparativeOperator
+ruleComparativeOperator returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0=LessThanSign
+			{
+				$current = grammarAccess.getComparativeOperatorAccess().getLESS_THANEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getComparativeOperatorAccess().getLESS_THANEnumLiteralDeclaration_0());
+			}
+		)
+		    |
+		(
+			enumLiteral_1=LessThanSignEqualsSign
+			{
+				$current = grammarAccess.getComparativeOperatorAccess().getLESS_THAN_OR_EQUALEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getComparativeOperatorAccess().getLESS_THAN_OR_EQUALEnumLiteralDeclaration_1());
+			}
+		)
+		    |
+		(
+			enumLiteral_2=EqualsSign
+			{
+				$current = grammarAccess.getComparativeOperatorAccess().getEQUALEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getComparativeOperatorAccess().getEQUALEnumLiteralDeclaration_2());
+			}
+		)
+		    |
+		(
+			enumLiteral_3=ExclamationMarkEqualsSign
+			{
+				$current = grammarAccess.getComparativeOperatorAccess().getNOT_EQUALEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_3, grammarAccess.getComparativeOperatorAccess().getNOT_EQUALEnumLiteralDeclaration_3());
+			}
+		)
+		    |
+		(
+			enumLiteral_4=GreaterThanSign
+			{
+				$current = grammarAccess.getComparativeOperatorAccess().getGREATER_THANEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_4, grammarAccess.getComparativeOperatorAccess().getGREATER_THANEnumLiteralDeclaration_4());
+			}
+		)
+		    |
+		(
+			enumLiteral_5=GreaterThanSignEqualsSign
+			{
+				$current = grammarAccess.getComparativeOperatorAccess().getGREATER_THAN_OR_EQUALEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_5, grammarAccess.getComparativeOperatorAccess().getGREATER_THAN_OR_EQUALEnumLiteralDeclaration_5());
 			}
 		)
 	)

@@ -7,24 +7,29 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import org.mdse.minisql.query.IntegerLiteral;
 import org.mdse.minisql.query.QueryPackage;
 
 /**
- * This is the item provider adapter for a {@link org.mdse.minisql.query.ColumnReference} object.
+ * This is the item provider adapter for a {@link org.mdse.minisql.query.IntegerLiteral} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ColumnReferenceItemProvider extends ExpressionItemProvider {
+public class IntegerLiteralItemProvider extends ExpressionItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ColumnReferenceItemProvider(AdapterFactory adapterFactory) {
+	public IntegerLiteralItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -39,35 +44,36 @@ public class ColumnReferenceItemProvider extends ExpressionItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addColumnPropertyDescriptor(object);
+			addValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Column feature.
+	 * This adds a property descriptor for the Value feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addColumnPropertyDescriptor(Object object) {
+	protected void addValuePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_ColumnReference_column_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_ColumnReference_column_feature",
-								"_UI_ColumnReference_type"),
-						QueryPackage.Literals.COLUMN_REFERENCE__COLUMN, true, false, true, null, null, null));
+						getResourceLocator(), getString("_UI_IntegerLiteral_value_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_IntegerLiteral_value_feature",
+								"_UI_IntegerLiteral_type"),
+						QueryPackage.Literals.INTEGER_LITERAL__VALUE, true, false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This returns ColumnReference.gif.
+	 * This returns IntegerLiteral.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ColumnReference"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/IntegerLiteral"));
 	}
 
 	/**
@@ -88,7 +94,8 @@ public class ColumnReferenceItemProvider extends ExpressionItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_ColumnReference_type");
+		IntegerLiteral integerLiteral = (IntegerLiteral) object;
+		return getString("_UI_IntegerLiteral_type") + " " + integerLiteral.getValue();
 	}
 
 	/**
@@ -101,6 +108,12 @@ public class ColumnReferenceItemProvider extends ExpressionItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(IntegerLiteral.class)) {
+		case QueryPackage.INTEGER_LITERAL__VALUE:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
+		}
 		super.notifyChanged(notification);
 	}
 

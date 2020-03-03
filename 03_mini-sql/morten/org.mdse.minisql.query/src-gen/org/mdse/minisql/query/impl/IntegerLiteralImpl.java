@@ -5,44 +5,52 @@ package org.mdse.minisql.query.impl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.mdse.minisql.query.ColumnReference;
-import org.mdse.minisql.query.QueryPackage;
 
-import schema.Column;
+import org.mdse.minisql.query.IntegerLiteral;
+import org.mdse.minisql.query.QueryPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Column Reference</b></em>'.
+ * An implementation of the model object '<em><b>Integer Literal</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.mdse.minisql.query.impl.ColumnReferenceImpl#getColumn <em>Column</em>}</li>
+ *   <li>{@link org.mdse.minisql.query.impl.IntegerLiteralImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ColumnReferenceImpl extends ExpressionImpl implements ColumnReference {
+public class IntegerLiteralImpl extends ExpressionImpl implements IntegerLiteral {
 	/**
-	 * The cached value of the '{@link #getColumn() <em>Column</em>}' reference.
+	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getColumn()
+	 * @see #getValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected Column column;
+	protected static final int VALUE_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected int value = VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ColumnReferenceImpl() {
+	protected IntegerLiteralImpl() {
 		super();
 	}
 
@@ -53,7 +61,7 @@ public class ColumnReferenceImpl extends ExpressionImpl implements ColumnReferen
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QueryPackage.Literals.COLUMN_REFERENCE;
+		return QueryPackage.Literals.INTEGER_LITERAL;
 	}
 
 	/**
@@ -62,26 +70,8 @@ public class ColumnReferenceImpl extends ExpressionImpl implements ColumnReferen
 	 * @generated
 	 */
 	@Override
-	public Column getColumn() {
-		if (column != null && column.eIsProxy()) {
-			InternalEObject oldColumn = (InternalEObject) column;
-			column = (Column) eResolveProxy(oldColumn);
-			if (column != oldColumn) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, QueryPackage.COLUMN_REFERENCE__COLUMN,
-							oldColumn, column));
-			}
-		}
-		return column;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Column basicGetColumn() {
-		return column;
+	public int getValue() {
+		return value;
 	}
 
 	/**
@@ -90,12 +80,12 @@ public class ColumnReferenceImpl extends ExpressionImpl implements ColumnReferen
 	 * @generated
 	 */
 	@Override
-	public void setColumn(Column newColumn) {
-		Column oldColumn = column;
-		column = newColumn;
+	public void setValue(int newValue) {
+		int oldValue = value;
+		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.COLUMN_REFERENCE__COLUMN, oldColumn,
-					column));
+			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.INTEGER_LITERAL__VALUE, oldValue,
+					value));
 	}
 
 	/**
@@ -106,10 +96,8 @@ public class ColumnReferenceImpl extends ExpressionImpl implements ColumnReferen
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QueryPackage.COLUMN_REFERENCE__COLUMN:
-			if (resolve)
-				return getColumn();
-			return basicGetColumn();
+		case QueryPackage.INTEGER_LITERAL__VALUE:
+			return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -122,8 +110,8 @@ public class ColumnReferenceImpl extends ExpressionImpl implements ColumnReferen
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QueryPackage.COLUMN_REFERENCE__COLUMN:
-			setColumn((Column) newValue);
+		case QueryPackage.INTEGER_LITERAL__VALUE:
+			setValue((Integer) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -137,8 +125,8 @@ public class ColumnReferenceImpl extends ExpressionImpl implements ColumnReferen
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QueryPackage.COLUMN_REFERENCE__COLUMN:
-			setColumn((Column) null);
+		case QueryPackage.INTEGER_LITERAL__VALUE:
+			setValue(VALUE_EDEFAULT);
 			return;
 		}
 		super.eUnset(featureID);
@@ -152,10 +140,27 @@ public class ColumnReferenceImpl extends ExpressionImpl implements ColumnReferen
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QueryPackage.COLUMN_REFERENCE__COLUMN:
-			return column != null;
+		case QueryPackage.INTEGER_LITERAL__VALUE:
+			return value != VALUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ColumnReferenceImpl
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (value: ");
+		result.append(value);
+		result.append(')');
+		return result.toString();
+	}
+
+} //IntegerLiteralImpl

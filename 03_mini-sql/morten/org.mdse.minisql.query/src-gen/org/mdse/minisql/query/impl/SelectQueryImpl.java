@@ -19,6 +19,7 @@ import org.mdse.minisql.query.QueryPackage;
 import org.mdse.minisql.query.SelectQuery;
 
 import org.mdse.minisql.query.WhatClause;
+import org.mdse.minisql.query.WhereClause;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,6 +32,7 @@ import org.mdse.minisql.query.WhatClause;
  *   <li>{@link org.mdse.minisql.query.impl.SelectQueryImpl#getOrderByClause <em>Order By Clause</em>}</li>
  *   <li>{@link org.mdse.minisql.query.impl.SelectQueryImpl#getWhatClause <em>What Clause</em>}</li>
  *   <li>{@link org.mdse.minisql.query.impl.SelectQueryImpl#getFromClause <em>From Clause</em>}</li>
+ *   <li>{@link org.mdse.minisql.query.impl.SelectQueryImpl#getWhereClause <em>Where Clause</em>}</li>
  * </ul>
  *
  * @generated
@@ -65,6 +67,16 @@ public class SelectQueryImpl extends MinimalEObjectImpl.Container implements Sel
 	 * @ordered
 	 */
 	protected FromClause fromClause;
+
+	/**
+	 * The cached value of the '{@link #getWhereClause() <em>Where Clause</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWhereClause()
+	 * @generated
+	 * @ordered
+	 */
+	protected WhereClause whereClause;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -143,6 +155,58 @@ public class SelectQueryImpl extends MinimalEObjectImpl.Container implements Sel
 	 * @generated
 	 */
 	@Override
+	public WhereClause getWhereClause() {
+		return whereClause;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetWhereClause(WhereClause newWhereClause, NotificationChain msgs) {
+		WhereClause oldWhereClause = whereClause;
+		whereClause = newWhereClause;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					QueryPackage.SELECT_QUERY__WHERE_CLAUSE, oldWhereClause, newWhereClause);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setWhereClause(WhereClause newWhereClause) {
+		if (newWhereClause != whereClause) {
+			NotificationChain msgs = null;
+			if (whereClause != null)
+				msgs = ((InternalEObject) whereClause).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - QueryPackage.SELECT_QUERY__WHERE_CLAUSE, null, msgs);
+			if (newWhereClause != null)
+				msgs = ((InternalEObject) newWhereClause).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - QueryPackage.SELECT_QUERY__WHERE_CLAUSE, null, msgs);
+			msgs = basicSetWhereClause(newWhereClause, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QueryPackage.SELECT_QUERY__WHERE_CLAUSE,
+					newWhereClause, newWhereClause));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case QueryPackage.SELECT_QUERY__ORDER_BY_CLAUSE:
@@ -151,6 +215,8 @@ public class SelectQueryImpl extends MinimalEObjectImpl.Container implements Sel
 			return ((InternalEList<?>) getWhatClause()).basicRemove(otherEnd, msgs);
 		case QueryPackage.SELECT_QUERY__FROM_CLAUSE:
 			return basicSetFromClause(null, msgs);
+		case QueryPackage.SELECT_QUERY__WHERE_CLAUSE:
+			return basicSetWhereClause(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -235,6 +301,8 @@ public class SelectQueryImpl extends MinimalEObjectImpl.Container implements Sel
 			return getWhatClause();
 		case QueryPackage.SELECT_QUERY__FROM_CLAUSE:
 			return getFromClause();
+		case QueryPackage.SELECT_QUERY__WHERE_CLAUSE:
+			return getWhereClause();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -258,6 +326,9 @@ public class SelectQueryImpl extends MinimalEObjectImpl.Container implements Sel
 		case QueryPackage.SELECT_QUERY__FROM_CLAUSE:
 			setFromClause((FromClause) newValue);
 			return;
+		case QueryPackage.SELECT_QUERY__WHERE_CLAUSE:
+			setWhereClause((WhereClause) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -279,6 +350,9 @@ public class SelectQueryImpl extends MinimalEObjectImpl.Container implements Sel
 		case QueryPackage.SELECT_QUERY__FROM_CLAUSE:
 			setFromClause((FromClause) null);
 			return;
+		case QueryPackage.SELECT_QUERY__WHERE_CLAUSE:
+			setWhereClause((WhereClause) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -297,6 +371,8 @@ public class SelectQueryImpl extends MinimalEObjectImpl.Container implements Sel
 			return whatClause != null && !whatClause.isEmpty();
 		case QueryPackage.SELECT_QUERY__FROM_CLAUSE:
 			return fromClause != null;
+		case QueryPackage.SELECT_QUERY__WHERE_CLAUSE:
+			return whereClause != null;
 		}
 		return super.eIsSet(featureID);
 	}

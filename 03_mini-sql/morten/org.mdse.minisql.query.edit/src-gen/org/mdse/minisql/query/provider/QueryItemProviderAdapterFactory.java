@@ -280,6 +280,98 @@ public class QueryItemProviderAdapterFactory extends QueryAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.mdse.minisql.query.WhereClause} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WhereClauseItemProvider whereClauseItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.mdse.minisql.query.WhereClause}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWhereClauseAdapter() {
+		if (whereClauseItemProvider == null) {
+			whereClauseItemProvider = new WhereClauseItemProvider(this);
+		}
+
+		return whereClauseItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.mdse.minisql.query.Expression} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ExpressionItemProvider expressionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.mdse.minisql.query.Expression}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createExpressionAdapter() {
+		if (expressionItemProvider == null) {
+			expressionItemProvider = new ExpressionItemProvider(this);
+		}
+
+		return expressionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.mdse.minisql.query.IntegerLiteral} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IntegerLiteralItemProvider integerLiteralItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.mdse.minisql.query.IntegerLiteral}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createIntegerLiteralAdapter() {
+		if (integerLiteralItemProvider == null) {
+			integerLiteralItemProvider = new IntegerLiteralItemProvider(this);
+		}
+
+		return integerLiteralItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.mdse.minisql.query.ComparativeExpression} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ComparativeExpressionItemProvider comparativeExpressionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.mdse.minisql.query.ComparativeExpression}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createComparativeExpressionAdapter() {
+		if (comparativeExpressionItemProvider == null) {
+			comparativeExpressionItemProvider = new ComparativeExpressionItemProvider(this);
+		}
+
+		return comparativeExpressionItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -402,6 +494,14 @@ public class QueryItemProviderAdapterFactory extends QueryAdapterFactory
 			whatClauseItemProvider.dispose();
 		if (fromClauseItemProvider != null)
 			fromClauseItemProvider.dispose();
+		if (whereClauseItemProvider != null)
+			whereClauseItemProvider.dispose();
+		if (expressionItemProvider != null)
+			expressionItemProvider.dispose();
+		if (integerLiteralItemProvider != null)
+			integerLiteralItemProvider.dispose();
+		if (comparativeExpressionItemProvider != null)
+			comparativeExpressionItemProvider.dispose();
 	}
 
 }

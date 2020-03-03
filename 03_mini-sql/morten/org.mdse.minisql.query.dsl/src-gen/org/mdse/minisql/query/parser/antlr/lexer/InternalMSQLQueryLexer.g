@@ -15,11 +15,19 @@ SELECT : ('S'|'s')('E'|'e')('L'|'l')('E'|'e')('C'|'c')('T'|'t');
 
 ORDER : ('O'|'o')('R'|'r')('D'|'d')('E'|'e')('R'|'r');
 
+WHERE : ('W'|'w')('H'|'h')('E'|'e')('R'|'r')('E'|'e');
+
 DESC : ('D'|'d')('E'|'e')('S'|'s')('C'|'c');
 
 FROM : ('F'|'f')('R'|'r')('O'|'o')('M'|'m');
 
 ASC : ('A'|'a')('S'|'s')('C'|'c');
+
+ExclamationMarkEqualsSign : '!''=';
+
+LessThanSignEqualsSign : '<''=';
+
+GreaterThanSignEqualsSign : '>''=';
 
 BY : ('B'|'b')('Y'|'y');
 
@@ -28,6 +36,12 @@ Asterisk : '*';
 Comma : ',';
 
 Semicolon : ';';
+
+LessThanSign : '<';
+
+EqualsSign : '=';
+
+GreaterThanSign : '>';
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 

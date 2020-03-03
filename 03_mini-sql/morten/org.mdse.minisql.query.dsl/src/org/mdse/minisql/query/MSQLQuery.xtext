@@ -9,6 +9,7 @@ SelectQuery:
 	"SELECT"
 		whatClause+=WhatClause
 		fromClause=FromClause
+		whereClause=WhereClause?
 		orderByClause=OrderByClause?
 		";"
 ;
@@ -33,6 +34,31 @@ SingleColumnWhatDirective:
 FromClause:
 	"FROM"
 		table=[schema::Table]
+;
+
+WhereClause:
+	"WHERE" expression+=Expression
+;
+
+Expression:
+	ColumnReference | IntegerLiteral | ComparativeExpression
+;
+
+ComparativeExpression:
+	expression1=AtomicExpression operator=ComparativeOperator expression2=AtomicExpression
+;
+
+AtomicExpression returns Expression:
+	IntegerLiteral | ColumnReference
+;
+
+enum ComparativeOperator:
+	LESS_THAN="<" | LESS_THAN_OR_EQUAL="<=" | EQUAL="=" | NOT_EQUAL="!=" | GREATER_THAN=">" | GREATER_THAN_OR_EQUAL=">="
+
+;
+
+IntegerLiteral:
+	value=INT
 ;
 
 OrderByClause:

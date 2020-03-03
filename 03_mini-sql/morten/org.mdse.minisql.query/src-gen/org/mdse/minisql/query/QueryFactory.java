@@ -103,6 +103,42 @@ public interface QueryFactory extends EFactory {
 	FromClause createFromClause();
 
 	/**
+	 * Returns a new object of class '<em>Where Clause</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Where Clause</em>'.
+	 * @generated
+	 */
+	WhereClause createWhereClause();
+
+	/**
+	 * Returns a new object of class '<em>Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Expression</em>'.
+	 * @generated
+	 */
+	Expression createExpression();
+
+	/**
+	 * Returns a new object of class '<em>Integer Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Integer Literal</em>'.
+	 * @generated
+	 */
+	IntegerLiteral createIntegerLiteral();
+
+	/**
+	 * Returns a new object of class '<em>Comparative Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Comparative Expression</em>'.
+	 * @generated
+	 */
+	ComparativeExpression createComparativeExpression();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

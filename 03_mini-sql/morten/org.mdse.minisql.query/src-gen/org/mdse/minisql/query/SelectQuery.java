@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.mdse.minisql.query.SelectQuery#getOrderByClause <em>Order By Clause</em>}</li>
  *   <li>{@link org.mdse.minisql.query.SelectQuery#getWhatClause <em>What Clause</em>}</li>
  *   <li>{@link org.mdse.minisql.query.SelectQuery#getFromClause <em>From Clause</em>}</li>
+ *   <li>{@link org.mdse.minisql.query.SelectQuery#getWhereClause <em>Where Clause</em>}</li>
  * </ul>
  *
  * @see org.mdse.minisql.query.QueryPackage#getSelectQuery()
@@ -45,6 +46,28 @@ public interface SelectQuery extends EObject {
 	 * @generated
 	 */
 	void setFromClause(FromClause value);
+
+	/**
+	 * Returns the value of the '<em><b>Where Clause</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Where Clause</em>' containment reference.
+	 * @see #setWhereClause(WhereClause)
+	 * @see org.mdse.minisql.query.QueryPackage#getSelectQuery_WhereClause()
+	 * @model containment="true"
+	 * @generated
+	 */
+	WhereClause getWhereClause();
+
+	/**
+	 * Sets the value of the '{@link org.mdse.minisql.query.SelectQuery#getWhereClause <em>Where Clause</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Where Clause</em>' containment reference.
+	 * @see #getWhereClause()
+	 * @generated
+	 */
+	void setWhereClause(WhereClause value);
 
 	/**
 	 * Returns the value of the '<em><b>Order By Clause</b></em>' containment reference.

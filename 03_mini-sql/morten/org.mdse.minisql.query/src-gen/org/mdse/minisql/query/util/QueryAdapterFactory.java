@@ -112,6 +112,26 @@ public class QueryAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseWhereClause(WhereClause object) {
+			return createWhereClauseAdapter();
+		}
+
+		@Override
+		public Adapter caseExpression(Expression object) {
+			return createExpressionAdapter();
+		}
+
+		@Override
+		public Adapter caseIntegerLiteral(IntegerLiteral object) {
+			return createIntegerLiteralAdapter();
+		}
+
+		@Override
+		public Adapter caseComparativeExpression(ComparativeExpression object) {
+			return createComparativeExpressionAdapter();
+		}
+
+		@Override
 		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
@@ -253,6 +273,62 @@ public class QueryAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createFromClauseAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.mdse.minisql.query.WhereClause <em>Where Clause</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.mdse.minisql.query.WhereClause
+	 * @generated
+	 */
+	public Adapter createWhereClauseAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.mdse.minisql.query.Expression <em>Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.mdse.minisql.query.Expression
+	 * @generated
+	 */
+	public Adapter createExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.mdse.minisql.query.IntegerLiteral <em>Integer Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.mdse.minisql.query.IntegerLiteral
+	 * @generated
+	 */
+	public Adapter createIntegerLiteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.mdse.minisql.query.ComparativeExpression <em>Comparative Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.mdse.minisql.query.ComparativeExpression
+	 * @generated
+	 */
+	public Adapter createComparativeExpressionAdapter() {
 		return null;
 	}
 

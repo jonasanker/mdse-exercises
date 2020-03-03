@@ -2,8 +2,6 @@
  */
 package org.mdse.minisql.query;
 
-import org.eclipse.emf.ecore.EObject;
-
 import schema.Column;
 
 /**
@@ -22,7 +20,7 @@ import schema.Column;
  * @model
  * @generated
  */
-public interface ColumnReference extends EObject {
+public interface ColumnReference extends Expression {
 	/**
 	 * Returns the value of the '<em><b>Column</b></em>' reference.
 	 * <!-- begin-user-doc -->

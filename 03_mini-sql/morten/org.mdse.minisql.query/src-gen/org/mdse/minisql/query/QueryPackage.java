@@ -4,6 +4,7 @@ package org.mdse.minisql.query;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -94,13 +95,22 @@ public interface QueryPackage extends EPackage {
 	int SELECT_QUERY__FROM_CLAUSE = 2;
 
 	/**
+	 * The feature id for the '<em><b>Where Clause</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELECT_QUERY__WHERE_CLAUSE = 3;
+
+	/**
 	 * The number of structural features of the '<em>Select Query</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SELECT_QUERY_FEATURE_COUNT = 3;
+	int SELECT_QUERY_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Select Query</em>' class.
@@ -195,6 +205,34 @@ public interface QueryPackage extends EPackage {
 	int ORDER_BY_DIRECTIVE_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.mdse.minisql.query.impl.ExpressionImpl <em>Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.mdse.minisql.query.impl.ExpressionImpl
+	 * @see org.mdse.minisql.query.impl.QueryPackageImpl#getExpression()
+	 * @generated
+	 */
+	int EXPRESSION = 10;
+
+	/**
+	 * The number of structural features of the '<em>Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSION_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSION_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.mdse.minisql.query.impl.ColumnReferenceImpl <em>Column Reference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -211,7 +249,7 @@ public interface QueryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COLUMN_REFERENCE__COLUMN = 0;
+	int COLUMN_REFERENCE__COLUMN = EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Column Reference</em>' class.
@@ -220,7 +258,7 @@ public interface QueryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COLUMN_REFERENCE_FEATURE_COUNT = 1;
+	int COLUMN_REFERENCE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Column Reference</em>' class.
@@ -229,7 +267,7 @@ public interface QueryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COLUMN_REFERENCE_OPERATION_COUNT = 0;
+	int COLUMN_REFERENCE_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.mdse.minisql.query.impl.WhatDirectiveImpl <em>What Directive</em>}' class.
@@ -399,6 +437,145 @@ public interface QueryPackage extends EPackage {
 	int FROM_CLAUSE_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.mdse.minisql.query.impl.WhereClauseImpl <em>Where Clause</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.mdse.minisql.query.impl.WhereClauseImpl
+	 * @see org.mdse.minisql.query.impl.QueryPackageImpl#getWhereClause()
+	 * @generated
+	 */
+	int WHERE_CLAUSE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHERE_CLAUSE__EXPRESSION = 0;
+
+	/**
+	 * The number of structural features of the '<em>Where Clause</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHERE_CLAUSE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Where Clause</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHERE_CLAUSE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.mdse.minisql.query.impl.IntegerLiteralImpl <em>Integer Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.mdse.minisql.query.impl.IntegerLiteralImpl
+	 * @see org.mdse.minisql.query.impl.QueryPackageImpl#getIntegerLiteral()
+	 * @generated
+	 */
+	int INTEGER_LITERAL = 11;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_LITERAL__VALUE = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Integer Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_LITERAL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Integer Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_LITERAL_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.mdse.minisql.query.impl.ComparativeExpressionImpl <em>Comparative Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.mdse.minisql.query.impl.ComparativeExpressionImpl
+	 * @see org.mdse.minisql.query.impl.QueryPackageImpl#getComparativeExpression()
+	 * @generated
+	 */
+	int COMPARATIVE_EXPRESSION = 12;
+
+	/**
+	 * The feature id for the '<em><b>Operator</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARATIVE_EXPRESSION__OPERATOR = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Expression1</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARATIVE_EXPRESSION__EXPRESSION1 = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Expression2</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARATIVE_EXPRESSION__EXPRESSION2 = EXPRESSION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Comparative Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARATIVE_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Comparative Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARATIVE_EXPRESSION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.mdse.minisql.query.ComparativeOperator <em>Comparative Operator</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.mdse.minisql.query.ComparativeOperator
+	 * @see org.mdse.minisql.query.impl.QueryPackageImpl#getComparativeOperator()
+	 * @generated
+	 */
+	int COMPARATIVE_OPERATOR = 13;
+
+	/**
 	 * Returns the meta object for class '{@link org.mdse.minisql.query.SelectQuery <em>Select Query</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -418,6 +595,17 @@ public interface QueryPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSelectQuery_FromClause();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.mdse.minisql.query.SelectQuery#getWhereClause <em>Where Clause</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Where Clause</em>'.
+	 * @see org.mdse.minisql.query.SelectQuery#getWhereClause()
+	 * @see #getSelectQuery()
+	 * @generated
+	 */
+	EReference getSelectQuery_WhereClause();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.mdse.minisql.query.SelectQuery#getOrderByClause <em>Order By Clause</em>}'.
@@ -599,6 +787,111 @@ public interface QueryPackage extends EPackage {
 	EReference getFromClause_Table();
 
 	/**
+	 * Returns the meta object for class '{@link org.mdse.minisql.query.WhereClause <em>Where Clause</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Where Clause</em>'.
+	 * @see org.mdse.minisql.query.WhereClause
+	 * @generated
+	 */
+	EClass getWhereClause();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.mdse.minisql.query.WhereClause#getExpression <em>Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Expression</em>'.
+	 * @see org.mdse.minisql.query.WhereClause#getExpression()
+	 * @see #getWhereClause()
+	 * @generated
+	 */
+	EReference getWhereClause_Expression();
+
+	/**
+	 * Returns the meta object for class '{@link org.mdse.minisql.query.Expression <em>Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Expression</em>'.
+	 * @see org.mdse.minisql.query.Expression
+	 * @generated
+	 */
+	EClass getExpression();
+
+	/**
+	 * Returns the meta object for class '{@link org.mdse.minisql.query.IntegerLiteral <em>Integer Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Integer Literal</em>'.
+	 * @see org.mdse.minisql.query.IntegerLiteral
+	 * @generated
+	 */
+	EClass getIntegerLiteral();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.mdse.minisql.query.IntegerLiteral#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.mdse.minisql.query.IntegerLiteral#getValue()
+	 * @see #getIntegerLiteral()
+	 * @generated
+	 */
+	EAttribute getIntegerLiteral_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.mdse.minisql.query.ComparativeExpression <em>Comparative Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Comparative Expression</em>'.
+	 * @see org.mdse.minisql.query.ComparativeExpression
+	 * @generated
+	 */
+	EClass getComparativeExpression();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.mdse.minisql.query.ComparativeExpression#getOperator <em>Operator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Operator</em>'.
+	 * @see org.mdse.minisql.query.ComparativeExpression#getOperator()
+	 * @see #getComparativeExpression()
+	 * @generated
+	 */
+	EAttribute getComparativeExpression_Operator();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.mdse.minisql.query.ComparativeExpression#getExpression1 <em>Expression1</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Expression1</em>'.
+	 * @see org.mdse.minisql.query.ComparativeExpression#getExpression1()
+	 * @see #getComparativeExpression()
+	 * @generated
+	 */
+	EReference getComparativeExpression_Expression1();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.mdse.minisql.query.ComparativeExpression#getExpression2 <em>Expression2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Expression2</em>'.
+	 * @see org.mdse.minisql.query.ComparativeExpression#getExpression2()
+	 * @see #getComparativeExpression()
+	 * @generated
+	 */
+	EReference getComparativeExpression_Expression2();
+
+	/**
+	 * Returns the meta object for enum '{@link org.mdse.minisql.query.ComparativeOperator <em>Comparative Operator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Comparative Operator</em>'.
+	 * @see org.mdse.minisql.query.ComparativeOperator
+	 * @generated
+	 */
+	EEnum getComparativeOperator();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -638,6 +931,14 @@ public interface QueryPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SELECT_QUERY__FROM_CLAUSE = eINSTANCE.getSelectQuery_FromClause();
+
+		/**
+		 * The meta object literal for the '<em><b>Where Clause</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SELECT_QUERY__WHERE_CLAUSE = eINSTANCE.getSelectQuery_WhereClause();
 
 		/**
 		 * The meta object literal for the '<em><b>Order By Clause</b></em>' containment reference feature.
@@ -791,6 +1092,96 @@ public interface QueryPackage extends EPackage {
 		 * @generated
 		 */
 		EReference FROM_CLAUSE__TABLE = eINSTANCE.getFromClause_Table();
+
+		/**
+		 * The meta object literal for the '{@link org.mdse.minisql.query.impl.WhereClauseImpl <em>Where Clause</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.mdse.minisql.query.impl.WhereClauseImpl
+		 * @see org.mdse.minisql.query.impl.QueryPackageImpl#getWhereClause()
+		 * @generated
+		 */
+		EClass WHERE_CLAUSE = eINSTANCE.getWhereClause();
+
+		/**
+		 * The meta object literal for the '<em><b>Expression</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WHERE_CLAUSE__EXPRESSION = eINSTANCE.getWhereClause_Expression();
+
+		/**
+		 * The meta object literal for the '{@link org.mdse.minisql.query.impl.ExpressionImpl <em>Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.mdse.minisql.query.impl.ExpressionImpl
+		 * @see org.mdse.minisql.query.impl.QueryPackageImpl#getExpression()
+		 * @generated
+		 */
+		EClass EXPRESSION = eINSTANCE.getExpression();
+
+		/**
+		 * The meta object literal for the '{@link org.mdse.minisql.query.impl.IntegerLiteralImpl <em>Integer Literal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.mdse.minisql.query.impl.IntegerLiteralImpl
+		 * @see org.mdse.minisql.query.impl.QueryPackageImpl#getIntegerLiteral()
+		 * @generated
+		 */
+		EClass INTEGER_LITERAL = eINSTANCE.getIntegerLiteral();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INTEGER_LITERAL__VALUE = eINSTANCE.getIntegerLiteral_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.mdse.minisql.query.impl.ComparativeExpressionImpl <em>Comparative Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.mdse.minisql.query.impl.ComparativeExpressionImpl
+		 * @see org.mdse.minisql.query.impl.QueryPackageImpl#getComparativeExpression()
+		 * @generated
+		 */
+		EClass COMPARATIVE_EXPRESSION = eINSTANCE.getComparativeExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPARATIVE_EXPRESSION__OPERATOR = eINSTANCE.getComparativeExpression_Operator();
+
+		/**
+		 * The meta object literal for the '<em><b>Expression1</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPARATIVE_EXPRESSION__EXPRESSION1 = eINSTANCE.getComparativeExpression_Expression1();
+
+		/**
+		 * The meta object literal for the '<em><b>Expression2</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPARATIVE_EXPRESSION__EXPRESSION2 = eINSTANCE.getComparativeExpression_Expression2();
+
+		/**
+		 * The meta object literal for the '{@link org.mdse.minisql.query.ComparativeOperator <em>Comparative Operator</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.mdse.minisql.query.ComparativeOperator
+		 * @see org.mdse.minisql.query.impl.QueryPackageImpl#getComparativeOperator()
+		 * @generated
+		 */
+		EEnum COMPARATIVE_OPERATOR = eINSTANCE.getComparativeOperator();
 
 	}
 

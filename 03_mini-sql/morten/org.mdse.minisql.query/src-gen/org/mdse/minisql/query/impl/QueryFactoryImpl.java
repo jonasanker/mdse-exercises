@@ -3,6 +3,7 @@
 package org.mdse.minisql.query.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -73,8 +74,46 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 			return createWhatClause();
 		case QueryPackage.FROM_CLAUSE:
 			return createFromClause();
+		case QueryPackage.WHERE_CLAUSE:
+			return createWhereClause();
+		case QueryPackage.EXPRESSION:
+			return createExpression();
+		case QueryPackage.INTEGER_LITERAL:
+			return createIntegerLiteral();
+		case QueryPackage.COMPARATIVE_EXPRESSION:
+			return createComparativeExpression();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+		case QueryPackage.COMPARATIVE_OPERATOR:
+			return createComparativeOperatorFromString(eDataType, initialValue);
+		default:
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+		case QueryPackage.COMPARATIVE_OPERATOR:
+			return convertComparativeOperatorToString(eDataType, instanceValue);
+		default:
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -175,6 +214,72 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 	public FromClause createFromClause() {
 		FromClauseImpl fromClause = new FromClauseImpl();
 		return fromClause;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public WhereClause createWhereClause() {
+		WhereClauseImpl whereClause = new WhereClauseImpl();
+		return whereClause;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Expression createExpression() {
+		ExpressionImpl expression = new ExpressionImpl();
+		return expression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public IntegerLiteral createIntegerLiteral() {
+		IntegerLiteralImpl integerLiteral = new IntegerLiteralImpl();
+		return integerLiteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ComparativeExpression createComparativeExpression() {
+		ComparativeExpressionImpl comparativeExpression = new ComparativeExpressionImpl();
+		return comparativeExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ComparativeOperator createComparativeOperatorFromString(EDataType eDataType, String initialValue) {
+		ComparativeOperator result = ComparativeOperator.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertComparativeOperatorToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

@@ -91,6 +91,8 @@ public class QuerySwitch<T> extends Switch<T> {
 			ColumnReference columnReference = (ColumnReference) theEObject;
 			T result = caseColumnReference(columnReference);
 			if (result == null)
+				result = caseExpression(columnReference);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -129,6 +131,38 @@ public class QuerySwitch<T> extends Switch<T> {
 		case QueryPackage.FROM_CLAUSE: {
 			FromClause fromClause = (FromClause) theEObject;
 			T result = caseFromClause(fromClause);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case QueryPackage.WHERE_CLAUSE: {
+			WhereClause whereClause = (WhereClause) theEObject;
+			T result = caseWhereClause(whereClause);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case QueryPackage.EXPRESSION: {
+			Expression expression = (Expression) theEObject;
+			T result = caseExpression(expression);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case QueryPackage.INTEGER_LITERAL: {
+			IntegerLiteral integerLiteral = (IntegerLiteral) theEObject;
+			T result = caseIntegerLiteral(integerLiteral);
+			if (result == null)
+				result = caseExpression(integerLiteral);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case QueryPackage.COMPARATIVE_EXPRESSION: {
+			ComparativeExpression comparativeExpression = (ComparativeExpression) theEObject;
+			T result = caseComparativeExpression(comparativeExpression);
+			if (result == null)
+				result = caseExpression(comparativeExpression);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -270,6 +304,66 @@ public class QuerySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseFromClause(FromClause object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Where Clause</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Where Clause</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWhereClause(WhereClause object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExpression(Expression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Integer Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Integer Literal</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIntegerLiteral(IntegerLiteral object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Comparative Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Comparative Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseComparativeExpression(ComparativeExpression object) {
 		return null;
 	}
 

@@ -10,10 +10,19 @@
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="Query" basePackage="org.mdse.minisql" disposableProviderFactory="true"
       ecorePackage="query.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="query.ecore#//ComparativeOperator">
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ComparativeOperator/LESS_THAN"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ComparativeOperator/LESS_THAN_OR_EQUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ComparativeOperator/EQUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ComparativeOperator/NOT_EQUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ComparativeOperator/GREATER_THAN"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ComparativeOperator/GREATER_THAN_OR_EQUAL"/>
+    </genEnums>
     <genClasses ecoreClass="query.ecore#//SelectQuery">
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SelectQuery/orderByClause"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//SelectQuery/whatClause"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//SelectQuery/fromClause"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//SelectQuery/whereClause"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//OrderByClause">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//OrderByClause/orderDirectives"/>
@@ -35,6 +44,18 @@
     </genClasses>
     <genClasses ecoreClass="query.ecore#//FromClause">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//FromClause/table"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//WhereClause">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//WhereClause/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//Expression"/>
+    <genClasses ecoreClass="query.ecore#//IntegerLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//IntegerLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//ComparativeExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//ComparativeExpression/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//ComparativeExpression/expression1"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//ComparativeExpression/expression2"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Schema" ecorePackage="../../org.mdse.minisql.schema/model/schema.ecore#/">
