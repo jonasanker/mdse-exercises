@@ -22,31 +22,36 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "SELECT", "ORDER", "WHERE", "DESC", "FROM", "ASC", "ExclamationMarkEqualsSign", "LessThanSignEqualsSign", "GreaterThanSignEqualsSign", "BY", "Asterisk", "Comma", "Semicolon", "LessThanSign", "EqualsSign", "GreaterThanSign", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "SELECT", "ORDER", "WHERE", "DESC", "FROM", "ASC", "ExclamationMarkEqualsSign", "LessThanSignEqualsSign", "GreaterThanSignEqualsSign", "BY", "LeftParenthesis", "RightParenthesis", "Asterisk", "PlusSign", "Comma", "HyphenMinus", "Solidus", "Semicolon", "LessThanSign", "EqualsSign", "GreaterThanSign", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER"
     };
-    public static final int RULE_STRING=22;
+    public static final int RULE_STRING=27;
     public static final int FROM=8;
     public static final int DESC=7;
-    public static final int LessThanSign=17;
-    public static final int RULE_SL_COMMENT=24;
+    public static final int LessThanSign=22;
+    public static final int RULE_SL_COMMENT=29;
     public static final int ORDER=5;
     public static final int ASC=9;
-    public static final int Comma=15;
-    public static final int EqualsSign=18;
+    public static final int Comma=18;
+    public static final int EqualsSign=23;
+    public static final int HyphenMinus=19;
+    public static final int LeftParenthesis=14;
     public static final int BY=13;
     public static final int LessThanSignEqualsSign=11;
+    public static final int Solidus=20;
     public static final int EOF=-1;
-    public static final int Asterisk=14;
-    public static final int GreaterThanSign=19;
-    public static final int RULE_ID=20;
-    public static final int RULE_WS=25;
-    public static final int RULE_ANY_OTHER=26;
+    public static final int Asterisk=16;
+    public static final int GreaterThanSign=24;
+    public static final int RULE_ID=25;
+    public static final int RULE_WS=30;
+    public static final int RightParenthesis=15;
+    public static final int RULE_ANY_OTHER=31;
     public static final int WHERE=6;
     public static final int SELECT=4;
     public static final int GreaterThanSignEqualsSign=12;
-    public static final int Semicolon=16;
-    public static final int RULE_INT=21;
-    public static final int RULE_ML_COMMENT=23;
+    public static final int Semicolon=21;
+    public static final int PlusSign=17;
+    public static final int RULE_INT=26;
+    public static final int RULE_ML_COMMENT=28;
     public static final int ExclamationMarkEqualsSign=10;
 
     // delegates
@@ -1064,124 +1069,32 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleExpression"
-    // InternalMSQLQueryParser.g:411:1: ruleExpression returns [EObject current=null] : (this_ColumnReference_0= ruleColumnReference | this_IntegerLiteral_1= ruleIntegerLiteral | this_ComparativeExpression_2= ruleComparativeExpression ) ;
+    // InternalMSQLQueryParser.g:411:1: ruleExpression returns [EObject current=null] : this_ComparativeExpression_0= ruleComparativeExpression ;
     public final EObject ruleExpression() throws RecognitionException {
         EObject current = null;
 
-        EObject this_ColumnReference_0 = null;
-
-        EObject this_IntegerLiteral_1 = null;
-
-        EObject this_ComparativeExpression_2 = null;
+        EObject this_ComparativeExpression_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalMSQLQueryParser.g:417:2: ( (this_ColumnReference_0= ruleColumnReference | this_IntegerLiteral_1= ruleIntegerLiteral | this_ComparativeExpression_2= ruleComparativeExpression ) )
-            // InternalMSQLQueryParser.g:418:2: (this_ColumnReference_0= ruleColumnReference | this_IntegerLiteral_1= ruleIntegerLiteral | this_ComparativeExpression_2= ruleComparativeExpression )
+            // InternalMSQLQueryParser.g:417:2: (this_ComparativeExpression_0= ruleComparativeExpression )
+            // InternalMSQLQueryParser.g:418:2: this_ComparativeExpression_0= ruleComparativeExpression
             {
-            // InternalMSQLQueryParser.g:418:2: (this_ColumnReference_0= ruleColumnReference | this_IntegerLiteral_1= ruleIntegerLiteral | this_ComparativeExpression_2= ruleComparativeExpression )
-            int alt5=3;
-            int LA5_0 = input.LA(1);
 
-            if ( (LA5_0==RULE_ID) ) {
-                int LA5_1 = input.LA(2);
+            		newCompositeNode(grammarAccess.getExpressionAccess().getComparativeExpressionParserRuleCall());
+            	
+            pushFollow(FOLLOW_2);
+            this_ComparativeExpression_0=ruleComparativeExpression();
 
-                if ( (LA5_1==EOF||LA5_1==ORDER||LA5_1==Semicolon) ) {
-                    alt5=1;
-                }
-                else if ( ((LA5_1>=ExclamationMarkEqualsSign && LA5_1<=GreaterThanSignEqualsSign)||(LA5_1>=LessThanSign && LA5_1<=GreaterThanSign)) ) {
-                    alt5=3;
-                }
-                else {
-                    NoViableAltException nvae =
-                        new NoViableAltException("", 5, 1, input);
-
-                    throw nvae;
-                }
-            }
-            else if ( (LA5_0==RULE_INT) ) {
-                int LA5_2 = input.LA(2);
-
-                if ( ((LA5_2>=ExclamationMarkEqualsSign && LA5_2<=GreaterThanSignEqualsSign)||(LA5_2>=LessThanSign && LA5_2<=GreaterThanSign)) ) {
-                    alt5=3;
-                }
-                else if ( (LA5_2==EOF||LA5_2==ORDER||LA5_2==Semicolon) ) {
-                    alt5=2;
-                }
-                else {
-                    NoViableAltException nvae =
-                        new NoViableAltException("", 5, 2, input);
-
-                    throw nvae;
-                }
-            }
-            else {
-                NoViableAltException nvae =
-                    new NoViableAltException("", 5, 0, input);
-
-                throw nvae;
-            }
-            switch (alt5) {
-                case 1 :
-                    // InternalMSQLQueryParser.g:419:3: this_ColumnReference_0= ruleColumnReference
-                    {
-
-                    			newCompositeNode(grammarAccess.getExpressionAccess().getColumnReferenceParserRuleCall_0());
-                    		
-                    pushFollow(FOLLOW_2);
-                    this_ColumnReference_0=ruleColumnReference();
-
-                    state._fsp--;
+            state._fsp--;
 
 
-                    			current = this_ColumnReference_0;
-                    			afterParserOrEnumRuleCall();
-                    		
-
-                    }
-                    break;
-                case 2 :
-                    // InternalMSQLQueryParser.g:428:3: this_IntegerLiteral_1= ruleIntegerLiteral
-                    {
-
-                    			newCompositeNode(grammarAccess.getExpressionAccess().getIntegerLiteralParserRuleCall_1());
-                    		
-                    pushFollow(FOLLOW_2);
-                    this_IntegerLiteral_1=ruleIntegerLiteral();
-
-                    state._fsp--;
-
-
-                    			current = this_IntegerLiteral_1;
-                    			afterParserOrEnumRuleCall();
-                    		
-
-                    }
-                    break;
-                case 3 :
-                    // InternalMSQLQueryParser.g:437:3: this_ComparativeExpression_2= ruleComparativeExpression
-                    {
-
-                    			newCompositeNode(grammarAccess.getExpressionAccess().getComparativeExpressionParserRuleCall_2());
-                    		
-                    pushFollow(FOLLOW_2);
-                    this_ComparativeExpression_2=ruleComparativeExpression();
-
-                    state._fsp--;
-
-
-                    			current = this_ComparativeExpression_2;
-                    			afterParserOrEnumRuleCall();
-                    		
-
-                    }
-                    break;
-
-            }
-
+            		current = this_ComparativeExpression_0;
+            		afterParserOrEnumRuleCall();
+            	
 
             }
 
@@ -1201,8 +1114,386 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleExpression"
 
 
+    // $ANTLR start "entryRuleAdditiveExpression"
+    // InternalMSQLQueryParser.g:429:1: entryRuleAdditiveExpression returns [EObject current=null] : iv_ruleAdditiveExpression= ruleAdditiveExpression EOF ;
+    public final EObject entryRuleAdditiveExpression() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleAdditiveExpression = null;
+
+
+        try {
+            // InternalMSQLQueryParser.g:429:59: (iv_ruleAdditiveExpression= ruleAdditiveExpression EOF )
+            // InternalMSQLQueryParser.g:430:2: iv_ruleAdditiveExpression= ruleAdditiveExpression EOF
+            {
+             newCompositeNode(grammarAccess.getAdditiveExpressionRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleAdditiveExpression=ruleAdditiveExpression();
+
+            state._fsp--;
+
+             current =iv_ruleAdditiveExpression; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleAdditiveExpression"
+
+
+    // $ANTLR start "ruleAdditiveExpression"
+    // InternalMSQLQueryParser.g:436:1: ruleAdditiveExpression returns [EObject current=null] : (this_MultiplicativeExpression_0= ruleMultiplicativeExpression ( () ( (lv_operator_2_0= ruleAdditiveOperator ) ) ( (lv_expression2_3_0= ruleMultiplicativeExpression ) ) )* ) ;
+    public final EObject ruleAdditiveExpression() throws RecognitionException {
+        EObject current = null;
+
+        EObject this_MultiplicativeExpression_0 = null;
+
+        Enumerator lv_operator_2_0 = null;
+
+        EObject lv_expression2_3_0 = null;
+
+
+
+        	enterRule();
+
+        try {
+            // InternalMSQLQueryParser.g:442:2: ( (this_MultiplicativeExpression_0= ruleMultiplicativeExpression ( () ( (lv_operator_2_0= ruleAdditiveOperator ) ) ( (lv_expression2_3_0= ruleMultiplicativeExpression ) ) )* ) )
+            // InternalMSQLQueryParser.g:443:2: (this_MultiplicativeExpression_0= ruleMultiplicativeExpression ( () ( (lv_operator_2_0= ruleAdditiveOperator ) ) ( (lv_expression2_3_0= ruleMultiplicativeExpression ) ) )* )
+            {
+            // InternalMSQLQueryParser.g:443:2: (this_MultiplicativeExpression_0= ruleMultiplicativeExpression ( () ( (lv_operator_2_0= ruleAdditiveOperator ) ) ( (lv_expression2_3_0= ruleMultiplicativeExpression ) ) )* )
+            // InternalMSQLQueryParser.g:444:3: this_MultiplicativeExpression_0= ruleMultiplicativeExpression ( () ( (lv_operator_2_0= ruleAdditiveOperator ) ) ( (lv_expression2_3_0= ruleMultiplicativeExpression ) ) )*
+            {
+
+            			newCompositeNode(grammarAccess.getAdditiveExpressionAccess().getMultiplicativeExpressionParserRuleCall_0());
+            		
+            pushFollow(FOLLOW_11);
+            this_MultiplicativeExpression_0=ruleMultiplicativeExpression();
+
+            state._fsp--;
+
+
+            			current = this_MultiplicativeExpression_0;
+            			afterParserOrEnumRuleCall();
+            		
+            // InternalMSQLQueryParser.g:452:3: ( () ( (lv_operator_2_0= ruleAdditiveOperator ) ) ( (lv_expression2_3_0= ruleMultiplicativeExpression ) ) )*
+            loop5:
+            do {
+                int alt5=2;
+                int LA5_0 = input.LA(1);
+
+                if ( (LA5_0==PlusSign||LA5_0==HyphenMinus) ) {
+                    alt5=1;
+                }
+
+
+                switch (alt5) {
+            	case 1 :
+            	    // InternalMSQLQueryParser.g:453:4: () ( (lv_operator_2_0= ruleAdditiveOperator ) ) ( (lv_expression2_3_0= ruleMultiplicativeExpression ) )
+            	    {
+            	    // InternalMSQLQueryParser.g:453:4: ()
+            	    // InternalMSQLQueryParser.g:454:5: 
+            	    {
+
+            	    					current = forceCreateModelElementAndSet(
+            	    						grammarAccess.getAdditiveExpressionAccess().getArithmeticExpressionExpression1Action_1_0(),
+            	    						current);
+            	    				
+
+            	    }
+
+            	    // InternalMSQLQueryParser.g:460:4: ( (lv_operator_2_0= ruleAdditiveOperator ) )
+            	    // InternalMSQLQueryParser.g:461:5: (lv_operator_2_0= ruleAdditiveOperator )
+            	    {
+            	    // InternalMSQLQueryParser.g:461:5: (lv_operator_2_0= ruleAdditiveOperator )
+            	    // InternalMSQLQueryParser.g:462:6: lv_operator_2_0= ruleAdditiveOperator
+            	    {
+
+            	    						newCompositeNode(grammarAccess.getAdditiveExpressionAccess().getOperatorAdditiveOperatorEnumRuleCall_1_1_0());
+            	    					
+            	    pushFollow(FOLLOW_10);
+            	    lv_operator_2_0=ruleAdditiveOperator();
+
+            	    state._fsp--;
+
+
+            	    						if (current==null) {
+            	    							current = createModelElementForParent(grammarAccess.getAdditiveExpressionRule());
+            	    						}
+            	    						set(
+            	    							current,
+            	    							"operator",
+            	    							lv_operator_2_0,
+            	    							"org.mdse.minisql.query.MSQLQuery.AdditiveOperator");
+            	    						afterParserOrEnumRuleCall();
+            	    					
+
+            	    }
+
+
+            	    }
+
+            	    // InternalMSQLQueryParser.g:479:4: ( (lv_expression2_3_0= ruleMultiplicativeExpression ) )
+            	    // InternalMSQLQueryParser.g:480:5: (lv_expression2_3_0= ruleMultiplicativeExpression )
+            	    {
+            	    // InternalMSQLQueryParser.g:480:5: (lv_expression2_3_0= ruleMultiplicativeExpression )
+            	    // InternalMSQLQueryParser.g:481:6: lv_expression2_3_0= ruleMultiplicativeExpression
+            	    {
+
+            	    						newCompositeNode(grammarAccess.getAdditiveExpressionAccess().getExpression2MultiplicativeExpressionParserRuleCall_1_2_0());
+            	    					
+            	    pushFollow(FOLLOW_11);
+            	    lv_expression2_3_0=ruleMultiplicativeExpression();
+
+            	    state._fsp--;
+
+
+            	    						if (current==null) {
+            	    							current = createModelElementForParent(grammarAccess.getAdditiveExpressionRule());
+            	    						}
+            	    						set(
+            	    							current,
+            	    							"expression2",
+            	    							lv_expression2_3_0,
+            	    							"org.mdse.minisql.query.MSQLQuery.MultiplicativeExpression");
+            	    						afterParserOrEnumRuleCall();
+            	    					
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop5;
+                }
+            } while (true);
+
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleAdditiveExpression"
+
+
+    // $ANTLR start "entryRuleMultiplicativeExpression"
+    // InternalMSQLQueryParser.g:503:1: entryRuleMultiplicativeExpression returns [EObject current=null] : iv_ruleMultiplicativeExpression= ruleMultiplicativeExpression EOF ;
+    public final EObject entryRuleMultiplicativeExpression() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleMultiplicativeExpression = null;
+
+
+        try {
+            // InternalMSQLQueryParser.g:503:65: (iv_ruleMultiplicativeExpression= ruleMultiplicativeExpression EOF )
+            // InternalMSQLQueryParser.g:504:2: iv_ruleMultiplicativeExpression= ruleMultiplicativeExpression EOF
+            {
+             newCompositeNode(grammarAccess.getMultiplicativeExpressionRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleMultiplicativeExpression=ruleMultiplicativeExpression();
+
+            state._fsp--;
+
+             current =iv_ruleMultiplicativeExpression; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleMultiplicativeExpression"
+
+
+    // $ANTLR start "ruleMultiplicativeExpression"
+    // InternalMSQLQueryParser.g:510:1: ruleMultiplicativeExpression returns [EObject current=null] : (this_AtomicExpression_0= ruleAtomicExpression ( () ( (lv_operator_2_0= ruleMultiplicativeOperator ) ) ( (lv_expression2_3_0= ruleAtomicExpression ) ) )* ) ;
+    public final EObject ruleMultiplicativeExpression() throws RecognitionException {
+        EObject current = null;
+
+        EObject this_AtomicExpression_0 = null;
+
+        Enumerator lv_operator_2_0 = null;
+
+        EObject lv_expression2_3_0 = null;
+
+
+
+        	enterRule();
+
+        try {
+            // InternalMSQLQueryParser.g:516:2: ( (this_AtomicExpression_0= ruleAtomicExpression ( () ( (lv_operator_2_0= ruleMultiplicativeOperator ) ) ( (lv_expression2_3_0= ruleAtomicExpression ) ) )* ) )
+            // InternalMSQLQueryParser.g:517:2: (this_AtomicExpression_0= ruleAtomicExpression ( () ( (lv_operator_2_0= ruleMultiplicativeOperator ) ) ( (lv_expression2_3_0= ruleAtomicExpression ) ) )* )
+            {
+            // InternalMSQLQueryParser.g:517:2: (this_AtomicExpression_0= ruleAtomicExpression ( () ( (lv_operator_2_0= ruleMultiplicativeOperator ) ) ( (lv_expression2_3_0= ruleAtomicExpression ) ) )* )
+            // InternalMSQLQueryParser.g:518:3: this_AtomicExpression_0= ruleAtomicExpression ( () ( (lv_operator_2_0= ruleMultiplicativeOperator ) ) ( (lv_expression2_3_0= ruleAtomicExpression ) ) )*
+            {
+
+            			newCompositeNode(grammarAccess.getMultiplicativeExpressionAccess().getAtomicExpressionParserRuleCall_0());
+            		
+            pushFollow(FOLLOW_12);
+            this_AtomicExpression_0=ruleAtomicExpression();
+
+            state._fsp--;
+
+
+            			current = this_AtomicExpression_0;
+            			afterParserOrEnumRuleCall();
+            		
+            // InternalMSQLQueryParser.g:526:3: ( () ( (lv_operator_2_0= ruleMultiplicativeOperator ) ) ( (lv_expression2_3_0= ruleAtomicExpression ) ) )*
+            loop6:
+            do {
+                int alt6=2;
+                int LA6_0 = input.LA(1);
+
+                if ( (LA6_0==Asterisk||LA6_0==Solidus) ) {
+                    alt6=1;
+                }
+
+
+                switch (alt6) {
+            	case 1 :
+            	    // InternalMSQLQueryParser.g:527:4: () ( (lv_operator_2_0= ruleMultiplicativeOperator ) ) ( (lv_expression2_3_0= ruleAtomicExpression ) )
+            	    {
+            	    // InternalMSQLQueryParser.g:527:4: ()
+            	    // InternalMSQLQueryParser.g:528:5: 
+            	    {
+
+            	    					current = forceCreateModelElementAndSet(
+            	    						grammarAccess.getMultiplicativeExpressionAccess().getArithmeticExpressionExpression1Action_1_0(),
+            	    						current);
+            	    				
+
+            	    }
+
+            	    // InternalMSQLQueryParser.g:534:4: ( (lv_operator_2_0= ruleMultiplicativeOperator ) )
+            	    // InternalMSQLQueryParser.g:535:5: (lv_operator_2_0= ruleMultiplicativeOperator )
+            	    {
+            	    // InternalMSQLQueryParser.g:535:5: (lv_operator_2_0= ruleMultiplicativeOperator )
+            	    // InternalMSQLQueryParser.g:536:6: lv_operator_2_0= ruleMultiplicativeOperator
+            	    {
+
+            	    						newCompositeNode(grammarAccess.getMultiplicativeExpressionAccess().getOperatorMultiplicativeOperatorEnumRuleCall_1_1_0());
+            	    					
+            	    pushFollow(FOLLOW_10);
+            	    lv_operator_2_0=ruleMultiplicativeOperator();
+
+            	    state._fsp--;
+
+
+            	    						if (current==null) {
+            	    							current = createModelElementForParent(grammarAccess.getMultiplicativeExpressionRule());
+            	    						}
+            	    						set(
+            	    							current,
+            	    							"operator",
+            	    							lv_operator_2_0,
+            	    							"org.mdse.minisql.query.MSQLQuery.MultiplicativeOperator");
+            	    						afterParserOrEnumRuleCall();
+            	    					
+
+            	    }
+
+
+            	    }
+
+            	    // InternalMSQLQueryParser.g:553:4: ( (lv_expression2_3_0= ruleAtomicExpression ) )
+            	    // InternalMSQLQueryParser.g:554:5: (lv_expression2_3_0= ruleAtomicExpression )
+            	    {
+            	    // InternalMSQLQueryParser.g:554:5: (lv_expression2_3_0= ruleAtomicExpression )
+            	    // InternalMSQLQueryParser.g:555:6: lv_expression2_3_0= ruleAtomicExpression
+            	    {
+
+            	    						newCompositeNode(grammarAccess.getMultiplicativeExpressionAccess().getExpression2AtomicExpressionParserRuleCall_1_2_0());
+            	    					
+            	    pushFollow(FOLLOW_12);
+            	    lv_expression2_3_0=ruleAtomicExpression();
+
+            	    state._fsp--;
+
+
+            	    						if (current==null) {
+            	    							current = createModelElementForParent(grammarAccess.getMultiplicativeExpressionRule());
+            	    						}
+            	    						set(
+            	    							current,
+            	    							"expression2",
+            	    							lv_expression2_3_0,
+            	    							"org.mdse.minisql.query.MSQLQuery.AtomicExpression");
+            	    						afterParserOrEnumRuleCall();
+            	    					
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop6;
+                }
+            } while (true);
+
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleMultiplicativeExpression"
+
+
     // $ANTLR start "entryRuleComparativeExpression"
-    // InternalMSQLQueryParser.g:449:1: entryRuleComparativeExpression returns [EObject current=null] : iv_ruleComparativeExpression= ruleComparativeExpression EOF ;
+    // InternalMSQLQueryParser.g:577:1: entryRuleComparativeExpression returns [EObject current=null] : iv_ruleComparativeExpression= ruleComparativeExpression EOF ;
     public final EObject entryRuleComparativeExpression() throws RecognitionException {
         EObject current = null;
 
@@ -1210,8 +1501,8 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalMSQLQueryParser.g:449:62: (iv_ruleComparativeExpression= ruleComparativeExpression EOF )
-            // InternalMSQLQueryParser.g:450:2: iv_ruleComparativeExpression= ruleComparativeExpression EOF
+            // InternalMSQLQueryParser.g:577:62: (iv_ruleComparativeExpression= ruleComparativeExpression EOF )
+            // InternalMSQLQueryParser.g:578:2: iv_ruleComparativeExpression= ruleComparativeExpression EOF
             {
              newCompositeNode(grammarAccess.getComparativeExpressionRule()); 
             pushFollow(FOLLOW_1);
@@ -1238,119 +1529,135 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleComparativeExpression"
-    // InternalMSQLQueryParser.g:456:1: ruleComparativeExpression returns [EObject current=null] : ( ( (lv_expression1_0_0= ruleAtomicExpression ) ) ( (lv_operator_1_0= ruleComparativeOperator ) ) ( (lv_expression2_2_0= ruleAtomicExpression ) ) ) ;
+    // InternalMSQLQueryParser.g:584:1: ruleComparativeExpression returns [EObject current=null] : (this_AdditiveExpression_0= ruleAdditiveExpression ( () ( (lv_operator_2_0= ruleComparativeOperator ) ) ( (lv_expression2_3_0= ruleAdditiveExpression ) ) )* ) ;
     public final EObject ruleComparativeExpression() throws RecognitionException {
         EObject current = null;
 
-        EObject lv_expression1_0_0 = null;
+        EObject this_AdditiveExpression_0 = null;
 
-        Enumerator lv_operator_1_0 = null;
+        Enumerator lv_operator_2_0 = null;
 
-        EObject lv_expression2_2_0 = null;
+        EObject lv_expression2_3_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalMSQLQueryParser.g:462:2: ( ( ( (lv_expression1_0_0= ruleAtomicExpression ) ) ( (lv_operator_1_0= ruleComparativeOperator ) ) ( (lv_expression2_2_0= ruleAtomicExpression ) ) ) )
-            // InternalMSQLQueryParser.g:463:2: ( ( (lv_expression1_0_0= ruleAtomicExpression ) ) ( (lv_operator_1_0= ruleComparativeOperator ) ) ( (lv_expression2_2_0= ruleAtomicExpression ) ) )
+            // InternalMSQLQueryParser.g:590:2: ( (this_AdditiveExpression_0= ruleAdditiveExpression ( () ( (lv_operator_2_0= ruleComparativeOperator ) ) ( (lv_expression2_3_0= ruleAdditiveExpression ) ) )* ) )
+            // InternalMSQLQueryParser.g:591:2: (this_AdditiveExpression_0= ruleAdditiveExpression ( () ( (lv_operator_2_0= ruleComparativeOperator ) ) ( (lv_expression2_3_0= ruleAdditiveExpression ) ) )* )
             {
-            // InternalMSQLQueryParser.g:463:2: ( ( (lv_expression1_0_0= ruleAtomicExpression ) ) ( (lv_operator_1_0= ruleComparativeOperator ) ) ( (lv_expression2_2_0= ruleAtomicExpression ) ) )
-            // InternalMSQLQueryParser.g:464:3: ( (lv_expression1_0_0= ruleAtomicExpression ) ) ( (lv_operator_1_0= ruleComparativeOperator ) ) ( (lv_expression2_2_0= ruleAtomicExpression ) )
-            {
-            // InternalMSQLQueryParser.g:464:3: ( (lv_expression1_0_0= ruleAtomicExpression ) )
-            // InternalMSQLQueryParser.g:465:4: (lv_expression1_0_0= ruleAtomicExpression )
-            {
-            // InternalMSQLQueryParser.g:465:4: (lv_expression1_0_0= ruleAtomicExpression )
-            // InternalMSQLQueryParser.g:466:5: lv_expression1_0_0= ruleAtomicExpression
+            // InternalMSQLQueryParser.g:591:2: (this_AdditiveExpression_0= ruleAdditiveExpression ( () ( (lv_operator_2_0= ruleComparativeOperator ) ) ( (lv_expression2_3_0= ruleAdditiveExpression ) ) )* )
+            // InternalMSQLQueryParser.g:592:3: this_AdditiveExpression_0= ruleAdditiveExpression ( () ( (lv_operator_2_0= ruleComparativeOperator ) ) ( (lv_expression2_3_0= ruleAdditiveExpression ) ) )*
             {
 
-            					newCompositeNode(grammarAccess.getComparativeExpressionAccess().getExpression1AtomicExpressionParserRuleCall_0_0());
-            				
-            pushFollow(FOLLOW_11);
-            lv_expression1_0_0=ruleAtomicExpression();
+            			newCompositeNode(grammarAccess.getComparativeExpressionAccess().getAdditiveExpressionParserRuleCall_0());
+            		
+            pushFollow(FOLLOW_13);
+            this_AdditiveExpression_0=ruleAdditiveExpression();
 
             state._fsp--;
 
 
-            					if (current==null) {
-            						current = createModelElementForParent(grammarAccess.getComparativeExpressionRule());
-            					}
-            					set(
-            						current,
-            						"expression1",
-            						lv_expression1_0_0,
-            						"org.mdse.minisql.query.MSQLQuery.AtomicExpression");
-            					afterParserOrEnumRuleCall();
-            				
+            			current = this_AdditiveExpression_0;
+            			afterParserOrEnumRuleCall();
+            		
+            // InternalMSQLQueryParser.g:600:3: ( () ( (lv_operator_2_0= ruleComparativeOperator ) ) ( (lv_expression2_3_0= ruleAdditiveExpression ) ) )*
+            loop7:
+            do {
+                int alt7=2;
+                int LA7_0 = input.LA(1);
 
-            }
-
-
-            }
-
-            // InternalMSQLQueryParser.g:483:3: ( (lv_operator_1_0= ruleComparativeOperator ) )
-            // InternalMSQLQueryParser.g:484:4: (lv_operator_1_0= ruleComparativeOperator )
-            {
-            // InternalMSQLQueryParser.g:484:4: (lv_operator_1_0= ruleComparativeOperator )
-            // InternalMSQLQueryParser.g:485:5: lv_operator_1_0= ruleComparativeOperator
-            {
-
-            					newCompositeNode(grammarAccess.getComparativeExpressionAccess().getOperatorComparativeOperatorEnumRuleCall_1_0());
-            				
-            pushFollow(FOLLOW_10);
-            lv_operator_1_0=ruleComparativeOperator();
-
-            state._fsp--;
+                if ( ((LA7_0>=ExclamationMarkEqualsSign && LA7_0<=GreaterThanSignEqualsSign)||(LA7_0>=LessThanSign && LA7_0<=GreaterThanSign)) ) {
+                    alt7=1;
+                }
 
 
-            					if (current==null) {
-            						current = createModelElementForParent(grammarAccess.getComparativeExpressionRule());
-            					}
-            					set(
-            						current,
-            						"operator",
-            						lv_operator_1_0,
-            						"org.mdse.minisql.query.MSQLQuery.ComparativeOperator");
-            					afterParserOrEnumRuleCall();
-            				
+                switch (alt7) {
+            	case 1 :
+            	    // InternalMSQLQueryParser.g:601:4: () ( (lv_operator_2_0= ruleComparativeOperator ) ) ( (lv_expression2_3_0= ruleAdditiveExpression ) )
+            	    {
+            	    // InternalMSQLQueryParser.g:601:4: ()
+            	    // InternalMSQLQueryParser.g:602:5: 
+            	    {
 
-            }
+            	    					current = forceCreateModelElementAndSet(
+            	    						grammarAccess.getComparativeExpressionAccess().getComparativeExpressionExpression1Action_1_0(),
+            	    						current);
+            	    				
 
+            	    }
 
-            }
+            	    // InternalMSQLQueryParser.g:608:4: ( (lv_operator_2_0= ruleComparativeOperator ) )
+            	    // InternalMSQLQueryParser.g:609:5: (lv_operator_2_0= ruleComparativeOperator )
+            	    {
+            	    // InternalMSQLQueryParser.g:609:5: (lv_operator_2_0= ruleComparativeOperator )
+            	    // InternalMSQLQueryParser.g:610:6: lv_operator_2_0= ruleComparativeOperator
+            	    {
 
-            // InternalMSQLQueryParser.g:502:3: ( (lv_expression2_2_0= ruleAtomicExpression ) )
-            // InternalMSQLQueryParser.g:503:4: (lv_expression2_2_0= ruleAtomicExpression )
-            {
-            // InternalMSQLQueryParser.g:503:4: (lv_expression2_2_0= ruleAtomicExpression )
-            // InternalMSQLQueryParser.g:504:5: lv_expression2_2_0= ruleAtomicExpression
-            {
+            	    						newCompositeNode(grammarAccess.getComparativeExpressionAccess().getOperatorComparativeOperatorEnumRuleCall_1_1_0());
+            	    					
+            	    pushFollow(FOLLOW_10);
+            	    lv_operator_2_0=ruleComparativeOperator();
 
-            					newCompositeNode(grammarAccess.getComparativeExpressionAccess().getExpression2AtomicExpressionParserRuleCall_2_0());
-            				
-            pushFollow(FOLLOW_2);
-            lv_expression2_2_0=ruleAtomicExpression();
-
-            state._fsp--;
-
-
-            					if (current==null) {
-            						current = createModelElementForParent(grammarAccess.getComparativeExpressionRule());
-            					}
-            					set(
-            						current,
-            						"expression2",
-            						lv_expression2_2_0,
-            						"org.mdse.minisql.query.MSQLQuery.AtomicExpression");
-            					afterParserOrEnumRuleCall();
-            				
-
-            }
+            	    state._fsp--;
 
 
-            }
+            	    						if (current==null) {
+            	    							current = createModelElementForParent(grammarAccess.getComparativeExpressionRule());
+            	    						}
+            	    						set(
+            	    							current,
+            	    							"operator",
+            	    							lv_operator_2_0,
+            	    							"org.mdse.minisql.query.MSQLQuery.ComparativeOperator");
+            	    						afterParserOrEnumRuleCall();
+            	    					
+
+            	    }
+
+
+            	    }
+
+            	    // InternalMSQLQueryParser.g:627:4: ( (lv_expression2_3_0= ruleAdditiveExpression ) )
+            	    // InternalMSQLQueryParser.g:628:5: (lv_expression2_3_0= ruleAdditiveExpression )
+            	    {
+            	    // InternalMSQLQueryParser.g:628:5: (lv_expression2_3_0= ruleAdditiveExpression )
+            	    // InternalMSQLQueryParser.g:629:6: lv_expression2_3_0= ruleAdditiveExpression
+            	    {
+
+            	    						newCompositeNode(grammarAccess.getComparativeExpressionAccess().getExpression2AdditiveExpressionParserRuleCall_1_2_0());
+            	    					
+            	    pushFollow(FOLLOW_13);
+            	    lv_expression2_3_0=ruleAdditiveExpression();
+
+            	    state._fsp--;
+
+
+            	    						if (current==null) {
+            	    							current = createModelElementForParent(grammarAccess.getComparativeExpressionRule());
+            	    						}
+            	    						set(
+            	    							current,
+            	    							"expression2",
+            	    							lv_expression2_3_0,
+            	    							"org.mdse.minisql.query.MSQLQuery.AdditiveExpression");
+            	    						afterParserOrEnumRuleCall();
+            	    					
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop7;
+                }
+            } while (true);
 
 
             }
@@ -1375,7 +1682,7 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAtomicExpression"
-    // InternalMSQLQueryParser.g:525:1: entryRuleAtomicExpression returns [EObject current=null] : iv_ruleAtomicExpression= ruleAtomicExpression EOF ;
+    // InternalMSQLQueryParser.g:651:1: entryRuleAtomicExpression returns [EObject current=null] : iv_ruleAtomicExpression= ruleAtomicExpression EOF ;
     public final EObject entryRuleAtomicExpression() throws RecognitionException {
         EObject current = null;
 
@@ -1383,8 +1690,8 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalMSQLQueryParser.g:525:57: (iv_ruleAtomicExpression= ruleAtomicExpression EOF )
-            // InternalMSQLQueryParser.g:526:2: iv_ruleAtomicExpression= ruleAtomicExpression EOF
+            // InternalMSQLQueryParser.g:651:57: (iv_ruleAtomicExpression= ruleAtomicExpression EOF )
+            // InternalMSQLQueryParser.g:652:2: iv_ruleAtomicExpression= ruleAtomicExpression EOF
             {
              newCompositeNode(grammarAccess.getAtomicExpressionRule()); 
             pushFollow(FOLLOW_1);
@@ -1411,70 +1718,115 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAtomicExpression"
-    // InternalMSQLQueryParser.g:532:1: ruleAtomicExpression returns [EObject current=null] : (this_IntegerLiteral_0= ruleIntegerLiteral | this_ColumnReference_1= ruleColumnReference ) ;
+    // InternalMSQLQueryParser.g:658:1: ruleAtomicExpression returns [EObject current=null] : ( (otherlv_0= LeftParenthesis this_Expression_1= ruleExpression otherlv_2= RightParenthesis ) | this_IntegerLiteral_3= ruleIntegerLiteral | this_ColumnReference_4= ruleColumnReference ) ;
     public final EObject ruleAtomicExpression() throws RecognitionException {
         EObject current = null;
 
-        EObject this_IntegerLiteral_0 = null;
+        Token otherlv_0=null;
+        Token otherlv_2=null;
+        EObject this_Expression_1 = null;
 
-        EObject this_ColumnReference_1 = null;
+        EObject this_IntegerLiteral_3 = null;
+
+        EObject this_ColumnReference_4 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalMSQLQueryParser.g:538:2: ( (this_IntegerLiteral_0= ruleIntegerLiteral | this_ColumnReference_1= ruleColumnReference ) )
-            // InternalMSQLQueryParser.g:539:2: (this_IntegerLiteral_0= ruleIntegerLiteral | this_ColumnReference_1= ruleColumnReference )
+            // InternalMSQLQueryParser.g:664:2: ( ( (otherlv_0= LeftParenthesis this_Expression_1= ruleExpression otherlv_2= RightParenthesis ) | this_IntegerLiteral_3= ruleIntegerLiteral | this_ColumnReference_4= ruleColumnReference ) )
+            // InternalMSQLQueryParser.g:665:2: ( (otherlv_0= LeftParenthesis this_Expression_1= ruleExpression otherlv_2= RightParenthesis ) | this_IntegerLiteral_3= ruleIntegerLiteral | this_ColumnReference_4= ruleColumnReference )
             {
-            // InternalMSQLQueryParser.g:539:2: (this_IntegerLiteral_0= ruleIntegerLiteral | this_ColumnReference_1= ruleColumnReference )
-            int alt6=2;
-            int LA6_0 = input.LA(1);
-
-            if ( (LA6_0==RULE_INT) ) {
-                alt6=1;
-            }
-            else if ( (LA6_0==RULE_ID) ) {
-                alt6=2;
-            }
-            else {
+            // InternalMSQLQueryParser.g:665:2: ( (otherlv_0= LeftParenthesis this_Expression_1= ruleExpression otherlv_2= RightParenthesis ) | this_IntegerLiteral_3= ruleIntegerLiteral | this_ColumnReference_4= ruleColumnReference )
+            int alt8=3;
+            switch ( input.LA(1) ) {
+            case LeftParenthesis:
+                {
+                alt8=1;
+                }
+                break;
+            case RULE_INT:
+                {
+                alt8=2;
+                }
+                break;
+            case RULE_ID:
+                {
+                alt8=3;
+                }
+                break;
+            default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 6, 0, input);
+                    new NoViableAltException("", 8, 0, input);
 
                 throw nvae;
             }
-            switch (alt6) {
-                case 1 :
-                    // InternalMSQLQueryParser.g:540:3: this_IntegerLiteral_0= ruleIntegerLiteral
-                    {
 
-                    			newCompositeNode(grammarAccess.getAtomicExpressionAccess().getIntegerLiteralParserRuleCall_0());
-                    		
-                    pushFollow(FOLLOW_2);
-                    this_IntegerLiteral_0=ruleIntegerLiteral();
+            switch (alt8) {
+                case 1 :
+                    // InternalMSQLQueryParser.g:666:3: (otherlv_0= LeftParenthesis this_Expression_1= ruleExpression otherlv_2= RightParenthesis )
+                    {
+                    // InternalMSQLQueryParser.g:666:3: (otherlv_0= LeftParenthesis this_Expression_1= ruleExpression otherlv_2= RightParenthesis )
+                    // InternalMSQLQueryParser.g:667:4: otherlv_0= LeftParenthesis this_Expression_1= ruleExpression otherlv_2= RightParenthesis
+                    {
+                    otherlv_0=(Token)match(input,LeftParenthesis,FOLLOW_10); 
+
+                    				newLeafNode(otherlv_0, grammarAccess.getAtomicExpressionAccess().getLeftParenthesisKeyword_0_0());
+                    			
+
+                    				newCompositeNode(grammarAccess.getAtomicExpressionAccess().getExpressionParserRuleCall_0_1());
+                    			
+                    pushFollow(FOLLOW_14);
+                    this_Expression_1=ruleExpression();
 
                     state._fsp--;
 
 
-                    			current = this_IntegerLiteral_0;
+                    				current = this_Expression_1;
+                    				afterParserOrEnumRuleCall();
+                    			
+                    otherlv_2=(Token)match(input,RightParenthesis,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_2, grammarAccess.getAtomicExpressionAccess().getRightParenthesisKeyword_0_2());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // InternalMSQLQueryParser.g:685:3: this_IntegerLiteral_3= ruleIntegerLiteral
+                    {
+
+                    			newCompositeNode(grammarAccess.getAtomicExpressionAccess().getIntegerLiteralParserRuleCall_1());
+                    		
+                    pushFollow(FOLLOW_2);
+                    this_IntegerLiteral_3=ruleIntegerLiteral();
+
+                    state._fsp--;
+
+
+                    			current = this_IntegerLiteral_3;
                     			afterParserOrEnumRuleCall();
                     		
 
                     }
                     break;
-                case 2 :
-                    // InternalMSQLQueryParser.g:549:3: this_ColumnReference_1= ruleColumnReference
+                case 3 :
+                    // InternalMSQLQueryParser.g:694:3: this_ColumnReference_4= ruleColumnReference
                     {
 
-                    			newCompositeNode(grammarAccess.getAtomicExpressionAccess().getColumnReferenceParserRuleCall_1());
+                    			newCompositeNode(grammarAccess.getAtomicExpressionAccess().getColumnReferenceParserRuleCall_2());
                     		
                     pushFollow(FOLLOW_2);
-                    this_ColumnReference_1=ruleColumnReference();
+                    this_ColumnReference_4=ruleColumnReference();
 
                     state._fsp--;
 
 
-                    			current = this_ColumnReference_1;
+                    			current = this_ColumnReference_4;
                     			afterParserOrEnumRuleCall();
                     		
 
@@ -1503,7 +1855,7 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleIntegerLiteral"
-    // InternalMSQLQueryParser.g:561:1: entryRuleIntegerLiteral returns [EObject current=null] : iv_ruleIntegerLiteral= ruleIntegerLiteral EOF ;
+    // InternalMSQLQueryParser.g:706:1: entryRuleIntegerLiteral returns [EObject current=null] : iv_ruleIntegerLiteral= ruleIntegerLiteral EOF ;
     public final EObject entryRuleIntegerLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -1511,8 +1863,8 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalMSQLQueryParser.g:561:55: (iv_ruleIntegerLiteral= ruleIntegerLiteral EOF )
-            // InternalMSQLQueryParser.g:562:2: iv_ruleIntegerLiteral= ruleIntegerLiteral EOF
+            // InternalMSQLQueryParser.g:706:55: (iv_ruleIntegerLiteral= ruleIntegerLiteral EOF )
+            // InternalMSQLQueryParser.g:707:2: iv_ruleIntegerLiteral= ruleIntegerLiteral EOF
             {
              newCompositeNode(grammarAccess.getIntegerLiteralRule()); 
             pushFollow(FOLLOW_1);
@@ -1539,7 +1891,7 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleIntegerLiteral"
-    // InternalMSQLQueryParser.g:568:1: ruleIntegerLiteral returns [EObject current=null] : ( (lv_value_0_0= RULE_INT ) ) ;
+    // InternalMSQLQueryParser.g:713:1: ruleIntegerLiteral returns [EObject current=null] : ( (lv_value_0_0= RULE_INT ) ) ;
     public final EObject ruleIntegerLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -1549,14 +1901,14 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalMSQLQueryParser.g:574:2: ( ( (lv_value_0_0= RULE_INT ) ) )
-            // InternalMSQLQueryParser.g:575:2: ( (lv_value_0_0= RULE_INT ) )
+            // InternalMSQLQueryParser.g:719:2: ( ( (lv_value_0_0= RULE_INT ) ) )
+            // InternalMSQLQueryParser.g:720:2: ( (lv_value_0_0= RULE_INT ) )
             {
-            // InternalMSQLQueryParser.g:575:2: ( (lv_value_0_0= RULE_INT ) )
-            // InternalMSQLQueryParser.g:576:3: (lv_value_0_0= RULE_INT )
+            // InternalMSQLQueryParser.g:720:2: ( (lv_value_0_0= RULE_INT ) )
+            // InternalMSQLQueryParser.g:721:3: (lv_value_0_0= RULE_INT )
             {
-            // InternalMSQLQueryParser.g:576:3: (lv_value_0_0= RULE_INT )
-            // InternalMSQLQueryParser.g:577:4: lv_value_0_0= RULE_INT
+            // InternalMSQLQueryParser.g:721:3: (lv_value_0_0= RULE_INT )
+            // InternalMSQLQueryParser.g:722:4: lv_value_0_0= RULE_INT
             {
             lv_value_0_0=(Token)match(input,RULE_INT,FOLLOW_2); 
 
@@ -1598,7 +1950,7 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleOrderByClause"
-    // InternalMSQLQueryParser.g:596:1: entryRuleOrderByClause returns [EObject current=null] : iv_ruleOrderByClause= ruleOrderByClause EOF ;
+    // InternalMSQLQueryParser.g:741:1: entryRuleOrderByClause returns [EObject current=null] : iv_ruleOrderByClause= ruleOrderByClause EOF ;
     public final EObject entryRuleOrderByClause() throws RecognitionException {
         EObject current = null;
 
@@ -1606,8 +1958,8 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalMSQLQueryParser.g:596:54: (iv_ruleOrderByClause= ruleOrderByClause EOF )
-            // InternalMSQLQueryParser.g:597:2: iv_ruleOrderByClause= ruleOrderByClause EOF
+            // InternalMSQLQueryParser.g:741:54: (iv_ruleOrderByClause= ruleOrderByClause EOF )
+            // InternalMSQLQueryParser.g:742:2: iv_ruleOrderByClause= ruleOrderByClause EOF
             {
              newCompositeNode(grammarAccess.getOrderByClauseRule()); 
             pushFollow(FOLLOW_1);
@@ -1634,7 +1986,7 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOrderByClause"
-    // InternalMSQLQueryParser.g:603:1: ruleOrderByClause returns [EObject current=null] : (otherlv_0= ORDER otherlv_1= BY ( (lv_orderDirectives_2_0= ruleOrderByDirective ) ) (otherlv_3= Comma ( (lv_orderDirectives_4_0= ruleOrderByDirective ) ) )* ) ;
+    // InternalMSQLQueryParser.g:748:1: ruleOrderByClause returns [EObject current=null] : (otherlv_0= ORDER otherlv_1= BY ( (lv_orderDirectives_2_0= ruleOrderByDirective ) ) (otherlv_3= Comma ( (lv_orderDirectives_4_0= ruleOrderByDirective ) ) )* ) ;
     public final EObject ruleOrderByClause() throws RecognitionException {
         EObject current = null;
 
@@ -1650,13 +2002,13 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalMSQLQueryParser.g:609:2: ( (otherlv_0= ORDER otherlv_1= BY ( (lv_orderDirectives_2_0= ruleOrderByDirective ) ) (otherlv_3= Comma ( (lv_orderDirectives_4_0= ruleOrderByDirective ) ) )* ) )
-            // InternalMSQLQueryParser.g:610:2: (otherlv_0= ORDER otherlv_1= BY ( (lv_orderDirectives_2_0= ruleOrderByDirective ) ) (otherlv_3= Comma ( (lv_orderDirectives_4_0= ruleOrderByDirective ) ) )* )
+            // InternalMSQLQueryParser.g:754:2: ( (otherlv_0= ORDER otherlv_1= BY ( (lv_orderDirectives_2_0= ruleOrderByDirective ) ) (otherlv_3= Comma ( (lv_orderDirectives_4_0= ruleOrderByDirective ) ) )* ) )
+            // InternalMSQLQueryParser.g:755:2: (otherlv_0= ORDER otherlv_1= BY ( (lv_orderDirectives_2_0= ruleOrderByDirective ) ) (otherlv_3= Comma ( (lv_orderDirectives_4_0= ruleOrderByDirective ) ) )* )
             {
-            // InternalMSQLQueryParser.g:610:2: (otherlv_0= ORDER otherlv_1= BY ( (lv_orderDirectives_2_0= ruleOrderByDirective ) ) (otherlv_3= Comma ( (lv_orderDirectives_4_0= ruleOrderByDirective ) ) )* )
-            // InternalMSQLQueryParser.g:611:3: otherlv_0= ORDER otherlv_1= BY ( (lv_orderDirectives_2_0= ruleOrderByDirective ) ) (otherlv_3= Comma ( (lv_orderDirectives_4_0= ruleOrderByDirective ) ) )*
+            // InternalMSQLQueryParser.g:755:2: (otherlv_0= ORDER otherlv_1= BY ( (lv_orderDirectives_2_0= ruleOrderByDirective ) ) (otherlv_3= Comma ( (lv_orderDirectives_4_0= ruleOrderByDirective ) ) )* )
+            // InternalMSQLQueryParser.g:756:3: otherlv_0= ORDER otherlv_1= BY ( (lv_orderDirectives_2_0= ruleOrderByDirective ) ) (otherlv_3= Comma ( (lv_orderDirectives_4_0= ruleOrderByDirective ) ) )*
             {
-            otherlv_0=(Token)match(input,ORDER,FOLLOW_12); 
+            otherlv_0=(Token)match(input,ORDER,FOLLOW_15); 
 
             			newLeafNode(otherlv_0, grammarAccess.getOrderByClauseAccess().getORDERKeyword_0());
             		
@@ -1664,11 +2016,11 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getOrderByClauseAccess().getBYKeyword_1());
             		
-            // InternalMSQLQueryParser.g:619:3: ( (lv_orderDirectives_2_0= ruleOrderByDirective ) )
-            // InternalMSQLQueryParser.g:620:4: (lv_orderDirectives_2_0= ruleOrderByDirective )
+            // InternalMSQLQueryParser.g:764:3: ( (lv_orderDirectives_2_0= ruleOrderByDirective ) )
+            // InternalMSQLQueryParser.g:765:4: (lv_orderDirectives_2_0= ruleOrderByDirective )
             {
-            // InternalMSQLQueryParser.g:620:4: (lv_orderDirectives_2_0= ruleOrderByDirective )
-            // InternalMSQLQueryParser.g:621:5: lv_orderDirectives_2_0= ruleOrderByDirective
+            // InternalMSQLQueryParser.g:765:4: (lv_orderDirectives_2_0= ruleOrderByDirective )
+            // InternalMSQLQueryParser.g:766:5: lv_orderDirectives_2_0= ruleOrderByDirective
             {
 
             					newCompositeNode(grammarAccess.getOrderByClauseAccess().getOrderDirectivesOrderByDirectiveParserRuleCall_2_0());
@@ -1695,30 +2047,30 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalMSQLQueryParser.g:638:3: (otherlv_3= Comma ( (lv_orderDirectives_4_0= ruleOrderByDirective ) ) )*
-            loop7:
+            // InternalMSQLQueryParser.g:783:3: (otherlv_3= Comma ( (lv_orderDirectives_4_0= ruleOrderByDirective ) ) )*
+            loop9:
             do {
-                int alt7=2;
-                int LA7_0 = input.LA(1);
+                int alt9=2;
+                int LA9_0 = input.LA(1);
 
-                if ( (LA7_0==Comma) ) {
-                    alt7=1;
+                if ( (LA9_0==Comma) ) {
+                    alt9=1;
                 }
 
 
-                switch (alt7) {
+                switch (alt9) {
             	case 1 :
-            	    // InternalMSQLQueryParser.g:639:4: otherlv_3= Comma ( (lv_orderDirectives_4_0= ruleOrderByDirective ) )
+            	    // InternalMSQLQueryParser.g:784:4: otherlv_3= Comma ( (lv_orderDirectives_4_0= ruleOrderByDirective ) )
             	    {
             	    otherlv_3=(Token)match(input,Comma,FOLLOW_3); 
 
             	    				newLeafNode(otherlv_3, grammarAccess.getOrderByClauseAccess().getCommaKeyword_3_0());
             	    			
-            	    // InternalMSQLQueryParser.g:643:4: ( (lv_orderDirectives_4_0= ruleOrderByDirective ) )
-            	    // InternalMSQLQueryParser.g:644:5: (lv_orderDirectives_4_0= ruleOrderByDirective )
+            	    // InternalMSQLQueryParser.g:788:4: ( (lv_orderDirectives_4_0= ruleOrderByDirective ) )
+            	    // InternalMSQLQueryParser.g:789:5: (lv_orderDirectives_4_0= ruleOrderByDirective )
             	    {
-            	    // InternalMSQLQueryParser.g:644:5: (lv_orderDirectives_4_0= ruleOrderByDirective )
-            	    // InternalMSQLQueryParser.g:645:6: lv_orderDirectives_4_0= ruleOrderByDirective
+            	    // InternalMSQLQueryParser.g:789:5: (lv_orderDirectives_4_0= ruleOrderByDirective )
+            	    // InternalMSQLQueryParser.g:790:6: lv_orderDirectives_4_0= ruleOrderByDirective
             	    {
 
             	    						newCompositeNode(grammarAccess.getOrderByClauseAccess().getOrderDirectivesOrderByDirectiveParserRuleCall_3_1_0());
@@ -1750,7 +2102,7 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop7;
+            	    break loop9;
                 }
             } while (true);
 
@@ -1777,7 +2129,7 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleOrderByDirective"
-    // InternalMSQLQueryParser.g:667:1: entryRuleOrderByDirective returns [EObject current=null] : iv_ruleOrderByDirective= ruleOrderByDirective EOF ;
+    // InternalMSQLQueryParser.g:812:1: entryRuleOrderByDirective returns [EObject current=null] : iv_ruleOrderByDirective= ruleOrderByDirective EOF ;
     public final EObject entryRuleOrderByDirective() throws RecognitionException {
         EObject current = null;
 
@@ -1785,8 +2137,8 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalMSQLQueryParser.g:667:57: (iv_ruleOrderByDirective= ruleOrderByDirective EOF )
-            // InternalMSQLQueryParser.g:668:2: iv_ruleOrderByDirective= ruleOrderByDirective EOF
+            // InternalMSQLQueryParser.g:812:57: (iv_ruleOrderByDirective= ruleOrderByDirective EOF )
+            // InternalMSQLQueryParser.g:813:2: iv_ruleOrderByDirective= ruleOrderByDirective EOF
             {
              newCompositeNode(grammarAccess.getOrderByDirectiveRule()); 
             pushFollow(FOLLOW_1);
@@ -1813,7 +2165,7 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOrderByDirective"
-    // InternalMSQLQueryParser.g:674:1: ruleOrderByDirective returns [EObject current=null] : ( ( (lv_columnReference_0_0= ruleColumnReference ) ) ( ( (lv_ascending_1_1= ASC | lv_ascending_1_2= DESC ) ) )? ) ;
+    // InternalMSQLQueryParser.g:819:1: ruleOrderByDirective returns [EObject current=null] : ( ( (lv_columnReference_0_0= ruleColumnReference ) ) ( ( (lv_ascending_1_1= ASC | lv_ascending_1_2= DESC ) ) )? ) ;
     public final EObject ruleOrderByDirective() throws RecognitionException {
         EObject current = null;
 
@@ -1826,22 +2178,22 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalMSQLQueryParser.g:680:2: ( ( ( (lv_columnReference_0_0= ruleColumnReference ) ) ( ( (lv_ascending_1_1= ASC | lv_ascending_1_2= DESC ) ) )? ) )
-            // InternalMSQLQueryParser.g:681:2: ( ( (lv_columnReference_0_0= ruleColumnReference ) ) ( ( (lv_ascending_1_1= ASC | lv_ascending_1_2= DESC ) ) )? )
+            // InternalMSQLQueryParser.g:825:2: ( ( ( (lv_columnReference_0_0= ruleColumnReference ) ) ( ( (lv_ascending_1_1= ASC | lv_ascending_1_2= DESC ) ) )? ) )
+            // InternalMSQLQueryParser.g:826:2: ( ( (lv_columnReference_0_0= ruleColumnReference ) ) ( ( (lv_ascending_1_1= ASC | lv_ascending_1_2= DESC ) ) )? )
             {
-            // InternalMSQLQueryParser.g:681:2: ( ( (lv_columnReference_0_0= ruleColumnReference ) ) ( ( (lv_ascending_1_1= ASC | lv_ascending_1_2= DESC ) ) )? )
-            // InternalMSQLQueryParser.g:682:3: ( (lv_columnReference_0_0= ruleColumnReference ) ) ( ( (lv_ascending_1_1= ASC | lv_ascending_1_2= DESC ) ) )?
+            // InternalMSQLQueryParser.g:826:2: ( ( (lv_columnReference_0_0= ruleColumnReference ) ) ( ( (lv_ascending_1_1= ASC | lv_ascending_1_2= DESC ) ) )? )
+            // InternalMSQLQueryParser.g:827:3: ( (lv_columnReference_0_0= ruleColumnReference ) ) ( ( (lv_ascending_1_1= ASC | lv_ascending_1_2= DESC ) ) )?
             {
-            // InternalMSQLQueryParser.g:682:3: ( (lv_columnReference_0_0= ruleColumnReference ) )
-            // InternalMSQLQueryParser.g:683:4: (lv_columnReference_0_0= ruleColumnReference )
+            // InternalMSQLQueryParser.g:827:3: ( (lv_columnReference_0_0= ruleColumnReference ) )
+            // InternalMSQLQueryParser.g:828:4: (lv_columnReference_0_0= ruleColumnReference )
             {
-            // InternalMSQLQueryParser.g:683:4: (lv_columnReference_0_0= ruleColumnReference )
-            // InternalMSQLQueryParser.g:684:5: lv_columnReference_0_0= ruleColumnReference
+            // InternalMSQLQueryParser.g:828:4: (lv_columnReference_0_0= ruleColumnReference )
+            // InternalMSQLQueryParser.g:829:5: lv_columnReference_0_0= ruleColumnReference
             {
 
             					newCompositeNode(grammarAccess.getOrderByDirectiveAccess().getColumnReferenceColumnReferenceParserRuleCall_0_0());
             				
-            pushFollow(FOLLOW_13);
+            pushFollow(FOLLOW_16);
             lv_columnReference_0_0=ruleColumnReference();
 
             state._fsp--;
@@ -1863,39 +2215,39 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalMSQLQueryParser.g:701:3: ( ( (lv_ascending_1_1= ASC | lv_ascending_1_2= DESC ) ) )?
-            int alt9=2;
-            int LA9_0 = input.LA(1);
+            // InternalMSQLQueryParser.g:846:3: ( ( (lv_ascending_1_1= ASC | lv_ascending_1_2= DESC ) ) )?
+            int alt11=2;
+            int LA11_0 = input.LA(1);
 
-            if ( (LA9_0==DESC||LA9_0==ASC) ) {
-                alt9=1;
+            if ( (LA11_0==DESC||LA11_0==ASC) ) {
+                alt11=1;
             }
-            switch (alt9) {
+            switch (alt11) {
                 case 1 :
-                    // InternalMSQLQueryParser.g:702:4: ( (lv_ascending_1_1= ASC | lv_ascending_1_2= DESC ) )
+                    // InternalMSQLQueryParser.g:847:4: ( (lv_ascending_1_1= ASC | lv_ascending_1_2= DESC ) )
                     {
-                    // InternalMSQLQueryParser.g:702:4: ( (lv_ascending_1_1= ASC | lv_ascending_1_2= DESC ) )
-                    // InternalMSQLQueryParser.g:703:5: (lv_ascending_1_1= ASC | lv_ascending_1_2= DESC )
+                    // InternalMSQLQueryParser.g:847:4: ( (lv_ascending_1_1= ASC | lv_ascending_1_2= DESC ) )
+                    // InternalMSQLQueryParser.g:848:5: (lv_ascending_1_1= ASC | lv_ascending_1_2= DESC )
                     {
-                    // InternalMSQLQueryParser.g:703:5: (lv_ascending_1_1= ASC | lv_ascending_1_2= DESC )
-                    int alt8=2;
-                    int LA8_0 = input.LA(1);
+                    // InternalMSQLQueryParser.g:848:5: (lv_ascending_1_1= ASC | lv_ascending_1_2= DESC )
+                    int alt10=2;
+                    int LA10_0 = input.LA(1);
 
-                    if ( (LA8_0==ASC) ) {
-                        alt8=1;
+                    if ( (LA10_0==ASC) ) {
+                        alt10=1;
                     }
-                    else if ( (LA8_0==DESC) ) {
-                        alt8=2;
+                    else if ( (LA10_0==DESC) ) {
+                        alt10=2;
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 8, 0, input);
+                            new NoViableAltException("", 10, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt8) {
+                    switch (alt10) {
                         case 1 :
-                            // InternalMSQLQueryParser.g:704:6: lv_ascending_1_1= ASC
+                            // InternalMSQLQueryParser.g:849:6: lv_ascending_1_1= ASC
                             {
                             lv_ascending_1_1=(Token)match(input,ASC,FOLLOW_2); 
 
@@ -1911,7 +2263,7 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalMSQLQueryParser.g:715:6: lv_ascending_1_2= DESC
+                            // InternalMSQLQueryParser.g:860:6: lv_ascending_1_2= DESC
                             {
                             lv_ascending_1_2=(Token)match(input,DESC,FOLLOW_2); 
 
@@ -1961,7 +2313,7 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleColumnReference"
-    // InternalMSQLQueryParser.g:732:1: entryRuleColumnReference returns [EObject current=null] : iv_ruleColumnReference= ruleColumnReference EOF ;
+    // InternalMSQLQueryParser.g:877:1: entryRuleColumnReference returns [EObject current=null] : iv_ruleColumnReference= ruleColumnReference EOF ;
     public final EObject entryRuleColumnReference() throws RecognitionException {
         EObject current = null;
 
@@ -1969,8 +2321,8 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalMSQLQueryParser.g:732:56: (iv_ruleColumnReference= ruleColumnReference EOF )
-            // InternalMSQLQueryParser.g:733:2: iv_ruleColumnReference= ruleColumnReference EOF
+            // InternalMSQLQueryParser.g:877:56: (iv_ruleColumnReference= ruleColumnReference EOF )
+            // InternalMSQLQueryParser.g:878:2: iv_ruleColumnReference= ruleColumnReference EOF
             {
              newCompositeNode(grammarAccess.getColumnReferenceRule()); 
             pushFollow(FOLLOW_1);
@@ -1997,7 +2349,7 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleColumnReference"
-    // InternalMSQLQueryParser.g:739:1: ruleColumnReference returns [EObject current=null] : ( (otherlv_0= RULE_ID ) ) ;
+    // InternalMSQLQueryParser.g:884:1: ruleColumnReference returns [EObject current=null] : ( (otherlv_0= RULE_ID ) ) ;
     public final EObject ruleColumnReference() throws RecognitionException {
         EObject current = null;
 
@@ -2007,14 +2359,14 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalMSQLQueryParser.g:745:2: ( ( (otherlv_0= RULE_ID ) ) )
-            // InternalMSQLQueryParser.g:746:2: ( (otherlv_0= RULE_ID ) )
+            // InternalMSQLQueryParser.g:890:2: ( ( (otherlv_0= RULE_ID ) ) )
+            // InternalMSQLQueryParser.g:891:2: ( (otherlv_0= RULE_ID ) )
             {
-            // InternalMSQLQueryParser.g:746:2: ( (otherlv_0= RULE_ID ) )
-            // InternalMSQLQueryParser.g:747:3: (otherlv_0= RULE_ID )
+            // InternalMSQLQueryParser.g:891:2: ( (otherlv_0= RULE_ID ) )
+            // InternalMSQLQueryParser.g:892:3: (otherlv_0= RULE_ID )
             {
-            // InternalMSQLQueryParser.g:747:3: (otherlv_0= RULE_ID )
-            // InternalMSQLQueryParser.g:748:4: otherlv_0= RULE_ID
+            // InternalMSQLQueryParser.g:892:3: (otherlv_0= RULE_ID )
+            // InternalMSQLQueryParser.g:893:4: otherlv_0= RULE_ID
             {
 
             				if (current==null) {
@@ -2050,8 +2402,184 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleColumnReference"
 
 
+    // $ANTLR start "ruleAdditiveOperator"
+    // InternalMSQLQueryParser.g:907:1: ruleAdditiveOperator returns [Enumerator current=null] : ( (enumLiteral_0= PlusSign ) | (enumLiteral_1= HyphenMinus ) ) ;
+    public final Enumerator ruleAdditiveOperator() throws RecognitionException {
+        Enumerator current = null;
+
+        Token enumLiteral_0=null;
+        Token enumLiteral_1=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalMSQLQueryParser.g:913:2: ( ( (enumLiteral_0= PlusSign ) | (enumLiteral_1= HyphenMinus ) ) )
+            // InternalMSQLQueryParser.g:914:2: ( (enumLiteral_0= PlusSign ) | (enumLiteral_1= HyphenMinus ) )
+            {
+            // InternalMSQLQueryParser.g:914:2: ( (enumLiteral_0= PlusSign ) | (enumLiteral_1= HyphenMinus ) )
+            int alt12=2;
+            int LA12_0 = input.LA(1);
+
+            if ( (LA12_0==PlusSign) ) {
+                alt12=1;
+            }
+            else if ( (LA12_0==HyphenMinus) ) {
+                alt12=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 12, 0, input);
+
+                throw nvae;
+            }
+            switch (alt12) {
+                case 1 :
+                    // InternalMSQLQueryParser.g:915:3: (enumLiteral_0= PlusSign )
+                    {
+                    // InternalMSQLQueryParser.g:915:3: (enumLiteral_0= PlusSign )
+                    // InternalMSQLQueryParser.g:916:4: enumLiteral_0= PlusSign
+                    {
+                    enumLiteral_0=(Token)match(input,PlusSign,FOLLOW_2); 
+
+                    				current = grammarAccess.getAdditiveOperatorAccess().getADDEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_0, grammarAccess.getAdditiveOperatorAccess().getADDEnumLiteralDeclaration_0());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // InternalMSQLQueryParser.g:923:3: (enumLiteral_1= HyphenMinus )
+                    {
+                    // InternalMSQLQueryParser.g:923:3: (enumLiteral_1= HyphenMinus )
+                    // InternalMSQLQueryParser.g:924:4: enumLiteral_1= HyphenMinus
+                    {
+                    enumLiteral_1=(Token)match(input,HyphenMinus,FOLLOW_2); 
+
+                    				current = grammarAccess.getAdditiveOperatorAccess().getSUBTRACTEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_1, grammarAccess.getAdditiveOperatorAccess().getSUBTRACTEnumLiteralDeclaration_1());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleAdditiveOperator"
+
+
+    // $ANTLR start "ruleMultiplicativeOperator"
+    // InternalMSQLQueryParser.g:934:1: ruleMultiplicativeOperator returns [Enumerator current=null] : ( (enumLiteral_0= Asterisk ) | (enumLiteral_1= Solidus ) ) ;
+    public final Enumerator ruleMultiplicativeOperator() throws RecognitionException {
+        Enumerator current = null;
+
+        Token enumLiteral_0=null;
+        Token enumLiteral_1=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalMSQLQueryParser.g:940:2: ( ( (enumLiteral_0= Asterisk ) | (enumLiteral_1= Solidus ) ) )
+            // InternalMSQLQueryParser.g:941:2: ( (enumLiteral_0= Asterisk ) | (enumLiteral_1= Solidus ) )
+            {
+            // InternalMSQLQueryParser.g:941:2: ( (enumLiteral_0= Asterisk ) | (enumLiteral_1= Solidus ) )
+            int alt13=2;
+            int LA13_0 = input.LA(1);
+
+            if ( (LA13_0==Asterisk) ) {
+                alt13=1;
+            }
+            else if ( (LA13_0==Solidus) ) {
+                alt13=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 13, 0, input);
+
+                throw nvae;
+            }
+            switch (alt13) {
+                case 1 :
+                    // InternalMSQLQueryParser.g:942:3: (enumLiteral_0= Asterisk )
+                    {
+                    // InternalMSQLQueryParser.g:942:3: (enumLiteral_0= Asterisk )
+                    // InternalMSQLQueryParser.g:943:4: enumLiteral_0= Asterisk
+                    {
+                    enumLiteral_0=(Token)match(input,Asterisk,FOLLOW_2); 
+
+                    				current = grammarAccess.getMultiplicativeOperatorAccess().getMULTIPLYEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_0, grammarAccess.getMultiplicativeOperatorAccess().getMULTIPLYEnumLiteralDeclaration_0());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // InternalMSQLQueryParser.g:950:3: (enumLiteral_1= Solidus )
+                    {
+                    // InternalMSQLQueryParser.g:950:3: (enumLiteral_1= Solidus )
+                    // InternalMSQLQueryParser.g:951:4: enumLiteral_1= Solidus
+                    {
+                    enumLiteral_1=(Token)match(input,Solidus,FOLLOW_2); 
+
+                    				current = grammarAccess.getMultiplicativeOperatorAccess().getDIVIDEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_1, grammarAccess.getMultiplicativeOperatorAccess().getDIVIDEEnumLiteralDeclaration_1());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleMultiplicativeOperator"
+
+
     // $ANTLR start "ruleComparativeOperator"
-    // InternalMSQLQueryParser.g:762:1: ruleComparativeOperator returns [Enumerator current=null] : ( (enumLiteral_0= LessThanSign ) | (enumLiteral_1= LessThanSignEqualsSign ) | (enumLiteral_2= EqualsSign ) | (enumLiteral_3= ExclamationMarkEqualsSign ) | (enumLiteral_4= GreaterThanSign ) | (enumLiteral_5= GreaterThanSignEqualsSign ) ) ;
+    // InternalMSQLQueryParser.g:961:1: ruleComparativeOperator returns [Enumerator current=null] : ( (enumLiteral_0= LessThanSign ) | (enumLiteral_1= LessThanSignEqualsSign ) | (enumLiteral_2= EqualsSign ) | (enumLiteral_3= ExclamationMarkEqualsSign ) | (enumLiteral_4= GreaterThanSign ) | (enumLiteral_5= GreaterThanSignEqualsSign ) ) ;
     public final Enumerator ruleComparativeOperator() throws RecognitionException {
         Enumerator current = null;
 
@@ -2066,55 +2594,55 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalMSQLQueryParser.g:768:2: ( ( (enumLiteral_0= LessThanSign ) | (enumLiteral_1= LessThanSignEqualsSign ) | (enumLiteral_2= EqualsSign ) | (enumLiteral_3= ExclamationMarkEqualsSign ) | (enumLiteral_4= GreaterThanSign ) | (enumLiteral_5= GreaterThanSignEqualsSign ) ) )
-            // InternalMSQLQueryParser.g:769:2: ( (enumLiteral_0= LessThanSign ) | (enumLiteral_1= LessThanSignEqualsSign ) | (enumLiteral_2= EqualsSign ) | (enumLiteral_3= ExclamationMarkEqualsSign ) | (enumLiteral_4= GreaterThanSign ) | (enumLiteral_5= GreaterThanSignEqualsSign ) )
+            // InternalMSQLQueryParser.g:967:2: ( ( (enumLiteral_0= LessThanSign ) | (enumLiteral_1= LessThanSignEqualsSign ) | (enumLiteral_2= EqualsSign ) | (enumLiteral_3= ExclamationMarkEqualsSign ) | (enumLiteral_4= GreaterThanSign ) | (enumLiteral_5= GreaterThanSignEqualsSign ) ) )
+            // InternalMSQLQueryParser.g:968:2: ( (enumLiteral_0= LessThanSign ) | (enumLiteral_1= LessThanSignEqualsSign ) | (enumLiteral_2= EqualsSign ) | (enumLiteral_3= ExclamationMarkEqualsSign ) | (enumLiteral_4= GreaterThanSign ) | (enumLiteral_5= GreaterThanSignEqualsSign ) )
             {
-            // InternalMSQLQueryParser.g:769:2: ( (enumLiteral_0= LessThanSign ) | (enumLiteral_1= LessThanSignEqualsSign ) | (enumLiteral_2= EqualsSign ) | (enumLiteral_3= ExclamationMarkEqualsSign ) | (enumLiteral_4= GreaterThanSign ) | (enumLiteral_5= GreaterThanSignEqualsSign ) )
-            int alt10=6;
+            // InternalMSQLQueryParser.g:968:2: ( (enumLiteral_0= LessThanSign ) | (enumLiteral_1= LessThanSignEqualsSign ) | (enumLiteral_2= EqualsSign ) | (enumLiteral_3= ExclamationMarkEqualsSign ) | (enumLiteral_4= GreaterThanSign ) | (enumLiteral_5= GreaterThanSignEqualsSign ) )
+            int alt14=6;
             switch ( input.LA(1) ) {
             case LessThanSign:
                 {
-                alt10=1;
+                alt14=1;
                 }
                 break;
             case LessThanSignEqualsSign:
                 {
-                alt10=2;
+                alt14=2;
                 }
                 break;
             case EqualsSign:
                 {
-                alt10=3;
+                alt14=3;
                 }
                 break;
             case ExclamationMarkEqualsSign:
                 {
-                alt10=4;
+                alt14=4;
                 }
                 break;
             case GreaterThanSign:
                 {
-                alt10=5;
+                alt14=5;
                 }
                 break;
             case GreaterThanSignEqualsSign:
                 {
-                alt10=6;
+                alt14=6;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 10, 0, input);
+                    new NoViableAltException("", 14, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt10) {
+            switch (alt14) {
                 case 1 :
-                    // InternalMSQLQueryParser.g:770:3: (enumLiteral_0= LessThanSign )
+                    // InternalMSQLQueryParser.g:969:3: (enumLiteral_0= LessThanSign )
                     {
-                    // InternalMSQLQueryParser.g:770:3: (enumLiteral_0= LessThanSign )
-                    // InternalMSQLQueryParser.g:771:4: enumLiteral_0= LessThanSign
+                    // InternalMSQLQueryParser.g:969:3: (enumLiteral_0= LessThanSign )
+                    // InternalMSQLQueryParser.g:970:4: enumLiteral_0= LessThanSign
                     {
                     enumLiteral_0=(Token)match(input,LessThanSign,FOLLOW_2); 
 
@@ -2128,10 +2656,10 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalMSQLQueryParser.g:778:3: (enumLiteral_1= LessThanSignEqualsSign )
+                    // InternalMSQLQueryParser.g:977:3: (enumLiteral_1= LessThanSignEqualsSign )
                     {
-                    // InternalMSQLQueryParser.g:778:3: (enumLiteral_1= LessThanSignEqualsSign )
-                    // InternalMSQLQueryParser.g:779:4: enumLiteral_1= LessThanSignEqualsSign
+                    // InternalMSQLQueryParser.g:977:3: (enumLiteral_1= LessThanSignEqualsSign )
+                    // InternalMSQLQueryParser.g:978:4: enumLiteral_1= LessThanSignEqualsSign
                     {
                     enumLiteral_1=(Token)match(input,LessThanSignEqualsSign,FOLLOW_2); 
 
@@ -2145,10 +2673,10 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalMSQLQueryParser.g:786:3: (enumLiteral_2= EqualsSign )
+                    // InternalMSQLQueryParser.g:985:3: (enumLiteral_2= EqualsSign )
                     {
-                    // InternalMSQLQueryParser.g:786:3: (enumLiteral_2= EqualsSign )
-                    // InternalMSQLQueryParser.g:787:4: enumLiteral_2= EqualsSign
+                    // InternalMSQLQueryParser.g:985:3: (enumLiteral_2= EqualsSign )
+                    // InternalMSQLQueryParser.g:986:4: enumLiteral_2= EqualsSign
                     {
                     enumLiteral_2=(Token)match(input,EqualsSign,FOLLOW_2); 
 
@@ -2162,10 +2690,10 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalMSQLQueryParser.g:794:3: (enumLiteral_3= ExclamationMarkEqualsSign )
+                    // InternalMSQLQueryParser.g:993:3: (enumLiteral_3= ExclamationMarkEqualsSign )
                     {
-                    // InternalMSQLQueryParser.g:794:3: (enumLiteral_3= ExclamationMarkEqualsSign )
-                    // InternalMSQLQueryParser.g:795:4: enumLiteral_3= ExclamationMarkEqualsSign
+                    // InternalMSQLQueryParser.g:993:3: (enumLiteral_3= ExclamationMarkEqualsSign )
+                    // InternalMSQLQueryParser.g:994:4: enumLiteral_3= ExclamationMarkEqualsSign
                     {
                     enumLiteral_3=(Token)match(input,ExclamationMarkEqualsSign,FOLLOW_2); 
 
@@ -2179,10 +2707,10 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalMSQLQueryParser.g:802:3: (enumLiteral_4= GreaterThanSign )
+                    // InternalMSQLQueryParser.g:1001:3: (enumLiteral_4= GreaterThanSign )
                     {
-                    // InternalMSQLQueryParser.g:802:3: (enumLiteral_4= GreaterThanSign )
-                    // InternalMSQLQueryParser.g:803:4: enumLiteral_4= GreaterThanSign
+                    // InternalMSQLQueryParser.g:1001:3: (enumLiteral_4= GreaterThanSign )
+                    // InternalMSQLQueryParser.g:1002:4: enumLiteral_4= GreaterThanSign
                     {
                     enumLiteral_4=(Token)match(input,GreaterThanSign,FOLLOW_2); 
 
@@ -2196,10 +2724,10 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalMSQLQueryParser.g:810:3: (enumLiteral_5= GreaterThanSignEqualsSign )
+                    // InternalMSQLQueryParser.g:1009:3: (enumLiteral_5= GreaterThanSignEqualsSign )
                     {
-                    // InternalMSQLQueryParser.g:810:3: (enumLiteral_5= GreaterThanSignEqualsSign )
-                    // InternalMSQLQueryParser.g:811:4: enumLiteral_5= GreaterThanSignEqualsSign
+                    // InternalMSQLQueryParser.g:1009:3: (enumLiteral_5= GreaterThanSignEqualsSign )
+                    // InternalMSQLQueryParser.g:1010:4: enumLiteral_5= GreaterThanSignEqualsSign
                     {
                     enumLiteral_5=(Token)match(input,GreaterThanSignEqualsSign,FOLLOW_2); 
 
@@ -2240,16 +2768,19 @@ public class InternalMSQLQueryParser extends AbstractInternalAntlrParser {
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000104000L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000002010000L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000010060L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000010020L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000008002L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000304000L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x00000000000E1C00L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000000282L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000200060L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000200020L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000040002L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000006014000L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x00000000000A0002L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000110002L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000001C01C02L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000000282L});
 
 }

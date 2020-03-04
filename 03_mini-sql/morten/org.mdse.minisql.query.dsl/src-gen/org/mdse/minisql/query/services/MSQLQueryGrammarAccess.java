@@ -225,80 +225,173 @@ public class MSQLQueryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	public class ExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.MSQLQuery.Expression");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cColumnReferenceParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cIntegerLiteralParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cComparativeExpressionParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cComparativeExpressionParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
 		//Expression:
-		//	ColumnReference | IntegerLiteral | ComparativeExpression;
+		//	ComparativeExpression;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//ColumnReference | IntegerLiteral | ComparativeExpression
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//ColumnReference
-		public RuleCall getColumnReferenceParserRuleCall_0() { return cColumnReferenceParserRuleCall_0; }
-		
-		//IntegerLiteral
-		public RuleCall getIntegerLiteralParserRuleCall_1() { return cIntegerLiteralParserRuleCall_1; }
-		
 		//ComparativeExpression
-		public RuleCall getComparativeExpressionParserRuleCall_2() { return cComparativeExpressionParserRuleCall_2; }
+		public RuleCall getComparativeExpressionParserRuleCall() { return cComparativeExpressionParserRuleCall; }
+	}
+	public class AdditiveExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.MSQLQuery.AdditiveExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cMultiplicativeExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cArithmeticExpressionExpression1Action_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cOperatorAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cOperatorAdditiveOperatorEnumRuleCall_1_1_0 = (RuleCall)cOperatorAssignment_1_1.eContents().get(0);
+		private final Assignment cExpression2Assignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cExpression2MultiplicativeExpressionParserRuleCall_1_2_0 = (RuleCall)cExpression2Assignment_1_2.eContents().get(0);
+		
+		//// Left factoring and grammar actions resolves left-recursion (see slide 147 in 03-exercises)
+		//AdditiveExpression Expression:
+		//	MultiplicativeExpression ({ArithmeticExpression.expression1=current} operator=AdditiveOperator
+		//	expression2=MultiplicativeExpression)*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//MultiplicativeExpression ({ArithmeticExpression.expression1=current} operator=AdditiveOperator
+		//expression2=MultiplicativeExpression)*
+		public Group getGroup() { return cGroup; }
+		
+		//MultiplicativeExpression
+		public RuleCall getMultiplicativeExpressionParserRuleCall_0() { return cMultiplicativeExpressionParserRuleCall_0; }
+		
+		//({ArithmeticExpression.expression1=current} operator=AdditiveOperator expression2=MultiplicativeExpression)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{ArithmeticExpression.expression1=current}
+		public Action getArithmeticExpressionExpression1Action_1_0() { return cArithmeticExpressionExpression1Action_1_0; }
+		
+		//operator=AdditiveOperator
+		public Assignment getOperatorAssignment_1_1() { return cOperatorAssignment_1_1; }
+		
+		//AdditiveOperator
+		public RuleCall getOperatorAdditiveOperatorEnumRuleCall_1_1_0() { return cOperatorAdditiveOperatorEnumRuleCall_1_1_0; }
+		
+		//expression2=MultiplicativeExpression
+		public Assignment getExpression2Assignment_1_2() { return cExpression2Assignment_1_2; }
+		
+		//MultiplicativeExpression
+		public RuleCall getExpression2MultiplicativeExpressionParserRuleCall_1_2_0() { return cExpression2MultiplicativeExpressionParserRuleCall_1_2_0; }
+	}
+	public class MultiplicativeExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.MSQLQuery.MultiplicativeExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cAtomicExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cArithmeticExpressionExpression1Action_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cOperatorAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cOperatorMultiplicativeOperatorEnumRuleCall_1_1_0 = (RuleCall)cOperatorAssignment_1_1.eContents().get(0);
+		private final Assignment cExpression2Assignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cExpression2AtomicExpressionParserRuleCall_1_2_0 = (RuleCall)cExpression2Assignment_1_2.eContents().get(0);
+		
+		//MultiplicativeExpression Expression:
+		//	AtomicExpression ({ArithmeticExpression.expression1=current} operator=MultiplicativeOperator
+		//	expression2=AtomicExpression)*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//AtomicExpression ({ArithmeticExpression.expression1=current} operator=MultiplicativeOperator
+		//expression2=AtomicExpression)*
+		public Group getGroup() { return cGroup; }
+		
+		//AtomicExpression
+		public RuleCall getAtomicExpressionParserRuleCall_0() { return cAtomicExpressionParserRuleCall_0; }
+		
+		//({ArithmeticExpression.expression1=current} operator=MultiplicativeOperator expression2=AtomicExpression)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{ArithmeticExpression.expression1=current}
+		public Action getArithmeticExpressionExpression1Action_1_0() { return cArithmeticExpressionExpression1Action_1_0; }
+		
+		//operator=MultiplicativeOperator
+		public Assignment getOperatorAssignment_1_1() { return cOperatorAssignment_1_1; }
+		
+		//MultiplicativeOperator
+		public RuleCall getOperatorMultiplicativeOperatorEnumRuleCall_1_1_0() { return cOperatorMultiplicativeOperatorEnumRuleCall_1_1_0; }
+		
+		//expression2=AtomicExpression
+		public Assignment getExpression2Assignment_1_2() { return cExpression2Assignment_1_2; }
+		
+		//AtomicExpression
+		public RuleCall getExpression2AtomicExpressionParserRuleCall_1_2_0() { return cExpression2AtomicExpressionParserRuleCall_1_2_0; }
 	}
 	public class ComparativeExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.MSQLQuery.ComparativeExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cExpression1Assignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cExpression1AtomicExpressionParserRuleCall_0_0 = (RuleCall)cExpression1Assignment_0.eContents().get(0);
-		private final Assignment cOperatorAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cOperatorComparativeOperatorEnumRuleCall_1_0 = (RuleCall)cOperatorAssignment_1.eContents().get(0);
-		private final Assignment cExpression2Assignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cExpression2AtomicExpressionParserRuleCall_2_0 = (RuleCall)cExpression2Assignment_2.eContents().get(0);
+		private final RuleCall cAdditiveExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cComparativeExpressionExpression1Action_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cOperatorAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cOperatorComparativeOperatorEnumRuleCall_1_1_0 = (RuleCall)cOperatorAssignment_1_1.eContents().get(0);
+		private final Assignment cExpression2Assignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cExpression2AdditiveExpressionParserRuleCall_1_2_0 = (RuleCall)cExpression2Assignment_1_2.eContents().get(0);
 		
-		//ComparativeExpression:
-		//	expression1=AtomicExpression operator=ComparativeOperator expression2=AtomicExpression;
+		//ComparativeExpression Expression:
+		//	AdditiveExpression ({ComparativeExpression.expression1=current} operator=ComparativeOperator
+		//	expression2=AdditiveExpression)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//expression1=AtomicExpression operator=ComparativeOperator expression2=AtomicExpression
+		//AdditiveExpression ({ComparativeExpression.expression1=current} operator=ComparativeOperator
+		//expression2=AdditiveExpression)*
 		public Group getGroup() { return cGroup; }
 		
-		//expression1=AtomicExpression
-		public Assignment getExpression1Assignment_0() { return cExpression1Assignment_0; }
+		//AdditiveExpression
+		public RuleCall getAdditiveExpressionParserRuleCall_0() { return cAdditiveExpressionParserRuleCall_0; }
 		
-		//AtomicExpression
-		public RuleCall getExpression1AtomicExpressionParserRuleCall_0_0() { return cExpression1AtomicExpressionParserRuleCall_0_0; }
+		//({ComparativeExpression.expression1=current} operator=ComparativeOperator expression2=AdditiveExpression)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{ComparativeExpression.expression1=current}
+		public Action getComparativeExpressionExpression1Action_1_0() { return cComparativeExpressionExpression1Action_1_0; }
 		
 		//operator=ComparativeOperator
-		public Assignment getOperatorAssignment_1() { return cOperatorAssignment_1; }
+		public Assignment getOperatorAssignment_1_1() { return cOperatorAssignment_1_1; }
 		
 		//ComparativeOperator
-		public RuleCall getOperatorComparativeOperatorEnumRuleCall_1_0() { return cOperatorComparativeOperatorEnumRuleCall_1_0; }
+		public RuleCall getOperatorComparativeOperatorEnumRuleCall_1_1_0() { return cOperatorComparativeOperatorEnumRuleCall_1_1_0; }
 		
-		//expression2=AtomicExpression
-		public Assignment getExpression2Assignment_2() { return cExpression2Assignment_2; }
+		//expression2=AdditiveExpression
+		public Assignment getExpression2Assignment_1_2() { return cExpression2Assignment_1_2; }
 		
-		//AtomicExpression
-		public RuleCall getExpression2AtomicExpressionParserRuleCall_2_0() { return cExpression2AtomicExpressionParserRuleCall_2_0; }
+		//AdditiveExpression
+		public RuleCall getExpression2AdditiveExpressionParserRuleCall_1_2_0() { return cExpression2AdditiveExpressionParserRuleCall_1_2_0; }
 	}
 	public class AtomicExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.MSQLQuery.AtomicExpression");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cIntegerLiteralParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cColumnReferenceParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final RuleCall cExpressionParserRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
+		private final RuleCall cIntegerLiteralParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cColumnReferenceParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//AtomicExpression Expression:
-		//	IntegerLiteral | ColumnReference;
+		//	"(" Expression ")" | IntegerLiteral | ColumnReference;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//IntegerLiteral | ColumnReference
+		//"(" Expression ")" | IntegerLiteral | ColumnReference
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
+		//"(" Expression ")"
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//"("
+		public Keyword getLeftParenthesisKeyword_0_0() { return cLeftParenthesisKeyword_0_0; }
+		
+		//Expression
+		public RuleCall getExpressionParserRuleCall_0_1() { return cExpressionParserRuleCall_0_1; }
+		
+		//")"
+		public Keyword getRightParenthesisKeyword_0_2() { return cRightParenthesisKeyword_0_2; }
+		
 		//IntegerLiteral
-		public RuleCall getIntegerLiteralParserRuleCall_0() { return cIntegerLiteralParserRuleCall_0; }
+		public RuleCall getIntegerLiteralParserRuleCall_1() { return cIntegerLiteralParserRuleCall_1; }
 		
 		//ColumnReference
-		public RuleCall getColumnReferenceParserRuleCall_1() { return cColumnReferenceParserRuleCall_1; }
+		public RuleCall getColumnReferenceParserRuleCall_2() { return cColumnReferenceParserRuleCall_2; }
 	}
 	public class IntegerLiteralElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.MSQLQuery.IntegerLiteral");
@@ -415,6 +508,60 @@ public class MSQLQueryGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getColumnColumnIDTerminalRuleCall_0_1() { return cColumnColumnIDTerminalRuleCall_0_1; }
 	}
 	
+	public class AdditiveOperatorElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.MSQLQuery.AdditiveOperator");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cADDEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cADDPlusSignKeyword_0_0 = (Keyword)cADDEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cSUBTRACTEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cSUBTRACTHyphenMinusKeyword_1_0 = (Keyword)cSUBTRACTEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum AdditiveOperator returns ArithmeticOperator:
+		//	ADD="+" | SUBTRACT="-";
+		public EnumRule getRule() { return rule; }
+		
+		//ADD="+" | SUBTRACT="-"
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//ADD="+"
+		public EnumLiteralDeclaration getADDEnumLiteralDeclaration_0() { return cADDEnumLiteralDeclaration_0; }
+		
+		//"+"
+		public Keyword getADDPlusSignKeyword_0_0() { return cADDPlusSignKeyword_0_0; }
+		
+		//SUBTRACT="-"
+		public EnumLiteralDeclaration getSUBTRACTEnumLiteralDeclaration_1() { return cSUBTRACTEnumLiteralDeclaration_1; }
+		
+		//"-"
+		public Keyword getSUBTRACTHyphenMinusKeyword_1_0() { return cSUBTRACTHyphenMinusKeyword_1_0; }
+	}
+	public class MultiplicativeOperatorElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.MSQLQuery.MultiplicativeOperator");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cMULTIPLYEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cMULTIPLYAsteriskKeyword_0_0 = (Keyword)cMULTIPLYEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cDIVIDEEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cDIVIDESolidusKeyword_1_0 = (Keyword)cDIVIDEEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum MultiplicativeOperator returns ArithmeticOperator:
+		//	MULTIPLY="*" | DIVIDE="/";
+		public EnumRule getRule() { return rule; }
+		
+		//MULTIPLY="*" | DIVIDE="/"
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//MULTIPLY="*"
+		public EnumLiteralDeclaration getMULTIPLYEnumLiteralDeclaration_0() { return cMULTIPLYEnumLiteralDeclaration_0; }
+		
+		//"*"
+		public Keyword getMULTIPLYAsteriskKeyword_0_0() { return cMULTIPLYAsteriskKeyword_0_0; }
+		
+		//DIVIDE="/"
+		public EnumLiteralDeclaration getDIVIDEEnumLiteralDeclaration_1() { return cDIVIDEEnumLiteralDeclaration_1; }
+		
+		//"/"
+		public Keyword getDIVIDESolidusKeyword_1_0() { return cDIVIDESolidusKeyword_1_0; }
+	}
 	public class ComparativeOperatorElements extends AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.mdse.minisql.query.MSQLQuery.ComparativeOperator");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -432,7 +579,8 @@ public class MSQLQueryGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cGREATER_THAN_OR_EQUALGreaterThanSignEqualsSignKeyword_5_0 = (Keyword)cGREATER_THAN_OR_EQUALEnumLiteralDeclaration_5.eContents().get(0);
 		
 		//enum ComparativeOperator:
-		//	LESS_THAN="<" | LESS_THAN_OR_EQUAL="<=" | EQUAL="=" | NOT_EQUAL="!=" | GREATER_THAN=">" | GREATER_THAN_OR_EQUAL=">=";
+		//	LESS_THAN="<" | LESS_THAN_OR_EQUAL="<=" | EQUAL="=" |
+		//	NOT_EQUAL="!=" | GREATER_THAN=">" | GREATER_THAN_OR_EQUAL=">=";
 		public EnumRule getRule() { return rule; }
 		
 		//LESS_THAN="<" | LESS_THAN_OR_EQUAL="<=" | EQUAL="=" | NOT_EQUAL="!=" | GREATER_THAN=">" | GREATER_THAN_OR_EQUAL=">="
@@ -483,6 +631,10 @@ public class MSQLQueryGrammarAccess extends AbstractGrammarElementFinder {
 	private final FromClauseElements pFromClause;
 	private final WhereClauseElements pWhereClause;
 	private final ExpressionElements pExpression;
+	private final AdditiveExpressionElements pAdditiveExpression;
+	private final AdditiveOperatorElements eAdditiveOperator;
+	private final MultiplicativeExpressionElements pMultiplicativeExpression;
+	private final MultiplicativeOperatorElements eMultiplicativeOperator;
 	private final ComparativeExpressionElements pComparativeExpression;
 	private final AtomicExpressionElements pAtomicExpression;
 	private final ComparativeOperatorElements eComparativeOperator;
@@ -508,6 +660,10 @@ public class MSQLQueryGrammarAccess extends AbstractGrammarElementFinder {
 		this.pFromClause = new FromClauseElements();
 		this.pWhereClause = new WhereClauseElements();
 		this.pExpression = new ExpressionElements();
+		this.pAdditiveExpression = new AdditiveExpressionElements();
+		this.eAdditiveOperator = new AdditiveOperatorElements();
+		this.pMultiplicativeExpression = new MultiplicativeExpressionElements();
+		this.eMultiplicativeOperator = new MultiplicativeOperatorElements();
 		this.pComparativeExpression = new ComparativeExpressionElements();
 		this.pAtomicExpression = new AtomicExpressionElements();
 		this.eComparativeOperator = new ComparativeOperatorElements();
@@ -622,7 +778,7 @@ public class MSQLQueryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Expression:
-	//	ColumnReference | IntegerLiteral | ComparativeExpression;
+	//	ComparativeExpression;
 	public ExpressionElements getExpressionAccess() {
 		return pExpression;
 	}
@@ -631,8 +787,52 @@ public class MSQLQueryGrammarAccess extends AbstractGrammarElementFinder {
 		return getExpressionAccess().getRule();
 	}
 	
-	//ComparativeExpression:
-	//	expression1=AtomicExpression operator=ComparativeOperator expression2=AtomicExpression;
+	//// Left factoring and grammar actions resolves left-recursion (see slide 147 in 03-exercises)
+	//AdditiveExpression Expression:
+	//	MultiplicativeExpression ({ArithmeticExpression.expression1=current} operator=AdditiveOperator
+	//	expression2=MultiplicativeExpression)*;
+	public AdditiveExpressionElements getAdditiveExpressionAccess() {
+		return pAdditiveExpression;
+	}
+	
+	public ParserRule getAdditiveExpressionRule() {
+		return getAdditiveExpressionAccess().getRule();
+	}
+	
+	//enum AdditiveOperator returns ArithmeticOperator:
+	//	ADD="+" | SUBTRACT="-";
+	public AdditiveOperatorElements getAdditiveOperatorAccess() {
+		return eAdditiveOperator;
+	}
+	
+	public EnumRule getAdditiveOperatorRule() {
+		return getAdditiveOperatorAccess().getRule();
+	}
+	
+	//MultiplicativeExpression Expression:
+	//	AtomicExpression ({ArithmeticExpression.expression1=current} operator=MultiplicativeOperator
+	//	expression2=AtomicExpression)*;
+	public MultiplicativeExpressionElements getMultiplicativeExpressionAccess() {
+		return pMultiplicativeExpression;
+	}
+	
+	public ParserRule getMultiplicativeExpressionRule() {
+		return getMultiplicativeExpressionAccess().getRule();
+	}
+	
+	//enum MultiplicativeOperator returns ArithmeticOperator:
+	//	MULTIPLY="*" | DIVIDE="/";
+	public MultiplicativeOperatorElements getMultiplicativeOperatorAccess() {
+		return eMultiplicativeOperator;
+	}
+	
+	public EnumRule getMultiplicativeOperatorRule() {
+		return getMultiplicativeOperatorAccess().getRule();
+	}
+	
+	//ComparativeExpression Expression:
+	//	AdditiveExpression ({ComparativeExpression.expression1=current} operator=ComparativeOperator
+	//	expression2=AdditiveExpression)*;
 	public ComparativeExpressionElements getComparativeExpressionAccess() {
 		return pComparativeExpression;
 	}
@@ -642,7 +842,7 @@ public class MSQLQueryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//AtomicExpression Expression:
-	//	IntegerLiteral | ColumnReference;
+	//	"(" Expression ")" | IntegerLiteral | ColumnReference;
 	public AtomicExpressionElements getAtomicExpressionAccess() {
 		return pAtomicExpression;
 	}
@@ -652,7 +852,8 @@ public class MSQLQueryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//enum ComparativeOperator:
-	//	LESS_THAN="<" | LESS_THAN_OR_EQUAL="<=" | EQUAL="=" | NOT_EQUAL="!=" | GREATER_THAN=">" | GREATER_THAN_OR_EQUAL=">=";
+	//	LESS_THAN="<" | LESS_THAN_OR_EQUAL="<=" | EQUAL="=" |
+	//	NOT_EQUAL="!=" | GREATER_THAN=">" | GREATER_THAN_OR_EQUAL=">=";
 	public ComparativeOperatorElements getComparativeOperatorAccess() {
 		return eComparativeOperator;
 	}

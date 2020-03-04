@@ -32,9 +32,10 @@ public class MSQLQueryParser extends AbstractContentAssistParser {
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, MSQLQueryGrammarAccess grammarAccess) {
 			builder.put(grammarAccess.getWhatDirectiveAccess().getAlternatives(), "rule__WhatDirective__Alternatives");
-			builder.put(grammarAccess.getExpressionAccess().getAlternatives(), "rule__Expression__Alternatives");
 			builder.put(grammarAccess.getAtomicExpressionAccess().getAlternatives(), "rule__AtomicExpression__Alternatives");
 			builder.put(grammarAccess.getOrderByDirectiveAccess().getAscendingAlternatives_1_0(), "rule__OrderByDirective__AscendingAlternatives_1_0");
+			builder.put(grammarAccess.getAdditiveOperatorAccess().getAlternatives(), "rule__AdditiveOperator__Alternatives");
+			builder.put(grammarAccess.getMultiplicativeOperatorAccess().getAlternatives(), "rule__MultiplicativeOperator__Alternatives");
 			builder.put(grammarAccess.getComparativeOperatorAccess().getAlternatives(), "rule__ComparativeOperator__Alternatives");
 			builder.put(grammarAccess.getSelectQueryAccess().getGroup(), "rule__SelectQuery__Group__0");
 			builder.put(grammarAccess.getWhatClauseAccess().getGroup(), "rule__WhatClause__Group__0");
@@ -42,7 +43,13 @@ public class MSQLQueryParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getAllColumnsWhatDirectiveAccess().getGroup(), "rule__AllColumnsWhatDirective__Group__0");
 			builder.put(grammarAccess.getFromClauseAccess().getGroup(), "rule__FromClause__Group__0");
 			builder.put(grammarAccess.getWhereClauseAccess().getGroup(), "rule__WhereClause__Group__0");
+			builder.put(grammarAccess.getAdditiveExpressionAccess().getGroup(), "rule__AdditiveExpression__Group__0");
+			builder.put(grammarAccess.getAdditiveExpressionAccess().getGroup_1(), "rule__AdditiveExpression__Group_1__0");
+			builder.put(grammarAccess.getMultiplicativeExpressionAccess().getGroup(), "rule__MultiplicativeExpression__Group__0");
+			builder.put(grammarAccess.getMultiplicativeExpressionAccess().getGroup_1(), "rule__MultiplicativeExpression__Group_1__0");
 			builder.put(grammarAccess.getComparativeExpressionAccess().getGroup(), "rule__ComparativeExpression__Group__0");
+			builder.put(grammarAccess.getComparativeExpressionAccess().getGroup_1(), "rule__ComparativeExpression__Group_1__0");
+			builder.put(grammarAccess.getAtomicExpressionAccess().getGroup_0(), "rule__AtomicExpression__Group_0__0");
 			builder.put(grammarAccess.getOrderByClauseAccess().getGroup(), "rule__OrderByClause__Group__0");
 			builder.put(grammarAccess.getOrderByClauseAccess().getGroup_3(), "rule__OrderByClause__Group_3__0");
 			builder.put(grammarAccess.getOrderByDirectiveAccess().getGroup(), "rule__OrderByDirective__Group__0");
@@ -55,9 +62,12 @@ public class MSQLQueryParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSingleColumnWhatDirectiveAccess().getColumnReferenceAssignment(), "rule__SingleColumnWhatDirective__ColumnReferenceAssignment");
 			builder.put(grammarAccess.getFromClauseAccess().getTableAssignment_1(), "rule__FromClause__TableAssignment_1");
 			builder.put(grammarAccess.getWhereClauseAccess().getExpressionAssignment_1(), "rule__WhereClause__ExpressionAssignment_1");
-			builder.put(grammarAccess.getComparativeExpressionAccess().getExpression1Assignment_0(), "rule__ComparativeExpression__Expression1Assignment_0");
-			builder.put(grammarAccess.getComparativeExpressionAccess().getOperatorAssignment_1(), "rule__ComparativeExpression__OperatorAssignment_1");
-			builder.put(grammarAccess.getComparativeExpressionAccess().getExpression2Assignment_2(), "rule__ComparativeExpression__Expression2Assignment_2");
+			builder.put(grammarAccess.getAdditiveExpressionAccess().getOperatorAssignment_1_1(), "rule__AdditiveExpression__OperatorAssignment_1_1");
+			builder.put(grammarAccess.getAdditiveExpressionAccess().getExpression2Assignment_1_2(), "rule__AdditiveExpression__Expression2Assignment_1_2");
+			builder.put(grammarAccess.getMultiplicativeExpressionAccess().getOperatorAssignment_1_1(), "rule__MultiplicativeExpression__OperatorAssignment_1_1");
+			builder.put(grammarAccess.getMultiplicativeExpressionAccess().getExpression2Assignment_1_2(), "rule__MultiplicativeExpression__Expression2Assignment_1_2");
+			builder.put(grammarAccess.getComparativeExpressionAccess().getOperatorAssignment_1_1(), "rule__ComparativeExpression__OperatorAssignment_1_1");
+			builder.put(grammarAccess.getComparativeExpressionAccess().getExpression2Assignment_1_2(), "rule__ComparativeExpression__Expression2Assignment_1_2");
 			builder.put(grammarAccess.getIntegerLiteralAccess().getValueAssignment(), "rule__IntegerLiteral__ValueAssignment");
 			builder.put(grammarAccess.getOrderByClauseAccess().getOrderDirectivesAssignment_2(), "rule__OrderByClause__OrderDirectivesAssignment_2");
 			builder.put(grammarAccess.getOrderByClauseAccess().getOrderDirectivesAssignment_3_1(), "rule__OrderByClause__OrderDirectivesAssignment_3_1");

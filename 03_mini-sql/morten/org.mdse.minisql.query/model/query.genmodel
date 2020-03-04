@@ -18,6 +18,12 @@
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//ComparativeOperator/GREATER_THAN"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//ComparativeOperator/GREATER_THAN_OR_EQUAL"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="query.ecore#//ArithmeticOperator">
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ArithmeticOperator/ADD"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ArithmeticOperator/SUBTRACT"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ArithmeticOperator/MULTIPLY"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ArithmeticOperator/DIVIDE"/>
+    </genEnums>
     <genClasses ecoreClass="query.ecore#//SelectQuery">
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SelectQuery/orderByClause"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//SelectQuery/whatClause"/>
@@ -56,6 +62,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//ComparativeExpression/operator"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//ComparativeExpression/expression1"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//ComparativeExpression/expression2"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//ArithmeticExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//ArithmeticExpression/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//ArithmeticExpression/expression1"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//ArithmeticExpression/expression2"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Schema" ecorePackage="../../org.mdse.minisql.schema/model/schema.ecore#/">

@@ -372,6 +372,29 @@ public class QueryItemProviderAdapterFactory extends QueryAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.mdse.minisql.query.ArithmeticExpression} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ArithmeticExpressionItemProvider arithmeticExpressionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.mdse.minisql.query.ArithmeticExpression}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createArithmeticExpressionAdapter() {
+		if (arithmeticExpressionItemProvider == null) {
+			arithmeticExpressionItemProvider = new ArithmeticExpressionItemProvider(this);
+		}
+
+		return arithmeticExpressionItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -502,6 +525,8 @@ public class QueryItemProviderAdapterFactory extends QueryAdapterFactory
 			integerLiteralItemProvider.dispose();
 		if (comparativeExpressionItemProvider != null)
 			comparativeExpressionItemProvider.dispose();
+		if (arithmeticExpressionItemProvider != null)
+			arithmeticExpressionItemProvider.dispose();
 	}
 
 }

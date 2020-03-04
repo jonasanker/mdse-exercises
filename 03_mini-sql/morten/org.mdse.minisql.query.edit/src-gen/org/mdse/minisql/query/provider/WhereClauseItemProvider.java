@@ -161,6 +161,9 @@ public class WhereClauseItemProvider extends ItemProviderAdapter implements IEdi
 
 		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.WHERE_CLAUSE__EXPRESSION,
 				QueryFactory.eINSTANCE.createComparativeExpression()));
+
+		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.WHERE_CLAUSE__EXPRESSION,
+				QueryFactory.eINSTANCE.createArithmeticExpression()));
 	}
 
 	/**

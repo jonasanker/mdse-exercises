@@ -415,33 +415,161 @@ ruleExpression returns [EObject current=null]
 @after {
 	leaveRule();
 }:
+	{
+		newCompositeNode(grammarAccess.getExpressionAccess().getComparativeExpressionParserRuleCall());
+	}
+	this_ComparativeExpression_0=ruleComparativeExpression
+	{
+		$current = $this_ComparativeExpression_0.current;
+		afterParserOrEnumRuleCall();
+	}
+;
+
+// Entry rule entryRuleAdditiveExpression
+entryRuleAdditiveExpression returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAdditiveExpressionRule()); }
+	iv_ruleAdditiveExpression=ruleAdditiveExpression
+	{ $current=$iv_ruleAdditiveExpression.current; }
+	EOF;
+
+// Rule AdditiveExpression
+ruleAdditiveExpression returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
 	(
 		{
-			newCompositeNode(grammarAccess.getExpressionAccess().getColumnReferenceParserRuleCall_0());
+			newCompositeNode(grammarAccess.getAdditiveExpressionAccess().getMultiplicativeExpressionParserRuleCall_0());
 		}
-		this_ColumnReference_0=ruleColumnReference
+		this_MultiplicativeExpression_0=ruleMultiplicativeExpression
 		{
-			$current = $this_ColumnReference_0.current;
+			$current = $this_MultiplicativeExpression_0.current;
 			afterParserOrEnumRuleCall();
 		}
-		    |
+		(
+			(
+				{
+					$current = forceCreateModelElementAndSet(
+						grammarAccess.getAdditiveExpressionAccess().getArithmeticExpressionExpression1Action_1_0(),
+						$current);
+				}
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getAdditiveExpressionAccess().getOperatorAdditiveOperatorEnumRuleCall_1_1_0());
+					}
+					lv_operator_2_0=ruleAdditiveOperator
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getAdditiveExpressionRule());
+						}
+						set(
+							$current,
+							"operator",
+							lv_operator_2_0,
+							"org.mdse.minisql.query.MSQLQuery.AdditiveOperator");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getAdditiveExpressionAccess().getExpression2MultiplicativeExpressionParserRuleCall_1_2_0());
+					}
+					lv_expression2_3_0=ruleMultiplicativeExpression
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getAdditiveExpressionRule());
+						}
+						set(
+							$current,
+							"expression2",
+							lv_expression2_3_0,
+							"org.mdse.minisql.query.MSQLQuery.MultiplicativeExpression");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+	)
+;
+
+// Entry rule entryRuleMultiplicativeExpression
+entryRuleMultiplicativeExpression returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getMultiplicativeExpressionRule()); }
+	iv_ruleMultiplicativeExpression=ruleMultiplicativeExpression
+	{ $current=$iv_ruleMultiplicativeExpression.current; }
+	EOF;
+
+// Rule MultiplicativeExpression
+ruleMultiplicativeExpression returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
 		{
-			newCompositeNode(grammarAccess.getExpressionAccess().getIntegerLiteralParserRuleCall_1());
+			newCompositeNode(grammarAccess.getMultiplicativeExpressionAccess().getAtomicExpressionParserRuleCall_0());
 		}
-		this_IntegerLiteral_1=ruleIntegerLiteral
+		this_AtomicExpression_0=ruleAtomicExpression
 		{
-			$current = $this_IntegerLiteral_1.current;
+			$current = $this_AtomicExpression_0.current;
 			afterParserOrEnumRuleCall();
 		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getExpressionAccess().getComparativeExpressionParserRuleCall_2());
-		}
-		this_ComparativeExpression_2=ruleComparativeExpression
-		{
-			$current = $this_ComparativeExpression_2.current;
-			afterParserOrEnumRuleCall();
-		}
+		(
+			(
+				{
+					$current = forceCreateModelElementAndSet(
+						grammarAccess.getMultiplicativeExpressionAccess().getArithmeticExpressionExpression1Action_1_0(),
+						$current);
+				}
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getMultiplicativeExpressionAccess().getOperatorMultiplicativeOperatorEnumRuleCall_1_1_0());
+					}
+					lv_operator_2_0=ruleMultiplicativeOperator
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getMultiplicativeExpressionRule());
+						}
+						set(
+							$current,
+							"operator",
+							lv_operator_2_0,
+							"org.mdse.minisql.query.MSQLQuery.MultiplicativeOperator");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getMultiplicativeExpressionAccess().getExpression2AtomicExpressionParserRuleCall_1_2_0());
+					}
+					lv_expression2_3_0=ruleAtomicExpression
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getMultiplicativeExpressionRule());
+						}
+						set(
+							$current,
+							"expression2",
+							lv_expression2_3_0,
+							"org.mdse.minisql.query.MSQLQuery.AtomicExpression");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
 	)
 ;
 
@@ -461,63 +589,61 @@ ruleComparativeExpression returns [EObject current=null]
 	leaveRule();
 }:
 	(
+		{
+			newCompositeNode(grammarAccess.getComparativeExpressionAccess().getAdditiveExpressionParserRuleCall_0());
+		}
+		this_AdditiveExpression_0=ruleAdditiveExpression
+		{
+			$current = $this_AdditiveExpression_0.current;
+			afterParserOrEnumRuleCall();
+		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getComparativeExpressionAccess().getExpression1AtomicExpressionParserRuleCall_0_0());
-				}
-				lv_expression1_0_0=ruleAtomicExpression
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getComparativeExpressionRule());
-					}
-					set(
-						$current,
-						"expression1",
-						lv_expression1_0_0,
-						"org.mdse.minisql.query.MSQLQuery.AtomicExpression");
-					afterParserOrEnumRuleCall();
+					$current = forceCreateModelElementAndSet(
+						grammarAccess.getComparativeExpressionAccess().getComparativeExpressionExpression1Action_1_0(),
+						$current);
 				}
 			)
-		)
-		(
 			(
-				{
-					newCompositeNode(grammarAccess.getComparativeExpressionAccess().getOperatorComparativeOperatorEnumRuleCall_1_0());
-				}
-				lv_operator_1_0=ruleComparativeOperator
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getComparativeExpressionRule());
+				(
+					{
+						newCompositeNode(grammarAccess.getComparativeExpressionAccess().getOperatorComparativeOperatorEnumRuleCall_1_1_0());
 					}
-					set(
-						$current,
-						"operator",
-						lv_operator_1_0,
-						"org.mdse.minisql.query.MSQLQuery.ComparativeOperator");
-					afterParserOrEnumRuleCall();
-				}
+					lv_operator_2_0=ruleComparativeOperator
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getComparativeExpressionRule());
+						}
+						set(
+							$current,
+							"operator",
+							lv_operator_2_0,
+							"org.mdse.minisql.query.MSQLQuery.ComparativeOperator");
+						afterParserOrEnumRuleCall();
+					}
+				)
 			)
-		)
-		(
 			(
-				{
-					newCompositeNode(grammarAccess.getComparativeExpressionAccess().getExpression2AtomicExpressionParserRuleCall_2_0());
-				}
-				lv_expression2_2_0=ruleAtomicExpression
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getComparativeExpressionRule());
+				(
+					{
+						newCompositeNode(grammarAccess.getComparativeExpressionAccess().getExpression2AdditiveExpressionParserRuleCall_1_2_0());
 					}
-					set(
-						$current,
-						"expression2",
-						lv_expression2_2_0,
-						"org.mdse.minisql.query.MSQLQuery.AtomicExpression");
-					afterParserOrEnumRuleCall();
-				}
+					lv_expression2_3_0=ruleAdditiveExpression
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getComparativeExpressionRule());
+						}
+						set(
+							$current,
+							"expression2",
+							lv_expression2_3_0,
+							"org.mdse.minisql.query.MSQLQuery.AdditiveExpression");
+						afterParserOrEnumRuleCall();
+					}
+				)
 			)
-		)
+		)*
 	)
 ;
 
@@ -537,21 +663,40 @@ ruleAtomicExpression returns [EObject current=null]
 	leaveRule();
 }:
 	(
+		(
+			otherlv_0=LeftParenthesis
+			{
+				newLeafNode(otherlv_0, grammarAccess.getAtomicExpressionAccess().getLeftParenthesisKeyword_0_0());
+			}
+			{
+				newCompositeNode(grammarAccess.getAtomicExpressionAccess().getExpressionParserRuleCall_0_1());
+			}
+			this_Expression_1=ruleExpression
+			{
+				$current = $this_Expression_1.current;
+				afterParserOrEnumRuleCall();
+			}
+			otherlv_2=RightParenthesis
+			{
+				newLeafNode(otherlv_2, grammarAccess.getAtomicExpressionAccess().getRightParenthesisKeyword_0_2());
+			}
+		)
+		    |
 		{
-			newCompositeNode(grammarAccess.getAtomicExpressionAccess().getIntegerLiteralParserRuleCall_0());
+			newCompositeNode(grammarAccess.getAtomicExpressionAccess().getIntegerLiteralParserRuleCall_1());
 		}
-		this_IntegerLiteral_0=ruleIntegerLiteral
+		this_IntegerLiteral_3=ruleIntegerLiteral
 		{
-			$current = $this_IntegerLiteral_0.current;
+			$current = $this_IntegerLiteral_3.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getAtomicExpressionAccess().getColumnReferenceParserRuleCall_1());
+			newCompositeNode(grammarAccess.getAtomicExpressionAccess().getColumnReferenceParserRuleCall_2());
 		}
-		this_ColumnReference_1=ruleColumnReference
+		this_ColumnReference_4=ruleColumnReference
 		{
-			$current = $this_ColumnReference_1.current;
+			$current = $this_ColumnReference_4.current;
 			afterParserOrEnumRuleCall();
 		}
 	)
@@ -753,6 +898,60 @@ ruleColumnReference returns [EObject current=null]
 			otherlv_0=RULE_ID
 			{
 				newLeafNode(otherlv_0, grammarAccess.getColumnReferenceAccess().getColumnColumnCrossReference_0());
+			}
+		)
+	)
+;
+
+// Rule AdditiveOperator
+ruleAdditiveOperator returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0=PlusSign
+			{
+				$current = grammarAccess.getAdditiveOperatorAccess().getADDEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getAdditiveOperatorAccess().getADDEnumLiteralDeclaration_0());
+			}
+		)
+		    |
+		(
+			enumLiteral_1=HyphenMinus
+			{
+				$current = grammarAccess.getAdditiveOperatorAccess().getSUBTRACTEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getAdditiveOperatorAccess().getSUBTRACTEnumLiteralDeclaration_1());
+			}
+		)
+	)
+;
+
+// Rule MultiplicativeOperator
+ruleMultiplicativeOperator returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0=Asterisk
+			{
+				$current = grammarAccess.getMultiplicativeOperatorAccess().getMULTIPLYEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getMultiplicativeOperatorAccess().getMULTIPLYEnumLiteralDeclaration_0());
+			}
+		)
+		    |
+		(
+			enumLiteral_1=Solidus
+			{
+				$current = grammarAccess.getMultiplicativeOperatorAccess().getDIVIDEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getMultiplicativeOperatorAccess().getDIVIDEEnumLiteralDeclaration_1());
 			}
 		)
 	)

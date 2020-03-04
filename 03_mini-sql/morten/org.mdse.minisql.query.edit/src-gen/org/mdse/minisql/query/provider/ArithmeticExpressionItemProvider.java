@@ -15,25 +15,25 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.mdse.minisql.query.ComparativeExpression;
-import org.mdse.minisql.query.ComparativeOperator;
+import org.mdse.minisql.query.ArithmeticExpression;
+import org.mdse.minisql.query.ArithmeticOperator;
 import org.mdse.minisql.query.QueryFactory;
 import org.mdse.minisql.query.QueryPackage;
 
 /**
- * This is the item provider adapter for a {@link org.mdse.minisql.query.ComparativeExpression} object.
+ * This is the item provider adapter for a {@link org.mdse.minisql.query.ArithmeticExpression} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ComparativeExpressionItemProvider extends ExpressionItemProvider {
+public class ArithmeticExpressionItemProvider extends ExpressionItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ComparativeExpressionItemProvider(AdapterFactory adapterFactory) {
+	public ArithmeticExpressionItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -60,13 +60,13 @@ public class ComparativeExpressionItemProvider extends ExpressionItemProvider {
 	 * @generated
 	 */
 	protected void addOperatorPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_ComparativeExpression_operator_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_ComparativeExpression_operator_feature",
-						"_UI_ComparativeExpression_type"),
-				QueryPackage.Literals.COMPARATIVE_EXPRESSION__OPERATOR, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_ArithmeticExpression_operator_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_ArithmeticExpression_operator_feature",
+								"_UI_ArithmeticExpression_type"),
+						QueryPackage.Literals.ARITHMETIC_EXPRESSION__OPERATOR, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -81,8 +81,8 @@ public class ComparativeExpressionItemProvider extends ExpressionItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(QueryPackage.Literals.COMPARATIVE_EXPRESSION__EXPRESSION1);
-			childrenFeatures.add(QueryPackage.Literals.COMPARATIVE_EXPRESSION__EXPRESSION2);
+			childrenFeatures.add(QueryPackage.Literals.ARITHMETIC_EXPRESSION__EXPRESSION1);
+			childrenFeatures.add(QueryPackage.Literals.ARITHMETIC_EXPRESSION__EXPRESSION2);
 		}
 		return childrenFeatures;
 	}
@@ -101,14 +101,14 @@ public class ComparativeExpressionItemProvider extends ExpressionItemProvider {
 	}
 
 	/**
-	 * This returns ComparativeExpression.gif.
+	 * This returns ArithmeticExpression.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ComparativeExpression"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ArithmeticExpression"));
 	}
 
 	/**
@@ -129,10 +129,10 @@ public class ComparativeExpressionItemProvider extends ExpressionItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		ComparativeOperator labelValue = ((ComparativeExpression) object).getOperator();
+		ArithmeticOperator labelValue = ((ArithmeticExpression) object).getOperator();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ? getString("_UI_ComparativeExpression_type")
-				: getString("_UI_ComparativeExpression_type") + " " + label;
+		return label == null || label.length() == 0 ? getString("_UI_ArithmeticExpression_type")
+				: getString("_UI_ArithmeticExpression_type") + " " + label;
 	}
 
 	/**
@@ -146,12 +146,12 @@ public class ComparativeExpressionItemProvider extends ExpressionItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ComparativeExpression.class)) {
-		case QueryPackage.COMPARATIVE_EXPRESSION__OPERATOR:
+		switch (notification.getFeatureID(ArithmeticExpression.class)) {
+		case QueryPackage.ARITHMETIC_EXPRESSION__OPERATOR:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
-		case QueryPackage.COMPARATIVE_EXPRESSION__EXPRESSION1:
-		case QueryPackage.COMPARATIVE_EXPRESSION__EXPRESSION2:
+		case QueryPackage.ARITHMETIC_EXPRESSION__EXPRESSION1:
+		case QueryPackage.ARITHMETIC_EXPRESSION__EXPRESSION2:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -169,34 +169,34 @@ public class ComparativeExpressionItemProvider extends ExpressionItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.COMPARATIVE_EXPRESSION__EXPRESSION1,
+		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.ARITHMETIC_EXPRESSION__EXPRESSION1,
 				QueryFactory.eINSTANCE.createExpression()));
 
-		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.COMPARATIVE_EXPRESSION__EXPRESSION1,
+		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.ARITHMETIC_EXPRESSION__EXPRESSION1,
 				QueryFactory.eINSTANCE.createColumnReference()));
 
-		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.COMPARATIVE_EXPRESSION__EXPRESSION1,
+		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.ARITHMETIC_EXPRESSION__EXPRESSION1,
 				QueryFactory.eINSTANCE.createIntegerLiteral()));
 
-		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.COMPARATIVE_EXPRESSION__EXPRESSION1,
+		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.ARITHMETIC_EXPRESSION__EXPRESSION1,
 				QueryFactory.eINSTANCE.createComparativeExpression()));
 
-		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.COMPARATIVE_EXPRESSION__EXPRESSION1,
+		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.ARITHMETIC_EXPRESSION__EXPRESSION1,
 				QueryFactory.eINSTANCE.createArithmeticExpression()));
 
-		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.COMPARATIVE_EXPRESSION__EXPRESSION2,
+		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.ARITHMETIC_EXPRESSION__EXPRESSION2,
 				QueryFactory.eINSTANCE.createExpression()));
 
-		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.COMPARATIVE_EXPRESSION__EXPRESSION2,
+		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.ARITHMETIC_EXPRESSION__EXPRESSION2,
 				QueryFactory.eINSTANCE.createColumnReference()));
 
-		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.COMPARATIVE_EXPRESSION__EXPRESSION2,
+		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.ARITHMETIC_EXPRESSION__EXPRESSION2,
 				QueryFactory.eINSTANCE.createIntegerLiteral()));
 
-		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.COMPARATIVE_EXPRESSION__EXPRESSION2,
+		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.ARITHMETIC_EXPRESSION__EXPRESSION2,
 				QueryFactory.eINSTANCE.createComparativeExpression()));
 
-		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.COMPARATIVE_EXPRESSION__EXPRESSION2,
+		newChildDescriptors.add(createChildParameter(QueryPackage.Literals.ARITHMETIC_EXPRESSION__EXPRESSION2,
 				QueryFactory.eINSTANCE.createArithmeticExpression()));
 	}
 
@@ -211,8 +211,8 @@ public class ComparativeExpressionItemProvider extends ExpressionItemProvider {
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == QueryPackage.Literals.COMPARATIVE_EXPRESSION__EXPRESSION1
-				|| childFeature == QueryPackage.Literals.COMPARATIVE_EXPRESSION__EXPRESSION2;
+		boolean qualify = childFeature == QueryPackage.Literals.ARITHMETIC_EXPRESSION__EXPRESSION1
+				|| childFeature == QueryPackage.Literals.ARITHMETIC_EXPRESSION__EXPRESSION2;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2",

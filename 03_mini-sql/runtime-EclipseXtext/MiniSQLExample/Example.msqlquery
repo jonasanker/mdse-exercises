@@ -2,6 +2,8 @@
 
 //SELECT * FROM Employees;
 
-//SELECT * FROM Employees ORDER BY Salary;
+//SELECT * FROM Employees WHERE 2 > Salary ORDER BY Salary;
 
-SELECT * FROM Employees WHERE Salary > 10000 ORDER BY Salary;
+SELECT * FROM Employees WHERE Salary * 12 > 10000 ORDER BY Salary;
+
+//SELECT * FROM Employees WHERE (1300 + Salary) * 12 > 10000 ORDER BY Salary;

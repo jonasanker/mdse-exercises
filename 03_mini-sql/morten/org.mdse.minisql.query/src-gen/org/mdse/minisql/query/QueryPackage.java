@@ -566,6 +566,61 @@ public interface QueryPackage extends EPackage {
 	int COMPARATIVE_EXPRESSION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.mdse.minisql.query.impl.ArithmeticExpressionImpl <em>Arithmetic Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.mdse.minisql.query.impl.ArithmeticExpressionImpl
+	 * @see org.mdse.minisql.query.impl.QueryPackageImpl#getArithmeticExpression()
+	 * @generated
+	 */
+	int ARITHMETIC_EXPRESSION = 13;
+
+	/**
+	 * The feature id for the '<em><b>Operator</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARITHMETIC_EXPRESSION__OPERATOR = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Expression1</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARITHMETIC_EXPRESSION__EXPRESSION1 = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Expression2</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARITHMETIC_EXPRESSION__EXPRESSION2 = EXPRESSION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Arithmetic Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARITHMETIC_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Arithmetic Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARITHMETIC_EXPRESSION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.mdse.minisql.query.ComparativeOperator <em>Comparative Operator</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -573,7 +628,17 @@ public interface QueryPackage extends EPackage {
 	 * @see org.mdse.minisql.query.impl.QueryPackageImpl#getComparativeOperator()
 	 * @generated
 	 */
-	int COMPARATIVE_OPERATOR = 13;
+	int COMPARATIVE_OPERATOR = 14;
+
+	/**
+	 * The meta object id for the '{@link org.mdse.minisql.query.ArithmeticOperator <em>Arithmetic Operator</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.mdse.minisql.query.ArithmeticOperator
+	 * @see org.mdse.minisql.query.impl.QueryPackageImpl#getArithmeticOperator()
+	 * @generated
+	 */
+	int ARITHMETIC_OPERATOR = 15;
 
 	/**
 	 * Returns the meta object for class '{@link org.mdse.minisql.query.SelectQuery <em>Select Query</em>}'.
@@ -882,6 +947,49 @@ public interface QueryPackage extends EPackage {
 	EReference getComparativeExpression_Expression2();
 
 	/**
+	 * Returns the meta object for class '{@link org.mdse.minisql.query.ArithmeticExpression <em>Arithmetic Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Arithmetic Expression</em>'.
+	 * @see org.mdse.minisql.query.ArithmeticExpression
+	 * @generated
+	 */
+	EClass getArithmeticExpression();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.mdse.minisql.query.ArithmeticExpression#getOperator <em>Operator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Operator</em>'.
+	 * @see org.mdse.minisql.query.ArithmeticExpression#getOperator()
+	 * @see #getArithmeticExpression()
+	 * @generated
+	 */
+	EAttribute getArithmeticExpression_Operator();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.mdse.minisql.query.ArithmeticExpression#getExpression1 <em>Expression1</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Expression1</em>'.
+	 * @see org.mdse.minisql.query.ArithmeticExpression#getExpression1()
+	 * @see #getArithmeticExpression()
+	 * @generated
+	 */
+	EReference getArithmeticExpression_Expression1();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.mdse.minisql.query.ArithmeticExpression#getExpression2 <em>Expression2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Expression2</em>'.
+	 * @see org.mdse.minisql.query.ArithmeticExpression#getExpression2()
+	 * @see #getArithmeticExpression()
+	 * @generated
+	 */
+	EReference getArithmeticExpression_Expression2();
+
+	/**
 	 * Returns the meta object for enum '{@link org.mdse.minisql.query.ComparativeOperator <em>Comparative Operator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -890,6 +998,16 @@ public interface QueryPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getComparativeOperator();
+
+	/**
+	 * Returns the meta object for enum '{@link org.mdse.minisql.query.ArithmeticOperator <em>Arithmetic Operator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Arithmetic Operator</em>'.
+	 * @see org.mdse.minisql.query.ArithmeticOperator
+	 * @generated
+	 */
+	EEnum getArithmeticOperator();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1174,6 +1292,40 @@ public interface QueryPackage extends EPackage {
 		EReference COMPARATIVE_EXPRESSION__EXPRESSION2 = eINSTANCE.getComparativeExpression_Expression2();
 
 		/**
+		 * The meta object literal for the '{@link org.mdse.minisql.query.impl.ArithmeticExpressionImpl <em>Arithmetic Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.mdse.minisql.query.impl.ArithmeticExpressionImpl
+		 * @see org.mdse.minisql.query.impl.QueryPackageImpl#getArithmeticExpression()
+		 * @generated
+		 */
+		EClass ARITHMETIC_EXPRESSION = eINSTANCE.getArithmeticExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ARITHMETIC_EXPRESSION__OPERATOR = eINSTANCE.getArithmeticExpression_Operator();
+
+		/**
+		 * The meta object literal for the '<em><b>Expression1</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ARITHMETIC_EXPRESSION__EXPRESSION1 = eINSTANCE.getArithmeticExpression_Expression1();
+
+		/**
+		 * The meta object literal for the '<em><b>Expression2</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ARITHMETIC_EXPRESSION__EXPRESSION2 = eINSTANCE.getArithmeticExpression_Expression2();
+
+		/**
 		 * The meta object literal for the '{@link org.mdse.minisql.query.ComparativeOperator <em>Comparative Operator</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1182,6 +1334,16 @@ public interface QueryPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum COMPARATIVE_OPERATOR = eINSTANCE.getComparativeOperator();
+
+		/**
+		 * The meta object literal for the '{@link org.mdse.minisql.query.ArithmeticOperator <em>Arithmetic Operator</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.mdse.minisql.query.ArithmeticOperator
+		 * @see org.mdse.minisql.query.impl.QueryPackageImpl#getArithmeticOperator()
+		 * @generated
+		 */
+		EEnum ARITHMETIC_OPERATOR = eINSTANCE.getArithmeticOperator();
 
 	}
 

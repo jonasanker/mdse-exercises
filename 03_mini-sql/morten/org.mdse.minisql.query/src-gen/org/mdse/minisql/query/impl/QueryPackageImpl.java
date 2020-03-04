@@ -11,6 +11,8 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.mdse.minisql.query.AllColumnsWhatDirective;
+import org.mdse.minisql.query.ArithmeticExpression;
+import org.mdse.minisql.query.ArithmeticOperator;
 import org.mdse.minisql.query.ColumnReference;
 import org.mdse.minisql.query.ComparativeExpression;
 import org.mdse.minisql.query.ComparativeOperator;
@@ -128,7 +130,21 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass arithmeticExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum comparativeOperatorEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum arithmeticOperatorEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -498,8 +514,58 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getArithmeticExpression() {
+		return arithmeticExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getArithmeticExpression_Operator() {
+		return (EAttribute) arithmeticExpressionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getArithmeticExpression_Expression1() {
+		return (EReference) arithmeticExpressionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getArithmeticExpression_Expression2() {
+		return (EReference) arithmeticExpressionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getComparativeOperator() {
 		return comparativeOperatorEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getArithmeticOperator() {
+		return arithmeticOperatorEEnum;
 	}
 
 	/**
@@ -574,8 +640,14 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		createEReference(comparativeExpressionEClass, COMPARATIVE_EXPRESSION__EXPRESSION1);
 		createEReference(comparativeExpressionEClass, COMPARATIVE_EXPRESSION__EXPRESSION2);
 
+		arithmeticExpressionEClass = createEClass(ARITHMETIC_EXPRESSION);
+		createEAttribute(arithmeticExpressionEClass, ARITHMETIC_EXPRESSION__OPERATOR);
+		createEReference(arithmeticExpressionEClass, ARITHMETIC_EXPRESSION__EXPRESSION1);
+		createEReference(arithmeticExpressionEClass, ARITHMETIC_EXPRESSION__EXPRESSION2);
+
 		// Create enums
 		comparativeOperatorEEnum = createEEnum(COMPARATIVE_OPERATOR);
+		arithmeticOperatorEEnum = createEEnum(ARITHMETIC_OPERATOR);
 	}
 
 	/**
@@ -615,6 +687,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		singleColumnWhatDirectiveEClass.getESuperTypes().add(this.getWhatDirective());
 		integerLiteralEClass.getESuperTypes().add(this.getExpression());
 		comparativeExpressionEClass.getESuperTypes().add(this.getExpression());
+		arithmeticExpressionEClass.getESuperTypes().add(this.getExpression());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(selectQueryEClass, SelectQuery.class, "SelectQuery", !IS_ABSTRACT, !IS_INTERFACE,
@@ -703,6 +776,18 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 				ComparativeExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(arithmeticExpressionEClass, ArithmeticExpression.class, "ArithmeticExpression", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getArithmeticExpression_Operator(), this.getArithmeticOperator(), "operator", "ADD", 1, 1,
+				ArithmeticExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getArithmeticExpression_Expression1(), this.getExpression(), null, "expression1", null, 1, 1,
+				ArithmeticExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getArithmeticExpression_Expression2(), this.getExpression(), null, "expression2", null, 1, 1,
+				ArithmeticExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(comparativeOperatorEEnum, ComparativeOperator.class, "ComparativeOperator");
 		addEEnumLiteral(comparativeOperatorEEnum, ComparativeOperator.LESS_THAN);
@@ -711,6 +796,12 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		addEEnumLiteral(comparativeOperatorEEnum, ComparativeOperator.NOT_EQUAL);
 		addEEnumLiteral(comparativeOperatorEEnum, ComparativeOperator.GREATER_THAN);
 		addEEnumLiteral(comparativeOperatorEEnum, ComparativeOperator.GREATER_THAN_OR_EQUAL);
+
+		initEEnum(arithmeticOperatorEEnum, ArithmeticOperator.class, "ArithmeticOperator");
+		addEEnumLiteral(arithmeticOperatorEEnum, ArithmeticOperator.ADD);
+		addEEnumLiteral(arithmeticOperatorEEnum, ArithmeticOperator.SUBTRACT);
+		addEEnumLiteral(arithmeticOperatorEEnum, ArithmeticOperator.MULTIPLY);
+		addEEnumLiteral(arithmeticOperatorEEnum, ArithmeticOperator.DIVIDE);
 
 		// Create resource
 		createResource(eNS_URI);

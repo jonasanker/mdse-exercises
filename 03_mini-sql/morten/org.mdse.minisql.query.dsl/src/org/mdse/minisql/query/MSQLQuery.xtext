@@ -41,19 +41,46 @@ WhereClause:
 ;
 
 Expression:
-	ColumnReference | IntegerLiteral | ComparativeExpression
+	ComparativeExpression
 ;
 
-ComparativeExpression:
-	expression1=AtomicExpression operator=ComparativeOperator expression2=AtomicExpression
+// Left factoring and grammar actions resolves left-recursion (see slide 147 in 03-exercises)
+AdditiveExpression returns Expression:
+	MultiplicativeExpression({ArithmeticExpression.expression1=current} 
+		operator=AdditiveOperator
+		expression2=MultiplicativeExpression
+	)*
+;
+
+enum AdditiveOperator returns ArithmeticOperator:
+	ADD="+" | SUBTRACT="-"
+;
+
+MultiplicativeExpression returns Expression:
+	AtomicExpression({ArithmeticExpression.expression1=current} 
+		operator=MultiplicativeOperator 
+		expression2=AtomicExpression
+	)*
+;
+
+enum MultiplicativeOperator returns ArithmeticOperator:
+	MULTIPLY="*" | DIVIDE="/"
+;
+
+ComparativeExpression returns Expression:
+	AdditiveExpression ({ComparativeExpression.expression1=current} 
+		operator=ComparativeOperator 
+		expression2=AdditiveExpression
+	)*
 ;
 
 AtomicExpression returns Expression:
-	IntegerLiteral | ColumnReference
+	("("Expression")") | IntegerLiteral | ColumnReference
 ;
 
 enum ComparativeOperator:
-	LESS_THAN="<" | LESS_THAN_OR_EQUAL="<=" | EQUAL="=" | NOT_EQUAL="!=" | GREATER_THAN=">" | GREATER_THAN_OR_EQUAL=">="
+	LESS_THAN="<" | LESS_THAN_OR_EQUAL="<=" | EQUAL="=" | 
+	NOT_EQUAL="!=" | GREATER_THAN=">" | GREATER_THAN_OR_EQUAL=">="
 
 ;
 

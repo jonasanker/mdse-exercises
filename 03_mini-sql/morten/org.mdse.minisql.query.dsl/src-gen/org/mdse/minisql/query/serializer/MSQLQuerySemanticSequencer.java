@@ -15,6 +15,7 @@ import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import org.mdse.minisql.query.AllColumnsWhatDirective;
+import org.mdse.minisql.query.ArithmeticExpression;
 import org.mdse.minisql.query.ColumnReference;
 import org.mdse.minisql.query.ComparativeExpression;
 import org.mdse.minisql.query.FromClause;
@@ -44,6 +45,9 @@ public class MSQLQuerySemanticSequencer extends AbstractDelegatingSemanticSequen
 			switch (semanticObject.eClass().getClassifierID()) {
 			case QueryPackage.ALL_COLUMNS_WHAT_DIRECTIVE:
 				sequence_AllColumnsWhatDirective(context, (AllColumnsWhatDirective) semanticObject); 
+				return; 
+			case QueryPackage.ARITHMETIC_EXPRESSION:
+				sequence_AdditiveExpression_MultiplicativeExpression(context, (ArithmeticExpression) semanticObject); 
 				return; 
 			case QueryPackage.COLUMN_REFERENCE:
 				sequence_ColumnReference(context, (ColumnReference) semanticObject); 
@@ -82,6 +86,28 @@ public class MSQLQuerySemanticSequencer extends AbstractDelegatingSemanticSequen
 	
 	/**
 	 * Contexts:
+	 *     Expression returns ArithmeticExpression
+	 *     AdditiveExpression returns ArithmeticExpression
+	 *     AdditiveExpression.ArithmeticExpression_1_0 returns ArithmeticExpression
+	 *     MultiplicativeExpression returns ArithmeticExpression
+	 *     MultiplicativeExpression.ArithmeticExpression_1_0 returns ArithmeticExpression
+	 *     ComparativeExpression returns ArithmeticExpression
+	 *     ComparativeExpression.ComparativeExpression_1_0 returns ArithmeticExpression
+	 *     AtomicExpression returns ArithmeticExpression
+	 *
+	 * Constraint:
+	 *     (
+	 *         (expression1=AdditiveExpression_ArithmeticExpression_1_0 operator=AdditiveOperator expression2=MultiplicativeExpression) | 
+	 *         (expression1=MultiplicativeExpression_ArithmeticExpression_1_0 operator=MultiplicativeOperator expression2=AtomicExpression)
+	 *     )
+	 */
+	protected void sequence_AdditiveExpression_MultiplicativeExpression(ISerializationContext context, ArithmeticExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     WhatDirective returns AllColumnsWhatDirective
 	 *     AllColumnsWhatDirective returns AllColumnsWhatDirective
 	 *
@@ -96,6 +122,12 @@ public class MSQLQuerySemanticSequencer extends AbstractDelegatingSemanticSequen
 	/**
 	 * Contexts:
 	 *     Expression returns ColumnReference
+	 *     AdditiveExpression returns ColumnReference
+	 *     AdditiveExpression.ArithmeticExpression_1_0 returns ColumnReference
+	 *     MultiplicativeExpression returns ColumnReference
+	 *     MultiplicativeExpression.ArithmeticExpression_1_0 returns ColumnReference
+	 *     ComparativeExpression returns ColumnReference
+	 *     ComparativeExpression.ComparativeExpression_1_0 returns ColumnReference
 	 *     AtomicExpression returns ColumnReference
 	 *     ColumnReference returns ColumnReference
 	 *
@@ -116,10 +148,16 @@ public class MSQLQuerySemanticSequencer extends AbstractDelegatingSemanticSequen
 	/**
 	 * Contexts:
 	 *     Expression returns ComparativeExpression
+	 *     AdditiveExpression returns ComparativeExpression
+	 *     AdditiveExpression.ArithmeticExpression_1_0 returns ComparativeExpression
+	 *     MultiplicativeExpression returns ComparativeExpression
+	 *     MultiplicativeExpression.ArithmeticExpression_1_0 returns ComparativeExpression
 	 *     ComparativeExpression returns ComparativeExpression
+	 *     ComparativeExpression.ComparativeExpression_1_0 returns ComparativeExpression
+	 *     AtomicExpression returns ComparativeExpression
 	 *
 	 * Constraint:
-	 *     (expression1=AtomicExpression operator=ComparativeOperator expression2=AtomicExpression)
+	 *     (expression1=ComparativeExpression_ComparativeExpression_1_0 operator=ComparativeOperator expression2=AdditiveExpression)
 	 */
 	protected void sequence_ComparativeExpression(ISerializationContext context, ComparativeExpression semanticObject) {
 		if (errorAcceptor != null) {
@@ -131,9 +169,9 @@ public class MSQLQuerySemanticSequencer extends AbstractDelegatingSemanticSequen
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, QueryPackage.Literals.COMPARATIVE_EXPRESSION__EXPRESSION2));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getComparativeExpressionAccess().getExpression1AtomicExpressionParserRuleCall_0_0(), semanticObject.getExpression1());
-		feeder.accept(grammarAccess.getComparativeExpressionAccess().getOperatorComparativeOperatorEnumRuleCall_1_0(), semanticObject.getOperator());
-		feeder.accept(grammarAccess.getComparativeExpressionAccess().getExpression2AtomicExpressionParserRuleCall_2_0(), semanticObject.getExpression2());
+		feeder.accept(grammarAccess.getComparativeExpressionAccess().getComparativeExpressionExpression1Action_1_0(), semanticObject.getExpression1());
+		feeder.accept(grammarAccess.getComparativeExpressionAccess().getOperatorComparativeOperatorEnumRuleCall_1_1_0(), semanticObject.getOperator());
+		feeder.accept(grammarAccess.getComparativeExpressionAccess().getExpression2AdditiveExpressionParserRuleCall_1_2_0(), semanticObject.getExpression2());
 		feeder.finish();
 	}
 	
@@ -159,6 +197,12 @@ public class MSQLQuerySemanticSequencer extends AbstractDelegatingSemanticSequen
 	/**
 	 * Contexts:
 	 *     Expression returns IntegerLiteral
+	 *     AdditiveExpression returns IntegerLiteral
+	 *     AdditiveExpression.ArithmeticExpression_1_0 returns IntegerLiteral
+	 *     MultiplicativeExpression returns IntegerLiteral
+	 *     MultiplicativeExpression.ArithmeticExpression_1_0 returns IntegerLiteral
+	 *     ComparativeExpression returns IntegerLiteral
+	 *     ComparativeExpression.ComparativeExpression_1_0 returns IntegerLiteral
 	 *     AtomicExpression returns IntegerLiteral
 	 *     IntegerLiteral returns IntegerLiteral
 	 *

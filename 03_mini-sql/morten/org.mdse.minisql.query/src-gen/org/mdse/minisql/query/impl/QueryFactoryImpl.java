@@ -82,6 +82,8 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 			return createIntegerLiteral();
 		case QueryPackage.COMPARATIVE_EXPRESSION:
 			return createComparativeExpression();
+		case QueryPackage.ARITHMETIC_EXPRESSION:
+			return createArithmeticExpression();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -97,6 +99,8 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 		switch (eDataType.getClassifierID()) {
 		case QueryPackage.COMPARATIVE_OPERATOR:
 			return createComparativeOperatorFromString(eDataType, initialValue);
+		case QueryPackage.ARITHMETIC_OPERATOR:
+			return createArithmeticOperatorFromString(eDataType, initialValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -112,6 +116,8 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 		switch (eDataType.getClassifierID()) {
 		case QueryPackage.COMPARATIVE_OPERATOR:
 			return convertComparativeOperatorToString(eDataType, instanceValue);
+		case QueryPackage.ARITHMETIC_OPERATOR:
+			return convertArithmeticOperatorToString(eDataType, instanceValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -265,6 +271,17 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public ArithmeticExpression createArithmeticExpression() {
+		ArithmeticExpressionImpl arithmeticExpression = new ArithmeticExpressionImpl();
+		return arithmeticExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ComparativeOperator createComparativeOperatorFromString(EDataType eDataType, String initialValue) {
 		ComparativeOperator result = ComparativeOperator.get(initialValue);
 		if (result == null)
@@ -279,6 +296,28 @@ public class QueryFactoryImpl extends EFactoryImpl implements QueryFactory {
 	 * @generated
 	 */
 	public String convertComparativeOperatorToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ArithmeticOperator createArithmeticOperatorFromString(EDataType eDataType, String initialValue) {
+		ArithmeticOperator result = ArithmeticOperator.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertArithmeticOperatorToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

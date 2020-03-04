@@ -31,9 +31,19 @@ GreaterThanSignEqualsSign : '>''=';
 
 BY : ('B'|'b')('Y'|'y');
 
+LeftParenthesis : '(';
+
+RightParenthesis : ')';
+
 Asterisk : '*';
 
+PlusSign : '+';
+
 Comma : ',';
+
+HyphenMinus : '-';
+
+Solidus : '/';
 
 Semicolon : ';';
 
