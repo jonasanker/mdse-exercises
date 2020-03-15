@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated Genealogy -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.mdse.genealogy.presentation.GenealogyModelWizardID"
+            name="%_UI_GenealogyModelWizard_label"
+            class="org.mdse.genealogy.presentation.GenealogyModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/GenealogyModelFile.gif">
+         <description>%_UI_GenealogyModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated Genealogy -->
+      <editor
+            id="org.mdse.genealogy.presentation.GenealogyEditorID"
+            name="%_UI_GenealogyEditor_label"
+            icon="icons/full/obj16/GenealogyModelFile.gif"
+            extensions="genealogy"
+            class="org.mdse.genealogy.presentation.GenealogyEditor"
+            contributorClass="org.mdse.genealogy.presentation.GenealogyActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

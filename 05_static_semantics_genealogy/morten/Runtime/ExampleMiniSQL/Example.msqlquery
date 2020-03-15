@@ -1,0 +1,5 @@
+SELECT *, Salary, Salary
+  FROM Employees 
+  WHERE Position > 2 AND 
+    Salary * 12 + 1300 < 100000
+  ORDER BY Salary ASC, Salary DESC;

@@ -1,0 +1,7 @@
+TABLE Employees {
+	ID,
+	Name,
+	Position,
+	Level,
+	Salary
+}
